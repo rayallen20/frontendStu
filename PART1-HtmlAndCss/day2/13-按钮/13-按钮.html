@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按钮</title>
+</head>
+<body>
+<form action="#" method="get">
+  <label>
+    姓名: <input type="text" placeholder="请输入姓名">
+  </label>
+
+  <br>
+
+  <label>
+    密码: <input type="password" placeholder="请输入密码">
+  </label>
+
+  <br>
+
+  性别:
+  <label>
+    <input type="radio" name="gender" value="male" checked> 男
+  </label>
+
+  <label>
+    <input type="radio" name="gender" value="female"> 女
+  </label>
+
+  <br>
+
+  爱好:
+  <label>
+    <input type="checkbox" name="hobby" value="football"> 足球
+  </label>
+
+  <label>
+    <input type="checkbox" name="hobby" value="basketball" checked> 篮球
+  </label>
+
+  <label>
+    <input type="checkbox" name="hobby" value="dance"> 舞蹈
+  </label>
+
+  <br>
+
+  上传头像:
+  <label>
+    <input type="file" multiple name="avatar">
+  </label>
+
+  <br>
+
+  籍贯:
+  <label>
+    <select>
+        <option value="beijing">北京</option>
+        <option value="shanghai">上海</option>
+        <option value="guangzhou" selected>广州</option>
+        <option value="shenzhen">深圳</option>
+    </select>
+  </label>
+
+  <br>
+
+  <label>
+    评论: <br>
+    <textarea cols="30" rows="4" placeholder="请输入评论" name="comments"></textarea>
+  </label>
+
+  <br>
+
+  <button type="submit">提交</button>
+  <button type="reset">重置</button>
+  <button>搜索</button>
+</form>
+</body>
+</html>

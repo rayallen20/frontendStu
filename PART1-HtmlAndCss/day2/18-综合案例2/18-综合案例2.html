@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>综合案例2</title>
+</head>
+<body>
+<h2>注册信息</h2>
+<form method="get" action="#">
+  <h3>个人信息</h3>
+
+  <label>
+    姓名: <input type="text" placeholder="请输入真实姓名">
+  </label>
+
+  <br>
+  <br>
+
+  <label>
+    密码: <input type="password" placeholder="请输入密码">
+  </label>
+
+  <br>
+  <br>
+
+  <label>
+    确认密码: <input type="password" placeholder="请输入确认密码">
+  </label>
+
+  <br>
+  <br>
+
+  性别:
+  <label>
+    <input type="radio" name="gender"> <img src="./img/man.jpg" alt="man"> 男
+  </label>
+  <label>
+    <input type="radio" name="gender" checked> <img src="./img/women.jpg" alt="woman"> 女
+  </label>
+
+  <br>
+  <br>
+
+  居住城市:
+  <label>
+    <select>
+        <option value="beijing" selected>北京</option>
+        <option value="shanghai">上海</option>
+        <option value="guangzhou">广州</option>
+        <option value="shenzhen">深圳</option>
+    </select>
+  </label>
+
+  <h3>教育经历</h3>
+
+  最高学历:
+  <label>
+    <select>
+        <option value="primary">小学</option>
+        <option value="junior">初中</option>
+        <option value="senior">高中</option>
+        <option value="college" selected>大学</option>
+    </select>
+  </label>
+
+  <br>
+  <br>
+
+  <label>
+    学校名称: <input type="text">
+  </label>
+
+  <br>
+  <br>
+
+  <label>
+    所学专业: <input type="text">
+  </label>
+
+  <br>
+  <br>
+
+  在校时间:
+  <label>
+    <select>
+      <option value="2015" selected>2015</option>
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+      <option value="2018">2018</option>
+    </select>
+  </label>
+  ---
+  <label>
+    <select>
+      <option value="2019" selected>2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+    </select>
+  </label>
+
+  <h3>工作经历</h3>
+
+  <label>
+    公司名称: <input type="text">
+  </label>
+
+  <br>
+  <br>
+
+  工作描述:
+  <br>
+  <label>
+    <textarea cols="20" rows="2"></textarea>
+  </label>
+
+  <br>
+  <br>
+
+  <label>
+    <input type="checkbox"> 已阅读同意协议
+  </label>
+
+  <ul>
+    <li><a href="#" target="_self">《用户服务协议》</a></li>
+    <li><a href="#" target="_self">《隐私政策》</a></li>
+  </ul>
+
+  <button type="submit">免费注册</button>
+  <button type="reset">重新填写</button>
+</form>
+</body>
+</html>
