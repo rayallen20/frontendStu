@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    width: 800px;
+    /*调试用*/
+    /*background-color: deepskyblue;*/
+}

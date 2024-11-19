@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box1 {
+    width: 100px;
+    height: 100px;
+    background-color: darkblue;
+    color: darkgrey;
+}
+
+.box2 {
+    width: 200px;
+    height: 200px;
+    background-color: deepskyblue;
+    color: darkgrey;
+}
