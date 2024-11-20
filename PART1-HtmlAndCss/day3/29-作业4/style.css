@@ -1,0 +1,74 @@
+.logo-box {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.logo {
+    width: 270px;
+    height: 129px;
+}
+
+.nav-box {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.search-from {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.keyword-input {
+    width: 550px;
+    height: 44px;
+    /*圆角半径*/
+    border-radius: 15px;
+}
+
+.submit-button {
+    width: 108px;
+    height: 44px;
+    background-color: #4E6EF2;
+    color: #ffffff;
+    border-radius: 15px;
+    border: 0;
+}
+
+.search-footer {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.map-box {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.map-img {
+    width: 16px;
+    height: 16px;
+}
+
+.map-link {
+    font-size: 16px;
+}
+
+.footer-ad-box {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ad {
+    font-size: 16px;
+}
+
+.footer {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-content {
+    font-size: 14px;
+}
