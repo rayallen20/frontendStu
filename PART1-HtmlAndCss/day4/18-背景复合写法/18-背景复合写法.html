@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>18-背景复合写法</title>
+  <style>
+    .box {
+      width: 400px;
+      height: 400px;
+      /*background-color: skyblue;*/
+      /*background-image: url("./img/1.png");*/
+      /*background-position: center center;*/
+      /*background-repeat: no-repeat;*/
+      /*background-size: 100% 100%;*/
+      /*background-attachment: scroll;*/
+
+      /* 和上边的样式等价 */
+      background: skyblue url("./img/1.png") no-repeat center center/100% 100% scroll;
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-继承的权重为0</title>
+    <style>
+      /* 标签选择器的权重没有类选择器高 但是li标签是ul标签的后代 继承了绿色 继承的权重为0 不如标签选择器高 */
+      li {
+        color: red;
+      }
+
+      .box {
+        color: green;
+      }
+    </style>
+</head>
+<body>
+<ul class="box">
+  <li>文字</li>
+</ul>
+</body>
+</html>

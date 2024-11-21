@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-背景缩放</title>
+    <style>
+      .box {
+        width: 400px;
+        height: 400px;
+        background-color: skyblue;
+        background-image: url("./img/1.png");
+        background-repeat: no-repeat;
+        /* 背景图宽高按容器宽高的百分比进行缩放(这是非等比的) */
+        /*background-size: 100% 100%;*/
+      }
+
+      .cover {
+          width: 350px;
+          height: 268px;
+          background-color: black;
+          background-image: url("./img/2.jpg");
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+
+      .contain {
+          width: 350px;
+          height: 268px;
+          background-color: black;
+          background-image: url("./img/2.jpg");
+          background-repeat: no-repeat;
+          background-size: contain;
+      }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+
+<div class="cover"></div>
+
+<div class="contain"></div>
+</body>
+</html>

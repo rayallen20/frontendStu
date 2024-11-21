@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25-综合案例2-他的思路.html</title>
+    <style>
+      .banner {
+        height: 500px;
+        background: #f3f3f3 url("./img/bk.png") no-repeat left bottom;
+        /* 这里他的思路是合理的 因为这个banner里边所有的元素都是右对齐的 所以直接在父级上设置1次右对齐即可 */
+        text-align: right;
+        color: #333333;
+      }
+
+      .title {
+        /*height: 100px;*/
+        /* 小技巧: 很多情况下,直接给盒子的内容设置行高就能撑开盒子了 不用单独给盒子设置行高了 */
+        line-height: 100px;
+        font-size: 30px;
+        font-weight: 400;
+        /* 这里的颜色也是一样 因为h4和p的字体颜色都一样 所以直接给父级就行了 */
+        /*color: #333333;*/
+      }
+
+      .describe {
+        /*color: #333333;*/
+        font-size: 20px;
+      }
+
+      .submit-link {
+        display: inline-block;
+        width: 125px;
+        height: 40px;
+        background-color: #f64077;
+        color: #ffffff;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+        text-decoration: none;
+      }
+    </style>
+</head>
+<body>
+<!-- 这种横幅式的东西实际上是横幅 也就是banner 不是导航栏 -->
+<div class="banner">
+  <h4 class="title">让创造产生价值</h4>
+  <p class="describe">我们希望小游戏平台可以提供无限的可能性,让每一个创作者都可以将他们的才华和创意传递给用户.</p>
+  <a href="#" target="_self" class="submit-link">我要报名</a>
+</div>
+</body>
+</html>

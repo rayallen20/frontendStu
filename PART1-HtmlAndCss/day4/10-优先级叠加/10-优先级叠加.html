@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-优先级叠加</title>
+    <style>
+      li {
+        color: red;
+      }
+
+      /* 这个复合选择器中 有2个标签选择器 权重比上面的1个标签选择器要高 */
+      ul li {
+        color: green;
+      }
+
+      .blue {
+        color: blue;
+      }
+
+      /* 类选择器+标签选择器 的权重 比仅有类选择器要高 */
+      li.blue {
+        color: skyblue;
+      }
+
+      /* 想比上面的复合选择器权重还高 可以再加标签选择器 使复合选择器的权重比他还高 */
+      /* 这里就是 1个类选择器 + 2个标签选择器 权重比上面那个还高 */
+      ul > li.blue {
+        color: pink;
+      }
+
+      .nav ul li a {
+        color: red;
+      }
+
+      /* 只有1个类选择器 权重不如上边那个高 */
+      .yellow {
+        color: yellow;
+      }
+
+      /* 2个类选择器 权重就比红色的那个复合选择器高了 */
+      .nav .yellow {
+        color: yellow;
+      }
+    </style>
+</head>
+<body>
+<ul>
+  <li class="blue">文字</li>
+</ul>
+
+<div class="nav">
+  <ul>
+    <li>
+      <a href="#" target="_self">电器</a>
+    </li>
+
+    <li>
+      <a href="#" target="_self">零食</a>
+    </li>
+
+    <li>
+      <a href="#" target="_self" class="yellow">手机</a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

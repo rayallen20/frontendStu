@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-继承性</title>
+    <style>
+      .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: mediumturquoise;
+        font-size: 12px;
+        color: whitesmoke;
+      }
+
+      .box2 {
+        font-size: 18px;
+        color: red;
+      }
+
+      .box2 > a {
+        color: red;
+      }
+
+      .box3 {
+        font-size: 18px;
+        font-style: normal;
+        color: lightskyblue;
+      }
+
+      .box3 > h1 {
+        font-size: 18px;
+        font-weight: normal;
+      }
+    </style>
+</head>
+<body>
+<div class="box1">
+  <span>div的儿子span 给div设置文字样式 则该span会受影响</span>
+</div>
+
+<p class="box2">
+  <a href="#" target="_self">a标签有自己的文字样式 不继承父级元素的文字样式 需要在a标签上设置文字样式才能生效</a>
+</p>
+
+<div class="box3">
+  <h1>同样的 标题标签由于有自身的字体大小和加粗 所以不继承父级元素的文字样式 也需要在标签自身上设置文字样式 需要注意的是 由于标题标签仅有大小和粗细2个属性是自带的 所以如果在父级标签上设置文字颜色 那么是会继承的</h1>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-交集选择器</title>
+    <style>
+      /* 需求: 让class=red的div变成红色 class=red的p不变色 */
+      div.red {
+        color: red;
+      }
+
+      /* 需求: 让class=red的p变成蓝色 class=red的div保持红色 */
+      p.red {
+        color: blue;
+      }
+    </style>
+</head>
+<body>
+<div class="red">要变成红色的 class=red的div</div>
+<div class="red">要变成红色的 class=red的div</div>
+<div>不要变色的div</div>
+<p class="red">不要变色的 class=red的div</p>
+<p class="red">不要变色的 class=red的div</p>
+</body>
+</html>

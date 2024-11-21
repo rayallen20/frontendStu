@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-后代选择器</title>
+    <style>
+        /*
+        需求: 让第1个ul中的li变成红色
+        */
+        .red-li li {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<ul class="red-li">
+    <li>
+        <ul>
+            <li>无序列表1中的无序列表1</li>
+        </ul>
+    </li>
+    <li>无序列表1</li>
+    <li>无序列表1</li>
+    <li>无序列表1</li>
+</ul>
+
+<ul>
+    <li>无序列表2</li>
+    <li>无序列表2</li>
+    <li>无序列表2</li>
+    <li>无序列表2</li>
+</ul>
+
+<ol>
+    <li>有序列表1</li>
+    <li>有序列表1</li>
+    <li>有序列表1</li>
+    <li>有序列表1</li>
+</ol>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25-综合案例2-我的实现.html</title>
+    <style>
+      .nav-img {
+        height: 500px;
+        /* 实现背景图时 先分开写 确认布局无误 再用复合写法代替 */
+        /*background-color: #f3f3f3;*/
+        /*background-image: url("./img/bk.png");*/
+        /*background-repeat: no-repeat;*/
+        /*background-position: left bottom;*/
+        background: #f3f3f3 url("./img/bk.png") no-repeat left bottom;
+      }
+
+      .title {
+        height: 100px;
+        text-align: right;
+        line-height: 100px;
+        font-size: 30px;
+        font-weight: 400;
+        color: #333333;
+      }
+
+      .describe {
+        color: #333333;
+        font-size: 20px;
+        text-align: right;
+      }
+
+      /* 链接的右对齐 我的思路是在a的外边包一个div 给这个div设置内容右对齐 这样a就在右侧了 */
+      /* 实际上整个导航栏里的元素都是右对齐的 所以只要给最外层的div设置成右对齐就行了 */
+      .submit-box {
+        text-align: right;
+      }
+
+      .submit-box > a {
+        display: inline-block;
+        width: 125px;
+        height: 40px;
+        background-color: #f06b1f;
+        color: #ffffff;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+        text-decoration: none;
+      }
+    </style>
+</head>
+<body>
+<div class="nav-img">
+  <h4 class="title">让创造产生价值</h4>
+  <p class="describe">我们希望小游戏平台可以提供无限的可能性,让每一个创作者都可以将他们的才华和创意传递给用户.</p>
+  <div class="submit-box">
+    <a href="#" target="_self" class="submit-link">我要报名</a>
+  </div>
+</div>
+</body>
+</html>
