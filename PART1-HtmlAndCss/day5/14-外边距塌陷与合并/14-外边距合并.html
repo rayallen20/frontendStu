@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-外边距合并</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+      }
+
+      .box1 {
+        margin-bottom: 100px;
+      }
+
+      .box2 {
+        /*
+        在审查元素时 是能看到50px的margin的
+        但是在布局上是不生效的 因为垂直排列的兄弟元素之间 上下margin会合并
+        合并结果取两者中的最大值
+        */
+        margin-top: 50px;
+      }
+    </style>
+</head>
+<body>
+<div class="box1">上盒子 margin-bottom值为100px</div>
+<div class="box2">下盒子 margin-top值为50px</div>
+<strong>间距为100px 而非150px 因为垂直排列的兄弟元素之间 上下间距会合并 合并结果取最大值</strong>
+</body>
+</html>

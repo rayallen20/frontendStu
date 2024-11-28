@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-设置单方向边框</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #cccccc;
+        /* 此处使用CSS的层叠性 当样式冲突时 后边的样式覆盖前面的 层叠掉了border针对上边框的样式设置 */
+        border-top: 3px solid orange;
+      }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>20-综合案例2</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      div {
+        border: 1px solid black;
+      }
+
+      .nav {
+        width: 360px;
+        height: 190px;
+        margin: 100px auto 0;
+      }
+
+      .bar {
+        height: 35px;
+        background-color: #eeeeee;
+        border-bottom: 1px solid gray;
+        margin-bottom: 10px;
+      }
+
+      .title {
+        display: inline-block;
+        width: 50px;
+        height: 35px;
+        border-top: 3px solid #ff8400;
+        border-right: 1px solid gray;
+        background-color: white;
+        text-align: center;
+      }
+
+      .title-left {
+        display: inline-block;
+        width: 300px;
+        height: 35px;
+        background-color: #eeeeee;
+      }
+
+      li {
+        list-style: none;
+        margin-bottom: 5px;
+      }
+
+      li::before {
+        content: "• " url("./img/2.gif");
+        color: #ff8400;
+        margin-right: 5px;
+      }
+    </style>
+</head>
+<body>
+<div class="nav">
+  <div class="bar">
+      <div class="title">新闻</div>
+      <div class="title-left"></div>
+  </div>
+  <ul>
+    <li>点赞"新农人" 温暖的伸手</li>
+    <li>在希望的田野上</li>
+    <li>内容3</li>
+    <li>内容4</li>
+    <li>内容5</li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-尺寸计算</title>
+    <style>
+      .box1 {
+        /*width: 200px;*/
+        /*
+        2 * 10 + 20 + 40 + width = 200
+        width = 120
+        其中:
+        2 * 10: 左右两侧的border宽度
+        20: padding-right的宽度
+        40: padding-left的宽度
+        */
+        width: 120px;
+        /*height: 200px;*/
+        /*
+        2 * 10 + 10 + 30 + height = 200
+        height = 140
+        其中:
+        2 * 10: 上下两侧的border高度
+        10: padding-top的高度
+        30: padding-bottom的高度
+        */
+        height: 140px;
+        background-color: skyblue;
+        padding: 10px 20px 30px 40px;
+        border: 10px solid darkblue;
+      }
+
+      .box2 {
+        /* 设置padding和border往盒子内部挤 不影响预设的width和height */
+        box-sizing: border-box;
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+        padding: 10px;
+        border: 10px solid darkblue;
+      }
+    </style>
+</head>
+<body>
+<!-- 需求: 要求设置border padding后 盒子的大小仍为200 * 200 -->
+<div class="box1">文字内容</div>
+<br>
+<br>
+<br>
+<div class="box2">文字内容</div>
+</body>
+</html>

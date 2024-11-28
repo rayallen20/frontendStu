@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-margin属性auto值的原理</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+      }
+
+      .box1 {
+        /* 其实和默认位置一样 因为块元素独占一行 等价于右外边距全部占满 */
+        margin-right: auto;
+      }
+
+      .box2 {
+        /* 左外边距全部占满 这个属性有点像左对齐/右对齐/居中对齐 */
+        margin-left: auto;
+      }
+
+      .box3 {
+        /* 平分左右两侧的外边距 上下设置auto也不生效 */
+        margin: 0 auto;
+      }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+</body>
+</html>

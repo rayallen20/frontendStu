@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>20-综合案例2</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .nav {
+        width: 360px;
+        height: 190px;
+        margin: 100px auto 0;
+      }
+
+      .bar {
+        height: 35px;
+        background-color: #eeeeee;
+        border: 1px solid #dbdee1;
+        border-left: 0;
+        margin-bottom: 10px;
+      }
+
+      .title {
+        width: 50px;
+        height: 35px;
+        border-top: 3px solid #ff8400;
+        border-right: 1px solid #dbdee1;
+        background-color: white;
+        text-align: center;
+        line-height: 35px;
+        /*
+        有底色的div是没有底色的div的子元素 所以这里如果不设置纵向往上的话 还是会显示出来底色div的边框
+        这和ui不符
+        */
+        margin-top: -1px;
+      }
+
+      li {
+        list-style: none;
+        margin-bottom: 5px;
+      }
+
+      li::before {
+        content: "• " url("./img/2.gif");
+        color: #ff8400;
+        margin-right: 5px;
+      }
+    </style>
+</head>
+<body>
+<div class="nav">
+  <div class="bar">
+    <div class="title">新闻</div>
+  </div>
+  <ul>
+    <li>点赞"新农人" 温暖的伸手</li>
+    <li>在希望的田野上</li>
+    <li>内容3</li>
+    <li>内容4</li>
+    <li>内容5</li>
+  </ul>
+</div>
+</body>
+</html>

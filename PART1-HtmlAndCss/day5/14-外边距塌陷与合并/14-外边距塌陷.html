@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-外边距塌陷</title>
+    <style>
+        .target {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: darkcyan;
+            /* 正确的布局效果 */
+            /*padding-top: 20px;*/
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            /*
+            会使得父元素产生一个margin-top: 20px的效果 且自身和父元素之间没有上边距
+            */
+            margin-top: 20px;
+        }
+
+        .father1 {
+            width: 200px;
+            height: 200px;
+            background-color: darkcyan;
+            /* 解决方案1: 给父元素设置padding-top */
+            padding-top: 20px;
+        }
+
+        .son1 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+
+        .father2 {
+            width: 200px;
+            height: 200px;
+            background-color: darkcyan;
+            /*
+            解决方案2: 给父元素设置overflow: hidden
+            这个overflow不是控制溢出的 是控制外边距塌陷的
+            */
+            overflow: hidden;
+        }
+
+        .son2 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            margin-top: 20px;
+        }
+
+        .father3 {
+            width: 200px;
+            height: 200px;
+            background-color: darkcyan;
+            /*
+            解决方案2: 给父元素设置border-top
+            同时给这个边框设置为透明 这样就不影响布局了
+            */
+            border-top: 1px solid transparent;
+            /*
+            边框只是看不到了 不是不存在了 还是会影响盒子的大小 所以要设置box-sizing: border-box
+            */
+            box-sizing: border-box;
+        }
+
+        .son3 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="target">演示用的目标盒子</div>
+<div class="father">
+    <!--  需求:子元素要距离父元素的顶端有20px  -->
+    <div class="son">子元素</div>
+</div>
+
+<hr>
+
+<div class="target">演示用的目标盒子</div>
+<div class="father1">
+    <!--  需求:子元素要距离父元素的顶端有20px  -->
+    <div class="son1">子元素</div>
+</div>
+
+<hr>
+
+<div class="target">演示用的目标盒子</div>
+<div class="father2">
+    <!--  需求:子元素要距离父元素的顶端有20px  -->
+    <div class="son2">子元素</div>
+</div>
+
+<hr>
+
+<div class="target">演示用的目标盒子</div>
+<div class="father3">
+    <!--  需求:子元素要距离父元素的顶端有20px  -->
+    <div class="son3">子元素</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19-综合案例1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /*
+            TODO: box-sizing也是初始化的一部分
+            */
+            box-sizing: border-box;
+        }
+
+        .nav {
+            height: 352px;
+            background-color: #f1f1f1;
+            padding-top: 50px;
+        }
+
+        .inner-box {
+            margin-left: auto;
+            margin-right: auto;
+            width: 270px;
+            height: 255px;
+            background-color: #ffffff;
+            /* 为避免出现外边距塌陷的情况 所以给内容设置内边距 而非在内容上设置外边距 */
+            padding-top: 40px;
+            text-align: center;
+            border-radius: 10px;
+            transition: 0.5s;
+        }
+
+        .inner-box:hover {
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /*
+        让图片居中的核心思路:
+        1. 设置图片为块元素
+        2. 设置左右外边距auto
+        3. 上边距由父元素的padding-top控制
+        4. 控制margin-bottom 把下面的字压下去
+        */
+        .sdk-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 16px;
+            margin-bottom: 14px;
+            color: gray;
+        }
+
+        .content {
+            font-size: 11px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="inner-box">
+        <img src="./img/1.svg" alt="1" title="1" class="sdk-img">
+        <p class="title">抖音直播SDK</p>
+        <p class="content">包含抖音直播看播功能</p>
+    </div>
+</div>
+</body>
+</html>

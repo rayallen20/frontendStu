@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-圆角边框</title>
+    <style>
+      .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+        /* 圆的半径 = 宽高的一半 时,盒子将成为圆形 */
+        border-radius: 50px;
+        margin-bottom: 20px;
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
+        /* 百分比取值是半径占宽高的百分比 */
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+
+      .box2 {
+        width: 200px;
+        height: 100px;
+        background-color: darkseagreen;
+        /*
+        将半径设置为高度的一半 就是胶囊型
+        */
+        border-radius: 50px;
+        overflow: scroll;
+        padding-top: 10px;
+      }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<img src="./img/1.jpg" alt="1" title="1">
+<div class="box2">将圆角半径设置为盒子高度的一半,则盒子变为胶囊型</div>
+</body>
+</html>

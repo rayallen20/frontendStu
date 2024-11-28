@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-内边距多值写法</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+        color: darkblue;
+      }
+
+      .box2 {
+        /*上下20 左右40*/
+        padding: 20px 40px;
+      }
+
+      .box3 {
+        /* 上20 左右40 下80 */
+        padding: 20px 40px 80px;
+      }
+
+      .box4 {
+        /* 上20 右40 下80 左120 */
+        padding: 20px 40px 80px 120px;
+      }
+    </style>
+</head>
+<body>
+<div class="box2">文字2</div>
+<br>
+<br>
+<div class="box3">文字3</div>
+<br>
+<br>
+<div class="box4">文字4</div>
+</body>
+</html>

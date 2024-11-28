@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-结构伪类公式</title>
+    <style>
+      .ul-add-even li:nth-child(2n) {
+        color: skyblue;
+      }
+
+      .ul-add-even li:nth-child(2n + 1) {
+        color: aqua;
+      }
+
+      /* 第3 6个li */
+      .ul-color li:nth-child(3n) {
+        color: cornflowerblue;
+      }
+
+      /* 第2个以前的li(含第2个) */
+      .ul-color li:nth-child(-n + 2) {
+        color: greenyellow;
+      }
+
+      /* 第7个以后的li(含第7个) */
+      .ul-color li:nth-child(n + 7) {
+        color: darkorange;
+      }
+    </style>
+</head>
+<body>
+<ul class="ul-add-even">
+  <li>第1个li</li>
+  <li>第2个li</li>
+  <li>第3个li</li>
+  <li>第4个li</li>
+  <li>第5个li</li>
+  <li>第6个li</li>
+  <li>第7个li</li>
+  <li>第8个li</li>
+</ul>
+
+<ul class="ul-color">
+  <li>第1个li</li>
+  <li>第2个li</li>
+  <li>第3个li</li>
+  <li>第4个li</li>
+  <li>第5个li</li>
+  <li>第6个li</li>
+  <li>第7个li</li>
+  <li>第8个li</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-盒子模型边框</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+        border: 3px dotted darkkhaki;
+      }
+
+      label input {
+        width: 490px;
+        height: 30px;
+        border: 2px solid red;
+      }
+
+      /* input框有默认的焦点状态样式(focus) 需要手动移除并重新设置 */
+      label input:focus {
+        /* 移除默认的focus样式 */
+        outline: none;
+        border: 2px solid lightcoral;
+      }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<label>
+  <input type="text" placeholder="微软平板">
+</label>
+</body>
+</html>

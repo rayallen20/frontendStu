@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-外边距</title>
+    <style>
+      div {
+        box-sizing: border-box;
+        width: 200px;
+        height: 200px;
+      }
+
+      .box1 {
+        /* 等效于给.box2设置margin-top */
+        /*margin-bottom: 10px;*/
+        background-color: skyblue;
+      }
+
+      .box2 {
+        margin-top: 10px;
+        background-color: darkblue;
+      }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+</body>
+</html>

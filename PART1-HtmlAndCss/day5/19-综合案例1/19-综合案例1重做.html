@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19-综合案例1重做</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f1f1f1;
+        }
+
+        .card {
+            width: 270px;
+            height: 255px;
+            background-color: #ffffff;
+            text-align: center;
+            margin: 40px auto 0;
+            padding: 40px 0 0;
+            transition: 0.5s;
+            border-radius: 10px;
+            color: gray;
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h4 {
+            font-weight: 400;
+            /*
+            TODO: 这里是设置上外边距20px 下外边距15px 左右外边距为0px 不是左右外边距auto
+            */
+            /*margin: 20px auto 15px;*/
+            margin: 20px 0 15px 0;
+        }
+
+        .card p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <img src="./img/1.svg" alt="1" title="1">
+    <h4>抖音直播SDK</h4>
+    <p>包含抖音直播看播功能</p>
+</div>
+</body>
+</html>

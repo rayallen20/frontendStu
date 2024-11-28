@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-清除默认样式</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      ul {
+        /* 清除样式后 看不到li的小圆点了 并不是没有了 只是没显示出来 */
+        margin: 100px;
+      }
+
+      li {
+        /* 清除li的小圆点 */
+        list-style: none;
+      }
+    </style>
+</head>
+<body>
+不清除默认样式的话,body有默认的外边距(8px)
+<h1>h1有默认的外边距(上下21.44px 左右没有)</h1>
+<ul>
+  <li>ul有默认的外边距(上下16px 左右0)</li>
+  <li>ul有默认的内边距(左内边距40px 那个.是li的一个伪元素 只是显示在了ul空出来的左内边距上)</li>
+</ul>
+</body>
+</html>

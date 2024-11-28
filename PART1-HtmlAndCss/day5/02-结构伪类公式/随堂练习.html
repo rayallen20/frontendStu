@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随堂练习</title>
+    <style>
+      /*
+      需求:
+      1. 隔行变色
+      2. 鼠标悬停时高亮
+      */
+      ul li:nth-child(2n + 1) {
+        background-color: #eeeeee;
+      }
+
+      /* 注意: 由于:hover 伪类选择器和上边的结构为类选择器的权重相同 所以必须写在结构伪类选择器的前面 或者使用类选择器加权 */
+      .hover-highlight:hover {
+        background-color: #bbbbbb;
+      }
+    </style>
+</head>
+<body>
+<ul>
+  <li class="hover-highlight">第1个li</li>
+  <li class="hover-highlight">第2个li</li>
+  <li class="hover-highlight">第3个li</li>
+  <li class="hover-highlight">第4个li</li>
+  <li class="hover-highlight">第5个li</li>
+  <li class="hover-highlight">第6个li</li>
+  <li class="hover-highlight">第7个li</li>
+  <li class="hover-highlight">第8个li</li>
+  <li class="hover-highlight">第9个li</li>
+  <li class="hover-highlight">第10个li</li>
+  <li class="hover-highlight">第11个li</li>
+  <li class="hover-highlight">第12个li</li>
+  <li class="hover-highlight">第13个li</li>
+  <li class="hover-highlight">第14个li</li>
+  <li class="hover-highlight">第15个li</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-结构伪类选择器</title>
+    <style>
+      ul li:first-child {
+        color: skyblue;
+      }
+
+      ul li:nth-child(3) {
+        color: aqua;
+      }
+
+      .li-color:last-child {
+        color: cornflowerblue;
+      }
+
+      /* 不生效 因为上边的类选择器的权重比标签选择器的权重大 */
+      ul li:last-child {
+        color: greenyellow;
+      }
+    </style>
+</head>
+<body>
+<ul>
+  <li>第1个li</li>
+  <li>第2个li</li>
+  <li>第3个li</li>
+  <li>第4个li</li>
+  <li class="li-color">第5个li</li>
+  <li class="li-color">第6个li</li>
+  <li class="li-color">第7个li</li>
+  <li class="li-color">第8个li</li>
+</ul>
+</body>
+</html>

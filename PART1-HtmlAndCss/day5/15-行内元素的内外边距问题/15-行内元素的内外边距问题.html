@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>15-行内元素的内外边距问题</title>
+    <style>
+      span {
+        /*
+        左右的内边距是没问题的 上边的内边距不足30px 下面的内边距超过了30px
+        元素审查是正常的 但是显示是不正常的
+        */
+        padding: 30px;
+        /* 用行高把行内元素的垂直方向撑开 就可以调整位置了 */
+        line-height: 60px;
+      }
+    </style>
+</head>
+<body>
+<span>span内容</span>
+</body>
+</html>
