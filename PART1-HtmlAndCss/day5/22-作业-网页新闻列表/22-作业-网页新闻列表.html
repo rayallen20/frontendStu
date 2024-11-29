@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>22-作业-网页新闻列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            width: 500px;
+            height: 400px;
+            margin: 100px auto 0;
+            /*background: skyblue;*/
+            border: 1px solid #cccccc;
+        }
+
+        .nav-head {
+            width: 450px;
+            border-bottom: 1px solid gray;
+            margin: 0 auto;
+            /* 给子元素(h1)设置margin-top会导致外边距塌陷 所以给父元素设置padding-top */
+            padding-top: 20px;
+        }
+
+        .nav ul {
+            width: 450px;
+            margin: 0 auto;
+        }
+
+        li {
+            list-style: none;
+            border-bottom: 1px dashed gray;
+            line-height: 45px;
+            padding-left: 30px;
+            color: #555555;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="nav-head">
+        <h1>最新文章</h1>
+    </div>
+    <ul>
+        <li>北京招聘网页设计</li>
+        <li>北京招聘网页设计</li>
+        <li>北京招聘网页设计</li>
+        <li>北京招聘网页设计</li>
+        <li>北京招聘网页设计</li>
+    </ul>
+</div>
+</body>
+</html>
