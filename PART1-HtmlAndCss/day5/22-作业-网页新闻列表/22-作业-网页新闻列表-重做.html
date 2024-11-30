@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>22-作业-网页新闻列表-重做</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            width: 500px;
+            height: 400px;
+            margin: 100px auto 0;
+            /*background: lightseagreen;*/
+            padding-top: 39px;
+            padding-left: 29px;
+            padding-right: 29px;
+            border: 1px solid #cccccc;
+        }
+
+        .nav h2 {
+            border-bottom: 1px solid #cccccc;
+            /* 内容和底边框之间的距离使用盒子的高度来设置即可 不要使用padding-bottom */
+            height: 43px;
+        }
+
+        .nav ul li {
+            list-style: none;
+            border-bottom: 1px dashed #cccccc;
+            line-height: 50px;
+            color: #555555;
+            padding-left: 30px;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #555555;
+        }
+
+        .nav ul li a:hover {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <h2>最新文章</h2>
+
+    <ul>
+        <li><a href="#" target="_self">北京招聘网页设计</a></li>
+        <li><a href="#" target="_self">北京招聘网页设计</a></li>
+        <li><a href="#" target="_self">北京招聘网页设计</a></li>
+        <li><a href="#" target="_self">北京招聘网页设计</a></li>
+        <li><a href="#" target="_self">北京招聘网页设计</a></li>
+    </ul>
+</div>
+</body>
+</html>
