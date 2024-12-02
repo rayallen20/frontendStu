@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-思考题-父盒子中的一个子盒子水平垂直居中</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .father1 {
+        width: 800px;
+        height: 600px;
+        background: #009900;
+        padding-left: 200px;
+        padding-top: 150px;
+        margin: 100px auto 0;
+      }
+
+      .son1 {
+        width: 400px;
+        height: 300px;
+        background: skyblue;
+      }
+
+      .father2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 800px;
+        height: 600px;
+        background: #009900;
+        margin: 100px auto 0;
+      }
+
+      .son2 {
+        width: 400px;
+        height: 300px;
+        background: skyblue;
+      }
+    </style>
+</head>
+<body>
+<div class="father1">
+  <div class="son1"></div>
+</div>
+
+<br>
+
+<div class="father2">
+  <div class="son2"></div>
+</div>
+</body>
+</html>

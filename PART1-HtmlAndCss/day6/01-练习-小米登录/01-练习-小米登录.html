@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-练习-小米登录</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #999999;
+      }
+
+      .login {
+        width: 680px;
+        height: 625px;
+        background: white;
+        margin: 100px auto 0;
+        padding-top: 55px;
+      }
+
+      .login h1 {
+        background: #f25208;
+        width: 76px;
+        height: 76px;
+        /* 左内边距319px 剩下的都给右侧 */
+        margin: 0 auto 50px 319px;
+        padding: 13px;
+      }
+
+      .login h2 {
+        margin: 0 auto 75px 219px;
+        font-size: 43px;
+        font-weight: 400;
+      }
+
+      .login form input {
+        display: block;
+        width: 555px;
+        height: 75px;
+        margin: 0 auto 23px;
+        font-size: 18px;
+        border: 1px solid #dedede;
+        padding-left: 25px;
+      }
+
+      /* 设置placeholder的样式 */
+      .login form input::placeholder {
+        color: #dedede;
+        font-size: 18px;
+        line-height: 75px;
+      }
+
+      .login form button {
+        display: block;
+        width: 555px;
+        height: 75px;
+        background: #f25208;
+        border: 0;
+        margin: 0 auto 23px;
+        color: #cccccc;
+        font-size: 18px;
+      }
+    </style>
+</head>
+<body>
+<div class="login">
+  <h1><img src="./img/mi-logo.png" alt="1"></h1>
+  <h2>小米账号登录</h2>
+  <form action="#" method="get">
+    <label>
+      <input type="text" placeholder="邮箱/手机/小miID">
+      <input type="text" placeholder="邮箱/手机/小miID">
+      <button type="submit">登录</button>
+    </label>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-综合案例-我的实现</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        margin: 100px auto;
+        width: 1307px;
+        height: 515px;
+        /*background: #009900;*/
+        padding: 13px 29px 0;
+      }
+
+      .head {
+        display: flex;
+        justify-content: space-between;
+        height: 31px;
+        /*background: skyblue;*/
+        margin-bottom: 40px;
+      }
+
+      .head-left {
+        display: flex;
+        justify-content: space-between;
+        /* TODO: 这里我加了让元素在侧轴方向终点对齐 但是似乎文字没有对齐 只是元素对齐了 */
+        align-items: flex-end;
+        width: 263px;
+        height: 31px;
+        /*background: #FF0000;*/
+      }
+
+      .head-left h2 {
+        font-size: 31px;
+        height: 31px;
+        /*这个高度是我自己目测的 目的是为了和右侧的p底部对齐*/
+        line-height: 32px;
+        font-weight: 400;
+      }
+
+      .head-left p {
+        height: 31px;
+        /*这个高度是我自己目测的 目的是为了和左侧的h2底部对齐*/
+        line-height: 46px;
+        font-size: 14px;
+        color: #999999;
+      }
+
+      .head-right {
+        display: flex;
+        justify-content: flex-end;
+        width: 101px;
+        height: 31px;
+        /*background: #ff8400;*/
+      }
+
+      .head-right a {
+        /* 这个高度是我自己目测的 目的是为了底端对齐 */
+        line-height: 48px;
+        font-size: 14px;
+        color: #999999;
+        text-decoration: none;
+      }
+
+      .list {
+        height: 384px;
+        /*background: #4E6EF2;*/
+      }
+
+      .list ul {
+        display: flex;
+        justify-content: space-between;
+        /*background: #FF0000;*/
+      }
+
+      .list ul li {
+        height: 384px;
+        width: 306px;
+        list-style: none;
+        background: #f1f9f4;
+        text-align: center;
+      }
+
+      .list ul li img {
+        height: 305px;
+        margin-bottom: 17px;
+      }
+
+      .list ul li h4 {
+        overflow: hidden;
+        height: 20px;
+        line-height: 20px;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 22px;
+      }
+
+      .list ul li p {
+        height: 17px;
+        line-height: 17px;
+        font-size: 17px;
+        color: #ce4645;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div class="head">
+    <div class="head-left">
+      <h2>新鲜好物</h2>
+      <p>新鲜出炉 品质靠谱</p>
+    </div>
+    <div class="head-right"><a href="#" target="_self">查看全部&nbsp;&gt;</a></div>
+  </div>
+  <div class="list">
+    <ul>
+      <li>
+        <img src="./img/1.jpg" alt="1" title="1">
+        <h4>全防水HABU旋钮牛皮...</h4>
+        <p>¥444.00</p>
+      </li>
+
+      <li>
+        <img src="./img/1.jpg" alt="1" title="1">
+        <h4>全防水HABU旋钮牛皮...</h4>
+        <p>¥444.00</p>
+      </li>
+
+      <li>
+        <img src="./img/1.jpg" alt="1" title="1">
+        <h4>全防水HABU旋钮牛皮...</h4>
+        <p>¥444.00</p>
+      </li>
+
+      <li>
+        <img src="./img/1.jpg" alt="1" title="1">
+        <h4>全防水HABU旋钮牛皮...</h4>
+        <p>¥444.00</p>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

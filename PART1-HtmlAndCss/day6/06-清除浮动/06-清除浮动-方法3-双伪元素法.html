@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-清除浮动-方法3-双伪元素法</title>
+    <style>
+      .box {
+        background: #c9e143;
+      }
+
+      /*
+      双伪元素法相当于是在浮动的盒子左右都加了一个空盒子
+      */
+      .clearfix::before,
+      .clearfix::after {
+          content: "";
+          display: table;
+      }
+
+      .clearfix::after {
+          clear: both;
+      }
+
+      .son-1 {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background: #009900;
+      }
+
+      .son-2 {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background: mediumturquoise;
+      }
+
+      .bottom {
+        height: 100px;
+        background: cyan;
+      }
+    </style>
+</head>
+<body>
+<div class="box clearfix">
+  <div class="son-1">没有宽高的盒子的第1个子盒子</div>
+  <div class="son-2">没有宽高的盒子的第2个子盒子</div>
+</div>
+<div class="bottom"></div>
+</body>
+</html>

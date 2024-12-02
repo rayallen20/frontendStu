@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-清除浮动-方法2-单伪元素法</title>
+    <style>
+      .box {
+        background: #c9e143;
+      }
+
+      /*
+      单伪元素法其实就是额外标签法的变种,只是不再需要写额外的标签了,
+      而是通过给父元素添加一个:
+      1. 内容为空
+      2. 布局类型为块元素
+      的伪元素来清除浮动
+      */
+      .box::after {
+          content: "";
+          display: block;
+          clear: both;
+      }
+
+      .son-1 {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background: #009900;
+      }
+
+      .son-2 {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background: mediumturquoise;
+      }
+
+      .bottom {
+        height: 100px;
+        background: cyan;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div class="son-1">没有宽高的盒子的第1个子盒子</div>
+  <div class="son-2">没有宽高的盒子的第2个子盒子</div>
+</div>
+<div class="bottom"></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-清除浮动-方法1-额外标签法.html</title>
+    <style>
+      .box {
+        background: #c9e143;
+      }
+
+      .son-1 {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background: #009900;
+      }
+
+      .son-2 {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background: mediumturquoise;
+      }
+
+      .bottom {
+        height: 100px;
+        background: cyan;
+      }
+
+      .clear {
+          clear: both;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div class="son-1">没有宽高的盒子的第1个子盒子</div>
+  <div class="son-2">没有宽高的盒子的第2个子盒子</div>
+  <div class="clear"></div>
+</div>
+<div class="bottom"></div>
+</body>
+</html>

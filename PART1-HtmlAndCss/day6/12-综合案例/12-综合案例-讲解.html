@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-综合案例-讲解</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .box {
+        width: 1240px;
+        height: 541px;
+        /*background: pink;*/
+        margin: 100px auto;
+      }
+
+      .box-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 40px 0;
+      }
+
+      .box-head h2 {
+        font-size: 32px;
+        font-weight: 400;
+      }
+
+      /* 这里不用再设置不加粗了 因为继承了h2的不加粗 */
+      .box-head h2 span {
+        font-size: 16px;
+        color: #999999;
+      }
+
+      .box-head a {
+        font-size: 16px;
+        color: #999999;
+        text-decoration: none;
+      }
+
+      .box-body {
+        text-align: center;
+      }
+
+      .box-body ul {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .box-body li {
+        width: 306px;
+        height: 406px;
+        background: #f1f9f4;
+        transition: 0.5s;
+      }
+
+      .box-body li:hover {
+        box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .box-body li img {
+        width: 100%;
+      }
+
+      .box-body li h4 {
+        font-size: 22px;
+        font-weight: 400;
+        margin: 12px 0 20px;
+      }
+
+      .box-body li p {
+        font-size: 20px;
+        color: orangered;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div class="box-head">
+    <h2>新鲜好物 <span>新鲜出炉 品质靠谱</span></h2>
+    <a href="#" target="_self">查看更多></a>
+  </div>
+  <div class="box-body">
+    <ul>
+      <li>
+        <img src="./img/1.jpg" alt="1" title="1">
+        <h4>全防水HABU旋钮牛皮</h4>
+        <p>¥&nbsp;444.00</p>
+      </li>
+
+      <li>
+        <img src="./img/1.jpg" alt="1" title="1">
+        <h4>全防水HABU旋钮牛皮</h4>
+        <p>¥&nbsp;444.00</p>
+      </li>
+
+      <li>
+        <img src="./img/1.jpg" alt="1" title="1">
+        <h4>全防水HABU旋钮牛皮</h4>
+        <p>¥&nbsp;444.00</p>
+      </li>
+
+      <li>
+        <img src="./img/1.jpg" alt="1" title="1">
+        <h4>全防水HABU旋钮牛皮</h4>
+        <p>¥&nbsp;444.00</p>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

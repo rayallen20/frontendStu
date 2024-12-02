@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-小米模块布局-我的实现</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            margin: 100px auto;
+            width: 800px;
+            height: 400px;
+            /*background: #009900;*/
+        }
+
+        .left {
+            width: 200px;
+            height: 400px;
+            background: blue;
+            float: left;
+        }
+
+        .right {
+            /* 因为有10px的左外边距 所以宽度减掉10px */
+            margin-left: 10px;
+            width: 590px;
+            height: 400px;
+            /*background: red;*/
+            float: right;
+        }
+
+        .top {
+            /* 有20px的上下间距 所以上下盒子的高度各减掉10px */
+            height: 190px;
+            /*background: yellow;*/
+            margin-bottom: 20px;
+        }
+
+        .bottom {
+            height: 190px;
+            /*background: #551a8b;*/
+        }
+
+        .little-box {
+            width: 132px;
+            height: 190px;
+            float: left;
+            background: brown;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="left"></div>
+    <div class="right">
+        <div class="top">
+            <div class="little-box"></div>
+            <div class="little-box"></div>
+            <div class="little-box"></div>
+            <div class="little-box"></div>
+        </div>
+        <div class="bottom">
+            <div class="little-box"></div>
+            <div class="little-box"></div>
+            <div class="little-box"></div>
+            <div class="little-box"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

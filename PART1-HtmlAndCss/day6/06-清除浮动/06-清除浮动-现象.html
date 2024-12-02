@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-清除浮动-现象</title>
+    <style>
+      .box {
+        /* 2. 此时 父元素相当于里边没有任何元素 因此不占据任何位置(因为没有高度) */
+        background: #c9e143;
+      }
+
+      .son-1 {
+        /* 1. 一旦给了浮动 元素就会脱标 脱标的块元素就不能再撑开父元素了 */
+        float: left;
+        width: 200px;
+        height: 200px;
+        background: #009900;
+      }
+
+      .son-2 {
+        /* 1. 一旦给了浮动 元素就会脱标 脱标的块元素就不能再撑开父元素了 */
+        float: left;
+        width: 200px;
+        height: 200px;
+        background: mediumturquoise;
+      }
+
+      .bottom {
+        /* 3. 此时底下的盒子就会上来 因为它上边的块元素不占据任何位置 */
+        height: 100px;
+        background: cyan;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div class="son-1">没有宽高的盒子的第1个子盒子</div>
+  <div class="son-2">没有宽高的盒子的第2个子盒子</div>
+</div>
+<div class="bottom"></div>
+</body>
+</html>

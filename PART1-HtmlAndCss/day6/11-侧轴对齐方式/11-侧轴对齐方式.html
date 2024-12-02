@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-侧轴对齐方式</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        display: flex;
+        justify-content: space-between;
+        width: 1800px;
+        height: 600px;
+        background: skyblue;
+        margin: 0 auto 100px;
+      }
+
+      .box div {
+        width: 400px;
+        height: 200px;
+        background: #009900;
+      }
+
+      .flex-start {
+        align-items: flex-start;
+      }
+
+      .flex-end {
+        align-items: flex-end;
+      }
+
+      .center {
+        align-items: center;
+      }
+
+      .box1 {
+        display: flex;
+        justify-content: space-between;
+        width: 1800px;
+        height: 600px;
+        background: skyblue;
+        margin: 0 auto 100px;
+      }
+
+      .box1 div {
+        width: 400px;
+        background: #009900;
+      }
+
+      .stretch {
+        /* 把该属性注释了效果也是一样的 因为stretch是侧轴对齐的默认值 */
+        align-items: stretch;
+      }
+    </style>
+</head>
+<body>
+<div class="box flex-start">
+  <div>flex-start</div>
+  <div>弹性条目从起点开始依次排列</div>
+  <div>flex-start</div>
+</div>
+
+<br>
+
+<div class="box flex-end">
+  <div>flex-end</div>
+  <div>弹性条目从终点开始依次排列</div>
+  <div>flex-end</div>
+</div>
+
+<br>
+
+<div class="box center">
+  <div>center</div>
+  <div>弹性条目沿侧轴居中排列(<strong>侧轴居中效果</strong>)</div>
+  <div>center</div>
+</div>
+
+<br>
+
+<div class="box1 stretch">
+  <div>stretch</div>
+  <div>侧轴拉伸平铺效果(<strong>前提:弹性条目没有设置侧轴方向尺寸</strong>)</div>
+  <div>stretch</div>
+</div>
+</body>
+</html>

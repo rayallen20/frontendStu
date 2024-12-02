@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-主轴对齐方式</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        display: flex;
+        width: 1500px;
+        height: 400px;
+        background: darkslategrey;
+        margin: 0 auto;
+      }
+
+      .box div {
+        width: 300px;
+        height: 400px;
+        background: skyblue;
+        border: 1px solid darkblue;
+      }
+
+      .flex-start {
+        justify-content: flex-start;
+      }
+
+      .flex-end {
+        justify-content: flex-end;
+      }
+
+      .center {
+        justify-content: center;
+      }
+
+      .space-between {
+        justify-content: space-between;
+      }
+
+      .space-around {
+        justify-content: space-around;
+      }
+
+      .space-evenly {
+        justify-content: space-evenly;
+      }
+    </style>
+</head>
+<body>
+<div class="box flex-start">
+  <div>flex-start</div>
+  <div>主轴起点方向对齐</div>
+  <div>flex-start</div>
+</div>
+
+<br>
+
+<div class="box flex-end">
+  <div>flex-end</div>
+  <div>主轴终点方向对齐</div>
+  <div>flex-end</div>
+</div>
+
+<br>
+
+<div class="box center">
+  <div>center</div>
+  <div>主轴居中对齐(弹性条目之间没有距离)</div>
+  <div>center</div>
+</div>
+
+<br>
+
+<div class="box space-between">
+  <div>space-between</div>
+  <div>弹性条目均匀排列,剩余宽度由条目间的距离<strong>均分</strong></div>
+  <div>space-between</div>
+</div>
+
+<br>
+
+<div class="box space-around">
+  <div>space-around</div>
+  <div>弹性条目均匀排列,弹性条目左右两侧距离<strong>相等(弹性盒子之间的距离 = 2 * 弹性盒子到弹性容器的距离)</strong></div>
+  <div>space-around</div>
+</div>
+
+<br>
+
+<div class="box space-evenly">
+  <div>space-evenly</div>
+  <div>弹性盒子沿主轴均匀排列,弹性盒子与容器之间间距相等<strong>(弹性盒子之间的距离 = 弹性盒子到弹性容器的距离)</strong></div>
+  <div>space-evenly</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-练习-卡片</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .card {
+        width: 415px;
+        height: 543px;
+        background: url("./img/bg.gif") repeat;
+        margin: 100px auto 0;
+        border: 3px solid #009900;
+        border-top: 1px solid #009900;
+        padding: 15px 16px 0;
+      }
+
+      .card h2 {
+        line-height: 40px;
+        /* 这里用行高代替高度即可 因为要求内容垂直居中 */
+        /*height: 40px;*/
+        font-size: 28px;
+        border-left: 8px solid #c9e143;
+        padding-left: 16px;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+
+      .card ul {
+        background: white;
+        padding: 0 16px;
+      }
+
+      .card ul li {
+        list-style: none;
+        background: url("./img/tb.gif") no-repeat left center;
+        /* 这里的padding要算上图片的宽度 因为图片是背景图 不是内容 */
+        padding-left: 17px;
+        line-height: 49px;
+        border-bottom: 1px dashed gray;
+      }
+
+      .card ul li a {
+        text-decoration: none;
+        font-size: 17px;
+        color: #551a8b;
+      }
+    </style>
+</head>
+<body>
+<div class="card">
+  <h2>爱宠知识</h2>
+  <ul>
+    <li><a href="#" target="_self">养狗比养猫对健康更有利</a></li>
+    <li><a href="#" target="_self">养狗比养猫对健康更有利</a></li>
+    <li><a href="#" target="_self">养狗比养猫对健康更有利</a></li>
+    <li><a href="#" target="_self">养狗比养猫对健康更有利</a></li>
+    <li><a href="#" target="_self">养狗比养猫对健康更有利</a></li>
+    <li><a href="#" target="_self">养狗比养猫对健康更有利</a></li>
+    <li><a href="#" target="_self">养狗比养猫对健康更有利</a></li>
+    <li><a href="#" target="_self">养狗比养猫对健康更有利</a></li>
+    <li><a href="#" target="_self">养狗比养猫对健康更有利</a></li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-小米模块布局-讲解</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .mi {
+        width: 1226px;
+        height: 614px;
+        margin: 100px auto 0;
+        /*background: #c9e143;*/
+      }
+
+      .left {
+        width: 234px;
+        height: 614px;
+        float: left;
+        background: lightgreen;
+      }
+
+      .right {
+        width: 978px;
+        height: 614px;
+        float: right;
+        /*background: #0069c2;*/
+
+        /* 目的: 隐藏第2排的li的下外边距 */
+        overflow: hidden;
+      }
+
+      .right ul li {
+        list-style: none;
+      }
+
+        .term {
+            width: 234px;
+            height: 300px;
+            background: forestgreen;
+            margin-right: 14px;
+            margin-bottom: 14px;
+            float: left;
+        }
+
+        /* 每行4个 所以就是第4的倍数个li 不要右外边距 */
+        .term:nth-child(4n) {
+            margin-right: 0;
+        }
+
+        /* 可以这么做 但是不如直接给父元素设置溢出隐藏 */
+        /*.term:nth-child(n+5) {*/
+        /*    margin-bottom: 0;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="mi">
+  <div class="left">左侧</div>
+  <div class="right">
+    <ul>
+      <li class="term">1</li>
+      <li class="term">1</li>
+      <li class="term">1</li>
+      <li class="term">1</li>
+      <li class="term">1</li>
+      <li class="term">1</li>
+      <li class="term">1</li>
+      <li class="term">1</li>
+    </ul>
+  </div>
+</div>
+1231234123412341234123341234234123412312341234123412341233412342341234
+</body>
+</html>
