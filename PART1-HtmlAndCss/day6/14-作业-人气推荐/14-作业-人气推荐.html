@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-作业-人气推荐</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .box {
+        width: 1240px;
+        height: 541px;
+        /*background: #c9e143;*/
+        margin: 100px auto 0;
+      }
+
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        /*background: pink;*/
+        padding: 40px 0;
+      }
+
+      .head h2 {
+        font-size: 32px;
+        font-weight: 400;
+      }
+
+      .head h2 span {
+        font-size: 16px;
+        color: #999999;
+      }
+
+      .head a {
+        font-size: 16px;
+        color: #111111;
+        text-decoration: none;
+      }
+
+      .body ul {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .body ul li {
+        width: 306px;
+        height: 406px;
+        background: #f1f9f4;
+        text-align: center;
+        transition: 0.5s;
+      }
+
+      .body ul li:hover {
+        box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .body ul li a {
+        display: inline-block;
+        width: 306px;
+        height: 406px;
+        text-decoration: none;
+      }
+
+      .body ul li a img {
+        width: 100%;
+      }
+
+      .body ul li a h4 {
+        font-size: 22px;
+        font-weight: 400;
+        color: #111111;
+        margin: 12px 0;
+      }
+
+      .body ul li a p {
+        font-size: 18px;
+        color: #999999;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div class="head">
+    <h2>
+      人气推荐&nbsp;&nbsp;<span>人气爆款&nbsp;不容错过</span>
+    </h2>
+
+    <a href="#" target="_self">更多&nbsp;></a>
+  </div>
+  <div class="body">
+    <ul>
+      <li>
+        <a href="#" target="_self">
+          <img src="./img/1.png" alt="1" title="1">
+          <h4>特惠推荐</h4>
+          <p>我猜得到&nbsp;你的需要</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" target="_self">
+          <img src="./img/2.png" alt="1" title="1">
+          <h4>特惠推荐</h4>
+          <p>我猜得到&nbsp;你的需要</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" target="_self">
+          <img src="./img/3.png" alt="1" title="1">
+          <h4>特惠推荐</h4>
+          <p>我猜得到&nbsp;你的需要</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" target="_self">
+          <img src="./img/4.png" alt="1" title="1">
+          <h4>特惠推荐</h4>
+          <p>我猜得到&nbsp;你的需要</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>15-作业-flex布局自动换行</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box {
+            display: flex;
+            justify-content: space-between;
+            width: 1200px;
+            height: 850px;
+            background: #c9e143;
+            margin: 100px auto;
+        }
+
+        .nav {
+            width: 180px;
+            height: 850px;
+            background: #4E6EF2;
+        }
+
+        .list {
+            width: 1000px;
+            height: 850px;
+            background: #ce4645;
+        }
+
+        .list ul {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .list ul li {
+            width: 220px;
+            height: 400px;
+            background: pink;
+            margin-bottom: 50px;
+        }
+
+        .list ul li:nth-child(5 + n) {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="nav"></div>
+    <div class="list">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
