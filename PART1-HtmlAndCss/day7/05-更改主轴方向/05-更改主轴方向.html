@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-更改主轴方向</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        /*
+        在不修改主轴方向的前提下(主轴默认从左到右),设置水平和垂直居中
+        此时一旦设置flex布局,则2个盒子就到一排上来了,设置垂直居中也就没什么用了
+        */
+        display: flex;
+        flex-direction: column;
+        /* 此时的主轴方向居中就是垂直居中了  */
+        justify-content: center;
+        /* 此时侧轴就是水平方向了 水平方向上只有1列 所以应该使用align-items设置侧轴对齐 */
+        align-items: center;
+        /* 如果水平方向上有多列 则使用align-content */
+        /*align-content: center;*/
+        flex-wrap: wrap;
+        width: 400px;
+        height: 300px;
+        border: 1px solid #000;
+        margin: 100px auto;
+      }
+
+      .box div {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div>1</div>
+  <div>2</div>
+<!--  侧轴的方向是从左到右  -->
+<!--  <div>3</div>-->
+<!--  <div>4</div>-->
+<!--  <div>5</div>-->
+<!--  <div>6</div>-->
+</div>
+</body>
+</html>

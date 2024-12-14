@@ -1,0 +1,96 @@
+/*
+本文件为index.html的css文件
+*/
+.header {
+    width: 1920px;
+    height: 100px;
+    /*background: red;*/
+    display: flex;
+}
+
+.logo {
+    width: 195px;
+    height: 41px;
+    margin: 29px 102px 30px 360px;
+    /*background: blue;*/
+}
+
+.logo img {
+    width: 100%;
+}
+
+.navigation {
+    width: 244px;
+    height: 35px;
+    margin: 35px 96px 31px 0;
+    /*background: green;*/
+}
+
+.navigation ul {
+    display: flex;
+    justify-content: center;
+    /* 为避免设置水平居中时出现问题 给弹性容器设置宽高 */
+    width: 244px;
+    height: 35px;
+}
+
+.navigation ul li {
+    flex: 1;
+    /*background: purple;*/
+    text-align: center;
+    transition: 0.5s;
+}
+
+.navigation ul li a {
+    line-height: 35px;
+    display: inline-block;
+    width: 100%;
+}
+
+.navigation ul li a:hover {
+    border-bottom: 2px solid #00a4ff;
+}
+
+.search {
+    width: 412px;
+    height: 40px;
+    margin: 29px 32px 31px 0;
+    /*background: yellow;*/
+}
+
+.search form {
+    display: flex;
+}
+
+.search input {
+    width: 384px;
+    height: 40px;
+    border: 0;
+    border-radius: 20px 0 0 20px;
+    background: #f3f5f7;
+}
+
+.search button {
+    width: 28px;
+    height: 40px;
+    border: 0;
+    border-radius: 0 20px 20px 0;
+    background: #f3f5f7 url("../images/search.png") no-repeat center;
+}
+
+.account {
+    display: flex;
+    width: 116px;
+    height: 30px;
+    margin: 33px 365px 37px 0;
+    /*background: pink;*/
+}
+
+.account img {
+    width: 30px;
+    margin: 0 7px 0 0;
+}
+
+.account span {
+    margin:  4px 0;
+}

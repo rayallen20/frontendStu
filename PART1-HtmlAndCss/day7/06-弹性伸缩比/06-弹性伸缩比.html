@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-弹性伸缩比</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        display: flex;
+        /* 设置百分比会让盒子跟着父元素的大小变动 */
+        width: 80%;
+        height: 150px;
+        border: 1px solid #000;
+        margin: 100px auto;
+      }
+
+      .box div {
+        background: skyblue;
+        /* 此时总flex值为4 则第1和第3个弹性条目的宽度为弹性容器的1/4 */
+        flex: 1;
+      }
+
+      .box div:nth-child(2) {
+        background: midnightblue;
+        /* 此时总flex值为4 则第2个弹性条目的宽度为弹性容器的1/2(2/4) */
+        flex: 2;
+        margin: 0 10px;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
+</body>
+</html>

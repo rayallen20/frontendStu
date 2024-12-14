@@ -1,0 +1,100 @@
+/*
+本文件为index.html的css文件
+*/
+
+/* 通用的版心类 */
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* header开始 */
+/* 块级元素默认继承父元素的宽 */
+.header {
+    height: 100px;
+    background: #ffffff;
+    /*background: pink;*/
+}
+
+/* logo开始 */
+.logo {
+    width: 195px;
+    height: 41px;
+    /*background: purple;*/
+}
+
+.header .wrapper {
+    padding-top: 29px;
+    display: flex;
+}
+
+.logo a {
+    display: block;
+    /*这里必须手动指定高度 因为后边要设置字号为0以取消a中文字的可见性*/
+    height: 41px;
+    background: url("../images/logo.png");
+    font-size: 0;
+    /*color: transparent;*/
+    /*text-indent: -9999px;*/
+}
+/* logo结束 */
+
+/* nav开始 */
+.nav {
+    margin-left: 100px;
+}
+
+.nav ul {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.nav li {
+    margin-right: 20px;
+}
+
+.nav li a {
+    padding: 8px;
+}
+
+.nav li a:hover {
+    border-bottom: 2px solid #00a4ff;
+}
+/* nav结束 */
+
+/* search开始 */
+.search {
+    width: 412px;
+    height: 40px;
+    background: #f3f5f7;
+    border-radius: 20px;
+}
+
+.search input {
+    width: 412px;
+    height: 40px;
+    border: 0;
+    background: transparent;
+    padding: 10px 30px 10px 19px;
+    outline: none;
+}
+/* search结束 */
+
+/* user开始 */
+.user {
+    margin-left: 32px;
+}
+
+.user img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.user span {
+    font-size: 16px;
+    color: #666666;
+}
+/* user结束 */
+
+/* header结束 */

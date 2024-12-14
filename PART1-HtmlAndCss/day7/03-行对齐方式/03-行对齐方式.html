@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-行对齐方式</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 100px auto;
+        width: 950px;
+        height: 500px;
+        background: mediumblue;
+      }
+
+      .box div {
+        width: 300px;
+        height: 200px;
+        background: skyblue;
+      }
+
+      .flex-start {
+        align-content: flex-start;
+      }
+
+      .flex-end {
+        align-content: flex-end;
+      }
+
+      .center {
+        align-content: center;
+      }
+
+      .space-between {
+        align-content: space-between;
+      }
+
+      .space-around {
+        align-content: space-around;
+      }
+
+      .space-evenly {
+        align-content: space-evenly;
+      }
+    </style>
+</head>
+<body>
+<div class="box flex-start">
+  <div>flex-start</div>
+  <div>弹性条目从<strong>起点</strong>开始依次排列</div>
+  <div>flex-start</div>
+  <div>flex-start</div>
+  <div>弹性条目从<strong>起点</strong>开始依次排列</div>
+  <div>flex-start</div>
+</div>
+
+<div class="box flex-end">
+  <div>flex-end</div>
+  <div>弹性条目从<strong>终点</strong>开始依次排列</div>
+  <div>flex-end</div>
+  <div>flex-end</div>
+  <div>弹性条目从<strong>终点</strong>开始依次排列</div>
+  <div>flex-end</div>
+</div>
+
+<div class="box center">
+  <div>center</div>
+  <div>弹性条目沿侧轴<strong>居中</strong>排列</div>
+  <div>center</div>
+  <div>center</div>
+  <div>弹性条目沿侧轴<strong>居中</strong>排列</div>
+  <div>center</div>
+</div>
+
+<div class="box space-between">
+  <div>space-between</div>
+  <div>弹性条目沿侧轴均匀排列,空白间距由弹性条目<strong>之间</strong>均分</div>
+  <div>space-between</div>
+  <div>space-between</div>
+  <div>弹性条目沿侧轴均匀排列,空白间距由弹性条目<strong>之间</strong>均分</div>
+  <div>space-between</div>
+</div>
+
+<div class="box space-around">
+  <div>space-around</div>
+  <div>弹性条目沿侧轴均匀排列,空白间距由弹性条目<strong>上下两侧</strong>均分</div>
+  <div>space-around</div>
+  <div>space-around</div>
+  <div>弹性条目沿侧轴均匀排列,空白间距由弹性条目<strong>上下两侧</strong>均分</div>
+  <div>space-around</div>
+</div>
+
+<div class="box space-evenly">
+  <div>space-evenly</div>
+  <div>弹性条目沿侧轴均匀排列,弹性条目与弹性容器之间间距相等</div>
+  <div>space-evenly</div>
+  <div>space-evenly</div>
+  <div>弹性条目沿侧轴均匀排列,弹性条目与弹性容器之间间距相等</div>
+  <div>space-evenly</div>
+</div>
+</body>
+</html>

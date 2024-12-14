@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-flex布局补充-flex布局实现圣杯布局</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        display: flex;
+        width: 80%;
+        height: 200px;
+        border: 1px solid #000;
+        margin: 100px auto 0;
+      }
+
+      .left, .right {
+        width: 40px;
+        background: pink;
+      }
+
+      .center {
+        flex: 1;
+        background: lightgreen;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div class="left"></div>
+  <div class="center"></div>
+  <div class="right"></div>
+</div>
+</body>
+</html>

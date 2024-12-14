@@ -1,0 +1,30 @@
+/*
+本文件的作用为:
+1. 清除默认样式
+2. 设置通用字体样式
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    /* 1.5: 行高大小为字号的1.5倍 */
+    font: 14px/1.5 "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    color: #333333;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+}
+
+body {
+    background: #f3f5f7;
+}

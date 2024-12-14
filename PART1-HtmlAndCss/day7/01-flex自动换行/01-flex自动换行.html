@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-flex自动换行</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 100px auto 0;
+        width: 1000px;
+        height: 500px;
+        border: 3px solid mediumturquoise;
+      }
+
+      .box div {
+        /* 父盒子的border占了3像素 所以实际上父盒子的"内容"可用宽度为997px */
+        width: 200px;
+        height: 170px;
+        background: skyblue;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+  <div>7</div>
+  <div>8</div>
+</div>
+</body>
+</html>

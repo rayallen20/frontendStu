@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-小米布局flex版本</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .mi {
+        display: flex;
+        justify-content: space-between;
+        width: 1226px;
+        height: 614px;
+        margin: 100px auto;
+        /*background: mediumturquoise;*/
+      }
+
+      .mi .left {
+        width: 234px;
+        height: 614px;
+        background: lightcoral;
+      }
+
+      .mi .right {
+        width: 978px;
+        height: 614px;
+        /*background: lightgreen;*/
+      }
+
+      /*
+      2个问题:
+      1. 如果想要设置侧轴对齐方式,需要让ul有高度
+        这是因为flex布局是布局在父元素上的,如果父元素没有高度,
+        那么高度是由子元素撑开的,此时无论设置子元素使用何种侧轴对齐方式都是无效的,
+        因为父元素和子元素高度相同
+      2. 如果弹性条目是多行的,那么设置align-items是无效的
+      */
+      .right ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .right ul li {
+        width: 234px;
+        height: 300px;
+        background: lightsalmon;
+        margin-bottom: 14px;
+      }
+
+      .right ul li:nth-child(5 + n) {
+        margin-bottom: 0;
+      }
+    </style>
+</head>
+<body>
+<div class="mi">
+  <div class="left"></div>
+  <div class="right">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
