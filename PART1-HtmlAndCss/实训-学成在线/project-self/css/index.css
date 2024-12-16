@@ -2,6 +2,10 @@
 本文件为index.html的css文件
 */
 
+i {
+    font-style: normal;
+}
+
 /* header通版 */
 .header-page {
     width: 100%;
@@ -116,6 +120,7 @@
     width: 100%;
     height: 420px;
     background: #0092cb;
+    margin-bottom: 11px;
 }
 
 /* banner版心 */
@@ -133,26 +138,26 @@
 .course {
     width: 191px;
     height: 420px;
-    background: #005576;
+    background: rgba(0,0,0,0.42);
+    padding-top: 3px;
 }
 
 /* 课程列表条目 */
-.course li {
-    height: 49px;
-}
-
 .course a {
     display: block;
-    height: 100%;
-    padding: 13px 107px 13px 20px;
+    /* 这里用a撑开li即可 */
+    height: 46px;
+    padding: 0 20px;
     font-size: 16px;
+    line-height: 46px;
     color: #ffffff;
+    /* 这里是 */
     background: url("../images/right.png") no-repeat right 20px center;
 }
 
 .course a:hover {
     color: #00a4ff;
-    background: url("../images/right-hover.png") no-repeat right 20px center;
+    background: rgba(0, 0, 0, 0.3) url("../images/right-hover.png") no-repeat right 20px center;
 }
 
 /* 课程表 */
@@ -167,6 +172,8 @@
     height: 49px;
     background:  #029dd5;
     padding: 18px 129px 12px 14px;
+    /* 圆角只有左上和右上有 */
+    border-radius: 10px 10px 0 0;
 }
 
 .schedule-header h4 {
@@ -239,3 +246,130 @@
     color: #ffffff;
 }
 /* banner结束 */
+
+/* recommend部分开始 */
+.recommend {
+    width: 1200px;
+    height: 60px;
+    margin: 0 auto 31px;
+    /*background: pink;*/
+    display: flex;
+    /* 其实这里不设置也可以 因为弹性条目在主轴方向上占满弹性容器了 */
+    justify-content: space-between;
+    /* 侧轴方向的对齐方式不设置也没问题 因为所有弹性条目高度一样 且弹性容器设置了上下内边距 */
+    /*align-items: center;*/
+    padding: 18px 20px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(211, 211, 211, 0.5);
+}
+
+.recommend h4 {
+    height: 25px;
+    font-size: 18px;
+    /* 行高没有占父元素100%的写法 只能写固定的值 */
+    line-height: 25px;
+    color: #00a4ff;
+    /*background: red;*/
+}
+
+.recommend ul {
+    flex: 1;
+    height: 25px;
+    display: flex;
+}
+
+.recommend ul li a {
+    width: 100%;
+    font-size: 14px;
+    padding: 0 24px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.recommend ul li:last-child a {
+    border-right: 0;
+}
+
+.modify {
+    font-size: 16px;
+    line-height: 25px;
+    color: #00a4ff;
+}
+/* recommend部分结束 */
+
+/* recommend-course部分开始 */
+.recommend-course {
+    width: 1200px;
+    height: 601px;
+    margin: 0 auto 32px;
+    /*background: skyblue;*/
+}
+
+.recommend-course-header {
+    height: 45px;
+    /*background: green;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.recommend-course-header h3 {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.recommend-course-header a {
+    font-size: 14px;
+    color: #ababac;
+}
+
+.recommend-course-header a:hover {
+    color: #00a4ff;
+}
+
+.recommend-course-body {
+    height: 556px;
+    /*background: yellow;*/
+}
+
+.recommend-course-body ul {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.recommend-course-body li {
+    width: 228px;
+    height: 271px;
+    background: #ffffff;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.recommend-course-body li:hover {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.recommend-course-body li img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.recommend-course-body li h4 {
+    font-size: 16px;
+    font-weight: 400;
+    /*color: #999999;*/
+    margin-bottom: 16px;
+}
+
+.recommend-course-body li p {
+    font-size: 14px;
+    color: #7d7d7d;
+}
+
+.recommend-course-body li p span {
+    color: #fa6400;
+}
+
+/* recommend-course部分结束 */

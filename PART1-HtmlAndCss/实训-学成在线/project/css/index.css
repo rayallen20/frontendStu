@@ -2,6 +2,11 @@
 本文件为index.html的css文件
 */
 
+i {
+    /* 设置i不倾斜 */
+    font-style: normal;
+}
+
 /* 通用的版心类 */
 .wrapper {
     width: 1200px;
@@ -98,3 +103,143 @@
 /* user结束 */
 
 /* header结束 */
+
+/* banner开始 */
+.banner {
+    width: 100%;
+    height: 420px;
+    background: #0092cb;
+}
+
+.banner .wrapper {
+    height: 420px;
+    background: url("../uploads/banner.png") no-repeat center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner .left {
+    width: 191px;
+    height: 420px;
+    background: rgba(0, 0, 0, 0.42);
+    padding-top: 3px;
+}
+
+.banner .left li a {
+    display: flex;
+    justify-content: space-between;
+    /* flex布局下不区分块级/行内元素,都可以设置宽高 */
+    height: 46px;
+    line-height: 46px;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 0 20px;
+}
+
+.banner .left li a:hover {
+    background: rgba(0, 0, 0, 0.3);
+    color: #00a4ff;
+}
+
+.banner .right {
+    width: 218px;
+    height: 305px;
+    background: #2099d5;
+    border-radius: 15px;
+    padding-top: 18px;
+}
+
+.banner .right h3 {
+    height: 30px;
+    padding-left: 14px;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.banner .content {
+    height: 257px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding:14px;
+}
+
+.banner .content dl {
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.banner .content dt {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.banner .content dd {
+    font-size: 12px;
+    margin: 8px 0;
+    color: #7d7d7d;
+}
+
+.banner .content dd span {
+    color: #00a4ff;
+}
+
+.content a {
+    display: block;
+    height: 32px;
+    background: #00a4ff;
+    color: #ffffff;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 32px;
+    transition: 0.5s;
+}
+
+.content a:hover {
+    background: #0092cb;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+/* banner结束 */
+
+/* recommend开始 */
+.recommend {
+    height: 60px;
+    background: #ffffff;
+    margin-top: 12px;
+    box-shadow: 0 1px 2px 0 rgba(211, 211, 211, 0.5);
+    line-height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.recommend h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #00a4ff;
+}
+
+.recommend ul {
+    display: flex;
+    flex: 1;
+}
+
+.recommend ul li a {
+    border-right: 1px solid #e0e0e0;
+    padding: 0 24px;
+}
+
+.recommend ul li:last-child a {
+    border-right: 0;
+}
+
+.recommend ul li a:hover {
+    color: #00a4ff;
+}
+
+.recommend .modify {
+    color: #00a4ff;
+    font-size: 16px;
+}
+/* recommend结束 */
