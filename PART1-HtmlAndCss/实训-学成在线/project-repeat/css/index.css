@@ -1,0 +1,361 @@
+.wrapper {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* header部分开始 */
+.header {
+    width: 100%;
+    height: 100px;
+    background: #ffffff;
+}
+
+.header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo a {
+    display: block;
+    width: 195px;
+    height: 41px;
+    color: transparent;
+    background: url("../images/logo.png") no-repeat;
+}
+
+.header .nav {
+    display: flex;
+}
+
+.header .nav li {
+    margin-right: 32px;
+    padding: 0 8px 8px;
+    transition: 0.5s;
+}
+
+.header .nav li:hover {
+    border-bottom: 2px solid #00a4ff;
+}
+
+.header .nav li a {
+    font-size: 19px;
+}
+
+.header .search {
+    width: 412px;
+    height: 40px;
+    background: #f3f5f7;
+    border-radius: 20px;
+}
+
+.header .search input {
+    background: transparent;
+    /* 这里的30px是留给那个字体图标的 */
+    padding: 10px 30px 10px 19px;
+    border: 0;
+    /* 这个属性是选中input框时的外边框 和border不是一个东西 */
+    outline: none;
+}
+
+.header .user img {
+    vertical-align: middle;
+    margin-right: 7px;
+}
+/* header部分结束 */
+
+/* banner部分开始 */
+.banner {
+    width: 100%;
+    height: 420px;
+    background: #0092cb;
+    margin-bottom: 12px;
+}
+
+.banner .wrapper {
+    background: url("../uploads/banner.png");
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner .left {
+    width: 191px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.42);
+    padding-top: 3px;
+}
+
+.banner .left li {
+    height: 46px;
+}
+
+.banner .left li a {
+    display: flex;
+    justify-content: space-between;
+    height: 46px;
+    line-height: 46px;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 0 20px 10px 20px;
+}
+
+.banner .left li a:hover {
+    background: rgba(0, 0, 0, 0.3);
+    color: #00a4ff;
+}
+
+.banner .right {
+    width: 218px;
+    height: 305px;
+    background: #00a4ff;
+    border-radius: 10px;
+}
+
+.banner .right h3 {
+    font-size: 15px;
+    color: #ffffff;
+    padding: 18px 129px 9px 14px;
+}
+
+.banner .right .content {
+    width: 100%;
+    height: 257px;
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 14px;
+}
+
+.content dl {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.content dl dt {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.content dl dd {
+    font-size: 12px;
+    color: #7d7d7d;
+    margin-bottom: 8px;
+}
+
+.content dl dd span {
+    color: #00a4ff;
+}
+
+.content a {
+    display: block;
+    width: 190px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 20px;
+    background: #00a4ff;
+    color: #ffffff;
+}
+/* banner部分结束 */
+
+/* recommend部分开始 */
+.recommend {
+    height: 60px;
+    line-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 31px;
+}
+
+.recommend h3 {
+    width: 73px;
+    font-size: 18px;
+    color: #00a4ff;
+}
+
+.recommend ul {
+    flex: 1;
+    display: flex;
+}
+
+.recommend ul li a {
+    padding: 0 24px;
+    border-right: 1px solid #e0e0e0;
+    transition: 0.5s;
+}
+
+.recommend ul li:nth-child(9) a {
+    border-right: 0;
+}
+
+.recommend ul li a:hover {
+    color: #00a4ff;
+}
+
+.recommend .modify {
+    width: 64px;
+    font-size: 16px;
+    color: #00a4ff;
+}
+/* recommend部分结束 */
+
+/* recommend-course部分开始 */
+.module-header {
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.module-header h3 {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.module-header .all {
+    font-size: 16px;
+    color: #999999;
+}
+
+.module-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.module-body ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.module-body ul li {
+    width: 228px;
+    height: 271px;
+    margin-bottom: 14px;
+    transition: 0.5s;
+}
+
+.module-body ul li:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.module-body ul li img {
+    margin-bottom: 20px;
+}
+
+.module-body ul li h4 {
+    height: 50px;
+    /*line-height: 50px;*/
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.module-body ul li p {
+    padding: 0 20px;
+    font-size: 14px;
+    color: #999999;
+}
+
+.module-body ul li p span {
+    color: #fa6400;
+}
+/* recommend-course部分结束 */
+
+/* frontend部分开始 */
+.module-header ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.module-header ul li {
+    padding: 0 30px;
+}
+
+.module-header ul li a {
+    font-size: 14px;
+}
+
+.module-header ul li a:hover {
+    color: #00a4ff;
+}
+
+.module-body .left {
+    width: 228px;
+    height: 386px;
+}
+
+.module-body .right .top {
+    width: 957px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+/* frontend部分结束 */
+
+/* ai部分开始 */
+.module-body .single-line-list {
+    width: 1200px;
+}
+/* ai部分结束 */
+
+/* footer部分开始 */
+.footer {
+    width: 100%;
+    height: 273px;
+    background: #ffffff;
+}
+
+.footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 60px;
+}
+
+.footer .left p {
+    width: 432px;
+    line-height: 17px;
+    font-size: 12px;
+    color: #666666;
+    margin: 24px 0 14px;
+}
+
+.footer .left .download {
+    display: block;
+    width: 120px;
+    height: 36px;
+    border: 1px solid #00a4ff;
+    color: #00a4ff;
+    font-size: 16px;
+    line-height: 36px;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.footer .left .download:hover {
+    background: #00a4ff;
+    color: #ffffff;
+}
+
+.footer .right {
+    display: flex;
+}
+
+.footer .right dl {
+    margin-left: 130px;
+}
+
+.footer .right dt {
+    height: 35px;
+    font-size: 16px;
+}
+
+.footer .right dd {
+    height: 24px;
+    font-size: 14px;
+    color: #666666;
+}
+/* footer部分结束 */
