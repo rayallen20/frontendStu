@@ -304,3 +304,120 @@ i {
     color: #fa6400;
 }
 /* course模块结束 */
+
+/* frontend模块开始 */
+.hd ul {
+    display: flex;
+    margin-top: 3px;
+}
+
+.hd ul li a {
+    font-size: 16px;
+    margin: 0 30px;
+}
+
+.hd .hot {
+    color: #00a4ff;
+}
+
+.bd {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bd .left {
+    width: 228px;
+    height: 386px;
+    /*background: pink;*/
+}
+
+.bd .right {
+    width: 957px;
+    height: 386px;
+    /*background: skyblue;*/
+}
+
+.bd .right .top {
+    height: 100px;
+    margin-bottom: 15px;
+}
+/* frontend模块结束 */
+
+/* ai模块开始 */
+.ai-line {
+    width: 1200px;
+}
+/* ai模块结束 */
+
+/* 底部盒子开始 */
+.footer {
+    height: 273px;
+    background: #ffffff;
+    /* 这里不是设计稿上的值 是因为上边的盒子还有15px的下外边距 */
+    margin-top: 45px;
+    padding-top: 60px;
+}
+
+.footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .left .f-logo {
+    display: block;
+    width: 195px;
+    height: 41px;
+    background: url("../images/logo.png");
+}
+
+.footer .left p {
+    width: 432px;
+    font-size: 12px;
+    line-height: 17px;
+    color: #666666;
+    margin: 24px 0 14px;
+}
+
+.footer .left .app {
+    display: block;
+    width: 120px;
+    height: 36px;
+    border: 1px solid #00a4ff;
+    color: #00a4ff;
+    text-align: center;
+    line-height: 36px;
+    font-size: 16px;
+    transition: 0.5s;
+}
+
+.footer .left .app:hover {
+    background: #00a4ff;
+    color: #ffffff;
+}
+
+.footer .right {
+    display: flex;
+}
+
+.footer .right dl {
+    margin-left: 130px;
+}
+
+.footer .right dt {
+    font-size: 16px;
+    height: 35px;
+}
+
+.footer .right dd {
+    font-size: 14px;
+    height: 24px;
+}
+
+.footer .right dd a {
+    color: #666666;
+}
+
+.footer .right dd a:hover {
+    color: #00a4ff;
+}
+/* 底部盒子结束 */
