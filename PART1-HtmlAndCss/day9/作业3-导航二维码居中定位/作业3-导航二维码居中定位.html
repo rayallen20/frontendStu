@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业3-导航二维码居中定位</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 3000px;
+            background: gray;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333333;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 50px;
+            background: #ffffff;
+        }
+
+        .wrapper {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav ul {
+            display: flex;
+            width: 100%;
+        }
+
+        .wrapper ul li {
+            flex: 1;
+            line-height: 50px;
+        }
+
+        .qr-code {
+            position: sticky;
+            top: 50px;
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+            margin: 100px 0 0 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="#" target="_self">我要投资</a>
+            </li>
+            <li>
+                <a href="#" target="_self">我要投资</a>
+            </li>
+            <li>
+                <a href="#" target="_self">我要投资</a>
+            </li>
+            <li>
+                <a href="#" target="_self">我要投资</a>
+            </li>
+            <li>
+                <a href="#" target="_self">我要投资</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="qr-code"></div>
+</body>
+</html>

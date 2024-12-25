@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业2-hot浮动</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      a {
+        text-decoration: none;
+        color: #333333;
+      }
+
+      .course {
+        position: relative;
+        margin: 100px auto;
+        width: 228px;
+        height: 271px;
+        /*background: pink;*/
+      }
+
+      .course h4 {
+        height: 55px;
+        margin: 20px 20px 0;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .course p {
+        margin-left: 20px;
+      }
+
+      .course p span {
+        color: #ff8400;
+      }
+
+      .hot-tag {
+        position: absolute;
+        top: 10px;
+        right: -3px;
+        width: 40px;
+        height: 24px;
+        background: url("./img/sprite.png") no-repeat 0 -84px;
+      }
+    </style>
+</head>
+<body>
+<div class="course">
+  <a href="#" target="_self">
+    <img src="./img/1.png" alt="1" title="1">
+    <h4>JavaScript数据看板项目实战</h4>
+    <p>
+      <span>高级</span> · 1125人在学习
+    </p>
+  </a>
+  <div class="hot-tag"></div>
+</div>
+</body>
+</html>
