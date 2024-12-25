@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>22-综合案例-淘宝轮播图-自己的实现</title>
+    <link rel="stylesheet" href="./fonts/iconfont.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .father {
+        position: relative;
+        width: 846px;
+        height: 472px;
+        margin: 100px auto;
+      }
+
+      .left-son, .right-son {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .left-son {
+        left: 0;
+        border-radius: 0 25px 25px 0;
+      }
+
+      .right-son {
+        right: 0;
+        border-radius: 25px 0 0 25px;
+        padding-left: 10px;
+      }
+
+      .icon {
+        text-decoration: none;
+        font-size: 50px;
+        line-height: 50px;
+        color: gray;
+      }
+
+      .icon:hover {
+          color: #ffffff;
+      }
+
+      .left-son .icon {
+        text-align: left;
+      }
+
+      .right-son .icon {
+        text-align: right;
+      }
+      
+      .icon:hover {
+        cursor: pointer;
+      }
+
+      .bottom-son {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 160px;
+        height: 10px;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      li {
+        list-style: none;
+      }
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      li a {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: #ffffff;
+        border-radius: 50%;
+      }
+    </style>
+</head>
+<body>
+<div class="father">
+  <img src="./img/tb.jpg" alt="tb" title="tb">
+  <div class="left-son">
+    <a href="#" target="_self" class="iconfont icon-arrowleft icon"></a>
+  </div>
+  <div class="right-son">
+    <a href="#" target="_self" class="iconfont icon-arrow-right icon"></a>
+  </div>
+  <div class="bottom-son">
+    <ul>
+      <li><a href="#" target="_self"></a></li>
+      <li><a href="#" target="_self"></a></li>
+      <li><a href="#" target="_self"></a></li>
+      <li><a href="#" target="_self"></a></li>
+      <li><a href="#" target="_self"></a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

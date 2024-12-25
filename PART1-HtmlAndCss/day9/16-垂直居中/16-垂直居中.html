@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-垂直居中</title>
+    <style>
+      .middle img {
+        vertical-align: middle;
+      }
+
+      .middle span {
+          display: inline-block;
+          vertical-align: middle;
+          width: 50px;
+          height: 50px;
+          background: pink;
+      }
+
+      .top img {
+          vertical-align: top;
+      }
+    </style>
+</head>
+<body>
+<div class="default">
+    <!-- 文字默认和图片是基线对齐的 -->
+    <img src="./img/computer.png" alt="computer"> My name is 刘德华
+</div>
+
+<div class="middle">
+    <!-- 文字和图片垂直居中对齐 -->
+    <img src="./img/computer.png" alt="computer"> My name is 刘德华
+    <!-- 将span转为行内块后 默认也是基线对齐的 同样也可以通过 vertical-align属性调整行内的对齐方式 -->
+    <span></span> My name is 刘德华
+</div>
+
+<div class="top">
+    <!-- 文字和图片顶部对齐 -->
+    <img src="./img/computer.png" alt="computer"> My name is 刘德华
+</div>
+</body>
+</html>

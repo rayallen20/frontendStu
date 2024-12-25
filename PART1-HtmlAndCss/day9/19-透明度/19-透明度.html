@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19-透明度</title>
+    <style>
+      body {
+        background: url("./img/huawei.jpg");
+      }
+
+      div {
+        width: 200px;
+        height: 200px;
+        background: pink;
+        margin-bottom: 20px;
+      }
+
+      .box1 {
+        /* 完全透明则盒子完全看不到 */
+        opacity: 0;
+      }
+
+      .box2 {
+        /* 半透明的情况下可以看到背景图 */
+        opacity: 0.3;
+      }
+
+      .box3 {
+        opacity: 0.5;
+      }
+
+      .box4 {
+        opacity: 1;
+      }
+
+      .box5 {
+        color: #ffffff;
+        background: rgba(0, 0, 0, 0.3);
+      }
+    </style>
+</head>
+<body>
+<div class="box1">文字也受透明度属性影响</div>
+<div class="box2">文字也受透明度属性影响</div>
+<div class="box3">文字也受透明度属性影响</div>
+<div class="box4">文字也受透明度属性影响</div>
+<div class="box5">文字不受背景色的透明度影响</div>
+</body>
+</html>

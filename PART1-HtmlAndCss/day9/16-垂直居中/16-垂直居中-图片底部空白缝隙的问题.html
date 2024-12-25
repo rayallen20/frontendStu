@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-垂直居中-图片底部空白缝隙的问题</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      img {
+        /*display: block;*/
+        width: 100px;
+        vertical-align: middle;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      ul {
+        margin: 100px auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-between;
+        width: 220px;
+        height: 220px;
+        background: pink;
+      }
+    </style>
+</head>
+<body>
+<ul>
+  <li>
+    <img src="./img/1.webp" alt="1">
+  </li>
+
+  <li>
+    <img src="./img/1.webp" alt="1">
+  </li>
+
+  <li>
+    <img src="./img/1.webp" alt="1">
+  </li>
+
+  <li>
+    <img src="./img/1.webp" alt="1">
+  </li>
+</ul>
+</body>
+</html>

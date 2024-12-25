@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>22-综合案例-淘宝轮播图-讲解</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .tb {
+        width: 564px;
+        height: 315px;
+        background: pink;
+        margin: 100px auto;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .tb ul {
+        display: flex;
+        /* ul要足够大 才能装下所有的li 也就是说有几张图片就是几倍宽度 */
+        width: 200%;
+      }
+
+      .tb li {
+        width: 564px;
+        height: 315px;
+      }
+
+      .tb img {
+        width: 100%;
+        /* 去掉图片的缝隙 */
+        display: block;
+      }
+    </style>
+</head>
+<body>
+<div class="tb">
+  <ul>
+    <li>
+      <a href="#" target="_self">
+        <img src="./img/tb.jpg" alt="tb" title="tb">
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self">
+        <img src="./img/tb.jpg" alt="tb" title="tb">
+      </a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

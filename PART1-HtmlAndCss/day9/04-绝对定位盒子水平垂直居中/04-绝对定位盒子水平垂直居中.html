@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-绝对定位盒子水平垂直居中</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        position: absolute;
+        /*
+        此时,盒子的左边线位于body水平方向的中间位置
+        需要再往回移动自身宽度的一半
+        换言之, left: 50%就表示盒子的左边框距离body左边框的距离为body宽度的一半
+        */
+        left: 50%;
+        /*
+        水平方向右侧是正方向,左侧是负方向.因此-100px表示向左移动100px
+        也就是自身宽度的一半
+        */
+        margin-left: -100px;
+        /* 垂直居中的思路是一样的 */
+        top: 50%;
+        margin-top: -100px;
+        width: 200px;
+        height: 200px;
+        background: pink;
+      }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>
