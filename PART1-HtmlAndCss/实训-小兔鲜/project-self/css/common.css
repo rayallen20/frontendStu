@@ -1,0 +1,166 @@
+/* 本文件用于存放公共样式 */
+/* 版心 */
+.wrapper {
+    width: 1240px;
+    margin: 0 auto;
+}
+
+/* 定义颜色变量 */
+:root {
+    /* 字体颜色 */
+    --ga: #a1a1a1;
+    /* 网站主色调 */
+    --main-color: #00be9a;
+}
+
+/* nav部分开始 */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 184px;
+}
+
+.nav-header {
+    height: 52px;
+    background: #333333;
+}
+
+.nav-header .wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-header .wrapper ul {
+    display: flex;
+}
+
+.nav-header li {
+    line-height: 52px;
+}
+
+.nav-header li a {
+    color: #ffffff;
+    padding: 0 15px;
+    border-right: 1px solid #999999;
+    transition: all 0.5s;
+    font-size: 14px;
+}
+
+.nav-header li a i {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.nav-header li a:hover {
+    color: var(--main-color);
+}
+
+.nav-header li:last-child a {
+    padding: 0 0 0 15px;
+    border-right: none;
+}
+
+.nav-bottom {
+    height: 132px;
+    /*background: skyblue;*/
+}
+
+.nav-bottom .wrapper {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bottom h1 {
+    width: 200px;
+    height: 88px;
+}
+
+.nav-bottom h1 a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url("../images/logo.png") no-repeat;
+    text-indent: -9999em;
+    overflow: hidden;
+}
+
+.nav-bottom ul {
+    display: flex;
+}
+
+.nav-bottom ul li {
+    line-height: 132px;
+    padding: 0 24px;
+}
+
+.nav-bottom li a {
+    padding: 10px 0;
+    font-size: 16px;
+    transition: all 0.5s;
+}
+
+.nav-bottom li a:hover {
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+}
+
+.nav-bottom .search {
+    position: relative;
+    width: 220px;
+    height: 42px;
+    /*background: pink;*/
+}
+
+.search a {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search .icon-search {
+    font-size: 20px;
+    line-height: 25px;
+    color: #cccccc;
+}
+
+.nav-bottom .search input {
+    width: 170px;
+    height: 100%;
+    border-bottom: 2px solid #f4f4f4;
+    outline: none;
+    padding: 10px 0 10px 28px;
+    font-size: 16px;
+    transition: all 0.5s;
+}
+
+.nav-bottom .search input:focus {
+    width: 220px;
+}
+
+.nav-bottom .search input::placeholder {
+    color: #cccccc;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart .icon-cart-full {
+    font-size: 36px;
+}
+
+.cart .counter {
+    position: absolute;
+    top: 0;
+    left: 22px;
+    background: #e26237;
+    color: #FFFEFE;
+    padding: 0 8px;
+    border-radius: 11px;
+}
+/* nav部分结束 */

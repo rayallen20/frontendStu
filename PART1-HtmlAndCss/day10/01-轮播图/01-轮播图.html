@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-轮播图</title>
+    <link rel="stylesheet" href="./fonts/iconfont.css">
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      li {
+          list-style: none;
+      }
+
+      .tb {
+          position: relative;
+          width: 564px;
+          height: 315px;
+          background: pink;
+          margin: 100px auto;
+          border-radius: 10px;
+          overflow: hidden;
+      }
+
+      /* 鼠标经过tb 控制tb里边的左右按钮(a)显示 */
+      .tb:hover .prev, .tb:hover .next {
+          display: block;
+      }
+
+      /*
+      这里需要注意的是,这种写法是不对的.并集选择器,把这两个选择器拆开看,
+      就变成了: .tb:hover .prev 和 .next 那这样.next选择器设置的属性自然就会被层叠了
+      .tb:hover .prev, .next {
+          display: block;
+      }
+      */
+
+      .slider {
+          display: flex;
+          width: 200%;
+      }
+
+      .slider li {
+          width: 564px;
+          height: 315px;
+      }
+
+      .slider img {
+          display: block;
+          width: 100%;
+      }
+
+      .prev, .next {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 20px;
+          height: 30px;
+          line-height: 30px;
+          background-color: rgba(0, 0, 0, 0.4);
+          color: #ffffff;
+          text-decoration: none;
+          /* 默认隐藏 */
+          display: none;
+          transition: display 2s;
+      }
+
+      .prev {
+          left: 0;
+          border-radius: 0 15px 15px 0;
+          text-align: left;
+      }
+
+      .next {
+          right: 0;
+          border-radius: 15px 0 0 15px;
+          text-align: right;
+      }
+
+      .bottom-list {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 20px;
+          display: flex;
+          background-color: rgba(255, 255, 255, 0.4);
+          border-radius: 7px;
+      }
+
+      .bottom-list li {
+          width: 8px;
+          height: 8px;
+          background-color: #ffffff;
+          margin: 3px;
+          border-radius: 50%;
+      }
+
+      .bottom-list li:hover {
+          cursor: pointer;
+      }
+
+      /* 这里要增加选择器的权重 否则比上边的背景色选择器的权重低 */
+      .bottom-list .active {
+          background-color: #ff8400;
+      }
+    </style>
+</head>
+<body>
+<div class="tb">
+  <!-- 图片内容 -->
+  <ul class="slider">
+    <li>
+      <a href="#" target="_self">
+        <img src="./img/tb.jpg" alt="tb">
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self">
+        <img src="./img/tb.jpg" alt="tb">
+      </a>
+    </li>
+  </ul>
+
+  <!-- 左右按钮 -->
+  <a href="javascript:" class="prev">
+      <i class="iconfont icon-arrow-left-bold"></i>
+  </a>
+  <a href="javascript:" class="next">
+      <i class="iconfont icon-arrow-right-bold"></i>
+  </a>
+
+  <!-- 底部圆点列表 -->
+  <ul class="bottom-list">
+    <li class="active"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-CSS变量</title>
+    <style>
+      :root {
+        --my-color: pink;
+      }
+
+      .box {
+        color: var(--my-color);
+      }
+
+      .box2 {
+        /*
+        当没有找到对应变量时,会使用后面的值
+        */
+        color: var(--myColor, blue);
+      }
+    </style>
+</head>
+<body>
+<div class="box">文字1</div>
+<div class="box2">文字2</div>
+</body>
+</html>

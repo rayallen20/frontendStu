@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-显示与隐藏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background: skyblue;
+            /* display: block; 设置的隐藏 不占据空间 */
+            display: block;
+        }
+
+        .box2 {
+            position: absolute;
+            /* 不加边偏移 则该盒子不会覆盖上边的盒子 因为没有让这个盒子移动 */
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background: skyblue;
+            /* visibility: hidden; 设置的隐藏 会占据元素原来的空间 */
+            visibility: hidden;
+        }
+
+        .box4 {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<hr>
+<div class="box3"></div>
+<div class="box4"></div>
+</body>
+</html>

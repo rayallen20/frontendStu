@@ -1,0 +1,156 @@
+/* 本文件用于存放公共样式 */
+/* 版心 */
+.wrapper {
+    width: 1240px;
+    margin: 0 auto;
+}
+
+/* 定义颜色变量 */
+:root {
+    /* 字体颜色 */
+    --ga: #a1a1a1;
+    /* 网站主色调 */
+    --ge: #00be9a;
+}
+
+/*快捷导航部分开始*/
+.shortcut {
+    height: 52px;
+    background: #333333;
+}
+
+.shortcut .wrapper {
+    color: #ffffff;
+    line-height: 52px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.shortcut .wrapper ul {
+    display: flex;
+}
+
+.shortcut li a {
+    font-size: 14px;
+    color: #ffffff;
+    padding: 0 15px;
+    border-right: 1px solid #999999;
+}
+
+.shortcut li a:hover {
+    color: var(--ge);
+}
+
+.shortcut li a i {
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.shortcut li:last-child a {
+    border-right: 0;
+}
+/*快捷导航部分结束*/
+
+/* header部分开始 */
+.header {
+    padding: 22px 0;
+    display: flex;
+}
+
+/* logo */
+.header .logo {
+    width: 200px;
+    height: 88px;
+}
+
+.header .logo a {
+    display: block;
+    height: 88px;
+    text-indent: -9999em;
+    overflow: hidden;
+    background: url("../images/logo.png") no-repeat;
+}
+
+/* nav */
+.header .nav ul {
+    display: flex;
+    margin: 25px 0 0 41px;
+}
+
+.header .nav li a {
+    display: block;
+    line-height: 42px;
+    margin-right: 42px;
+}
+
+.header .nav li a:hover {
+    color: var(--ge);
+    border-bottom: 2px solid var(--ge);
+}
+
+/* search */
+.search {
+    position: relative;
+    width: 220px;
+    height: 40px;
+    margin-top: 22px;
+}
+
+.search i {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    font-size: 20px;
+    color: #cccccc;
+}
+
+.search i:hover {
+    cursor: pointer;
+}
+
+.search input {
+    width: 170px;
+    height: 40px;
+    padding-left: 28px;
+    border-bottom: 2px solid #f4f4f4;
+    transition: all 0.5s;
+}
+
+/* 修改placeholder的样式 */
+.search input::placeholder {
+    color: #cccccc;;
+}
+
+.search input:focus {
+    width: 220px;
+}
+
+/* cart */
+.cart {
+    position: relative;
+    margin: 20px 0 0 15px;
+}
+
+.cart i {
+    font-size: 36px;
+}
+
+.cart span {
+    position: absolute;
+    top: 0;
+    left: 22px;
+    padding: 0 8px;
+    background: #e26237;
+    color: #ffffff;
+    border-radius: 11px;
+}
+/* header部分结束 */
+
+/* footer部分开始 */
+.footer {
+    height: 582px;
+    background: #f5f5f5;
+}
+/* footer部分结束 */
