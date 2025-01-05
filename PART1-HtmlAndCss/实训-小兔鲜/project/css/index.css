@@ -1,0 +1,193 @@
+/* banner部分开始 */
+.banner {
+    height: 500px;
+    background: #f5f5f5;
+}
+
+.banner .wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+}
+
+.banner .wrapper > ul {
+    display: flex;
+    width: 300%;
+}
+
+/* 让盒子能够装下所有li的另一种方法 */
+/*.banner .wrapper ul li img {*/
+/*    width: 1240px;*/
+/*}*/
+
+.banner .circle {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+/* 伪元素实现选中 */
+.banner .circle li {
+    width: 22px;
+    height: 22px;
+    padding: 4px;
+    border-radius: 50%;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.banner .circle li::after {
+    content: '';
+    /* 伪元素是行内元素,不转换成块级元素没法给宽高 */
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.banner .circle .active {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* 非内减模式边框实现选中 */
+/*.banner .circle li {*/
+/*    box-sizing: content-box;*/
+/*    width: 14px;*/
+/*    height: 14px;*/
+/*    border-radius: 14px;*/
+/*    background: rgba(255, 255, 255, 0.8);*/
+/*    border: 4px solid rgba(255, 255, 255, 0.5);*/
+/*    margin-right: 5px;*/
+/*}*/
+
+.banner .sub-nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0.42);
+}
+
+.sub-nav ul li {
+    position: relative;
+    padding-left: 29px;
+    height: 50px;
+    line-height: 50px;
+    transition: all 0.5s;
+}
+
+.sub-nav ul li:hover {
+    background: var(--ge);
+}
+
+.sub-nav ul li a {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.sub-nav ul li a:first-child {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+/* li中的箭头 */
+.sub-nav ul li::after {
+    content: "\e687";
+    position: absolute;
+    top: 0;
+    right: 29px;
+    color: #ffffff;
+    /* 声明字体图标 */
+    font-family: iconfont, serif;
+}
+/* banner部分结束 */
+
+/* fresh部分开始 */
+.hd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0 30px;
+}
+
+.hd h2 {
+    font-size: 30px;
+}
+
+.hd h2 span {
+    font-size: 16px;
+    color: var(--ga);
+    margin-left: 30px;
+}
+
+.hd .all {
+    font-size: 16px;
+    color: var(--ga);
+    transition: all 0.5s;
+}
+
+.hd .all:hover {
+    color: var(--ge);
+}
+
+.bd ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bd ul li {
+    width: 304px;
+    height: 404px;
+    text-align: center;
+    background: #EEF9F4;
+    transition: all 0.5s;
+}
+
+.bd ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.bd ul li:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.42);
+}
+
+.bd ul li .pic {
+    width: 304px;
+    height: 304px;
+}
+
+.bd ul li .pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.bd ul li h4 {
+    margin: 18px 15px 9px;
+    font-size: 20px;
+}
+
+.bd ul li p {
+    font-size: 16px;
+    color: #AA2113;
+}
+
+.bd ul li p span {
+    font-size: 22px;
+}
+/* fresh部分结束 */
+
+/* recommend部分开始 */
+.recommend .bd li {
+    background: #ffffff;
+}
+
+.recommend .bd li p {
+    font-size: 16px;
+    color: var(--ga);
+}
+/* recommend部分结束 */

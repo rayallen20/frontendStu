@@ -53,3 +53,9 @@ h6 {
   font-weight: 400;
 }
 
+/* 溢出内容以省略号表示 */
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

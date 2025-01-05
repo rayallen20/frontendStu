@@ -153,4 +153,147 @@
     height: 582px;
     background: #f5f5f5;
 }
+
+.service {
+    padding: 60px 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.service ul {
+    display: flex;
+    /* 间距相同 */
+    justify-content: space-evenly;
+}
+
+.service li {
+    display: flex;
+    /*width: 190px;*/
+    height: 58px;
+    /*background: skyblue;*/
+}
+
+.service li h5 {
+    overflow: hidden;
+    width: 58px;
+    height: 58px;
+    margin-right: 20px;
+    background: url("../images/sprite.png") no-repeat;
+    text-indent: -999em;
+    transition: 0.5s;
+}
+
+.service li p {
+    font-size: 28px;
+    line-height: 58px;
+}
+
+.service li:nth-child(1) h5:hover {
+    background-position: 0 -58px;
+}
+
+.service li:nth-child(2) h5 {
+    background-position: 0 -58px;
+}
+
+.service li:nth-child(2) h5:hover {
+    background-position: 0 -116px;
+}
+
+.service li:nth-child(3) h5 {
+    background-position: 0 -116px;
+}
+
+.service li:nth-child(3) h5:hover {
+    background-position: 0 -174px;
+}
+
+.service li:nth-child(4) h5 {
+    background-position: 0 -174px;
+}
+
+.service li:nth-child(4) h5:hover {
+    background-position: 0 0;
+}
+
+.help {
+    display: flex;
+    justify-content: space-between;
+    height: 303px;
+    padding-top: 60px;
+    /*background: skyblue;*/
+}
+
+.help .left {
+    display: flex;
+}
+
+.help .left dl {
+    margin-right: 84px;
+}
+
+.help .left dt {
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.help .left dd {
+    margin-bottom: 10px;
+}
+
+.help .left dd a {
+    font-size: 16px;
+    color: var(--ga);
+    transition: 0.5s;
+}
+
+.help .left dd a:hover {
+    background: var(--ge);
+    color: #ffffff;
+}
+
+.help .left dd span {
+    color: var(--ge);
+}
+
+.help .right ul {
+    display: flex;
+}
+
+.help .right li {
+    margin-left: 55px;
+}
+
+.help .right li:first-child {
+    margin-left: 0;
+}
+
+.help .right img {
+    width: 120px;
+    height: 120px;
+}
+
+.help .right p {
+    margin-top: 10px;
+    color: var(--ga);
+    text-align: center;
+}
+
+.copyright {
+    text-align: center;
+    color: var(--ga);
+    line-height: 30px;
+}
+
+.copyright a {
+    color: var(--ga);
+    transition: 0.5s;
+}
+
+.copyright a:hover {
+    color: var(--ge);
+}
+
+.copyright span {
+    margin: 0 5px;
+}
 /* footer部分结束 */

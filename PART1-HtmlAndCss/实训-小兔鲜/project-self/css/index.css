@@ -1,0 +1,235 @@
+/* banner部分开始 */
+.banner {
+    height: 500px;
+    background: #f5f5f5;
+}
+
+.slideshow {
+    /* 定位不能直接加在banner上 否则banner会脱标 */
+    position: relative;
+    overflow: hidden;
+}
+
+.slideshow:hover .prev, .slideshow:hover .next {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 轮播图列表开始 */
+.slideshow .img-list {
+    display: flex;
+    width: 300%;
+}
+/* 轮播图列表结束 */
+
+/* 分页小圆点列表开始 */
+.slideshow .pagination {
+    position: absolute;
+    top: 461px;
+    left: 1123px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* 示例中的ul不给宽高,是靠li的外边距撑开的 这里我给了ul宽高,用主侧轴对齐的方式调整li的位置 */
+    width: 100px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+}
+
+.pagination li {
+    /* 这里边框是外扩的 所以li要使用非内减模式 */
+    box-sizing: content-box;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pagination .active {
+    background: rgba(255, 255, 255, 0.8);
+    border: 4px solid rgba(255, 255, 255, 0.5);
+}
+/* 分页小圆点列表结束 */
+
+/* 左侧上一页按钮开始 */
+.prev, .next {
+    /* 默认隐藏 隐藏效果如果使用display属性 则无法过渡 故使用opacity和visibility控制 */
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    line-height: 40px;
+    color: #ffffff;
+    text-align: center;
+    transition: all 2s;
+}
+
+.prev {
+    left: 250px;
+    border-radius: 0 20px 20px 0;
+}
+/* 左侧上一页按钮结束 */
+
+/* 右侧下一页按钮开始 */
+.next {
+    right: 0;
+    border-radius: 20px 0 0 20px;
+}
+
+.prev .icon-arrow-left-bold, .next .icon-arrow-right-bold {
+    font-size: 25px;
+}
+/* 右侧下一页按钮结束 */
+
+/* 左侧列表开始 */
+.slideshow .category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0.42);
+}
+
+.category li {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 29px;
+    transition: all 0.5s;
+    /*background: skyblue;*/
+}
+
+.category li:hover {
+    background: var(--main-color);
+}
+
+.category li::after {
+    content: "\e687";
+    position: absolute;
+    top: 0;
+    right: 29px;
+    font-family: iconfont, serif;
+    color: #ffffff;
+}
+
+.category li a {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.category li a:first-child {
+    font-size: 16px;
+    margin-right: 5px;
+}
+/* 左侧列表结束 */
+/* banner部分结束 */
+
+/* fresh部分开始 */
+/* 为代码复用 样式直接写在header和body上*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 40px 0;
+    height: 122px;
+    /*background: lightslategray;*/
+}
+
+.header .left {
+    display: flex;
+    align-items: baseline;
+}
+
+.header .left h3 {
+    margin-right: 35px;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.header .left span {
+    font-size: 16px;
+    color: var(--ga);
+}
+
+.header .check-all {
+    font-size: 16px;
+    color: var(--ga);
+    transition: all 0.5s;
+}
+
+.header .check-all:hover {
+    color: var(--main-color);
+}
+
+.body ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.body ul li {
+    width: 304px;
+    height: 404px;
+    transition: all 0.5s;
+    background: #EEF9F4;
+    text-align: center;
+}
+
+.body ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.body ul li:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+}
+
+.body ul li .img-box {
+    width: 304px;
+    height: 304px;
+}
+
+.body ul li .img-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.body ul li h4 {
+    margin: 18px 15px 9px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.body ul li p {
+    font-size: 16px;
+    color: #AA2113;
+}
+
+.body ul li p span {
+    font-size: 22px;
+}
+/* fresh部分结束 */
+
+/* recommend部分开始 */
+/* 这里为了层叠到之前的样式 所以需要加选择器的权重 才写了这么多层 */
+.recommend .body li {
+    background: #ffffff;
+}
+
+.recommend .body li h4 {
+    margin-bottom: 15px;
+}
+
+.recommend .body li p {
+    font-size: 16px;
+    color: var(--ga);
+    margin-bottom: 17px;
+}
+/* recommend部分结束 */

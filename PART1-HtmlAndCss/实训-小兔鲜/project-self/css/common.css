@@ -15,13 +15,15 @@
 
 /* nav部分开始 */
 .nav {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
+    z-index: 9999;
     width: 100%;
     height: 184px;
 }
 
+/* nav头部开始 */
 .nav-header {
     height: 52px;
     background: #333333;
@@ -61,10 +63,12 @@
     padding: 0 0 0 15px;
     border-right: none;
 }
+/* nav头部开始 */
 
+/* nav底部开始 */
 .nav-bottom {
     height: 132px;
-    /*background: skyblue;*/
+    background: #ffffff;
 }
 
 .nav-bottom .wrapper {
@@ -159,8 +163,146 @@
     top: 0;
     left: 22px;
     background: #e26237;
-    color: #FFFEFE;
+    color: #fefefe;
     padding: 0 8px;
     border-radius: 11px;
+}
+/* nav底部开始 */
+.footer {
+    height: 582px;
+    background: #f5f5f5;
+}
+
+.footer .top {
+    height: 178px;
+    padding-top: 60px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.top ul {
+    display: flex;
+}
+
+.top ul li {
+    display: flex;
+    margin-left: 90px;
+    line-height: 58px;
+}
+
+.top ul li div {
+    width: 58px;
+    height: 58px;
+    margin-right: 20px;
+    background: url("../images/sprite.png") no-repeat;
+}
+
+.top .price {
+    background-position: 0 0;
+}
+
+.top .truck {
+    background-position: 0 -58px;
+}
+
+.top .quality {
+    background-position: 0 -116px;
+}
+
+.top .after-sale {
+    background-position: 0 -174px;
+}
+
+.top ul li span {
+    font-size: 28px;
+}
+
+.footer .middle {
+    display: flex;
+    padding-top: 60px;
+    margin-bottom: 101px;
+}
+
+.footer .middle dl {
+    margin-right: 84px;
+}
+
+.footer .middle dt {
+    height: 55px;
+    font-size: 18px;
+}
+
+.footer .middle dd {
+    height: 33px;
+}
+
+.footer .middle dd a {
+    font-size: 16px;
+    color: #969696;
+    transition: 0.5s;
+}
+
+.footer .middle dd a:hover {
+    color: var(--main-color);
+}
+
+.footer .middle a .icon-customer-service {
+    color: var(--main-color);
+}
+
+.footer .middle .qr-code {
+    width: 120px;
+    height: 120px;
+    margin-right: 55px;
+    text-align: center;
+}
+
+/* 这里如果2个盒子都给了右外边距 就会挤到dl 让最后一个dl换行 */
+.footer .middle .qr-code:last-child {
+    margin-right: 0;
+}
+
+.footer .middle .qr-code img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.footer .middle .qr-code span {
+    font-size: 16px;
+    color: #969696;
+}
+
+.footer .bottom {
+    display: flex;
+    /* 修改主轴方向为从上到下 */
+    flex-direction: column;
+    /* 所以 此时控制水平方向的属性,是侧轴,而非主轴 */
+    /*justify-content: center;*/
+    align-items: center;
+}
+
+.footer .bottom ul {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.footer .bottom a {
+    padding: 0 10px;
+    font-size: 16px;
+    color: #a1a1a1;
+    border-right: 1px solid #a1a1a1;
+    transition: 0.5s;
+}
+
+.footer .bottom a:hover {
+    color: var(--main-color);
+}
+
+.footer .bottom li:last-child a {
+    border-right: none;
+}
+
+.footer .bottom span {
+    font-size: 16px;
+    color: #a1a1a1;
 }
 /* nav部分结束 */

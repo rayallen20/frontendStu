@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>超出部分显示省略号</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 40px;
+            border: 1px solid skyblue;
+            /* step1. 不允许换行 */
+            white-space: nowrap;
+            /* step2. 溢出隐藏 */
+            overflow: hidden;
+            /* step3. 超出部分显示省略号 */
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+<div class="box">里边多的文字要省略超出内容超出内容</div>
+</body>
+</html>
