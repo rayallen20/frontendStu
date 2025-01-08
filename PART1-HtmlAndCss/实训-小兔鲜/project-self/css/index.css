@@ -233,3 +233,55 @@
     margin-bottom: 17px;
 }
 /* recommend部分结束 */
+
+/* hot部分开始 */
+.hot {
+    width: 100%;
+    /* TODO: 通栏的高度是靠版心撑开的 最后去掉这个高度 */
+    height: 500px;
+    background: #F5F5F5;
+}
+
+.hot .wrapper .header {
+    position: relative;
+    /*
+    这里不调整主轴对齐方式也正确
+    因为只有1个弹性条目时,space-between和flex-start效果相同
+    */
+    justify-content: flex-start;
+}
+
+.hot .header .pagination-box {
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+}
+
+.hot .header .pagination-box a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background: #e2e2e2;
+    transition: 0.5s;
+}
+
+.hot .header .pagination-box a:hover {
+    background: var(--main-color);
+}
+
+.hot .header .pagination-box .iconfont {
+    color: #ffffff;
+}
+
+.hot .body ul li {
+    width: 244px;
+    height: 306px;
+}
+
+.hot .body .img-box {
+    width: 244px;
+    height: 306px;
+}
+/* hot部分结束 */
