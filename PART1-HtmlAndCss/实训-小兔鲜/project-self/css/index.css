@@ -285,3 +285,252 @@
     height: 306px;
 }
 /* hot部分结束 */
+
+/* natural部分开始 */
+.natural .header {
+    align-items: center;
+}
+
+.natural .header .right {
+    display: flex;
+}
+
+.natural .header .right ul {
+    display: flex;
+    margin-right: 65px;
+}
+
+.natural .header .right li {
+    margin: 0 10px;
+}
+
+.natural .header .right li a {
+    padding: 1px 7px;
+    font-size: 16px;
+    transition: all 0.5s;
+}
+
+.natural .header .right li a:hover {
+    background: var(--main-color);
+    color: #ffffff;
+}
+
+.multi-body {
+    display: flex;
+    justify-content: space-between;
+    height: 610px;
+}
+
+.multi-body .body-img-box {
+    width: 248px;
+    height: 610px;
+}
+
+.multi-body .body-img-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.multi-body .multi-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
+    width: 968px;
+}
+
+.multi-body .multi-list li {
+    position: relative;
+    /* 这里要加隐藏 否则鼠标hover到隐藏盒子时就会触发动画 */
+    overflow: hidden;
+    width: 242px;
+    height: 304px;
+    padding: 10px 21px 0;
+    transition: all 0.5s;
+}
+
+.multi-body .multi-list li .multi-img-box {
+    width: 200px;
+    height: 180px;
+    margin-bottom: 10px;
+}
+
+.multi-list .multi-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.multi-body .multi-list li:hover {
+    border: 2px solid var(--main-color);
+}
+
+.multi-body .multi-list li:hover .same {
+    bottom: 0;
+    opacity: 1;
+}
+
+.multi-list .intro {
+    margin:0 auto 7px;
+    /*width: 100%;*/
+    height: 57px;
+    text-align: left;
+}
+
+.multi-list .intro p {
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+}
+
+.multi-list .price {
+    font-size: 22px;
+    text-align: left;
+    font-weight: 400;
+    color: #AF2F22;
+}
+
+.multi-list .same {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    bottom: -84px;
+    padding-top: 16px;
+    width: 100%;
+    height: 84px;
+    background: var(--main-color);
+    /*
+    opacity 0.5s ease: 0.5s表示过渡持续时间 ease表示过渡速度,渐变在开始和结束时较慢,中间较快
+    visibility 0s 0.5s: 0s表示过渡持续时间 0.5s表示延迟时间
+    这里为了让visibility和opacity的过渡同步 所以延迟0.5s 等opacity过渡结束后设置可见性
+    因为visibility没有过渡
+    */
+    transition: 0.5s;
+}
+
+.same .same-top {
+    position: absolute;
+    display: inline-block;
+    /*
+    被设置为绝对定位的元素,其子元素不能使用margin来定位
+    因为margin是基于标准流进行位置计算的
+    */
+    left: 50%;
+    transform: translateX(-50%);
+    /* TODO: 这里下外边距无效 但是给下面的盒子设置上外边距就可以 不知道为什么 */
+    /*margin-bottom: 5px;*/
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.same .same-bottom {
+    position: absolute;
+    margin-top: 5px;
+    padding-top: 5px;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    color: #ffffff;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.same .same-bottom .icon-arrow-right-bold {
+    font-size: 13px;
+}
+/* natural部分结束 */
+
+/* topic部分开始 */
+.topic .header {
+    align-items: center;
+}
+
+.topic-body ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.topic-body li {
+    width: 405px;
+    height: 355px;
+}
+
+.topic-body .topic-img-box {
+    position: relative;
+    width: 100%;
+    height: 288px;
+}
+
+.topic-img-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.topic-img-box .bottom-content-box {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    padding: 0 15px 14px;
+}
+
+.bottom-content-box .bottom-left {
+    color: #ffffff;
+}
+
+.bottom-left .bottom-left-top {
+    font-size: 20px;
+}
+
+.bottom-left .bottom-left-bottom {
+    font-size: 16px;
+}
+
+.bottom-content-box .bottom-right {
+    width: 79px;
+    height: 25px;
+    background: #ffffff;
+    text-align: center;
+    font-size: 18px;
+    color: #AA2113;;
+    line-height: 25px;
+}
+
+.topic-body .collect-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 67px;
+    line-height: 67px;
+    padding: 0 15px;
+}
+
+.topic-body li {
+    transition: all 0.5s;
+}
+
+.topic-body li:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+}
+
+.collect-box a {
+    font-size: 14px;
+    color: #666666;
+    transition: all 0.5s;
+}
+
+.collect-box a:hover {
+    color: var(--main-color);
+}
+
+.collect-box a .iconfont {
+    font-size: 14px;
+}
+
+.collect-box .collect .icon-favorites-fill {
+    color: #9d2e1f;
+}
+/* topic部分结束 */
