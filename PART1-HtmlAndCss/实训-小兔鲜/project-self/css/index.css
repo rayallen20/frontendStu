@@ -346,6 +346,7 @@
     width: 242px;
     height: 304px;
     padding: 10px 21px 0;
+    border: 2px solid transparent;
     transition: all 0.5s;
 }
 
@@ -418,6 +419,7 @@
     left: 50%;
     transform: translateX(-50%);
     /* TODO: 这里下外边距无效 但是给下面的盒子设置上外边距就可以 不知道为什么 */
+    /* Tips: 行内元素设置垂直方向外边距通常会被忽略 */
     /*margin-bottom: 5px;*/
     font-size: 18px;
     color: #ffffff;

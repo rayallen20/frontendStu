@@ -191,3 +191,265 @@
     color: var(--ga);
 }
 /* recommend部分结束 */
+
+/* hot部分开始 */
+.hot {
+    height: 468px;
+    background: #f5f5f5;
+}
+
+.hot .hd {
+    position: relative;
+}
+
+.hot .btn {
+    display: flex;
+    /*
+    这里不能直接给margin-top 因为hd盒子的高度是靠内容撑开的
+    直接给margin-top 就会撑高hd盒子 这样左边的h2就跟着下来了
+    所以这里用绝对定位
+    */
+    position: absolute;
+    top: 79px;
+    right: 0;
+}
+
+.hot .btn a {
+    /*
+    这里因为是Flex布局
+    btn盒子到h2之间的距离是可以随便用的
+    所以2个a都给了左外边距 不会把右边的a挤出hd
+    */
+    margin-left: 12px;
+    width: 20px;
+    height: 20px;
+    background: #e2e2e2;
+    text-align: center;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+.hot .btn .btn-right {
+    background: var(--ge);
+}
+
+.hot .bd li {
+    width: 244px;
+    height: 306px;
+}
+/* hot部分结束 */
+
+/* natural部分开始 */
+.hd ul {
+    display: flex;
+}
+
+.hd ul li {
+    margin-right: 12px;
+}
+
+.hd ul li a {
+    padding: 0 5px;
+    transition: all 0.5s;
+}
+
+.hd ul li a:hover {
+    color: #ffffff;
+    background: var(--ge);
+}
+
+.natural .hd h2 {
+    flex: 1;
+}
+
+.natural .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.natural .content .left {
+    width: 248px;
+    height: 610px;
+}
+
+.natural .content .right {
+    width: 968px;
+    height: 610px;
+}
+
+.natural .content .right ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.natural .content .right li {
+    overflow: hidden;
+    position: relative;
+    width: 242px;
+    height: 304px;
+    border: 2px solid transparent;
+    /*background: skyblue;*/
+    transition: all 0.5s;
+}
+
+.natural .content .right li:hover {
+    border-color: var(--ge);
+}
+
+.natural .content .right li:hover .find {
+    bottom: 0;
+}
+
+.natural .content .right li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px;
+}
+
+.natural .content .pic {
+    width: 200px;
+    height: 180px;
+}
+
+.natural .content .pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.natural .content .info {
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.natural .content .info h5 {
+    font-size: 16px;
+}
+
+.natural .content .price {
+    margin-top: 5px;
+    font-size: 15px;
+    color: #AF2F22;
+}
+
+.natural .content .price span {
+    font-size: 22px;
+}
+
+.natural .content .find {
+    position: absolute;
+    /* Tips:
+    这里写-2px,是因为li本身有2px的透明色的边框
+    如果写0,find盒子视觉上就"偏离"li了 */
+    left: -2px;
+    /* 同理 这里向下也要多移动2px 因为有边框 */
+    bottom: -86px;
+    /* Tips: 这里不能写100% 因为加了定位就脱标了 找不到父元素了 */
+    width: 242px;
+    height: 84px;
+    background: var(--ge);
+    padding: 15px 67px 0 56px;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+.natural .content .find h4 {
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid rgba(255,255,255,0.11);
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.natural .content .find a {
+    /*
+    Tips: 这里给上外边距不会生效
+    因为a是行内元素
+    给行内元素设置垂直方向的外边距通常会被调整为0
+    或被忽略掉
+    */
+    /*margin-top: 4px;*/
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.natural .content .find a .icon-arrow-right-bold {
+    font-size: 13px;
+}
+/* natural部分结束 */
+
+/* topic部分开始 */
+.topic {
+    margin-bottom: 50px;
+}
+
+.topic .bd ul li {
+    width: 405px;
+    height: 355px;
+    background: #ffffff;
+}
+
+.topic .bd ul li .pic {
+    position: relative;
+    width: 405px;
+    height: 288px;
+}
+
+.topic .pic .word {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 405px;
+    height: 90px;
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 20px 15px 0;
+    /* 层叠掉之前继承的属性 */
+    text-align: left;
+}
+
+.topic .pic .word h5 {
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.topic .pic .word .left div {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.topic .pic .word .right {
+    width: 79px;
+    height: 25px;
+    background: #ffffff;
+    text-align: center;
+    line-height: 25px;
+    color: #AA2113;
+}
+
+.topic .pic .word .right span {
+    font-size: 18px;
+}
+
+.topic .bd .desc {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 15px;
+}
+
+.topic .bd .desc p span {
+    margin-right: 5px;
+    color: #666666;
+    font-size: 14px;
+}
+
+.topic .bd .desc p span .icon-favorites-fill {
+    color: #AA2113;
+}
+/* topic部分结束 */
