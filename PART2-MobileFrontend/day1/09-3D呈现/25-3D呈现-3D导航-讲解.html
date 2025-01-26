@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>25-3D呈现-3D导航-讲解</title>
+    <style>
+        body {
+            perspective: 400px;
+        }
+        
+        .father {
+            position: relative;
+            width: 200px;
+            height: 50px;
+            margin: 100px auto;
+            /*border: 1px solid #000000;*/
+            transform-style: preserve-3d;
+            transition: all 1s;
+        }
+
+        .father:hover {
+            transform: rotateX(-90deg);
+        }
+        
+        .father div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 50px;
+            transition: all 2s;
+        }
+        
+        .son1 {
+            background: skyblue;
+            transform: translateZ(25px);
+        }
+        
+        .son2 {
+            background: lightslategray;
+            transform: translateY(-25px) rotateX(90deg);
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="son1">首页</div>
+    <div class="son2">Index</div>
+</div>
+</body>
+</html>

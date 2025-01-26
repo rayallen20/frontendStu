@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-平面转换-位移-子盒子垂直水平居中</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .father {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            border: 1px solid red;
+            margin: 100px auto;
+        }
+
+        .son {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 388px;
+            height: 166px;
+            background: skyblue;
+        }
+
+        .father1 {
+            width: 600px;
+            height: 400px;
+            border: 1px solid red;
+            margin: 100px auto;
+        }
+        
+        .son1 {
+            width: 388px;
+            height: 166px;
+            background: skyblue;
+            margin: 117px 0 0 106px;
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="son"></div>
+</div>
+
+<div class="father1">
+    <div class="son1"></div>
+</div>
+</body>
+</html>

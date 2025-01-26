@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-平面转换-旋转-时钟案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /*box-sizing: border-box;*/
+        }
+
+        .box {
+            position: relative;
+            margin: 100px auto;
+            width: 200px;
+            height: 200px;
+            border: 3px solid #000000;
+            border-radius: 50%;
+        }
+
+        .scale {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 200px;
+            background: silver;
+        }
+
+        .cover {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .box .scale:nth-child(2) {
+            transform: rotate(30deg);
+        }
+
+        .box .scale:nth-child(3) {
+            transform: rotate(60deg);
+        }
+
+        .box .scale:nth-child(4) {
+            transform: rotate(90deg);
+        }
+
+        .box .scale:nth-child(5) {
+            transform: rotate(120deg);
+        }
+
+        .box .scale:nth-child(6) {
+            transform: rotate(150deg);
+        }
+
+        .nail {
+            position: absolute;
+            z-index: 999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #000000;
+        }
+
+        .hand {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background: #000000;
+        }
+
+        .hour {
+            width: 5px;
+            height: 60px;
+            transform-origin: 0 bottom;
+            transform: translate(-50%, -100%) rotate(15deg);
+        }
+
+        .minute {
+            width: 3px;
+            height: 80px;
+            transform-origin: 0 bottom;
+            transform: translate(-50%, -100%) rotate(30deg);
+        }
+
+        .second {
+            width: 3px;
+            height: 100px;
+            transform-origin: 0 bottom;
+            transform: translate(-50%, -100%) rotate(60deg);
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="scale"></div>
+    <div class="scale"></div>
+    <div class="scale"></div>
+    <div class="scale"></div>
+    <div class="scale"></div>
+    <div class="scale"></div>
+    <div class="cover"></div>
+    <div class="nail"></div>
+    <div class="hour hand"></div>
+    <div class="minute hand"></div>
+    <div class="second hand"></div>
+</div>
+</body>
+</html>

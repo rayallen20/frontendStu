@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-平面转换-旋转-改变转换原点</title>
+    <style>
+        .box {
+            margin: 100px auto;
+            width: 100px;
+            height: 300px;
+            background: skyblue;
+            transition: all 2s;
+            /* 以盒子左下角为转换原点 */
+            transform-origin: 0 300px;
+        }
+
+        .box:hover {
+            transform: rotate(360deg);
+        }
+
+        .box1 {
+            margin: 100px auto;
+            width: 100px;
+            height: 300px;
+            background: darkcyan;
+            transition: all 2s;
+            /* 以盒子右上角为转换原点 */
+            transform-origin: 100% 0;
+        }
+
+        .box1:hover {
+            transform: rotate(360deg);
+        }
+
+        .box2 {
+            margin: 100px auto;
+            width: 100px;
+            height: 300px;
+            background: lightslategray;
+            transition: all 2s;
+            /* 以盒子左侧高的中点为转换原点 */
+            transform-origin: left center;
+        }
+
+        .box2:hover {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+<div class="box">1</div>
+<div class="box1">2</div>
+<div class="box2">3</div>
+</body>
+</html>

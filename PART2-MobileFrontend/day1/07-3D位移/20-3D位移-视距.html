@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>20-3D位移-视距</title>
+    <style>
+        body {
+            /*
+            视距小,则变化剧烈,因为物体离视点近
+            视距大,则变化缓和,因为物体离视点远
+             */
+            /*perspective: 300px;*/
+            perspective: 2000px;
+        }
+
+        .box {
+            margin: 200px auto;
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+            transition: all 0.5s;
+        }
+
+        .box:hover {
+            transform: translate3d(0, 0, 200px);
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

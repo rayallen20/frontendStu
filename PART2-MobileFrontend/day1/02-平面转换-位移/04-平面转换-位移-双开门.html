@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-平面转换-位移-双开门</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            display: flex;
+            width: 1366px;
+            height: 600px;
+            margin: 100px auto;
+            /*background: skyblue;*/
+            overflow: hidden;
+            background: url("./img/bg.jpg") no-repeat;
+        }
+
+        .father:hover .left {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .father:hover .right {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .son {
+            width: 683px;
+            height: 600px;
+            opacity: 1;
+            transition: all 0.5s;
+            background: url("./img/fm.jpg") no-repeat;
+        }
+
+        .left {
+            /*background: lightseagreen;*/
+            background-position: 0 0;
+        }
+
+        .right {
+            /*background: darkcyan;*/
+            background-position: -683px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="left son"></div>
+    <div class="right son"></div>
+</div>
+</body>
+</html>

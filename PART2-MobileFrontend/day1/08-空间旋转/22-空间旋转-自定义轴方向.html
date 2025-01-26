@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>22-空间旋转-自定义轴方向</title>
+  <style>
+    body {
+      perspective: 400px;
+    }
+
+    div {
+      margin: 200px auto;
+      width: 200px;
+      height: 200px;
+      background: skyblue;
+      transition: all 1s;
+    }
+
+    .box:hover {
+      transform: rotate3d(1, 1, 0, 80deg);
+    }
+
+    .box1:hover {
+      transform: rotate3d(1, 1, 0.8, 80deg);
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box1"></div>
+</body>
+</html>

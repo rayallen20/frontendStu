@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24-3D呈现-3D导航-自己的实现</title>
+    <style>
+        body {
+            perspective: 400px;
+        }
+        
+        .father {
+            width: 400px;
+            height: 200px;
+            margin: 300px auto;
+            border: 1px solid #000000;
+            transform-style: preserve-3d;
+            /*transform: rotateY(50deg);*/
+        }
+        
+        .father div {
+            width: 400px;
+            height: 200px;
+            transition: all 2s;
+        }
+        
+        .son1 {
+            background: skyblue;
+        }
+        
+        .son2 {
+            background: mediumturquoise;
+            transform: translateY(-300px) translateZ(-100px) rotateX(90deg);
+        }
+        
+        .father:hover .son1 {
+            transform: translateY(100px) translateZ(-100px) rotateX(-90deg);
+        }
+        
+        .father:hover .son2 {
+            transform: translateY(-200px);
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="son1">首页</div>
+    <div class="son2">Index</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-平面转换-旋转-复合属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            transition: all 1s;
+        }
+        
+        .box {
+            margin: 100px auto;
+            width: 1000px;
+            height: 301px;
+            border: 1px solid #000000;
+        }
+        
+        .box:hover img {
+            transform: translate(700px, 0) rotate(720deg);
+        }
+
+        .box1 {
+            margin: 100px auto;
+            width: 1000px;
+            height: 301px;
+            border: 1px solid #000000;
+        }
+
+        .box1:hover img {
+            transform: rotate(720deg) translate(700px, 0);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="./img/tyre1.png" alt="tyre1"/>
+</div>
+
+<div class="box1">
+    <img src="./img/tyre1.png" alt="tyre1"/>
+</div>
+</body>
+</html>       transform: rotate(720deg) translate(700px, 0);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="./img/tyre1.png" alt="tyre1"/>
+</div>
+
+<div class="box1">
+    <img src="./img/tyre1.png" alt="tyre1"/>
+</div>
+</body>
+</html>

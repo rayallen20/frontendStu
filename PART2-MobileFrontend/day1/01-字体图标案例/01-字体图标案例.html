@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-字体图标案例</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .cart {
+            margin-bottom: 50px;
+        }
+
+        .cart::before {
+            font-family: "iconfont", "serif";
+            content: "\e64f";
+            color: orangered;
+            margin-right: 5px;
+        }
+
+        .cart::after {
+            font-family: "iconfont", "serif";
+            content: "\e62a";
+            margin-left: 5px;
+        }
+
+        ul {
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            line-height: 11px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        ul li:nth-child(1) {
+            color: orangered;
+        }
+    </style>
+</head>
+<body>
+<div class="cart">
+    <span>购物车</span>
+</div>
+
+<ul>
+    <li>
+        <span class="iconfont icon-gouwuche"></span>
+    </li>
+    <li>
+        <span>购物车</span>
+    </li>
+    <li>
+        <span class="iconfont icon-arrow3"></span>
+    </li>
+</ul>
+</body>
+</html>

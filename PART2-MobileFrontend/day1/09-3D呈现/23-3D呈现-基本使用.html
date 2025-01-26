@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>23-3D呈现-基本使用</title>
+    <style>
+        body {
+            perspective: 400px;
+        }
+        
+        .father {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000000;
+            margin: 100px auto;
+            transform-style: preserve-3d;
+            transition: all 0.5s;
+        }
+        
+        .father div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .son1 {
+            background: skyblue;
+            transform: translateZ(100px);
+        }
+        
+        .son2 {
+            background: dodgerblue;
+            transform: translateZ(-100px);
+        }
+
+        .father:hover {
+            transform: rotateY(60deg);
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="son1">1</div>
+    <div class="son2">2</div>
+</div>
+</body>
+</html>

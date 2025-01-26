@@ -1,0 +1,23 @@
+{
+  "id": "4818325",
+  "name": "淘宝购物车案例",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "880422",
+      "name": "arrow3",
+      "font_class": "arrow3",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "21301481",
+      "name": "购物车",
+      "font_class": "gouwuche",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    }
+  ]
+}
