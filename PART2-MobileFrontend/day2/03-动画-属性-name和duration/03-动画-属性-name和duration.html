@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03-动画-属性-name和duration</title>
+  <style>
+    @keyframes moveAndChangeBackground {
+      0% {
+        transform: translateX(0) translateY(0);
+        background: skyblue;
+      }
+
+      10% {
+        transform: translateX(30px) translateY(30px);
+        background: dodgerblue;
+      }
+
+      20% {
+        transform: translateX(60px) translateY(60px);
+        background: midnightblue;
+      }
+
+      50% {
+        transform: translateX(150px) translateY(150px);
+        background: palevioletred;
+      }
+
+      100% {
+        transform: translateX(300px) translateY(300px);
+        background: darkslategray;
+      }
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000000;
+      margin: 100px auto;
+      animation-name: moveAndChangeBackground;
+      animation-duration: 2s;
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

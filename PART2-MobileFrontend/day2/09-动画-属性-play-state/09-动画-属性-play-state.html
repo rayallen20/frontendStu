@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-动画-属性-play-state</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000000;
+            animation-name: moveLeft;
+            animation-duration: 2s;
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .box:hover {
+            animation-play-state: paused;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000000;
+            animation-name: moveLeft;
+            animation-duration: 2s;
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+        }
+        
+        @keyframes moveLeft {
+            0% {
+                transform: translateX(0px);
+                background: skyblue;
+            }
+            
+            50% {
+                transform: translateX(500px);
+                background: khaki;
+            }
+            
+            100% {
+                transform: translateX(1000px);
+                background: darkturquoise;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box1"></div>
+</body>
+</html>

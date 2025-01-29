@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-动画-属性-delay</title>
+    <style>
+        @keyframes moveTopAndReturn {
+            0% {
+                transform: translateY(0);
+            }
+
+            10% {
+                transform: translateY(-20px);
+            }
+
+            20% {
+                transform: translateY(-40px);
+            }
+
+            30% {
+                transform: translateY(-60px);
+            }
+
+            40% {
+                transform: translateY(-80px);
+            }
+
+            50% {
+                transform: translateY(-100px);
+            }
+
+            60% {
+                transform: translateY(-80px);
+            }
+
+            70% {
+                transform: translateY(-60px);
+            }
+
+            80% {
+                transform: translateY(-40px);
+            }
+
+            90% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .father {
+            height: 600px;
+            border: 1px solid #000000;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-end;
+        }
+
+        .son {
+            width: 50px;
+            height: 60px;
+            border-radius: 25px;
+            background: skyblue;
+            animation-name: moveTopAndReturn;
+            animation-duration: 5s;
+        }
+
+        .son:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .son:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .son:nth-child(3) {
+            animation-delay: 2s;
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="son"></div>
+    <div class="son"></div>
+    <div class="son"></div>
+</div>
+</body>
+</html>

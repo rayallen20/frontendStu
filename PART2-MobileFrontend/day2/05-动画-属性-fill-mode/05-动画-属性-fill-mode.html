@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-动画-属性-fill-mode</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000000;
+            animation-name: moveLeft;
+            animation-duration: 3s;
+            animation-delay: 1s;
+            /* 动画开始前应用第1个关键帧样式 */
+            animation-fill-mode: backwards;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000000;
+            animation-name: moveLeft;
+            animation-duration: 3s;
+            animation-delay: 1s;
+            /* 动画结束后应用最后一个关键帧样式 */
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes moveLeft {
+            0% {
+                transform: translateX(200px);
+                background: skyblue;
+            }
+            
+            50% {
+                transform: translateX(500px);
+                background: khaki;
+            }
+            
+            100% {
+                transform: translateX(800px);
+                background: darkturquoise;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box1"></div>
+</body>
+</html>

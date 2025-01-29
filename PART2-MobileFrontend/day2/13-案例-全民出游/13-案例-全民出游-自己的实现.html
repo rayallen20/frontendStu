@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13-案例-全民出游-自己的实现</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            position: relative;
+            width: 1680px;
+            height: 962px;
+            background: skyblue;
+            background: url("./img/f1_1.jpg") no-repeat center center;
+            background-size: cover;
+        }
+
+        .yun1 {
+            position: absolute;
+            left: 420px;
+            top: 55px;
+            animation: yun 2s ease infinite alternate;
+        }
+
+        .yun2 {
+            position: absolute;
+            left: 1400px;
+            top: 150px;
+            animation: yun 3s ease infinite alternate;
+        }
+
+        .yun3 {
+            position: absolute;
+            left: 210px;
+            top: 405px;
+            animation: yun 4s ease infinite alternate;
+        }
+
+        @keyframes yun {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(100px);
+            }
+        }
+
+        .font1 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            animation: slogan 0.5s linear;
+        }
+
+        @keyframes slogan {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) scale(2);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .lu {
+            position: absolute;
+            left: 1116px;
+            top: 116px;
+            transform-origin: left bottom;
+            animation: lu 1s linear infinite alternate;
+        }
+
+        @keyframes lu {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(45deg);
+            }
+        }
+
+        .tag1 {
+            position: absolute;
+            left: 290px;
+            top: 700px;
+            animation: tag 0.5s ease infinite alternate;
+        }
+
+        .tag2 {
+            position: absolute;
+            left: 600px;
+            top: 700px;
+            animation: tag 0.5s 0.2s ease infinite alternate;
+        }
+
+        .tag3 {
+            position: absolute;
+            left: 920px;
+            top: 700px;
+            animation: tag 0.5s 0.4s ease infinite alternate;
+        }
+
+        .tag4 {
+            position: absolute;
+            left: 1240px;
+            top: 700px;
+            animation: tag 0.5s 0.6s ease infinite alternate;
+        }
+
+        @keyframes tag {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(90px);
+            }
+        }
+
+        .san {
+            position: absolute;
+            left: 280px;
+            top: 40px;
+            animation: san 1s ease infinite alternate;
+        }
+
+        @keyframes san {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(100px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="./img/yun1.png" alt="yun1" class="yun1">
+    <img src="./img/yun2.png" alt="yun2" class="yun2">
+    <img src="./img/yun3.png" alt="yun3" class="yun3">
+    <img src="./img/font1.png" alt="font1" class="font1">
+    <img src="./img/lu.png" alt="lu" class="lu">
+    <img src="./img/1.png" alt="1" class="tag1">
+    <img src="./img/2.png" alt="1" class="tag2">
+    <img src="./img/3.png" alt="1" class="tag3">
+    <img src="./img/4.png" alt="1" class="tag4">
+    <img src="./img/san.png" alt="san" class="san">
+</div>
+</body>
+</html>

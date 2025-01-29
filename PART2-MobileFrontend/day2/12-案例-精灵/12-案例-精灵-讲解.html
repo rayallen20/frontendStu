@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-案例-精灵-讲解</title>
+    <style>
+        .box {
+            margin: 100px auto;
+            width: 140px;
+            height: 140px;
+            /*border: 1px solid #000000;*/
+            overflow: hidden;
+            animation: moveRight 3s linear forwards;
+        }
+
+        .box img {
+            animation: moveLeft 0.5s steps(12) infinite;
+        }
+
+        @keyframes moveLeft {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-1680px);
+            }
+        }
+
+        @keyframes moveRight {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(420px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="./img/bg.png" alt="bg">
+</div>
+</body>
+</html>

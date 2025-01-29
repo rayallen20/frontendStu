@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-案例-精灵-讲解-多个动画</title>
+    <style>
+        .box {
+            margin: 100px auto;
+            width: 130px;
+            height: 140px;
+            background: url("./img/bg.png") no-repeat;
+            /* 这里设置12帧 是因为精灵图有12个移动效果 */
+            animation:
+                moveBgLeft 0.5s steps(12) infinite,
+                moveRight 2s linear forwards;
+        }
+
+        @keyframes moveBgLeft {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: -1680px 0;
+            }
+        }
+
+        @keyframes moveRight {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(420px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

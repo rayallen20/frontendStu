@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-案例-走马灯-讲解</title>
+    <style>
+        .box {
+            margin: 100px auto;
+            width: 1440px;
+            height: 270px;
+            border: 10px solid #000000;
+            overflow: hidden;
+        }
+
+        .main {
+            display: flex;
+            width: 4800px;
+            height: 270px;
+            animation: moveLeft 6s linear infinite;
+        }
+
+        .main img:nth-child(1) {
+
+        }
+
+        @keyframes moveLeft  {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-3360px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="main">
+        <img src="./img/1.jpg" alt="1">
+        <img src="./img/2.jpg" alt="1">
+        <img src="./img/3.jpg" alt="1">
+        <img src="./img/4.jpg" alt="1">
+        <img src="./img/5.jpg" alt="1">
+        <img src="./img/6.jpg" alt="1">
+        <img src="./img/7.jpg" alt="1">
+        <!-- 补充3张图片 其目的是为了让动画结束时的状态和开始时一样 -->
+        <img src="./img/1.jpg" alt="1">
+        <img src="./img/2.jpg" alt="1">
+        <img src="./img/3.jpg" alt="1">
+    </div>
+</div>
+</body>
+</html>

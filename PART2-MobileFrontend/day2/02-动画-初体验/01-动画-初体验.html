@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-动画-初体验</title>
+    <style>
+        @keyframes moveAndChangeBackground {
+            from {
+                transform: translateX(0);
+                background: skyblue;
+            }
+
+            to {
+                transform: translateX(200px);
+                background: slategray;
+            }
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000000;
+            margin: 100px auto;
+            animation: moveAndChangeBackground 5s;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>
