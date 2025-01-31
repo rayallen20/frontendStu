@@ -1,0 +1,92 @@
+@import "base";
+
+@rootSize: 37.5rem;
+@main-color: #2CB5A5;
+@border-color: #EDEDED;
+@font-color: #848484;
+
+/* header部分开始 */
+header {
+    height: (44 / @rootSize);
+    //background: skyblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 (15 / @rootSize) 0 (17 / @rootSize);
+
+    .icon-left {
+        font-size: (17 / @rootSize);
+    }
+
+    h2 {
+        font-size: (17 / @rootSize);
+        font-weight: 400;
+    }
+
+    a {
+        font-size: (15 / @rootSize);
+        color: @main-color;
+    }
+}
+
+.banner {
+    margin: (30.5 / @rootSize) 0 (33.5 / @rootSize) 0;
+    //background: deepskyblue;
+    text-align: center;
+
+    img {
+        margin-bottom: (18 / @rootSize);
+        width: (240 / @rootSize);
+        height: (206 / @rootSize);
+    }
+
+    p {
+        font-size: (16 / @rootSize);
+        span {
+            color: @main-color;
+        }
+    }
+}
+
+.content {
+    padding: 0 (15 / @rootSize);
+    //background: deepskyblue;
+
+    li {
+        display: flex;
+        align-items: center;
+        margin-bottom: (20 / @rootSize);
+        padding: (15 / @rootSize) (15 / @rootSize) (15 / @rootSize) (10 / @rootSize);
+        border: 1px solid @border-color;
+        border-radius: (4 / @rootSize);
+    }
+
+    .pic {
+        margin-right: (13.5 / @rootSize);
+        width: (40 / @rootSize);
+        height: (40 / @rootSize);
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .text {
+        flex: 1;
+        h4 {
+            margin-bottom: (4 / @rootSize);
+            font-size: (16 / @rootSize);
+            font-weight: 400;
+        }
+
+        p {
+            font-size: (14 / @rootSize);
+            color: @font-color;
+        }
+    }
+
+    .icon-right {
+        font-size: (17 / @rootSize);
+    }
+}

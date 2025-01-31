@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-百分比布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .toolbar {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            background: #cccccc;
+            /*
+            Tips: 固定定位的元素,表现形式和行内块元素相同,不再独占一行,
+            所以这里要加上宽度100%
+            */
+            width: 100%;
+            height: 50px;
+        }
+
+        .toolbar ul {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .toolbar ul li {
+            width: 25%;
+            text-align: center;
+        }
+
+        .toolbar ul li img {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="toolbar">
+    <ul>
+        <li>
+            <a href="#"><img src="./img/index.png" alt=""></a>
+        </li>
+        <li>
+            <a href="#"><img src="./img/classify.png" alt=""></a>
+        </li>
+        <li>
+            <a href="#"><img src="./img/car.png" alt=""></a>
+        </li>
+        <li>
+            <a href="#"><img src="./img/login.png" alt=""></a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

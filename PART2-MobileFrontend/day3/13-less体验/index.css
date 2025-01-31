@@ -1,0 +1,8 @@
+.box {
+  background: skyblue;
+  width: 1.81333333rem;
+  height: 0.77333333rem;
+}
+.box .son {
+  background: lightgray;
+}

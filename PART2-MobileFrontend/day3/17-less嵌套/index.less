@@ -1,0 +1,23 @@
+.box {
+    width: 200px;
+    height: 300 + 6px;
+    background: skyblue;
+
+    .son {
+        width: 150px;
+        height: (300 / 6px);
+        background: lightgray;
+
+        &:hover {
+            background: chartreuse;
+        }
+
+        &:after {
+            content: "after伪元素";
+        }
+    }
+
+    &:hover {
+        background: lightyellow;
+    }
+}

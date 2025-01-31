@@ -1,0 +1,104 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+body,
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, PingFangSC-Regular, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+img {
+  vertical-align: bottom;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  color: #333;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.header {
+  margin: 1.17333333rem 0 0.81333333rem 0;
+  display: flex;
+  justify-content: space-between;
+  width: 10rem;
+  height: 1.17333333rem;
+  padding: 0 0.4rem 0 0.45333333rem;
+  line-height: 1.17333333rem;
+}
+.header .icon-left {
+  font-size: 0.64rem;
+}
+.header h1 {
+  font-size: 0.45333333rem;
+}
+.header .record {
+  font-size: 0.4rem;
+  color: #2CB5A5;
+}
+.banner {
+  margin-bottom: 0.89333333rem;
+  width: 100%;
+}
+.banner img {
+  display: block;
+  margin: 0 auto 0.48rem;
+  width: 6.4rem;
+  height: 5.49333333rem;
+}
+.banner h3 {
+  text-align: center;
+  font-size: 0.42666667rem;
+  font-weight: 400;
+}
+.banner h3 span {
+  color: #2CB5A5;
+}
+.content {
+  width: 100%;
+  padding: 0 0.4rem;
+}
+.content li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  width: 9.2rem;
+  height: 2.08rem;
+  padding: 0.26666667rem 0.26666667rem 0.26666667rem 0.4rem;
+  border: 0.5px solid #EDEDED;
+}
+.content li img {
+  width: 1.06666667rem;
+  height: 1.06666667rem;
+}
+.content li div {
+  margin-left: 0.36rem;
+  flex: 1;
+}
+.content li div h3 {
+  margin-bottom: 0.10666667rem;
+  font-size: 0.42666667rem;
+  font-weight: 400;
+}
+.content li div p {
+  font-size: 0.34666667rem;
+  color: #848484;
+}
+.content li .icon-right {
+  font-size: 0.45333333rem;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,102 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+body,
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, PingFangSC-Regular, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+img {
+  vertical-align: bottom;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  color: #333;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+/* header部分开始 */
+header {
+  height: 1.17333333rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.4rem 0 0.45333333rem;
+}
+header .icon-left {
+  font-size: 0.45333333rem;
+}
+header h2 {
+  font-size: 0.45333333rem;
+  font-weight: 400;
+}
+header a {
+  font-size: 0.4rem;
+  color: #2CB5A5;
+}
+.banner {
+  margin: 0.81333333rem 0 0.89333333rem 0;
+  text-align: center;
+}
+.banner img {
+  margin-bottom: 0.48rem;
+  width: 6.4rem;
+  height: 5.49333333rem;
+}
+.banner p {
+  font-size: 0.42666667rem;
+}
+.banner p span {
+  color: #2CB5A5;
+}
+.content {
+  padding: 0 0.4rem;
+}
+.content li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.53333333rem;
+  padding: 0.4rem 0.4rem 0.4rem 0.26666667rem;
+  border: 1px solid #EDEDED;
+  border-radius: 0.10666667rem;
+}
+.content .pic {
+  margin-right: 0.36rem;
+  width: 1.06666667rem;
+  height: 1.06666667rem;
+}
+.content .pic img {
+  width: 100%;
+  height: 100%;
+}
+.content .text {
+  flex: 1;
+}
+.content .text h4 {
+  margin-bottom: 0.10666667rem;
+  font-size: 0.42666667rem;
+  font-weight: 400;
+}
+.content .text p {
+  font-size: 0.37333333rem;
+  color: #848484;
+}
+.content .icon-right {
+  font-size: 0.45333333rem;
+}
