@@ -1,0 +1,28 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+.navbar .navbar-brand {
+  flex-grow: 1;
+}
+.navbar .navbar-collapse {
+  flex-grow: 0;
+}
+.carousel {
+  margin-bottom: 50px;
+}
+.title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.img-content .row {
+  justify-content: space-between;
+}
+.img-content .row div {
+  background: skyblue;
+  height: 200px;
+}
+/*# sourceMappingURL=index.css.map */

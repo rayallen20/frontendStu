@@ -1,0 +1,103 @@
+/* 导航条部分开始 */
+.bg-body-tertiary {
+    background: transparent !important;
+
+    .navbar-collapse {
+        flex-grow: 0;
+    }
+}
+/* 导航条部分结束 */
+
+/* 轮播图部分开始 */
+.carousel {
+    @media (min-width: 0) and (max-width: 768px) {
+        .carousel-item {
+            height: 250px;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 992px) {
+        .carousel-item {
+            height: 400px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .carousel-item {
+            height: 500px;
+        }
+    }
+
+    .carousel-item {
+        //height: 500px;
+        background-size: cover;
+        background-position: center 0;
+        &:nth-child(1) {
+            background-image: url("../assets/uploads/banner_1.jpg");
+        }
+
+        &:nth-child(2) {
+            background-image: url("../assets/uploads/banner_2.jpg");
+        }
+
+        &:nth-child(3) {
+            background-image: url("../assets/uploads/banner_3.jpg");
+        }
+
+        &:nth-child(4) {
+            background-image: url("../assets/uploads/banner_4.jpg");
+        }
+    }
+}
+/* 轮播图部分结束 */
+
+/* 内容部分开始 */
+.main {
+    margin-top: 60px;
+    text-align: center;
+
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+        color: #a1a4b3;
+    }
+
+    .content {
+        .row {
+            // 这里选中了4个div
+            div {
+                margin-bottom: 10px;
+                height: 200px;
+
+                // 这里选中的是4个中的第1个div
+                &:nth-child(1) a {
+                    display: block;
+                    height: 200px;
+                    background: cadetblue;
+                }
+
+                &:nth-child(2) a {
+                    display: block;
+                    height: 200px;
+                    background: greenyellow;
+                }
+
+                &:nth-child(3) a {
+                    display: block;
+                    height: 200px;
+                    background: lightslategray;
+                }
+
+                &:nth-child(4) a {
+                    display: block;
+                    height: 200px;
+                    background: forestgreen;
+                }
+            }
+        }
+    }
+}
+/* 内容部分结束 */

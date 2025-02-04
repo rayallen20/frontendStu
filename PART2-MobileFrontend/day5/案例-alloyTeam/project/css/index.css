@@ -1,0 +1,78 @@
+/* 导航条部分开始 */
+.bg-body-tertiary {
+  background: transparent !important;
+}
+.bg-body-tertiary .navbar-collapse {
+  flex-grow: 0;
+}
+/* 导航条部分结束 */
+/* 轮播图部分开始 */
+@media (min-width: 0) and (max-width: 768px) {
+  .carousel .carousel-item {
+    height: 250px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .carousel .carousel-item {
+    height: 400px;
+  }
+}
+@media (min-width: 992px) {
+  .carousel .carousel-item {
+    height: 500px;
+  }
+}
+.carousel .carousel-item {
+  background-size: cover;
+  background-position: center 0;
+}
+.carousel .carousel-item:nth-child(1) {
+  background-image: url("../assets/uploads/banner_1.jpg");
+}
+.carousel .carousel-item:nth-child(2) {
+  background-image: url("../assets/uploads/banner_2.jpg");
+}
+.carousel .carousel-item:nth-child(3) {
+  background-image: url("../assets/uploads/banner_3.jpg");
+}
+.carousel .carousel-item:nth-child(4) {
+  background-image: url("../assets/uploads/banner_4.jpg");
+}
+/* 轮播图部分结束 */
+/* 内容部分开始 */
+.main {
+  margin-top: 60px;
+  text-align: center;
+}
+.main h2 {
+  font-size: 24px;
+}
+.main p {
+  font-size: 14px;
+  color: #a1a4b3;
+}
+.main .content .row div {
+  margin-bottom: 10px;
+  height: 200px;
+}
+.main .content .row div:nth-child(1) a {
+  display: block;
+  height: 200px;
+  background: cadetblue;
+}
+.main .content .row div:nth-child(2) a {
+  display: block;
+  height: 200px;
+  background: greenyellow;
+}
+.main .content .row div:nth-child(3) a {
+  display: block;
+  height: 200px;
+  background: lightslategray;
+}
+.main .content .row div:nth-child(4) a {
+  display: block;
+  height: 200px;
+  background: forestgreen;
+}
+/* 内容部分结束 */
