@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>28-案例-用户订单</title>
+    <style>
+        h2 {
+            margin: 100px auto;
+            text-align: center;
+        }
+        
+        .order {
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            /* 这里不加溢出隐藏就无法显示圆角 */
+            overflow: hidden;
+        }
+        
+        .order, th, td {
+            padding: 10px 50px;
+            border: 1px solid #ffffff;
+        }
+        
+        .order tr:nth-child(1) {
+            background: linear-gradient(to right, #f46e33, #f057a5);
+            color: #ffffff;
+        }
+        
+        .order tr:nth-child(2) {
+            background: linear-gradient(to right, #fdf0eb, #fdeff6);
+            color: #000000;
+        }
+        
+        .order tr:nth-child(2) td:last-child {
+            color: #f282bb;
+        }
+    </style>
+</head>
+<body>
+<h2>订单详情页面</h2>
+<!--<table class="order">-->
+<!--    <tr>-->
+<!--        <th>商品名称</th>-->
+<!--        <th>商品价格</th>-->
+<!--        <th>商品数量</th>-->
+<!--        <th>总价</th>-->
+<!--        <th>收货地址</th>-->
+<!--    </tr>-->
+<!--    -->
+<!--    <tr>-->
+<!--        <td>小米青春版PLUS</td>-->
+<!--        <td>1999元</td>-->
+<!--        <td>2</td>-->
+<!--        <td>3998元</td>-->
+<!--        <td>花果山二号路</td>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<script>
+    let price = prompt('请输入商品价格')
+    let num = prompt('请输入商品数量')
+    let position = prompt('请输入收货地址')
+    
+    let total = price * num
+    
+    let table = `
+    <table class="order">
+    <tr>
+        <th>商品名称</th>
+        <th>商品价格</th>
+        <th>商品数量</th>
+        <th>总价</th>
+        <th>收货地址</th>
+    </tr>
+    
+    <tr>
+        <td>小米青春版PLUS</td>
+        <td>${price}</td>
+        <td>${num}</td>
+        <td>${total}</td>
+        <td>${position}</td>
+    </tr>
+</table>
+    `
+    
+    document.write(table)
+</script>
+</body>
+</html>
