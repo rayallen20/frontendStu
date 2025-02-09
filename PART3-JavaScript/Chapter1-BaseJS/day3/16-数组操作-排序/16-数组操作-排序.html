@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-数组操作-排序</title>
+</head>
+<body>
+<script>
+    let nums = [4, 5, 3, 6, 2, 5, 1]
+    nums.sort(function (a, b) {
+        return a - b
+    })
+    console.log(nums)
+    
+    nums.sort(function (a, b) {
+        return b - a
+    })
+    console.log(nums)
+</script>
+</body>
+</html>

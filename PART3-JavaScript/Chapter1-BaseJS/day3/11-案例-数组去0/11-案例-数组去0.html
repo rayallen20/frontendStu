@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-案例-数组去0</title>
+</head>
+<body>
+<script>
+    let nums = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7]
+    let results = []
+    let thresholdValue = 0
+    
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== thresholdValue) {
+            results.push(nums[i])
+        }
+    }
+    
+    console.log(results)
+</script>
+</body>
+</html>

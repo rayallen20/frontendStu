@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-案例-手风琴图片</title>
+    <style>
+        .container {
+            display: flex;
+        }
+        
+        .crop-container {
+            position: relative;
+            width: 150px;
+            height: 260px;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+        
+        .crop-container:hover {
+            width: 400px;
+            overflow: visible;
+        }
+        
+        .crop-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 260px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let containerStart = '<div class="container">'
+    let containerEnd = '</div>'
+    let images = [
+            './img/1.jpg',
+            './img/2.jpg',
+            './img/3.jpg',
+            './img/4.jpg',
+            './img/5.jpg',
+            './img/6.jpg',
+            './img/7.jpg',
+    ]
+    
+    let innerContainer = ''
+    
+    for (let i = 0; i < images.length; i++) {
+        innerContainer = `
+<div class="crop-container">
+    <img src="${images[i]}" alt="${i}">
+</div>
+`
+        
+        containerStart += innerContainer
+    }
+    
+    containerStart += containerEnd
+    document.write(containerStart)
+</script>
+</body>
+</html>

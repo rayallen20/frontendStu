@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>15-案例-柱状图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            margin: 100px auto;
+            width: 600px;
+            height: 450px;
+            background: #0c143d;
+        }
+        
+        .container h3 {
+            color: #9799ab;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .container .inner {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            margin: 0 auto;
+            width: 500px;
+            height: 300px;
+            border: none;
+            border-left: 1px solid #4b578f;
+            border-bottom: 1px solid #4b578f;
+        }
+        
+        .histogram {
+            position: relative;
+            width: 50px;
+            height: 200px;
+            background: linear-gradient(#3c99ff, #4489d0, #2283e4);
+            border-radius: 10px;
+            transition: all .2s;
+        }
+        
+        .histogram:hover {
+            animation: bg .5s alternate infinite;
+        }
+        
+        @keyframes bg {
+            to {
+                box-shadow: 0 5px 29px rgb(53 111 226 / 88%);
+                background: linear-gradient(#3c99ff, #68aff6, #2283e4);
+            }
+        }
+        
+        .histogram h5 {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            /* 定位导致脱标 脱标则不再继承父元素的宽度 所以固定宽度 避免产生换行 */
+            width: 50px;
+            color: #9799ab;
+            text-align: center;
+        }
+        
+        .histogram .bottom {
+            position: absolute;
+            bottom: -39px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 57px;
+            color: #9799ab;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<!--<div class="container">-->
+<!--    <h3>2099年季度销售数额(单位万)</h3>-->
+<!--    <div class="inner">-->
+<!--        <div class="histogram" style="height: 150px;">-->
+<!--            <h5>123万</h5>-->
+<!--            <div class="bottom">-->
+<!--                <p>|</p>-->
+<!--                <p>第一季度</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="histogram"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<script>
+    let season = ['一', '二', '三', '四']
+    let containerStart = '<div class="container">'
+    let title = '<h3>2099年季度销售数额(单位万)</h3>'
+    let inner = '<div class="inner">'
+    let containerEnd = '</div>'
+    
+    containerStart += title
+    containerStart += inner
+    
+    let amountInput = ''
+    let amount = 0
+    let histogram = ''
+    
+    for (let i = 0; i < 4; i++) {
+        amountInput = prompt('请输入销售额')
+        amount = Number(amountInput)
+        histogram = `
+<div class="histogram" style="height: ${amount}px;">
+    <h5>${amount}万</h5>
+    <div class="bottom">
+        <p>|</p>
+        <p>第${season[i]}季度</p>
+    </div>
+</div>
+`
+        containerStart += histogram
+    }
+    
+    containerStart += containerEnd
+    containerStart += containerEnd
+    
+    document.write(containerStart)
+</script>
+</body>
+</html>

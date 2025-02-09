@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-数组-求和及平均值</title>
+</head>
+<body>
+<script>
+    let nums = [2, 6, 1, 7, 4]
+    let sum = 0
+    let numsLen = nums.length
+    for (let i = 0; i < numsLen; i++) {
+        sum += nums[i]
+    }
+    
+    let avg = sum / numsLen
+    console.log('sum:', sum)
+    console.log('avg:', avg)
+</script>
+</body>
+</html>

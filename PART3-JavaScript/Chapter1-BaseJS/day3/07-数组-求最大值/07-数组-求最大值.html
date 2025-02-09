@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-数组-求最大值</title>
+</head>
+<body>
+<script>
+    let nums = [2, 6, 1, 25, 7]
+    
+    let max = nums[0]
+    
+    if (nums.length === 1) {
+        console.log(max)
+    }
+    
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] > max) {
+            max = nums[i]
+        }
+    }
+    
+    console.log(max)
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13-数组操作-splice</title>
+</head>
+<body>
+<script>
+    // 删除元素
+    let nums1 = [0, 2, 3, 4, 6]
+    let removed = nums1.splice(1, 2)  // 从索引1的位置开始,删除2个元素
+    console.log(nums1)
+    console.log(removed)
+    
+    // 替换元素
+    let nums2 = [0, 2, 3, 4, 6]
+    let alert = nums2.splice(0, 1, 1) // 删除索引0位置的元素,并将该元素的值替换为1
+    console.log(nums2)
+    console.log(alert)
+    
+    // 添加元素
+    let nums3 = [1, 2, 3, 4, 5]
+    let add = nums3.splice(2, 0, 21, 22, 23) // 从索引2的位置前方插入3个元素
+    console.log(nums3)
+    console.log(add)
+</script>
+</body>
+</html>

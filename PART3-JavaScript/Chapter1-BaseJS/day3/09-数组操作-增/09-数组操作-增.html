@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-数组操作-增</title>
+</head>
+<body>
+<script>
+    let names = ['张三', '李四', '王五', '赵六']
+    console.log('push操作前,数组长度为: ', names.length)
+    
+    let afterPushLen = names.push('钱七')
+    console.log('push操作后,数组长度为: ', afterPushLen)
+    console.log(names[4])
+    
+    console.log('unshift操作前,数组长度为: ', names.length)
+    let afterUnshiftLen = names.unshift('孙八')
+    console.log('unshift操作后,数组长度为: ', afterUnshiftLen)
+    console.log(names[0])
+</script>
+</body>
+</html>
