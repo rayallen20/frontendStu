@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-逻辑中断</title>
+</head>
+<body>
+<script>
+    function sum1(a, b) {
+        return  a + b
+    }
+    
+    console.log(sum1(1, 2)) // 3
+    console.log(sum1()) // NaN
+    
+    function sum2(a, b) {
+        a = a || 0
+        b = b || 0
+        return a + b
+    }
+    
+    console.log(sum2(1, 2)) // 3
+    console.log(sum2()) // 0
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-案例-转换时间</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            margin: 100px auto;
+            width: 190px;
+            height: 260px;
+            background: url("./img/bg.png") no-repeat;
+            padding-top: 170px;
+        }
+        
+        .container .inner {
+            margin: 0 auto;
+            width: 150px;
+            height: 60px;
+            /*background: skyblue;*/
+        }
+        
+        .inner h4 {
+            font-size: 14px;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .inner .timer {
+            display: flex;
+            justify-content: center;
+            /*background: darkslategray;*/
+            width: 100%;
+            height: 24px;
+        }
+        
+        .inner .timer div {
+            width: 30px;
+            height: 100%;
+            background: darkslategray;
+            text-align: center;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 24px;
+        }
+        
+        .inner .timer span {
+            /*line-height: 60px;*/
+            margin: 0 5px;
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 24px;
+        }
+    </style>
+</head>
+<body>
+<!--<div class="container">-->
+<!--    <div class="inner">-->
+<!--        <h4>转换为时分秒</h4>-->
+<!--        <div class="timer">-->
+<!--            <div>01</div>-->
+<!--            <span>:</span>-->
+<!--            <div>22</div>-->
+<!--            <span>:</span>-->
+<!--            <div>58</div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<script>
+    const second_to_hour = 3600
+    const second_to_minute = 60
+    
+    try {
+        let seconds = +prompt("请输入秒数: ")
+        let results = getTime(seconds)
+        let [resultHours, resultMinutes, resultSeconds] = results
+        
+        let hourOutput = fillZero(resultHours.toString())
+        let minuteOutput = fillZero(resultMinutes.toString())
+        let secondOutput = fillZero(resultSeconds.toString())
+        
+        let content = `
+<div class="container">
+    <div class="inner">
+        <h4>转换为时分秒</h4>
+        <div class="timer">
+            <div>${hourOutput}</div>
+            <span>:</span>
+            <div>${minuteOutput}</div>
+            <span>:</span>
+            <div>${secondOutput}</div>
+        </div>
+    </div>
+</div>
+        `
+        
+        document.write(content)
+    }catch (error) {
+        console.log(error)
+    }
+    
+    /**
+     * 本函数用于根据输入的秒数,转换为时分秒
+     * @param {number} totalSeconds 总秒数
+     * @throws {Error} 参数类型必须为number
+     * @throws {Error} 参数值必须大于0
+     * @returns {Array<number>} 返回一个数组,包含时分秒
+     * 其中索引0为小时,索引1为分钟,索引2为秒
+     * @example
+     * getTime(3722) // [1, 2, 2]
+     * */
+    function getTime(totalSeconds) {
+        if (typeof totalSeconds !== 'number') {
+            throw new Error('参数类型必须为number')
+        }
+        
+        if (totalSeconds < 0) {
+            throw new Error('参数值必须大于0')
+        }
+        
+        let hours = Math.trunc(totalSeconds / second_to_hour)
+        let remainSeconds = totalSeconds % second_to_hour
+        let minutes = Math.trunc(remainSeconds / second_to_minute)
+        let seconds = remainSeconds % second_to_minute
+        return [hours, minutes, seconds]
+    }
+    
+    /**
+     * 本函数用于为给定字符串补0
+     * 规则: 若字符串长度为1,则在字符串前面补0
+     * @param {string} str 给定字符串
+     * @throws {Error} 参数类型必须为string
+     * @returns {string} 返回补0后的字符串
+     * */
+    function fillZero(str) {
+        if (typeof str !== 'string') {
+            throw new Error('参数类型必须为string')
+        }
+        
+        if (str.length === 1) {
+            return '0' + str
+        }
+        return str
+    }
+</script>
+</body>
+</html>

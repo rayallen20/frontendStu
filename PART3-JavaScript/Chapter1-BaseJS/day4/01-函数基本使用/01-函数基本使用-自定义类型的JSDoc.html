@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-函数基本使用-自定义类型的JSDoc</title>
+</head>
+<body>
+<script>
+    /**
+     * 本类用于指代用户实体
+     * */
+    class User {
+        /**
+         * 本方法用于创建一个用户实例
+         * @param {string} name 用户名
+         * @param {number} age 年龄
+         * */
+        constructor(name, age) {
+            /** @type {string} 用户姓名 */
+            this.name = name
+            
+            /** @type {number} 用户年龄 */
+            this.age = age
+        }
+        
+        /**
+         * 本方法用于返回用户姓名
+         * @return {string} 用户姓名
+         * */
+        getName() {
+            return this.name
+        }
+        
+        /**
+         * 本方法用于返回用户年龄
+         * @return {number} 用户年龄
+         * */
+        getAge() {
+            return this.age
+        }
+        
+        /**
+         * 本方法用于设定用户年龄
+         * @param {number} newAge 新年龄
+         * @throws {Error} 年龄必须是数字
+         * @throws {Error} 年龄不能小于0
+         * @return {void}
+         * */
+        setAge(newAge) {
+            if (typeof newAge !== 'number') {
+                throw new Error('年龄必须是数字')
+            }
+            
+            if (newAge < 0) {
+                throw new Error('年龄不能小于0')
+            }
+            
+            this.age = newAge
+        }
+    }
+</script>
+</body>
+</html>

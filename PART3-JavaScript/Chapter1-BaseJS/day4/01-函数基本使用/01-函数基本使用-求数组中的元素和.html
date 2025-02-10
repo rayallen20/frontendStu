@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-函数基本使用-求数组中的元素和</title>
+</head>
+<body>
+<script>
+    let nums = [1, 2, 3, 4, 5]
+    console.log(sum(nums)) // 15
+    
+    /**
+     * 本函数用于求一个数组中所有元素的和
+     * @param {Array<number>} nums 元素为number类型的数组
+     * @throws {Error} 如果nums不是数组,则抛出错误
+     * @throws {Error} 如果nums中有元素不是number类型,则抛出错误
+     * @returns {number} 返回数组中所有元素的和
+     * @example
+     * sum([1, 2, 3, 4, 5]) // 15
+     * */
+    function sum(nums) {
+        if (!Array.isArray(nums)) {
+            throw new Error('参数类型必须为数组')
+        }
+        
+        let sum = 0
+        
+        for (let i = 0; i < nums.length; i++) {
+            if (typeof nums[i] !== 'number') {
+                throw new Error('数组元素必须为数字')
+            }
+            sum += nums[i]
+        }
+        
+        return sum
+    }
+</script>
+</body>
+</html>

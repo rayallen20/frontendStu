@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-函数基本使用-判断数组中是否存在某个元素</title>
+</head>
+<body>
+<script>
+    let arr = [1, 4, 2, 8]
+    let target = 2
+    console.log(exist(arr, target)) // true
+    
+    /**
+     * 本函数用于判断数组中是否存在某个元素
+     * @param {Array} arr 要判断的数组
+     * @param {any} target 要判断的元素
+     * @throws {Error} arr必须是一个数组
+     * @returns {boolean} 如果存在则返回true，否则返回false
+     * */
+    function exist(arr, target) {
+        if (!Array.isArray(arr)) {
+            throw new Error('arr必须是一个数组')
+        }
+        
+        let flag = false
+        
+        if (arr.length === 0) {
+            return flag
+        }
+        
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === target) {
+                flag = true
+                break
+            }
+        }
+        
+        return flag
+    }
+</script>
+</body>
+</html>

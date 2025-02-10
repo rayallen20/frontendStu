@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-函数基本使用-计算1到100的累加和</title>
+</head>
+<body>
+<script>
+    let num1 = +prompt('请输入第一个数字')
+    let num2 = +prompt('请输入第二个数字')
+    let result = accumulate(num1, num2)
+    console.log(result)
+    
+    /**
+     * 本方法用于计算从start到end的累加和
+     * @param {number} start - 起始值 默认为1
+     * @param {number} end - 结束值 默认为100
+     * @throws {Error} - 参数类型错误
+     * @throws {Error} - 起始值不能大于结束值
+     * @returns {number} - 返回累加和
+     * @example
+     * accumulate(1, 100) // 5050
+     * */
+    function accumulate(start = 1, end = 100) {
+        if (typeof start !== 'number' || typeof end !== 'number') {
+            throw new Error('参数类型错误')
+        }
+        
+        if (start > end) {
+            throw new Error('起始值不能大于结束值')
+        }
+        
+        let sum = 0
+        
+        for (let i = start; i <= end ; i++) {
+            sum += i
+        }
+        
+        return sum
+    }
+</script>
+</body>
+</html>

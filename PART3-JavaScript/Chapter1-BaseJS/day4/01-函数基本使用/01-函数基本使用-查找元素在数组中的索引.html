@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-函数基本使用-查找元素在数组中的索引</title>
+</head>
+<body>
+<script>
+    let arr = [1, 2, 3, 4, 5]
+    let target = 3
+    console.log(index(arr, target)) // 2
+    
+    /**
+     * 本函数用于查找元素在数组中的索引
+     * @param {Array} arr 要查找的数组
+     * @param {any} target 要查找的元素
+     * @throws {Error} 如果第一个参数不是数组,则抛出错误
+     * @returns {number} 返回元素在数组中的索引，如果没有找到则返回-1
+     * */
+    function index(arr, target) {
+        if (!Array.isArray(arr)) {
+            throw new Error('第一个参数必须是数组')
+        }
+        
+        let index = -1
+        
+        if (arr.length === 0) {
+            return index
+        }
+        
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === target) {
+                index = i
+                break
+            }
+        }
+        
+        return index
+    }
+</script>
+</body>
+</html>

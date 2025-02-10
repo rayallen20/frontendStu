@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-函数基本使用-计算两数之和</title>
+</head>
+<body>
+<script>
+    let a = 3
+    let b = 5
+    let result = sum(a, b)
+    console.log(result)
+    
+    /**
+     * 本函数用于计算两数之和
+     * @param {number} a 第一个数
+     * @param {number} b 第二个数
+     * @returns {number} 两数之和
+     * @throws {Error} a和b必须是数字
+     * @example
+     * sum(1, 2) // 3
+     * */
+    function sum(a, b) {
+        if (typeof a !== 'number' || typeof b !== 'number') {
+            throw new Error('a和b必须是数字')
+        }
+        
+        return a + b
+    }
+</script>
+</body>
+</html>
