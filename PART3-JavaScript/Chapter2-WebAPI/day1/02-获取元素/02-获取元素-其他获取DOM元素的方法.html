@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-获取元素-其他获取DOM元素的方法</title>
+</head>
+<body>
+<div id="box">id为box的div</div>
+<h3 class="title">第1个h3</h3>
+<h3 class="title">第2个h3</h3>
+
+<p>第1个p</p>
+<p>第2个p</p>
+
+<label>
+    <input type="text" name="textInput">第1个text
+</label>
+
+<label>
+    <input type="text" name="textInput">第2个text
+</label>
+
+<script>
+    // 1. 根据id获取元素
+    const box = document.getElementById('box')
+    console.dir(box)
+    console.log(box.innerHTML)
+    
+    // 2. 根据类名获取元素
+    const titleCollection = document.getElementsByClassName('title')
+    console.dir(titleCollection)
+    console.log(typeof titleCollection)
+    for (let i = 0; i < titleCollection.length; i++) {
+        console.dir(titleCollection[i])
+        console.log(titleCollection[i].innerHTML)
+    }
+    
+    // 3. 根据标签名获取元素
+    const pCollection = document.getElementsByTagName('p')
+    console.dir(pCollection)
+    console.log(typeof pCollection)
+    for (let i = 0; i < pCollection.length; i++) {
+        console.dir(pCollection[i])
+        console.log(pCollection[i].innerHTML)
+    }
+    
+    // 4. 根据name属性获取元素
+    const listCollection = document.getElementsByName('textInput')
+    console.dir(listCollection)
+    console.log(typeof listCollection)
+    for (let i = 0; i < listCollection.length; i++) {
+        console.dir(listCollection[i])
+        console.log(listCollection[i].innerHTML)
+    }
+</script>
+</body>
+</html>

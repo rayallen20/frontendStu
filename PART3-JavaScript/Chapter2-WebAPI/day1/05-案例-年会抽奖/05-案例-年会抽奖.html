@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-案例-年会抽奖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            width: 840px;
+            height: 420px;
+            margin: 100px auto;
+            background: url("./img/bg01.jpg") center no-repeat;
+            background-size: cover;
+            padding-top: 100px;
+        }
+        
+        .container .content {
+            width: 400px;
+            height: 200px;
+            /*background: skyblue;*/
+            margin-left: 200px;
+        }
+        
+        .content p, .content h3, .content h4, .content h5 {
+            margin-bottom: 20px;
+        }
+        
+        .name {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <p>年会抽奖</p>
+<!--        <h3>一等奖: <span class="name">张三</span></h3>-->
+<!--        <h4>二等奖: <span class="name">张三</span></h4>-->
+<!--        <h5>三等奖: <span class="name">张三</span></h5>-->
+    </div>
+</div>
+
+<script>
+    const candidates = ['张三', '李四', '王五', '赵六', '钱七', '孙八', '周九', '吴十']
+    const winners = raffle(candidates)
+    
+    const contentBox = document.querySelector('.content')
+    let inner = `
+<h3>一等奖: <span class="name">${winners[0]}</span></h3>
+<h4>二等奖: <span class="name">${winners[1]}</span></h4>
+<h5>三等奖: <span class="name">${winners[2]}</span></h5>
+    `
+    contentBox.innerHTML += inner
+    
+    
+    /**
+     * 本函数用于抽奖
+     * @param {Array<string>} candidates 参与抽奖的人员
+     * @throws {Error} 参数类型不是数组
+     * @throws {Error} 参与抽奖的人员数量不能为0
+     * @returns {Array<string>} winners 中奖人员名单
+     * */
+    function raffle(candidates) {
+        if (!Array.isArray(candidates)) {
+            throw new Error('参数类型不是数组')
+        }
+        
+        if (candidates.length === 0) {
+            throw new Error('参与抽奖的人员数量不能为0')
+        }
+        
+        const winners = []
+        let randomIndex = 0
+        let winner = ''
+        
+        while (winners.length !== 3) {
+            randomIndex = Math.floor(Math.random() * candidates.length)
+            winner = candidates[randomIndex]
+            if (!winners.includes(winner)) {
+                winners.push(winner)
+            }
+        }
+        
+        return winners
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-操作表单元素属性-使用布尔值表示的一些属性</title>
+</head>
+<body>
+<label>
+    <input type="radio" name="gender" value="male"> 男
+    <input type="radio" name="gender" value="female"> 女
+</label>
+
+<label>
+    <button type="submit">提交</button>
+</label>
+
+<label>
+    <select name="age">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+</label>
+
+<script>
+    const genderOptions = document.querySelectorAll('input[type="radio"]')
+    genderOptions[0].checked = true
+    
+    const submitButton = document.querySelector('button[type="submit"]')
+    submitButton.disabled = true
+    
+    const ageOptions = document.querySelectorAll('select[name="age"] option')
+    ageOptions[1].selected = true
+</script>
+</body>
+</html>

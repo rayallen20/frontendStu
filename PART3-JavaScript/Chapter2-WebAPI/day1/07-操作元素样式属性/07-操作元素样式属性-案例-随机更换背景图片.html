@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-操作元素样式属性-案例-随机更换背景图片</title>
+</head>
+<body>
+<script>
+    const body = document.body
+    
+    const backgroundImages = [
+            './img/bg1.jpg',
+            './img/bg2.jpg',
+            './img/bg3.jpg',
+            './img/bg4.jpg',
+            './img/bg5.jpg',
+    ]
+    
+    let randomIndex = Math.floor(Math.random() * backgroundImages.length)
+    body.style.background = `url(${backgroundImages[randomIndex]}) no-repeat`
+    body.style.backgroundSize = 'cover'
+</script>
+</body>
+</html>

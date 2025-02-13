@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-遍历对象</title>
+</head>
+<body>
+<script>
+    let pig = {
+        username: '佩奇',
+        age: 5,
+        gender: 'female',
+        sing: function (content) {
+            console.log(content)
+        }
+    }
+    
+    for (let key in pig) {
+        console.log(key)
+        console.log(pig[key])
+        console.log('----------------')
+    }
+</script>
+</body>
+</html>

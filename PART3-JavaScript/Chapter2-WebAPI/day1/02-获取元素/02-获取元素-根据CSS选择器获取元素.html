@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-获取元素-根据CSS选择器获取元素</title>
+</head>
+<body>
+<div class="box">盒子元素</div>
+<p class="box title">p标签内容</p>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+
+<script>
+    // 1. 获取单个元素
+    const div = document.querySelector('.box')
+    console.dir(div)
+    div.innerHTML = '我是新的内容'
+    
+    const title = document.querySelector('.box.title')
+    console.dir(title)
+    
+    // 2. 获取多个元素
+    const liCollection = document.querySelectorAll('ul li')
+    console.log(typeof liCollection)
+    console.dir(liCollection)
+    for (let i = 0; i < liCollection.length; i++) {
+        console.log(liCollection[i].innerHTML)
+    }
+</script>
+</body>
+</html>

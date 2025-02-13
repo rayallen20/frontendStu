@@ -1,0 +1,105 @@
+/*
+本文件的作用为:
+1. 清除默认样式
+2. 设置通用字体样式
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    /* 1.5: 行高大小为字号的1.5倍 */
+    font: 14px/1.5 "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    color: #333333;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+}
+
+body {
+    background: #f3f5f7;
+}
+
+i {
+    /* 设置i不倾斜 */
+    font-style: normal;
+}
+
+
+/* 通用的版心类 */
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* course模块开始 */
+/* 这个头部样式是通用的 */
+.hd {
+    height: 30px;
+    /*background: pink;*/
+    margin: 30px 0 15px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 30px;
+}
+
+.hd h3 {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+/* 因为后边的hd中 ul里还有a 为避免样式冲突 所以单独给这个a加个类名 */
+.hd .all {
+    font-size: 16px;
+    color: #999999;
+}
+
+.bd ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.bd li {
+    position: relative;
+    width: 228px;
+    height: 271px;
+    /*background: pink;*/
+    margin-bottom: 14px;
+    transition: 0.5s;
+}
+
+.bd li:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    margin-top: -5px;
+}
+
+.bd li a {
+    display: block;
+    height: 100%;
+}
+
+.bd a h4 {
+    height: 55px;
+    margin: 20px 20px 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.bd a p {
+    margin-left: 20px;
+}
+
+.bd a p span {
+    color: #fa6400;
+}
+/* course模块结束 */

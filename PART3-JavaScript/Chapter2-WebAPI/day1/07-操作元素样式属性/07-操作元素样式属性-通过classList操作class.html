@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-操作元素样式属性-通过classList操作class</title>
+    <style>
+        .add-border {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000000;
+        }
+        
+        .add-font-size {
+            font-size: 20px;
+        }
+        
+        .box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box">盒子内容</div>
+<script>
+    const box = document.querySelector('div')
+    box.classList.add('add-font-size')
+    
+    box.classList.remove('add-font-size')
+    
+    // 删除box
+    box.classList.toggle('box')
+    
+    // 添加add-border
+    box.classList.toggle('add-border')
+    console.log(box.classList)
+    
+    // 判断是否有add-border
+    console.log(box.classList.contains('add-border'))
+    console.log(box.classList.contains('box'))
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-操作页面元素-innerHTML</title>
+</head>
+<body>
+<div>div中的内容</div>
+<div id="box">
+    <span>box盒子的span子元素中的内容</span>
+</div>
+<script>
+    const div = document.querySelector('div')
+    div.innerHTML = '<strong>新内容</strong>'
+    
+    const box = document.querySelector('#box')
+    console.log(box.innerHTML)
+    console.log(box.innerText)
+</script>
+</body>
+</html>

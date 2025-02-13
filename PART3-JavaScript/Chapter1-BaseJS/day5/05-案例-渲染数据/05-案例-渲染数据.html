@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-案例-渲染数据</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        table {
+            margin: 100px auto;
+            /* 合并单元格的边框 */
+            border-collapse: collapse;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+        
+        th, td {
+            border: 1px solid #ffffff;
+            padding: 5px 50px;
+            text-align: center;
+        }
+        
+        table thead tr {
+            background: linear-gradient(to right, #f46e33, #f057a5);
+            color: #ffffff;
+        }
+        
+        table tr {
+            background: linear-gradient(to right, #fdf0eb, #fdeff6);
+        }
+        
+        table tr:hover {
+            background: linear-gradient(to right, #f9e3da, #f9d6e8);
+        }
+        
+        table tr td:last-child {
+            color: #f282bb;
+        }
+    </style>
+</head>
+<body>
+<!--<table>-->
+<!--    <thead>-->
+<!--        <tr>-->
+<!--            <th>序号</th>-->
+<!--            <th>姓名</th>-->
+<!--            <th>年龄</th>-->
+<!--            <th>性别</th>-->
+<!--            <th>家乡</th>-->
+<!--        </tr>-->
+<!--    </thead>-->
+<!--    <tr>-->
+<!--        <td>1</td>-->
+<!--        <td>小明</td>-->
+<!--        <td>18</td>-->
+<!--        <td>男</td>-->
+<!--        <td>河北省</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>1</td>-->
+<!--        <td>小明</td>-->
+<!--        <td>18</td>-->
+<!--        <td>男</td>-->
+<!--        <td>河北省</td>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<script>
+    let students = [
+        { name: '小明', age: 18, sex: '男', hometown: '河北省' },
+        { name: '小红', age: 19, sex: '女', hometown: '河南省' },
+        { name: '小刚', age: 17, sex: '男', hometown: '山西省' },
+        { name: '小丽', age: 18, sex: '女', hometown: '山东省' }
+    ]
+    
+    let tableStart = `
+<table>
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>家乡</th>
+        </tr>
+    </thead>
+    `
+    
+    let tableEnd = `</table>`
+    
+    let rowStart = ''
+    let rowEnd = `</tr>`
+    let student = {}
+    
+    
+    for (let i = 0; i < students.length; i++) {
+        rowStart = `<tr>`
+        student = students[i]
+        rowStart += `<td>${i + 1}</td>`
+        for (let key in student) {
+            rowStart += `<td>${student[key]}</td>`
+        }
+        rowStart += rowEnd
+        tableStart += rowStart
+    }
+    
+    tableStart += tableEnd
+    document.write(tableStart)
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-操作元素样式属性-通过className操作class</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        
+        .active {
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    const box = document.querySelector('.box')
+    console.log(box.className)
+    box.className += ' active'
+    console.log(box.className)
+</script>
+</body>
+</html>

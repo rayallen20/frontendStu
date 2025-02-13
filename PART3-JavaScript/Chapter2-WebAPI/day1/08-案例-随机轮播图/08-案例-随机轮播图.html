@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-案例-随机轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .container {
+            margin: 100px auto;
+            width: 450px;
+            height: 400px;
+            background: skyblue;
+        }
+        
+        .slider {
+            height: 275px;
+            background: pink;
+            overflow: hidden;
+        }
+        
+        .slider ul {
+            width: 800%;
+            display: flex;
+        }
+        
+        .slider ul li {
+            width: 450px;
+            height: 275px;
+        }
+        
+        .slider ul li img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .bottom {
+            justify-content: space-between;
+            height: 125px;
+            background: rgb(100, 67, 68);
+            padding-top: 20px;
+        }
+        
+        .bottom .inner-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .bottom .inner-top div {
+            display: flex;
+            justify-content: space-between;
+            width: 60px;
+        }
+        
+        .bottom .inner-top a {
+            display: block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            color: slategray;
+            background: rgba(255, 255, 255, 0.1);;
+        }
+        
+        .bottom .inner-bottom {
+            display: flex;
+            justify-content: flex-start;
+        }
+        
+        .bottom .inner-bottom ul {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .bottom .inner-bottom ul li {
+            width: 20px;
+            height: 20px;
+            margin: 0 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .active {
+            background: rgba(255, 255, 255, 0.5) !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="slider">
+        <ul>
+            <li>
+                <a href="#" target="_self">
+                    <img src="./img/slider01.jpg" alt="slider01">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_self">
+                    <img src="./img/slider02.jpg" alt="slider01">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_self">
+                    <img src="./img/slider03.jpg" alt="slider01">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_self">
+                    <img src="./img/slider04.jpg" alt="slider01">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_self">
+                    <img src="./img/slider05.jpg" alt="slider01">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_self">
+                    <img src="./img/slider06.jpg" alt="slider01">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_self">
+                    <img src="./img/slider07.jpg" alt="slider01">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_self">
+                    <img src="./img/slider08.jpg" alt="slider01">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom">
+        <div class="inner-top">
+            <h4>对人类来说会不会太超前了?</h4>
+            <div>
+                <a href="javascript:"><</a>
+                <a href="javascript:">></a>
+            </div>
+        </div>
+        
+        <div class="inner-bottom">
+            <ul>
+                <li>
+                    <a href="javascript:"></a>
+                </li>
+                <li>
+                    <a href="javascript:"></a>
+                </li>
+                <li>
+                    <a href="javascript:"></a>
+                </li>
+                <li>
+                    <a href="javascript:"></a>
+                </li>
+                <li>
+                    <a href="javascript:"></a>
+                </li>
+                <li>
+                    <a href="javascript:"></a>
+                </li>
+                <li>
+                    <a href="javascript:"></a>
+                </li>
+                <li>
+                    <a href="javascript:"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    /**
+     * 本类用于表示轮播图业务实体
+     * */
+    class SliderImg {
+        /**
+         * 本方法用于创建一个轮播图对象
+         * @param {string} img 图片地址
+         * @param {string} title 标题内容
+         * @param {string} background 背景颜色
+         * */
+        constructor(img, title, background) {
+            this.img = img
+            this.title = title
+            this.background = background
+        }
+    }
+    
+    /**
+     * 本函数用于从轮播图集合中随机抽取一个轮播图对象
+     * @param {Array<SliderImg>} sliderCollection 轮播图集合
+     * @return {number} 随机索引
+     * */
+    function raffle(sliderCollection) {
+        return Math.floor(Math.random() * sliderCollection.length)
+    }
+    
+    /**
+     * 本函数用于将轮播图的ul向左移动指定倍数
+     * @param {number} magnification 移动倍数
+     * @return {void}
+     * */
+    function moveLeftUl(magnification) {
+        const ul = document.querySelector('.slider ul')
+        let magnificationPercent = magnification * 100
+        ul.style.transform = `translateX(-${magnificationPercent}%)`
+    }
+    
+    /**
+     * 本函数用于修改轮播图的标题
+     * @param {string} title 标题内容
+     * @return {void}
+     * */
+    function modifyTitle(title) {
+        const titleElement = document.querySelector('.inner-top h4')
+        titleElement.innerText = title
+    }
+    
+    /**
+     * 本函数用于设置指定索引的li状态为active
+     * @param {number} randomIndex 随机索引
+     * @return {void}
+     * */
+    function activeLi(randomIndex) {
+        const liCollection = document.querySelectorAll('.inner-bottom ul li')
+        liCollection[randomIndex].classList.add('active')
+    }
+    
+    function modifyBackground(background) {
+        const container = document.querySelector('.bottom')
+        container.style.background = background
+    }
+    
+    const sliderData = [
+        { url: './images/slider01.jpg', title: '对人类来说会不会太超前了？', color: 'rgb(100, 67, 68)' },
+        { url: './images/slider02.jpg', title: '开启剑与雪的黑暗传说！', color: 'rgb(43, 35, 26)' },
+        { url: './images/slider03.jpg', title: '真正的jo厨出现了！', color: 'rgb(36, 31, 33)' },
+        { url: './images/slider04.jpg', title: '李玉刚：让世界通过B站看到东方大国文化', color: 'rgb(139, 98, 66)' },
+        { url: './images/slider05.jpg', title: '快来分享你的寒假日常吧~', color: 'rgb(67, 90, 92)' },
+        { url: './images/slider06.jpg', title: '哔哩哔哩小年YEAH', color: 'rgb(166, 131, 143)' },
+        { url: './images/slider07.jpg', title: '一站式解决你的电脑配置问题！！！', color: 'rgb(53, 29, 25)' },
+        { url: './images/slider08.jpg', title: '谁不想和小猫咪贴贴呢！', color: 'rgb(99, 72, 114)' },
+    ]
+    
+    const sliderCollection = []
+    let slider = null
+    
+    for (let i = 0; i < sliderData.length; i++) {
+        slider = new SliderImg(sliderData[i].url, sliderData[i].title, sliderData[i].color)
+        sliderCollection.push(slider)
+    }
+    
+    let randomIndex = raffle(sliderCollection)
+    let randomSlider = sliderCollection[randomIndex]
+    console.log(randomIndex)
+    let magnification = randomIndex / sliderCollection.length
+    console.log(magnification)
+    moveLeftUl(magnification)
+    modifyTitle(randomSlider.title)
+    activeLi(randomIndex)
+    modifyBackground(randomSlider.background)
+</script>
+</body>
+</html>

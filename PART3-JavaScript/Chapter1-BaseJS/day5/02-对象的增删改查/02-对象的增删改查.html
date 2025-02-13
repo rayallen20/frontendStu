@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-对象的增删改查</title>
+</head>
+<body>
+<script>
+    let pig = {
+        uname: '小猪佩奇',
+        age: 4,
+        weight: 12.6,
+        sing: function (content) {
+            console.log(content)
+        }
+    }
+    
+    pig.uname = '大猪佩奇'
+    
+    pig.gender = 'female'
+    
+    console.log(pig)
+    
+    delete pig.gender
+    console.log(pig)
+</script>
+</body>
+</html>

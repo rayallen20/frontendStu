@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-生成随机颜色</title>
+</head>
+<body>
+<script>
+    try {
+        console.log(getRandomColor())
+        console.log(getRandomColor(false))
+    } catch (e) {
+        console.log(e.message)
+    }
+    
+    /**
+     * 本函数用于生成一个随机的颜色
+     * @param {boolean} flag - 用于指定生成的颜色是十六进制还是RGB true表示十六进制 false表示RGB
+     * @throws {Error} flag必须是一个布尔值
+     * @returns {string} 颜色的字符串表示
+     * @example
+     * getRandomColor() // #A1B2C3
+     * getRandomColor(false) // rgb(123, 234, 45)
+     * */
+    function getRandomColor(flag = true) {
+        if (typeof flag !== 'boolean') {
+            throw new Error('flag必须是一个布尔值')
+        }
+        
+        if (flag) {
+            return genHexColor()
+        }
+        
+        return genRGBColor()
+    }
+    
+    /**
+     * 本函数用于生成一个随机的十六进制颜色
+     * @returns {string} 十六进制颜色的字符串表示
+     * @example
+     * genHexColor() // #A1B2C3
+     * */
+    function genHexColor() {
+        let dict = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+        let color = '#'
+        let minIndex = 0
+        let maxIndex = dict.length - 1
+        for (let i = 0; i < 6; i++) {
+            let index = Math.floor(Math.random() * (maxIndex - minIndex + 1)) + minIndex
+            color += dict[index]
+        }
+        return color
+    }
+    
+    /**
+     * 本函数用于生成一个随机的RGB颜色
+     * @returns {string} RGB颜色的字符串表示
+     * @example
+     * genRGBColor() // rgb(123, 234, 45)
+     * */
+    function genRGBColor() {
+        let min = 0
+        let max = 255
+        let r = Math.floor(Math.random() * (max - min + 1))  + min
+        let g = Math.floor(Math.random() * (max - min + 1))  + min
+        let b = Math.floor(Math.random() * (max - min + 1))  + min
+        return `rgb(${r}, ${g}, ${b})`
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-案例-猜数字</title>
+</head>
+<body>
+<script>
+    let min = 1
+    let max = 10
+    let random = Math.floor(Math.random() * (max - min + 1)) + min
+    console.log(random)
+    
+    let guess = 0
+    let count = 3
+    for (let i = 0; i < count; i++) {
+        guess = +prompt(`请输入一个${min}到${max}之间的数字`)
+        if (guess === null) {
+            break
+        }
+        if (guess > random) {
+            alert('猜测的数字太大了')
+        }
+        
+        if (guess < random) {
+            alert('猜测的数字太小了')
+        }
+        
+        if (guess === random) {
+            alert('猜对了')
+            break
+        }
+        
+        if (i === count - 1) {
+            alert('机会用完了')
+        }
+    }
+</script>
+</body>
+</html>

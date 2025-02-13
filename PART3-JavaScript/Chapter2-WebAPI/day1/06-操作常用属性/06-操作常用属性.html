@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-操作常用属性</title>
+</head>
+<body>
+<img src="./img/1.png" alt="1">
+<script>
+    const img = document.querySelector('img')
+    console.log(img)
+    const srcCollection = [
+            './img/1.png',
+            './img/2.png',
+            './img/3.png',
+            './img/4.png',
+    ]
+    
+    let randomIndex = Math.floor(Math.random() * srcCollection.length)
+    img.src = srcCollection[randomIndex]
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-自定义属性</title>
+</head>
+<body>
+<div data-user-name="张三" data-index="0"></div>
+<script>
+    const box = document.querySelector('div')
+    let boxDataSets = box.dataset
+    console.log(boxDataSets)
+    
+    for (let boxDataSetsKey in boxDataSets) {
+        console.log(boxDataSetsKey)
+        console.log(boxDataSets[boxDataSetsKey])
+    }
+    
+    let userName = boxDataSets.userName
+    console.log(userName)
+</script>
+</body>
+</html>

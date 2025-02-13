@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-Math对象的random方法</title>
+</head>
+<body>
+<script>
+    let random = Math.random()
+    
+    let heroes = ['赵云', '黄忠', '关羽', '张飞', '马超']
+    let minIndex = 0
+    let maxIndex = heroes.length - 1
+    let randomIndex = Math.floor(random * (maxIndex - minIndex + 1)) + minIndex
+    console.log(heroes[randomIndex])
+</script>
+</body>
+</html>
