@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>13-作业-时钟</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        .clock {
+            width: 600px;
+            height: 600px;
+            background: url(./img/clock.jpg) no-repeat;
+            margin: 50px auto 0;
+            position: relative;
+        }
+        
+        .hh,
+        .mm,
+        .ss {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: url(./img/hour.png) no-repeat center;
+        }
+        
+        .mm {
+            background-image: url(./img/minute.png);
+            transform: rotate(270deg);
+        }
+        
+        .ss {
+            background-image: url(./img/second.png);
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+
+<body>
+<div class="clock">
+    <div class="hh" id="h"></div>
+    <div class="mm" id="m"></div>
+    <div class="ss" id="s"></div>
+</div>
+<script>
+    const fullRotate = 360
+    const secondScale = 6
+    const minuteScale = 6
+    const hourScale = 30
+    
+    let secondRotate = 0
+    let minuteRotate = 270
+    let hourRotate = 0
+    
+    // const minuteElement = document.querySelector('#m')
+    // const computedStyle = window.getComputedStyle(minuteElement)
+    // console.log(computedStyle.transform)
+    
+    function rotateSecond() {
+        const secondElement = document.querySelector('#s')
+        
+        secondRotate += secondScale
+        
+        if (secondRotate === fullRotate) {
+            rotateMinute()
+        }
+        
+        secondRotate = secondRotate % fullRotate
+        secondElement.style.transform = `rotate(${secondRotate}deg)`
+    }
+    
+    function rotateMinute() {
+        const minuteElement = document.querySelector('#m')
+        minuteRotate += minuteScale
+        
+        if (minuteRotate === fullRotate) {
+            rotateHour()
+        }
+        
+        minuteRotate = minuteRotate % fullRotate
+        minuteElement.style.transform = `rotate(${minuteRotate}deg)`
+    }
+    
+    function rotateHour() {
+        const hourElement = document.querySelector('#h')
+        hourRotate += hourScale
+        hourRotate = hourRotate % fullRotate
+        hourElement.style.transform = `rotate(${hourRotate}deg)`
+    }
+    
+    setInterval(rotateSecond, 1000)
+</script>
+</body>
+
+</html>
