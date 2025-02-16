@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>18-作业-百度换肤</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        body {
+            background-image: url(./img/bg1.jpg);
+        }
+        
+        #mask {
+            background-color: rgba(255, 255, 255, 0.3);
+            height: 200px;
+            text-align: center;
+        }
+        
+        #mask img {
+            width: 200px;
+            margin-top: 35px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+<div id="mask">
+    <img src="./img/bg1.jpg" alt="" />
+    <img src="./img/bg2.jpg" alt="" />
+    <img src="./img/bg3.jpg" alt="" />
+    <img src="./img/bg4.jpg" alt="" />
+    <img src="./img/bg5.jpg" alt="" />
+</div>
+
+<script>
+    let imgCollection = document.querySelectorAll('#mask img')
+    for (let i = 0; i < imgCollection.length; i++) {
+        let imgElement = imgCollection[i]
+        imgElement.addEventListener('click', clickHandle)
+    }
+    
+    function clickHandle() {
+        document.body.style.backgroundImage = `url(${this.src})`
+    }
+</script>
+</body>
+
+</html>

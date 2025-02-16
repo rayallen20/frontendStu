@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21-作业-淘宝购物</title>
+    <style>
+        .wrap {
+            width: 1072px;
+            height: 400px;
+            margin: 50px auto;
+        }
+        
+        .wrap img {
+            float: left;
+            border: 1px solid black;
+            margin-right: 20px;
+        }
+        
+        .top {
+            float: left;
+            width: 600px;
+            height: 220px;
+            border-bottom: 1px solid #bbb;
+            font-family: 'Microsoft yahei',serif;
+        }
+        
+        .top p span {
+            font-size: 14px;
+            color: #666;
+            border: 1px solid #999;
+            display: inline-block;
+            padding: 8px;
+            cursor: pointer;
+        }
+        
+        .top p span.on {
+            border: 2px solid #f60;
+            padding: 7px;
+            background: url(img/on.png) no-repeat right bottom;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <img src="img/black.jpg" alt="">
+    <div class="top">
+        <p class="color">
+            <label class="">颜色</label>
+            <span class="on">黑色</span>
+            <span class="">白色</span>
+            <span class="">红色</span>
+            <span class="">黄色</span>
+            <span class="">紫色</span>
+            <span class="">绿色</span>
+        </p>
+        <p class="rom">
+            <label class="">内存</label>
+            <span class="on">64GB</span>
+            <span class="">128GB</span>
+            <span class="">256GB</span>
+        </p>
+        <p class="version">
+            <label>版本</label>
+            <span class="on">全网通</span>
+            <span>移动版</span>
+            <span>联通版</span>
+            <span>电信版</span>
+        </p>
+    </div>
+
+</div>
+
+
+<script>
+    const imgArr = [
+        'img/black.jpg',
+        'img/white.jpg',
+        'img/red.jpg',
+        'img/yellow.jpg',
+        'img/purple.jpg',
+        'img/green.jpg'
+    ];
+
+    const colorOptions = document.querySelectorAll('.color span')
+    const imgElement = document.querySelector('.wrap img')
+    
+    for (let i = 0; i < colorOptions.length; i++) {
+        let colorOption = colorOptions[i]
+        colorOption.addEventListener('click', colorClickHandle)
+    }
+    
+    function colorClickHandle() {
+        let targetIndex = Array.from(colorOptions).indexOf(this)
+        
+        for (let i = 0; i < colorOptions.length; i++) {
+            let colorOption = colorOptions[i]
+            colorOption.classList.remove('on')
+        }
+        
+        this.classList.add('on')
+        imgElement.src = imgArr[targetIndex]
+    }
+    
+    const romOptions = document.querySelectorAll('.rom span')
+    for (let i = 0; i < romOptions.length; i++) {
+        let romOption = romOptions[i]
+        romOption.addEventListener('click', romClickHandle)
+    }
+    
+    function romClickHandle() {
+        for (let i = 0; i < romOptions.length; i++) {
+            let romOption = romOptions[i]
+            romOption.classList.remove('on')
+        }
+        
+        this.classList.add('on')
+    }
+    
+    const versionOptions = document.querySelectorAll('.version span')
+    for (let i = 0; i < versionOptions.length; i++) {
+        let versionOption = versionOptions[i]
+        versionOption.addEventListener('click', versionClickHandle)
+    }
+    
+    function versionClickHandle() {
+        for (let i = 0; i < versionOptions.length; i++) {
+            let versionOption = versionOptions[i]
+            versionOption.classList.remove('on')
+        }
+        
+        this.classList.add('on')
+    }
+</script>
+
+</body>
+
+</html>
