@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-排他思想</title>
+    <style>
+        .active {
+            background: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+<script>
+    const buttonCollection = document.querySelectorAll('button')
+    for (let i = 0; i < buttonCollection.length; i++) {
+        let buttonElement = buttonCollection[i]
+        buttonElement.addEventListener('mouseenter', changeBackground)
+    }
+    
+    function changeBackground() {
+        // step1. 移除所有按钮的active类
+        for (let i = 0; i < buttonCollection.length; i++) {
+            buttonCollection[i].classList.remove('active')
+        }
+        
+        // step2. 为当前按钮添加active类
+        this.classList.add('active')
+    }
+</script>
+</body>
+</html>

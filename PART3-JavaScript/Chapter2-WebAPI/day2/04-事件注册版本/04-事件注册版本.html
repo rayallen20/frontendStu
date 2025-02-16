@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-事件注册版本</title>
+</head>
+<body>
+<button>按钮</button>
+<script>
+    const btn = document.querySelector('button')
+    
+    btn.onclick = function () {
+        console.log('按钮被点击了1')
+    }
+    
+    btn.onclick = function () {
+        console.log('按钮被点击了2')
+    }
+    
+    btn.addEventListener('click', function () {
+        console.log('按钮被点击了3')
+    })
+    
+    btn.addEventListener('click', function () {
+        console.log('按钮被点击了4')
+    })
+</script>
+</body>
+</html>

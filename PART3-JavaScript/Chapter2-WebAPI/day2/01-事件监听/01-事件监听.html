@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-事件监听</title>
+</head>
+<body>
+<button>按钮</button>
+<script>
+    const btn = document.querySelector('button')
+    let counter = 0
+    btn.addEventListener('click', function () {
+        counter++
+        alert('按钮被点击了' + counter + '次')
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-文本事件和键盘事件</title>
+</head>
+<body>
+<label>
+    <input type="text">
+</label>
+
+<script>
+    const inputElement = document.querySelector('input')
+    inputElement.addEventListener('input', function () {
+        console.log('input: ' + inputElement.value)
+    })
+    
+    inputElement.addEventListener('keydown', function () {
+        console.log('keydown: ' + inputElement.value)
+    })
+    
+    inputElement.addEventListener('keyup', function () {
+        console.log('keyup: ' + inputElement.value)
+    })
+</script>
+</body>
+</html>

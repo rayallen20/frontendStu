@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13-环境对象this</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    function foo() {
+        console.log(this)
+    }
+    
+    // 二者等价
+    foo()
+    window.foo()
+    
+    const obj = {
+        uname: '张三',
+        bar: function () {
+            console.log(this)
+            console.log(this.uname)
+        }
+    }
+    // 谁调用函数 函数中的this就指向谁
+    obj.bar()
+    
+    // 定时器中的this指向window
+    setInterval(function () {
+        console.log(this)
+    }, 1000)
+    
+    // 事件中的this指向事件源
+    const box = document.querySelector('div')
+    box.addEventListener('click', function () {
+        console.log(this)
+    })
+</script>
+</body>
+</html>

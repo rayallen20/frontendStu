@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-焦点事件</title>
+</head>
+<body>
+<label>
+    <input type="text" class="one">
+</label>
+
+<label>
+    <input type="text" class="two">
+</label>
+
+<script>
+    const one = document.querySelector('.one')
+    function logContent() {
+        console.log("focus")
+    }
+    one.addEventListener('focus', logContent)
+    
+    function logBlur() {
+        console.log("blur")
+    }
+    one.addEventListener('blur', logBlur)
+    
+    const two = document.querySelector('.two')
+    two.focus()
+</script>
+</body>
+</html>

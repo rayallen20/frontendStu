@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-事件对象-基本使用</title>
+</head>
+<body>
+<input type="text">
+<script>
+    const input = document.querySelector('input')
+    input.addEventListener('click', function (event) {
+        console.log(event)
+    })
+    
+    input.addEventListener('keyup', function (event) {
+        console.log(event)
+    })
+    
+    input.addEventListener('input', function (event) {
+        console.log(event)
+    })
+</script>
+</body>
+</html>

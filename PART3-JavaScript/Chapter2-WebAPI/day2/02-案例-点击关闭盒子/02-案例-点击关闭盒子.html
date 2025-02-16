@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-案例-点击关闭盒子</title>
+    <style>
+        .pop {
+            display: block;
+            visibility: visible;
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            top: 50%;
+            width: 530px;
+            height: 254px;
+            margin-top: -127px;
+            margin-left: -265px;
+            background: url(./img/login.webp) no-repeat;
+        }
+        
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="pop">
+    <a href="javascript:;" class="close"></a>
+</div>
+
+<script>
+    const target = document.querySelector('.close')
+    target.addEventListener('click', closePop)
+    
+    function closePop() {
+        const pop = document.querySelector('.pop')
+        pop.style.display = 'none'
+    }
+</script>
+</body>
+
+</html>
