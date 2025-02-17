@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-阻止默认行为</title>
+</head>
+<body>
+<a href="https://www.baidu.com">跳转百度</a>
+
+<form action="https://www.baidu.com">
+    <button type="submit">提交</button>
+</form>
+
+<script>
+    const linkElement = document.querySelector('a')
+    linkElement.addEventListener('click', clickHandle)
+    
+    function clickHandle(event) {
+        event.preventDefault()
+        alert('跳不过去')
+    }
+    
+    const formElement = document.querySelector('form')
+    formElement.addEventListener('submit', submitHandle)
+    function submitHandle(event) {
+        event.preventDefault()
+        alert('提交不了')
+    }
+</script>
+</body>
+</html>

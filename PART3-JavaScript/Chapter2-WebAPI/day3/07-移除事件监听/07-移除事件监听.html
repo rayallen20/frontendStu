@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-移除事件监听</title>
+</head>
+<body>
+<button>移除L2事件监听</button>
+<button>移除L0事件监听</button>
+
+<script>
+    const btnCollection = document.querySelectorAll('button')
+    const l0Btn = btnCollection[1]
+    const l2Btn = btnCollection[0]
+    
+    l0Btn.onclick = function () {
+        alert('L0 only once')
+        l0Btn.onclick = null
+    }
+    
+    l2Btn.addEventListener('click', clickHandle)
+    function clickHandle() {
+        alert('L2 only once')
+        l2Btn.removeEventListener('click', clickHandle)
+    }
+</script>
+</body>
+</html>

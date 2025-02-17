@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-事件委托</title>
+</head>
+<body>
+<ul>
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+
+<script>
+    const ulElement = document.querySelector('ul')
+    ulElement.addEventListener('click', clickHandle)
+    
+    function clickHandle(event) {
+        const targetElement = event.target
+        if (targetElement.tagName === 'LI') {
+            targetElement.style.backgroundColor = 'skyblue'
+        }
+    }
+</script>
+</body>
+</html>

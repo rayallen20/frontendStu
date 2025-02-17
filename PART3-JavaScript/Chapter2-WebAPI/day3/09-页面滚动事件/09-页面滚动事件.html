@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-页面滚动事件</title>
+    <style>
+        body {
+            min-height: 3000px;
+        }
+        
+        div {
+            width: 300px;
+            height: 100px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    1
+    <br>
+    1
+    <br>
+    1
+    <br>
+    1
+    <br>
+    1
+    <br>
+    1
+    <br>
+    1
+    <br>
+    1
+    <br>
+    1
+    <br>
+    1
+    <br>
+</div>
+
+<script>
+    window.addEventListener('scroll', function () {
+        console.log(1)
+    })
+    
+    const divElement = document.querySelector('div')
+    divElement.addEventListener('scroll', function () {
+        console.log(2)
+    })
+</script>
+</body>
+</html>

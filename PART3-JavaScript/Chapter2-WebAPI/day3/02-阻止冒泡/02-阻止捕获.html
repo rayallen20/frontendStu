@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-阻止捕获</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .father {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            background: skyblue;
+            text-align: center;
+        }
+        
+        .son {
+            width: 150px;
+            height: 150px;
+            background: pink;
+            margin: 60px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    父盒子
+    <div class="son">子盒子</div>
+</div>
+
+<script>
+    // 该方法也能阻止捕获 本例中 点击子盒子时 会弹出 根元素
+    // 父盒子和子盒子的事件处理函数不会执行 因为事件在根元素的捕获阶段就被阻止了
+    document.addEventListener('click', function (event) {
+        event.stopPropagation()
+        alert('根元素')
+    }, true)
+    
+    const father = document.querySelector('.father')
+    father.addEventListener('click', function (event) {
+        alert('父盒子')
+    }, true)
+    
+    const son = document.querySelector('.son')
+    son.addEventListener('click', function () {
+        alert('子盒子')
+    }, true)
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-页面加载事件</title>
+    <script>
+        window.addEventListener('load', function () {
+            const divElement = document.querySelector('div')
+            divElement.innerHTML = '页面加载完成'
+        })
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            const divElement = document.querySelector('div')
+            divElement.style.background = 'skyblue'
+        })
+    </script>
+</head>
+<body>
+<div>内容</div>
+</body>
+</html>
