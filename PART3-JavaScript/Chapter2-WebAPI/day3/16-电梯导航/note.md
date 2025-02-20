@@ -23,10 +23,13 @@
 
 ### 2.2 滚动高亮
 
-- 遍历`panelHeaderCollection`
-  - 判断当前滚动距离与当前遍历元素的offsetTop的关系
-  - 找到当前滚动距离小于哪个元素的offsetTop,并将其索引保存
-  - `索引 - 1`的元素高亮,其余元素取消高亮
+- 这里严格的做法应该是:
+  - step1. 获取所有`.big`在垂直方向上的起始和终止位置
+    - ① 起始位置: `.big.offsetTop`
+    - ② 终止位置: `.big.offsetTop + .big.offsetHeight`
+  - step2. 找到`滚动距离 + 导航栏高度`在哪个元素的区间内
+  - step3. 移除前一个高亮的a
+  - step4. 高亮对应的a
 
 ## 3. 讲解
 

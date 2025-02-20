@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17-作业-购物车加减</title>
+    <style>
+        div {
+            width: 80px;
+        }
+        
+        input[type=text] {
+            width: 50px;
+            height: 44px;
+            outline: none;
+            border: 1px solid #ccc;
+            text-align: center;
+            border-right: 0;
+        }
+        
+        input[type=button] {
+            height: 24px;
+            width: 22px;
+            cursor: pointer;
+        }
+        
+        input {
+            float: left;
+            border: 1px solid #ccc;
+            
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <input type="text" id="total" value="1" readonly>
+    <input type="button" value="+" id="add">
+    <input type="button" value="-" id="reduce" disabled>
+</div>
+<script>
+    const totalElement = document.querySelector('#total')
+    const addElement = document.querySelector('#add')
+    
+    addElement.addEventListener('click', addClickHandle)
+    function addClickHandle() {
+        let valueCount = parseInt(totalElement.value)
+        valueCount += 1
+        totalElement.value = valueCount.toString()
+        
+        if (valueCount !== 1) {
+            reduceElement.disabled = false
+        }
+    }
+    
+    const reduceElement = document.querySelector('#reduce')
+    
+    reduceElement.addEventListener('click', reduceClickHandle)
+    function reduceClickHandle() {
+        let valueContent = parseInt(totalElement.value)
+        valueContent -= 1
+        totalElement.value = valueContent.toString()
+        
+        if (valueContent === 1) {
+            reduceElement.disabled = true
+            return
+        }
+        
+        reduceElement.disabled = false
+        
+    }
+</script>
+</body>
+</html>

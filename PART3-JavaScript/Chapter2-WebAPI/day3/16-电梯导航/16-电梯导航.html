@@ -1298,70 +1298,80 @@
       }
       
       const elevatorListElement = document.querySelector('.xtx-elevator-list')
-      const panelHeaderCollection = document.querySelectorAll('.xtx_panel_header')
+      const bigCollection = document.querySelectorAll('.big')
       
       elevatorListElement.addEventListener('click', clickToScroll)
       
       function clickToScroll(event) {
-          const targetElement = event.target
-          const liCollection = this.children
-          let targetPanelIndex = -1
+          const target = event.target
+          let targetElement = null
           
-          if (targetElement.tagName === 'LI') {
-              targetPanelIndex = Array.from(liCollection).indexOf(targetElement)
-          }
-
-          if (targetElement.tagName === 'A') {
-              const targetLi = targetElement.parentElement
-              targetPanelIndex = Array.from(liCollection).indexOf(targetLi)
+          if (target.tagName === 'A') {
+              targetElement = target.parentElement
           }
           
-          if (targetPanelIndex !== liCollection.length - 1 && targetPanelIndex !== -1) {
-              let targetPanelHeaderElement = panelHeaderCollection[targetPanelIndex]
-              let targetScrollTop = targetPanelHeaderElement.offsetTop
-              let targetPanelHeaderHeight = +targetPanelHeaderElement.offsetHeight
-              htmlDoc.scrollTop = targetScrollTop - targetPanelHeaderHeight
-              
-              const activeLi = elevatorListElement.querySelector('.active')
-              // 初态是没有active的
-              if (activeLi !== null) {
-                  activeLi.classList.remove('active')
-              }
-              targetElement.classList.add('active')
+          if (target.tagName === 'LI') {
+              targetElement = target
+          }
+          
+          const liCollection = elevatorListElement.children
+          const targetIndex = Array.from(liCollection).indexOf(targetElement)
+          
+          let scrollDistance = bigCollection[targetIndex].offsetTop
+          // 此处由于有一个固定定位的导航栏 所以要减掉导航栏的高度
+          scrollDistance -= stickyHeaderElement.offsetHeight
+          htmlDoc.scrollTop = scrollDistance
+          const linkCollection = document.querySelectorAll('.xtx-elevator-list a')
+          
+          for (let i = 0; i < linkCollection.length; i++) {
+              linkCollection[i].classList.remove('active')
+          }
+          
+          if (target.tagName === 'A') {
+              target.classList.add('active')
+          }
+          
+          if (target.tagName === 'LI') {
+              target.children[0].classList.add('active')
           }
       }
       
       window.addEventListener('scroll', highLightLink)
       function highLightLink() {
-          let scrollDistance = htmlDoc.scrollTop
-          const panelOffsetTopCollection = []
-          let targetIndex = -1
+          const bigRangeCollection = []
           
-          for (let i = 0; i < panelHeaderCollection.length; i++) {
-              let top = panelHeaderCollection[i].offsetTop
-              panelOffsetTopCollection.push(top)
+          for (let i = 0; i < bigCollection.length; i++) {
+              let bigElement = bigCollection[i]
+              let range = {
+                  top: bigElement.offsetTop,
+                  bottom: bigElement.offsetTop + bigElement.offsetHeight
+              }
+                bigRangeCollection.push(range)
           }
           
-          for (let i = 0; i < 4; i++) {
-              if (scrollDistance > panelOffsetTopCollection[i] && scrollDistance <= panelOffsetTopCollection[i + 1]) {
+          let scrollDistance = htmlDoc.scrollTop
+          scrollDistance += stickyHeaderElement.offsetHeight
+          
+          let targetIndex = -1
+          
+          for (let i = 0; i < bigRangeCollection.length; i++) {
+              let bigElement = bigRangeCollection[i]
+              if (scrollDistance >= bigElement.top && scrollDistance <= bigElement.bottom) {
                   targetIndex = i
                   break
               }
-              
-              if (scrollDistance > panelOffsetTopCollection[3]) {
-                  targetIndex = 3
-                  break
-              }
           }
           
-          const activeLi = elevatorListElement.querySelector('.active')
-          // 初态是没有active的
-          if (activeLi !== null) {
-              activeLi.classList.remove('active')
+          const linkCollection = document.querySelectorAll('.xtx-elevator-list a')
+          
+          // 这里要先清除 不能等找到了再清除 因为热门品牌到最新专题之间 中间有一部分没有对应的.big
+          // 换句话说 多个.big之间不是连续的
+          for (let i = 0; i < linkCollection.length; i++) {
+              linkCollection[i].classList.remove('active')
           }
           
           if (targetIndex !== -1) {
-              elevatorListElement.children[targetIndex].children[0].classList.add('active')
+              linkCollection[targetIndex].classList.add('active')
           }
       }
   </script>
