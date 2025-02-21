@@ -24,9 +24,9 @@ const iconImgCollection = document.querySelectorAll('.productnav-icon_img')
 const titleCollection = document.querySelectorAll('.productnav-size-title')
 const scrollMagicCollection = document.querySelectorAll('.js-scroll-magic')
 
-listElement.addEventListener('click', moveLine)
+listElement.addEventListener('click', clickHandle)
 
-function moveLine(event) {
+function clickHandle(event) {
     const targetElement = event.target
 
     let targetIndex = -1

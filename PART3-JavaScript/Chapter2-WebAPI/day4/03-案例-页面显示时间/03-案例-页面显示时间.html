@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-案例-页面显示时间</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 40px;
+            border: 1px solid pink;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    const box = document.querySelector('.box')
+    
+    // 注意: 先调用一次,防止刷新页面时,页面显示的时间有1秒的空白
+    window.addEventListener('load', showDate)
+    
+    setInterval(showDate, 1000)
+    function showDate() {
+        const date = new Date()
+        let year = date.getFullYear()
+        
+        let month = date.getMonth() + 1
+        let monthStr = month + ''
+        if (monthStr.length === 1) {
+            monthStr = '0' + monthStr
+        }
+        
+        let day = date.getDate()
+        let dayStr = day + ''
+        if (dayStr.length === 1) {
+            dayStr = '0' + dayStr
+        }
+        
+        let hour = date.getHours()
+        let hourStr = hour + ''
+        if (hourStr.length === 1) {
+            hourStr = '0' + hourStr
+        }
+        
+        let minute = date.getMinutes()
+        let minuteStr = minute + ''
+        if (minuteStr.length === 1) {
+            minuteStr = '0' + minuteStr
+        }
+        
+        let second = date.getSeconds()
+        let secondStr = second + ''
+        if (secondStr.length === 1) {
+            secondStr = '0' + secondStr
+        }
+        
+        let dateTimeStr = `${year}年${monthStr}月${dayStr}号 ${hourStr}:${minuteStr}:${secondStr}`
+        box.innerHTML = dateTimeStr
+    }
+</script>
+</body>
+</html>

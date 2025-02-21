@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-删除节点</title>
+</head>
+<body>
+<ul id="first">
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+<br>
+<ul id="second">
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+<br>
+<ul id="third">
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+<br>
+
+<ul id="fourth">
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+<br>
+
+<ul id="fifth">
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+<br>
+
+<script>
+    const first = document.getElementById('first')
+    const firstTargetLi = first.children[0]
+    firstTargetLi.remove()
+    
+    const second = document.getElementById('second')
+    const secondTargetLi = second.children[1]
+    second.removeChild(secondTargetLi)
+    
+    const third = document.getElementById('third')
+    third.innerHTML = ''
+    
+    const fourth = document.getElementById('fourth')
+    fourth.textContent = ''
+    
+    const fifth = document.getElementById('fifth')
+    const fifthTargetLi1 = document.createElement('li')
+    fifthTargetLi1.innerHTML = '我是被替换的第1个li'
+    const fifthTargetLi2 = document.createElement('li')
+    fifthTargetLi2.innerHTML = '我是被替换的第2个li'
+    fifth.replaceChildren(fifthTargetLi1, fifthTargetLi2)
+    fifth.replaceChildren()
+</script>
+</body>
+</html>

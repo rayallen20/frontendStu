@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-格式化日期对象</title>
+</head>
+<body>
+<script>
+    const date = new Date()
+    
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    
+    let mouthStr = month + ''
+    if (mouthStr.length === 1) {
+        mouthStr = '0' + mouthStr
+    }
+    
+    let dayStr = day + ''
+    if (dayStr.length === 1) {
+        dayStr = '0' + dayStr
+    }
+    
+    let dateStr = `今天是: ${year}年 ${mouthStr}月 ${dayStr}日`
+    console.log(dateStr)
+    
+    let dayOfWeek = date.getDay()
+    const dayOfWeekArr = ['日', '一', '二', '三', '四', '五', '六']
+    let dayOfWeekStr = `星期${dayOfWeekArr[dayOfWeek]}`
+    console.log(dayOfWeekStr)
+    
+    let hour = date.getHours()
+    let minute = date.getMinutes()
+    let second = date.getSeconds()
+    
+    hourStr = hour + ''
+    if (hourStr.length === 1) {
+        hourStr = '0' + hourStr
+    }
+    
+    minuteStr = minute + ''
+    if (minuteStr.length === 1) {
+        minuteStr = '0' + minuteStr
+    }
+    
+    secondStr = second + ''
+    if (secondStr.length === 1) {
+        secondStr = '0' + secondStr
+    }
+    let timeStr = `现在时间 ${hourStr}:${minuteStr}:${secondStr}`
+    console.log(timeStr)
+</script>
+</body>
+</html>

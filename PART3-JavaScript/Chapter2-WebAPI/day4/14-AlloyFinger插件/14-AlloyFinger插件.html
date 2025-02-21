@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-AlloyFinger插件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box {
+            width: 25vw;
+            height: 20vw;
+            margin: 10vw auto;
+            background: skyblue;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script src="./AlloyFinger/alloy_finger.js"></script>
+<script>
+    const box = document.querySelector('.box')
+    
+    let option = {
+        // 触摸开始事件
+        touchStart: function () {},
+        
+        // 触摸移动事件
+        touchMove: function () {},
+        
+        // 触摸结束事件
+        touchEnd:  function () {},
+        
+        // 触摸取消事件
+        touchCancel: function () {},
+        
+        // 多点触摸开始事件
+        multipointStart: function () {},
+        
+        // 多点触摸移动事件
+        multipointEnd: function () {},
+        
+        // 轻触事件
+        tap: function () {},
+        
+        // 双击事件
+        doubleTap: function () {},
+        
+        // 长按事件
+        longTap: function () {},
+        
+        // 单击事件
+        singleTap: function () {},
+        
+        // 旋转事件
+        rotate: function (event) {
+            // console.log(event.angle)
+        },
+        
+        // 缩放事件(就是双指放大或缩小)
+        pinch: function (event) {
+            // console.log(event.zoom)
+        },
+        
+        // 按压移动事件
+        pressMove: function (event) {
+            // console.log(event.deltaX)
+            // console.log(event.deltaY)
+        },
+        
+        // 滑动事件
+        swipe: function (event) {
+            console.log(event.direction)
+        }
+    }
+    
+    const af = new AlloyFinger(box, option)
+</script>
+</body>
+</html>

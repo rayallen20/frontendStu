@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-时间戳</title>
+    <style>
+        .countdown {
+            width: 240px;
+            height: 305px;
+            text-align: center;
+            line-height: 1;
+            color: #fff;
+            background-color: brown;
+            /* background-size: 240px; */
+            /* float: left; */
+            overflow: hidden;
+        }
+        
+        .countdown .next {
+            font-size: 16px;
+            margin: 25px 0 14px;
+        }
+        
+        .countdown .title {
+            font-size: 33px;
+        }
+        
+        .countdown .tips {
+            margin-top: 80px;
+            font-size: 23px;
+        }
+        
+        .countdown small {
+            font-size: 17px;
+        }
+        
+        .countdown .clock {
+            width: 142px;
+            margin: 18px auto 0;
+            overflow: hidden;
+        }
+        
+        .countdown .clock span,
+        .countdown .clock i {
+            display: block;
+            text-align: center;
+            line-height: 34px;
+            font-size: 23px;
+            float: left;
+        }
+        
+        .countdown .clock span {
+            width: 34px;
+            height: 34px;
+            border-radius: 2px;
+            background-color: #303430;
+        }
+        
+        .countdown .clock i {
+            width: 20px;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+<div class="countdown">
+    <p class="next">今天是2222年2月22日</p>
+    <p class="title">下班倒计时</p>
+    <p class="clock">
+        <span id="hour">00</span>
+        <i>:</i>
+        <span id="minutes">25</span>
+        <i>:</i>
+        <span id="second">20</span>
+    </p>
+    <p class="tips">明天18:30:00下课</p>
+</div>
+
+<script>
+    
+    const hourEle = document.querySelector('#hour')
+    const minutesEle = document.querySelector('#minutes')
+    const secondEle = document.querySelector('#second')
+    const nextEle = document.querySelector('.next')
+    
+    window.addEventListener('load', countDown)
+    
+    setInterval(countDown, 1000)
+    
+    function countDown() {
+        const currentDate = new Date()
+        
+        let currentYear = currentDate.getFullYear()
+        let currentMonth = currentDate.getMonth() + 1
+        let currentDay = currentDate.getDate()
+        let currentDateStr = `今天是${currentYear}年${currentMonth}月${currentDay}日`
+        nextEle.innerHTML= currentDateStr
+        
+        const currentTimestamp = currentDate
+        const currentZeroDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 0, 0, 0)
+        
+        // 目标日期: 明天的18:30:00
+        let targetTimestamp = currentZeroDate.getTime()
+        // 明天的0点
+        targetTimestamp += 24 * 60 * 60 * 1000
+        // 明天的18点
+        targetTimestamp += 18 * 60 * 60 * 1000
+        // 明天的18:30
+        targetTimestamp += 30 * 60 * 1000
+        // 目标时间的日期对象
+        // const targetDate = new Date(targetTimestamp)
+        
+        let remainingTime = targetTimestamp - currentTimestamp
+        let remainingHours = Math.floor(remainingTime / (60 * 60 * 1000))
+        
+        remainingTime -= remainingHours * 60 * 60 * 1000
+        let remainingMinutes = Math.floor(remainingTime / (60 * 1000))
+        
+        remainingTime -= remainingMinutes * 60 * 1000
+        let remainingSeconds = Math.floor(remainingTime / 1000)
+        
+        hourEle.innerHTML = remainingHours < 10 ? '0' + remainingHours : remainingHours
+        minutesEle.innerHTML = remainingMinutes < 10 ? '0' + remainingMinutes : remainingMinutes
+        secondEle.innerHTML = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds
+    }
+    
+</script>
+</body>
+</html>

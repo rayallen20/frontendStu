@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>15-数组的forEach方法</title>
+</head>
+<body>
+<ul>
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+<script>
+    const liCollection = document.querySelectorAll('li')
+    liCollection.forEach(function (liEle, index) {
+        let content = liEle.innerHTML
+        console.log(index)
+        console.log(content)
+        console.log('-------------------')
+    })
+</script>
+</body>
+</html>

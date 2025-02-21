@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-查找节点-子元素集合与兄弟节点</title>
+</head>
+<body>
+<ul>
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+
+<script>
+    const ulEle = document.querySelector('ul')
+    const liCollection = ulEle.children
+    console.log(liCollection)
+    
+    const secondLiEle = liCollection[1]
+    console.log(secondLiEle.previousElementSibling)
+    console.log(secondLiEle.nextElementSibling)
+    console.log(secondLiEle.nextSibling)
+</script>
+</body>
+</html>

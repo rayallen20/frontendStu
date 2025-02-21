@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-案例-关闭登录框</title>
+    <style>
+        .pop {
+            display: block;
+            visibility: visible;
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            top: 50%;
+            width: 530px;
+            height: 254px;
+            margin-top: -127px;
+            margin-left: -265px;
+            background: url(./img/login.webp) no-repeat;
+        }
+        
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="pop">
+    <a href="javascript:" class="close"></a>
+</div>
+
+<script>
+    const closeEle = document.querySelector('.close')
+    const popEle = close.parentNode
+    
+    closeEle.addEventListener('click', clickHandle)
+    
+    function clickHandle() {
+        popEle.style.display = 'none'
+    }
+</script>
+</body>
+</html>

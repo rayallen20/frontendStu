@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-增加节点</title>
+</head>
+<body>
+<ul>
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+<script>
+    const ulEle = document.querySelector('ul')
+    
+    const preLi = document.createElement('li')
+    preLi.innerHTML = '我是前面插入的li'
+    ulEle.prepend(preLi)
+    
+    const appendLi = document.createElement('li')
+    appendLi.innerHTML = '我是后面插入的li'
+    ulEle.append(appendLi)
+    
+    const secondLi = ulEle.children[2]
+    const insertLi = document.createElement('li')
+    insertLi.innerHTML = '我是插入的第2个li'
+    ulEle.insertBefore(insertLi, secondLi)
+    
+    const replaceLi = document.createElement('li')
+    replaceLi.innerHTML = '我是被替换的第4个li'
+    const sixthLi = ulEle.children[5]
+    ulEle.replaceChild(replaceLi, sixthLi)
+</script>
+</body>
+</html>

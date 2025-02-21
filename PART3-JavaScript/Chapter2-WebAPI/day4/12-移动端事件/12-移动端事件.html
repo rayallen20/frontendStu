@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-移动端事件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box {
+            width: 50vw;
+            height: 40vw;
+            background: skyblue;
+            margin: 20vw auto;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    const boxEle = document.querySelector('.box')
+    
+    boxEle.addEventListener('touchstart', touchStartHandler)
+    function touchStartHandler(event) {
+        console.log('touchstart')
+        console.log(event)
+    }
+    
+    boxEle.addEventListener('touchmove', touchMoveHandler)
+    function touchMoveHandler(event) {
+        console.log('touchmove')
+        console.log(event)
+    }
+    
+    boxEle.addEventListener('touchend', touchEndHandler)
+    function touchEndHandler(event) {
+        console.log('touchend')
+        console.log(event)
+    }
+</script>
+</body>
+</html>
