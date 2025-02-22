@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-location对象</title>
+</head>
+<body>
+<script>
+    const locationObj = window.location
+    
+    location.href = 'https://www.baidu.com'
+    console.log(locationObj.href)
+    
+    // ?后边的部分统一被认为是查询字符串
+    console.log(locationObj.search)
+    
+    // #后边的部分统一被认为是hash
+    console.log(locationObj.hash)
+    
+    // locationObj.reload(true)
+</script>
+</body>
+</html>

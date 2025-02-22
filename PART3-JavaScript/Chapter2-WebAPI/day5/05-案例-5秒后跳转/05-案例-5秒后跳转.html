@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-案例-5秒后跳转</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<a href="https://www.baidu.com">
+    支付成功
+    <span>5</span>
+    秒钟之后跳转到首页
+</a>
+
+<script>
+    
+    const span = document.querySelector('span')
+    let countDownStart = Number(span.innerHTML)
+    
+    const a = document.querySelector('a')
+    let href = a.href
+    
+    let timer = setInterval(countDownAndRedirect, 1000)
+    
+    function countDownAndRedirect() {
+        countDown()
+        if (countDownStart === 0) {
+            clearInterval(timer)
+            window.location.href = href
+        }
+    }
+    
+    function countDown() {
+        countDownStart--
+        renderCountDown()
+    }
+    
+    function renderCountDown() {
+        span.innerHTML = countDownStart.toString()
+    }
+</script>
+</body>
+</html>

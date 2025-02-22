@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-案例-学生就业信息表</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+<h1>学生就业统计表</h1>
+<form class="info" autocomplete="off">
+    <input type="text" class="uname" name="uname" placeholder="姓名" />
+    <input type="text" class="age" name="age" placeholder="年龄" />
+    <input type="text" class="salary" name="salary" placeholder="薪资" />
+    <select name="gender" class="gender">
+        <option value="男">男</option>
+        <option value="女">女</option>
+    </select>
+    <select name="city" class="city">
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+        <option value="广州">广州</option>
+        <option value="深圳">深圳</option>
+        <option value="曹县">曹县</option>
+    </select>
+    <button class="add">
+        <i class="iconfont icon-tianjia"></i>添加
+    </button>
+</form>
+
+<div class="title">共有数据<span>0</span>条</div>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>薪资</th>
+        <th>就业城市</th>
+        <th>录入时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- <tr>
+      <td>1</td>
+      <td>迪丽热巴</td>
+      <td>23</td>
+      <td>女</td>
+      <td>12000</td>
+      <td>北京</td>
+      <td>2099/9/9 08:08:08</td>
+      <td>
+        <a href="javascript:">
+          <i class="iconfont icon-shanchu"></i>
+          删除
+        </a>
+      </td>
+    </tr> -->
+    </tbody>
+</table>
+
+<script>
+    let initData = []
+    
+    window.addEventListener('load', renderByLocalStorage)
+    function renderByLocalStorage() {
+        let prevDataStr = localStorage.getItem('data')
+        if (prevDataStr !== null) {
+            initData = JSON.parse(prevDataStr)
+        }
+        render()
+    }
+    
+    const addBtn = document.querySelector('.add')
+    
+    const unameEle = document.querySelector('.uname')
+    const ageEle = document.querySelector('.age')
+    const salaryEle = document.querySelector('.salary')
+    const genderEle = document.querySelector('.gender')
+    const cityEle = document.querySelector('.city')
+    
+    addBtn.addEventListener('click', addClickHandle)
+    function addClickHandle() {
+        let item = getInput()
+        initData.push(item)
+        reStore()
+        render()
+    }
+    
+    function getInput() {
+        let unameVal = unameEle.value.trim()
+        let ageVal = +ageEle.value
+        let salaryVal = +salaryEle.value
+        let genderVal = genderEle.value.trim()
+        let cityVal = cityEle.value.trim()
+        
+        if (unameVal.length === 0) {
+            alert('请输入姓名')
+            return
+        }
+        
+        if (isNaN(ageVal) || ageVal <= 0) {
+            alert('请输入正确的年龄')
+            return
+        }
+        
+        if (isNaN(salaryVal) || salaryVal <= 0) {
+            alert('请输入正确的薪资')
+            return
+        }
+        
+        if (genderVal.length === 0) {
+            alert('请选择性别')
+            return
+        }
+        
+        if (cityVal.length === 0) {
+            alert('请选择城市')
+            return
+        }
+        
+        const date = new Date()
+        
+        let stuId = 0
+        if (initData.length === 0) {
+            stuId = 1
+        } else {
+            stuId = initData[initData.length - 1].stuId + 1
+        }
+        
+        return {
+            stuId: stuId,
+            uname: unameVal,
+            age: ageVal,
+            salary: salaryVal,
+            gender: genderVal,
+            city: cityVal,
+            time: date.toLocaleString()
+        }
+    }
+    
+    function reStore() {
+        localStorage.setItem('data', JSON.stringify(initData))
+    }
+    
+    const counterEle = document.querySelector('.title span')
+    function render() {
+        tbodyEle.innerHTML = ''
+        initData.forEach(renderItem)
+        counterEle.innerText = initData.length
+    }
+    
+    const tbodyEle = document.querySelector('tbody')
+    function renderItem(item) {
+        const rowEle = createRow(item)
+        tbodyEle.append(rowEle)
+    }
+    
+    function createRow(item) {
+        const rowEle = document.createElement('tr')
+     
+        const stuIdTd = createStuIdTd(item.stuId)
+        rowEle.appendChild(stuIdTd)
+        
+        const unameTd = createNameTd(item.uname)
+        rowEle.appendChild(unameTd)
+        
+        const ageTd = createAgeTd(item.age)
+        rowEle.appendChild(ageTd)
+        
+        const genderTd = createGenderTd(item.gender)
+        rowEle.appendChild(genderTd)
+        
+        const salaryTd = createSalaryTd(item.salary)
+        rowEle.appendChild(salaryTd)
+        
+        const cityTd = createCityTd(item.city)
+        rowEle.appendChild(cityTd)
+        
+        const timeTd = createTimeTd(item.time)
+        rowEle.appendChild(timeTd)
+        
+        const operaTd = createOperaTd()
+        rowEle.appendChild(operaTd)
+        
+        return rowEle
+    }
+    
+    function createStuIdTd(stuId) {
+        const td = document.createElement('td')
+        td.innerText = stuId
+        return td
+    }
+    
+    function createNameTd(name) {
+        const td = document.createElement('td')
+        td.innerText = name
+        return td
+    }
+    
+    function createAgeTd(age) {
+        const td = document.createElement('td')
+        td.innerText = age
+        return td
+    }
+    
+    function createGenderTd(gender) {
+        const td = document.createElement('td')
+        td.innerText = gender
+        return td
+    }
+    
+    function createSalaryTd(salary) {
+        const td = document.createElement('td')
+        td.innerText = salary
+        return td
+    }
+    
+    function createCityTd(city) {
+        const td = document.createElement('td')
+        td.innerText = city
+        return td
+    }
+    
+    function createTimeTd(time) {
+        const td = document.createElement('td')
+        td.innerText = time
+        return td
+    }
+    
+    function createOperaTd() {
+        const td = document.createElement('td')
+        
+        const linkEle = document.createElement('a')
+        linkEle.href = 'javascript:'
+        
+        const iconEle = document.createElement('i')
+        iconEle.classList.add('iconfont', 'icon-shanchu')
+        
+        linkEle.append(iconEle)
+        linkEle.addEventListener('click', deleteClickHandle)
+        td.append(linkEle)
+        return td
+    }
+    
+    function deleteClickHandle() {
+        const targetRow = this.parentNode.parentNode
+        const targetId = +targetRow.children[0].innerText
+        initData = initData.filter(item => item.stuId !== targetId)
+        reStore()
+        render()
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-navigator对象</title>
+</head>
+<body>
+<script>
+    const navigatorObj = window.navigator
+    
+    console.log(navigatorObj.userAgent) // 获取浏览器的userAgent信息
+    console.log(navigatorObj.platform) // 获取浏览器的操作系统信息
+    console.log(navigatorObj.language) // 获取浏览器的语言信息
+    
+    // 检测 userAgent（浏览器信息）
+    function checkUserAgent () {
+        const userAgent = navigator.userAgent
+        // 验证是否为Android或iPhone
+        const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/)
+        const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
+        // 如果是Android或iPhone，则跳转至移动站点
+        if (android || iphone) {
+            location.href = 'https://m.baidu.com'
+        }
+    }
+    
+    checkUserAgent()
+</script>
+</body>
+</html>

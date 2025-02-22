@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-定时器-延迟函数</title>
+</head>
+<body>
+<button>清除定时器</button>
+<script>
+    let timer = setTimeout(f, 5000)
+    function f() {
+        alert('Hello')
+    }
+    
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', clearTimer)
+    function clearTimer() {
+        clearTimeout(timer)
+    }
+</script>
+</body>
+</html>

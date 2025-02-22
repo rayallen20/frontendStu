@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-存储复杂数据类型</title>
+</head>
+<body>
+<script>
+    const goods = [
+        {
+            name: '小米10',
+            price: 3999
+        },
+        {
+            name: '小米11',
+            price: 4999
+        }
+    ]
+    
+    let goodsJson = JSON.stringify(goods)
+    localStorage.setItem('goods', goodsJson)
+    
+    let goodsStr = localStorage.getItem('goods')
+    const goodsArr = JSON.parse(goodsStr)
+    console.log(goodsArr)
+</script>
+</body>
+</html>

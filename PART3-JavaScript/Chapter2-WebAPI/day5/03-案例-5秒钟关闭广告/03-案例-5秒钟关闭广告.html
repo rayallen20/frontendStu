@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-案例-5秒钟关闭广告</title>
+    <style>
+        body {
+            background-color: #07090c;
+        }
+        
+        .ad {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .close {
+            position: absolute;
+            top: 95px;
+            right: 4px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="ad">
+    <img src="./img/ad.png" alt="">
+    <span class="close"></span>
+</div>
+<script>
+    let adEle = document.querySelector('.ad')
+    let closeEle = document.querySelector('.close')
+    
+    closeEle.addEventListener('click', closeAd)
+    
+    function closeAd() {
+        adEle.style.display = 'none'
+    }
+    
+    setTimeout(closeAd, 5000)
+</script>
+</body>
+</html>

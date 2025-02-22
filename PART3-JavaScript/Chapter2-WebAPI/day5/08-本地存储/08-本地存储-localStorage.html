@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-本地存储-localStorage</title>
+</head>
+<body>
+<script>
+    const localStorageObj = window.localStorage
+    
+    localStorageObj.setItem('uname', 1)
+    
+    let uname = localStorageObj.getItem('uname')
+    console.log(uname)
+    console.log(typeof uname)
+    
+    let uname2 = localStorageObj.getItem('uname2')
+    console.log(uname2)
+    
+    // localStorageObj.removeItem('uname')
+</script>
+</body>
+</html>
