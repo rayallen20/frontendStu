@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>14-作业-发布微博</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .w {
+      width: 900px;
+      margin: 0 auto;
+    }
+
+    .controls textarea {
+      width: 878px;
+      height: 100px;
+      resize: none;
+      border-radius: 10px;
+      outline: none;
+      padding-left: 20px;
+      padding-top: 10px;
+      font-size: 18px;
+    }
+
+    .controls {
+      overflow: hidden;
+    }
+
+    .controls div {
+      float: right;
+    }
+
+    .controls div span {
+      color: #666;
+    }
+
+    .controls div .useCount {
+      color: red;
+    }
+
+    .controls div button {
+      width: 100px;
+      outline: none;
+      border: none;
+      background: rgb(0, 132, 255);
+      height: 30px;
+      cursor: pointer;
+      color: #fff;
+      font: bold 14px '宋体';
+      transition: all 0.5s;
+    }
+
+    .controls div button:hover {
+      background: rgb(0, 225, 255);
+    }
+
+    .controls div button:disabled {
+      background: rgba(0, 225, 255, 0.5);
+    }
+
+    .contentList {
+      margin-top: 50px;
+    }
+
+    .contentList li {
+      padding: 20px 0;
+      border-bottom: 1px dashed #ccc;
+      position: relative;
+    }
+
+    .contentList li .info {
+      position: relative;
+    }
+
+    .contentList li .info span {
+      position: absolute;
+      top: 15px;
+      left: 100px;
+      font: bold 16px '宋体';
+    }
+
+    .contentList li .info p {
+      position: absolute;
+      top: 40px;
+      left: 100px;
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    .contentList img {
+      width: 80px;
+      border-radius: 50%;
+    }
+
+    .contentList li .content {
+      padding-left: 100px;
+      color: #666;
+      word-break: break-all;
+    }
+
+    .contentList li .the_del {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 28px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="w">
+    <!-- 操作的界面 -->
+    <div class="controls">
+      <img src="./images/9.6/tip.png" alt="" /><br />
+      <!-- maxlength 可以用来限制表单输入的内容长度 -->
+      <textarea placeholder="说点什么吧..." id="area" cols="30" rows="10" maxlength="200"></textarea>
+      <div>
+        <span class="useCount" id="useCount">0</span>
+        <span>/</span>
+        <span>200</span>
+        <button id="send">发布</button>
+      </div>
+    </div>
+    <!-- 微博内容列表 -->
+    <div class="contentList">
+      <ul id="list">
+<!--          <li>-->
+<!--              <div class="info">-->
+<!--                  <img class="userpic" src="./images/9.6/03.jpg" />-->
+<!--                  <span class="username">死数据:百里守约</span>-->
+<!--                  <p class="send-time">死数据:发布于 2020年12月05日 00:07:54</p>-->
+<!--              </div>-->
+<!--              <div class="content">死数据:111</div>-->
+<!--              <span class="the_del">X</span>-->
+<!--          </li>-->
+      </ul>
+    </div>
+  </div>
+
+  <!-- 需要的模板li 追加给 list ul -->
+
+  <script>
+    // 模拟数据 随机生成头像和名字
+    const dataArr = [
+      { uname: '司马懿', imgSrc: './images/9.5/01.jpg' },
+      { uname: '女娲', imgSrc: './images/9.5/02.jpg' },
+      { uname: '百里守约', imgSrc: './images/9.5/03.jpg' },
+      { uname: '亚瑟', imgSrc: './images/9.5/04.jpg' },
+      { uname: '虞姬', imgSrc: './images/9.5/05.jpg' },
+      { uname: '张良', imgSrc: './images/9.5/06.jpg' },
+      { uname: '安其拉', imgSrc: './images/9.5/07.jpg' },
+      { uname: '李白', imgSrc: './images/9.5/08.jpg' },
+      { uname: '阿珂', imgSrc: './images/9.5/09.jpg' },
+      { uname: '墨子', imgSrc: './images/9.5/10.jpg' },
+      { uname: '鲁班', imgSrc: './images/9.5/11.jpg' },
+      { uname: '嬴政', imgSrc: './images/9.5/12.jpg' },
+      { uname: '孙膑', imgSrc: './images/9.5/13.jpg' },
+      { uname: '周瑜', imgSrc: './images/9.5/14.jpg' },
+      { uname: '老夫子', imgSrc: './images/9.5/15.jpg' },
+      { uname: '狄仁杰', imgSrc: './images/9.5/16.jpg' },
+      { uname: '扁鹊', imgSrc: './images/9.5/17.jpg' },
+      { uname: '马可波罗', imgSrc: './images/9.5/18.jpg' },
+      { uname: '露娜', imgSrc: './images/9.5/19.jpg' },
+      { uname: '孙悟空', imgSrc: './images/9.5/20.jpg' },
+      { uname: '黄忠', imgSrc: './images/9.5/21.jpg' },
+      { uname: '百里玄策', imgSrc: './images/9.5/22.jpg' },
+    ]
+    
+    class Blog {
+        constructor() {
+            this.uname = ''
+            this.imgSrc = ''
+            this.content = ''
+            this.timeStr = this.getDateTime()
+        }
+        
+        getDateTime() {
+            const time = new Date()
+            return `${time.getFullYear()}年${time.getMonth() + 1}月${time.getDate()}日 ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+        }
+        
+        release(content) {
+            const randomUser = dataArr[Math.floor(Math.random() * dataArr.length)]
+            this.uname = randomUser.uname
+            this.imgSrc = randomUser.imgSrc
+            this.content = content
+        }
+    }
+    
+    let blogList = []
+    
+    window.addEventListener('load', function () {
+        init()
+        render()
+    })
+    
+    function init() {
+        const dataStr = localStorage.getItem('blogList')
+        
+        if (dataStr === null || dataStr.length === 0) {
+            return
+        }
+        
+        const blogCollection = JSON.parse(dataStr)
+        
+        blogCollection.forEach(function (item) {
+            const blog = new Blog()
+            blog.uname = item.uname
+            blog.imgSrc = item.imgSrc
+            blog.content = item.content
+            blog.timeStr = item.timeStr
+            blogList.push(blog)
+        })
+    }
+    
+    const listEle = document.querySelector('#list')
+    function render() {
+        listEle.innerHTML = ''
+        renderLi()
+    }
+    
+    function renderLi() {
+        blogList.forEach(function (blog, index) {
+            const liEle = createLi(blog, index)
+            listEle.append(liEle)
+        })
+    }
+    
+    /*
+      <li>
+          <div class="info">
+              <img class="userpic" src="./images/9.6/03.jpg" />
+              <span class="username">死数据:百里守约</span>
+              <p class="send-time">死数据:发布于 2020年12月05日 00:07:54</p>
+          </div>
+          <div class="content">死数据:111</div>
+          <span class="the_del">X</span>
+      </li>
+    * */
+    function createLi(blog, index) {
+        const liEle = document.createElement('li')
+        
+        const infoEle = createInfo(blog)
+        liEle.append(infoEle)
+        
+        const contentEle = createContent(blog.content)
+        liEle.append(contentEle)
+        
+        const delEle = createDel(index)
+        liEle.append(delEle)
+        
+        return liEle
+    }
+    
+    /*
+        <div class="info">
+          <img class="userpic" src="./images/9.6/03.jpg" />
+          <span class="username">死数据:百里守约</span>
+          <p class="send-time">死数据:发布于 2020年12月05日 00:07:54</p>
+        </div>
+    * */
+    function createInfo(blog) {
+        const infoEle = document.createElement('div')
+        infoEle.classList.add('info')
+        
+        const imgEle = createImg(blog.imgSrc)
+        infoEle.append(imgEle)
+        
+        const userNameEle = createUserName(blog.uname)
+        infoEle.append(userNameEle)
+        
+        const sendTimeEle = createSendTime(blog.timeStr)
+        infoEle.append(sendTimeEle)
+        
+        return infoEle
+    }
+    
+    // <img class="userpic" src="./images/9.6/03.jpg" />
+    function createImg(src) {
+        const imgEle = document.createElement('img')
+        imgEle.classList.add('userpic')
+        imgEle.src = src
+        
+        return imgEle
+    }
+    
+    // <span class="username">百里守约</span>
+    function createUserName(name) {
+        const spanEle = document.createElement('span')
+        spanEle.classList.add('username')
+        spanEle.innerText = name
+        
+        return spanEle
+    }
+    
+    // <p class="send-time">发布于 2020年12月05日 00:07:54</p>
+    function createSendTime(timeStr) {
+        const pEle = document.createElement('p')
+        pEle.classList.add('send-time')
+        pEle.innerText = `发布于 ${timeStr}`
+        
+        return pEle
+    }
+    
+    // <div class="content">死数据:111</div>
+    function createContent(content) {
+        const divEle = document.createElement('div')
+        divEle.classList.add('content')
+        divEle.innerText = content
+        
+        return divEle
+    }
+    
+    // <span class="the_del">X</span>
+    function createDel(index) {
+        const spanEle = document.createElement('span')
+        spanEle.classList.add('the_del')
+        spanEle.innerText = 'X'
+        spanEle.dataset.index = index
+        
+        spanEle.addEventListener('click', delHandler)
+        
+        return spanEle
+    }
+    
+    function delHandler() {
+        const index = +this.dataset.index
+        blogList.splice(index, 1)
+        
+        reRender()
+    }
+    
+    const sendBtn = document.querySelector('#send')
+    const areaEle = document.querySelector('#area')
+    const useCountEle = document.querySelector('#useCount')
+    
+    sendBtn.addEventListener('click', release)
+    function release() {
+        const content = areaEle.value
+        if (content.length === 0) {
+            return
+        }
+        
+        releaseLogic(content)
+        releaseRender()
+    }
+    
+    function releaseLogic(content) {
+        const blog = new Blog()
+        blog.release(content)
+        blogList.unshift(blog)
+    }
+    
+    function releaseRender() {
+        areaEle.value = ''
+        useCountEle.innerText = areaEle.value.length + ''
+        reRender()
+    }
+    
+    areaEle.addEventListener('keyup', keyupHandler)
+    function keyupHandler() {
+        const content = areaEle.value
+        useCountEle.innerText = content.length
+        
+        if (content.length > 200) {
+            alert('字数超出限制')
+        }
+    }
+    
+    function reRender() {
+        reStore()
+        render()
+    }
+    
+    function reStore() {
+        localStorage.setItem('blogList', JSON.stringify(blogList))
+    }
+  </script>
+
+</body>
+
+</html>
