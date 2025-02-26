@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-案例-隐藏手机号中间4位</title>
+    <style>
+        .wrapper {
+            width: 840px;
+            height: 420px;
+            background: url(./img/bg01.jpg) no-repeat center / cover;
+            padding: 100px 250px;
+            box-sizing: border-box;
+        }
+        
+        .wrapper strong {
+            font-size: 50px;
+        }
+        
+        .wrapper span {
+            color: #b10e0d;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <strong>年会抽奖</strong>
+    <h1>获奖手机号：<span class="phone">???</span></h1>
+    <script>
+        let phoneNumber = '13812345678'
+        
+        let reg = /^(\d{3})\d{4}(\d{4})$/
+        // let result = phoneNumber.replace(reg, '$1****$2')
+        let result = phoneNumber.replace(reg, `$1${'*'.repeat(4)}$2`)
+        
+        document.querySelector('.phone').innerText = result
+        
+        // 只显示前3位
+        let reg2 = /^(\d{3})\d{8}$/
+        let result2 = phoneNumber.replace(reg2, '$1')
+        result2 += '*'.repeat(8)
+        document.querySelector('.phone').innerText = result2
+    </script>
+</div>
+</body>
+</html>

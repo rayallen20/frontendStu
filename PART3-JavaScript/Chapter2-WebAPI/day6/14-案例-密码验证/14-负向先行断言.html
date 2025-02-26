@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-负向先行断言</title>
+</head>
+<body>
+<script>
+    // 检测字符串不能以abc结尾
+    const reg1 = /^(?!.*abc$).*$/
+    let str1 = 'abcdef'
+    console.log(reg1.test(str1)) // true
+    let str2 = 'defabc'
+    console.log(reg1.test(str2)) // false
+    
+    console.log('-------------------')
+    
+    // 检测字符串中不能包含123
+    const reg2 = /^(?!.*123).*$/
+    let str3 = 'abc123'
+    console.log(reg2.test(str3)) // false
+    let str4 = 'abc456'
+    console.log(reg2.test(str4)) // true
+    
+    console.log('-------------------')
+    
+    // 检测特殊字符
+    const reg3 = /^[!@#$%^&*()\-_+=\[\]\\|,<.>?/]$/
+    let str5 = '!'
+    console.log(str5, reg3.test(str5)) // true
+    let str6 = '@'
+    console.log(str6, reg3.test(str6)) // true
+    let str7 = '#'
+    console.log(str7, reg3.test(str7)) // true
+    let str8 = '$'
+    console.log(str8, reg3.test(str8)) // true
+    let str9 = '%'
+    console.log(str9, reg3.test(str9)) // true
+    let str10 = '^'
+    console.log(str10, reg3.test(str10)) // true
+    let str11 = '&'
+    console.log(str11, reg3.test(str11)) // true
+    let str12 = '*'
+    console.log(str12, reg3.test(str12)) // true
+    let str13 = '('
+    console.log(str13, reg3.test(str13)) // true
+    let str14 = ')'
+    console.log(str14, reg3.test(str14)) // true
+    let str15 = '-'
+    console.log(str15, reg3.test(str15)) // true
+    let str16 = '_'
+    console.log(str16, reg3.test(str16)) // true
+    let str17 = '+'
+    console.log(str17, reg3.test(str17)) // true
+    let str18 = '='
+    console.log(str18, reg3.test(str18)) // true
+    let str19 = '['
+    console.log(str19, reg3.test(str19)) // true
+    let str20 = ']'
+    console.log(str20, reg3.test(str20)) // true
+    let str21 = '\\'
+    console.log(str21, reg3.test(str21)) // true
+    let str22 = '|'
+    console.log(str22, reg3.test(str22)) // true
+    let str23 = ','
+    console.log(str23, reg3.test(str23)) // true
+    let str24 = '<'
+    console.log(str24, reg3.test(str24)) // true
+    let str25 = '.'
+    console.log(str25, reg3.test(str25)) // true
+    let str26 = '>'
+    console.log(str26, reg3.test(str26)) // true
+    let str27 = '?'
+    console.log(str27, reg3.test(str27)) // true
+    let str28 = '/'
+    console.log(str28, reg3.test(str28)) // true
+    
+    console.log('-------------------')
+</script>
+</body>
+</html>

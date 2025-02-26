@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-正则的替换方法</title>
+</head>
+<body>
+<script>
+    let str1 = 'fuck world, Fuck all'
+    let reg1 = /fuck/
+    let str2 = str1.replace(reg1, 'shit')
+    console.log(str2)
+    
+    let reg2 = /fuck/ig
+    let str3 = str1.replace(reg2, 'shit')
+    console.log(str3)
+</script>
+</body>
+</html>

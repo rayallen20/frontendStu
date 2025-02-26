@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-正则元字符-字符类</title>
+</head>
+<body>
+请输入日期: <input class="date">
+<script>
+    const reg = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/
+    
+    const date = document.querySelector('.date')
+    date.addEventListener('blur', checkDate)
+    
+    function checkDate() {
+        let dateValue = date.value
+        if (reg.test(dateValue)) {
+            alert('日期格式正确')
+        } else {
+            alert('日期格式错误')
+        }
+    }
+</script>
+</body>
+</html>

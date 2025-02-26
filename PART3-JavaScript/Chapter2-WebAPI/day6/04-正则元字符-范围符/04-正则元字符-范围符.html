@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-正则元字符-范围符</title>
+</head>
+<body>
+<script>
+    // 只能匹配字符a/b/c中的一个
+    const reg1 = /[abc]/
+    console.log(reg1.test('a')) // true
+    console.log(reg1.test('d')) // false
+    
+    console.log('-------------------')
+    
+    // 只能匹配仅包含字符a/b/c的字符串
+    const reg2 = /^[abc]+$/
+    const str1 = 'abcabcaabbccc'
+    console.log(reg2.test(str1))
+    
+    console.log('-------------------')
+    
+    // 匹配a-z之间的任意字符
+    const reg3 = /[a-z]/
+    console.log(reg3.test('a')) // true
+    
+    console.log('-------------------')
+    
+    // 匹配不包含a/b/c的字符串
+    const reg4 = /^[^abc]+$/ // ^在[]中表示取反
+    const str2 = 'defgqreg'
+    console.log(reg4.test(str2))
+    
+    const str3 = 'abcd'
+    console.log(reg4.test(str3))
+    
+    console.log('-------------------')
+    
+    // 匹配QQ号
+    // 1. 长度至少5位
+    // 2. 首位不能为0
+    // 3. 后边的数字可以是0-9之间的任意数字 至少重复4次
+    const reg5 = /^[1-9][0-9]{4,}$/
+    console.log(reg5.test('12345')) // true
+    
+    console.log('-------------------')
+    
+    // 多个规则集
+    // 1. 首位不能为小写字母
+    // 2. 末尾必须为数字
+    // 3. 被校验的字符串长度为2 (因为只定义了2个规则,且没有使用任何量词)
+    const reg6 = /^[^a-z][0-9]$/
+    console.log(reg6.test('A1')) // true
+    console.log(reg6.test('a1')) // false
+    console.log(reg6.test('A1a')) // false
+    console.log(reg6.test('Aa1')) // false
+</script>
+</body>
+</html>

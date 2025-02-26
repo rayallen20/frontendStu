@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-正则元字符-量词符</title>
+</head>
+<body>
+<script>
+    // 以Fuc开头,结尾可以出现0到多个k
+    const reg1 = /^Fuck*$/
+    const str1 = 'Fuc'
+    const str2 = 'Fuckkkkk'
+    const str3 = 'Fuca'
+    const str4 = 'Fuck'
+    console.log(reg1.test(str1))
+    console.log(reg1.test(str2))
+    console.log(reg1.test(str3))
+    console.log(reg1.test(str4))
+    
+    console.log('----------------------------')
+    
+    // 以Fuc开头,结尾可以出现1到多个k
+    const reg2 = /^Fuck+$/
+    console.log(reg2.test(str1))
+    console.log(reg2.test(str2))
+    console.log(reg2.test(str3))
+    console.log(reg2.test(str4))
+    
+    console.log('----------------------------')
+    
+    // 以Fuc开头,结尾可以出现0到1个k
+    const reg3 = /^Fuck?$/
+    console.log(reg3.test(str1))
+    console.log(reg3.test(str2))
+    console.log(reg3.test(str3))
+    console.log(reg3.test(str4))
+    
+    console.log('----------------------------')
+    
+    // 以Fuc开头,结尾必须是5个k
+    const reg4 = /^Fuck{5}$/
+    console.log(reg4.test(str1))
+    console.log(reg4.test(str2))
+    console.log(reg4.test(str3))
+    console.log(reg4.test(str4))
+    
+    console.log('----------------------------')
+    
+    // 以Fuc开头,结尾至少2个k
+    const reg5 = /^Fuck{2,}/
+    console.log(reg5.test(str1))
+    console.log(reg5.test(str2))
+    console.log(reg5.test(str3))
+    console.log(reg5.test(str4))
+    
+    console.log('----------------------------')
+    
+    // 以Fuc开头,结尾2到5个k
+    const reg6 = /^Fuck{2,5}$/
+    console.log(reg6.test(str1))
+    console.log(reg6.test(str2))
+    console.log(reg6.test(str3))
+    console.log(reg6.test(str4))
+</script>
+</body>
+</html>

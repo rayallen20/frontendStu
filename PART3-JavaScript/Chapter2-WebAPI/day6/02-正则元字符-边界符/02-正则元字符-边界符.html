@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-正则元字符-边界符</title>
+</head>
+<body>
+<script>
+    // 验证字符串是否以fuck开头
+    const startReg = /^fuck/
+    const str1 = 'fuck world'
+    const str2 = 'shit word'
+    
+    console.log(startReg.test(str1))
+    console.log(startReg.test(str2))
+    
+    // 验证字符串是否以world结尾
+    const endReg = /world$/
+    console.log(endReg.test(str1))
+    console.log(endReg.test(str2))
+    
+    // 精确匹配
+    const preciseReg = /^fuck world$/
+    console.log(preciseReg.test(str1))
+    console.log(preciseReg.test(str2))
+</script>
+</body>
+</html>

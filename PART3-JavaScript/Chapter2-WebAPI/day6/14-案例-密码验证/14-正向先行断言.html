@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-正向先行断言</title>
+</head>
+<body>
+<script>
+    // 校验字符串中必须包含1个数字
+    const reg1 = /^(?=.*\d).+$/
+    console.log(reg1.test('abc1def')) // true
+    console.log(reg1.test('abcdef'))  // false
+    console.log(reg1.test('1'))  // true
+    
+    console.log('-------------------')
+    
+    // 校验字符串以fo开头,以abc结尾
+    const reg2 = /^fo.*(?=abc).*$/
+    console.log(reg2.test('fooabc')) // true
+    console.log(reg2.test('foabc')) // false
+    
+    console.log('-------------------')
+    
+    // 校验字符串中必须包含至少1个大写字母
+    const reg3 = /^(?=.*[A-Z])[A-Za-z0-9]*$/
+    console.log(reg3.test('abcD')) // true
+    console.log(reg3.test('abcd')) // false
+</script>
+</body>
+</html>
