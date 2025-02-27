@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-对象解构-解构时修改变量名-同名变量导致解构失败</title>
+</head>
+<body>
+<script>
+    let username = '张三'
+    
+    const user = {
+        username: '李四',
+        age: 18,
+        gender: 'male'
+    }
+    
+    let {username, age, gender} = user
+    console.log(username, age, gender) // Uncaught SyntaxError: Identifier 'username' has already been declared
+</script>
+</body>
+</html>

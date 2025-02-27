@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-展开运算符</title>
+</head>
+<body>
+<script>
+    let arr = [1, 2, 3, 4, 5]
+    
+    function sum(...args) {
+        let result = 0
+        
+        for (let i = 0; i < args.length; i++) {
+            result += args[i]
+        }
+        
+        return result
+    }
+    
+    console.log(sum(...arr))
+</script>
+</body>
+</html>

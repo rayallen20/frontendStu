@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19-案例-多级对象解构</title>
+</head>
+<body>
+<script>
+    const msg = {
+        "code": 200,
+        "msg": "获取新闻列表成功",
+        "data": [
+            {
+                "id": 1,
+                "title": "5G商用自己，三大运用商收入下降",
+                "count": 58
+            },
+            {
+                "id": 2,
+                "title": "国际媒体头条速览",
+                "count": 56
+            },
+            {
+                "id": 3,
+                "title": "乌克兰和俄罗斯持续冲突",
+                "count": 1669
+            },
+        
+        ]
+    }
+    
+    function getData(msg) {
+        const {data: myData} = msg
+        return myData
+    }
+    const myData = getData(msg)
+    console.log(myData)
+    
+    console.log('--------------')
+    
+    function render({data}) {
+        console.log(data)
+    }
+    render(msg)
+    
+    console.log('--------------')
+    
+    function renderMyData({data: myData}) {
+        console.log(myData)
+    }
+    renderMyData(msg)
+</script>
+</body>
+</html>

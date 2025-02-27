@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-作用域链</title>
+</head>
+<body>
+<script>
+    let a = 11
+    
+    function f() {
+        let a = 1
+        
+        function g() {
+            a = 2
+            console.log(a)
+        }
+        
+        g()
+    }
+    
+    f()
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-数组结构的注意点-使用剩余参数获取多余的值</title>
+</head>
+<body>
+<script>
+    const pc = ['联想', 'IBM', '苹果', '小米']
+    const [a, b, ...other] = pc
+    console.log(a, b, other) // 联想 IBM ['苹果', '小米']
+</script>
+</body>
+</html>

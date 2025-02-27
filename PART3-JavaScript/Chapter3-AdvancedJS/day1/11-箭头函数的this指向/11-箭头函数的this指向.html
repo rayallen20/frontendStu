@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-箭头函数的this指向</title>
+</head>
+<body>
+<button>按钮</button>
+<script>
+    const btn = document.querySelector('button')
+    
+    btn.addEventListener('click', function() {
+        console.log(this)
+    })
+    
+    // 此处箭头函数的父级作用域是全局作用域 所以箭头函数的this指向全局作用域的this 也就是window
+    btn.addEventListener('click', () => {
+        console.log(this)
+        console.log(btn)
+    })
+</script>
+</body>
+</html>

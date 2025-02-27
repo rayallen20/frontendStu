@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-对象属性和方法的简写方式</title>
+</head>
+<body>
+<script>
+    let username = '张三'
+    let age = 18
+    
+    const obj1 = {
+        username,
+        age,
+        say: function (content) {
+            console.log(content)
+        }
+    }
+    
+    const obj2 = {
+        username,
+        age,
+        say(content) {
+            console.log(content)
+        }
+    }
+    
+    console.log(obj1)
+    console.log(obj2)
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-箭头函数的基本使用-剩余参数</title>
+</head>
+<body>
+<script>
+    const sum = (...args) => {
+        let result = 0
+        
+        for (let i = 0; i < args.length; i++) {
+            result += args[i]
+        }
+        
+        return result
+    }
+    
+    console.log(sum(1, 2, 3))
+</script>
+</body>
+</html>

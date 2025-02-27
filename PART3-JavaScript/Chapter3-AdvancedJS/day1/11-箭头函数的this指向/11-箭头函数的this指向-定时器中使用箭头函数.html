@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-箭头函数的this指向-定时器中使用箭头函数</title>
+</head>
+<body>
+<button>按钮</button>
+<script>
+    const btn = document.querySelector('button')
+    
+    // 需求: 点击按钮后禁用,3秒后再次启用
+    btn.addEventListener('click', function () {
+        btn.disabled = true
+
+        setTimeout(function () {
+            // 定时器的调用者是window,所以定时器匿名函数中的this指向的是window
+            console.log(this)
+            btn.disabled = false
+            
+            console.log('--------------------')
+        }, 3000)
+    })
+    
+    btn.addEventListener('click', function () {
+        btn.disabled = true
+
+        setTimeout(() => {
+            // 此处由于箭头函数中的this指向是父级作用域的this,所以这里的this指向的是btn
+            console.log(this)
+            btn.disabled = false
+            
+            console.log('--------------------')
+        }, 3000)
+    })
+    
+    btn.addEventListener('click', () => {
+        btn.disabled = true
+        
+        setTimeout(() => {
+            // 此处由于箭头函数中的this指向是父级作用域的this,而父级作用域中的this指向的是全局作用域的this,
+            // 因此此处的this指的是window对象
+            console.log(this)
+            btn.disabled = false
+            
+            console.log('--------------------')
+        }, 3000)
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-统计函数调用次数-使用闭包</title>
+</head>
+<body>
+<script>
+    function call() {
+        let counter = 0
+        function count () {
+            counter++
+            console.log(counter)
+        }
+        
+        return count
+    }
+    
+    let count = call()
+    count()
+    count()
+</script>
+</body>
+</html>

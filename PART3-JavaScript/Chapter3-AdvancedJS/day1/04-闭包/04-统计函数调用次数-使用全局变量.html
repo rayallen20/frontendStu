@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-统计函数调用次数-使用全局变量</title>
+</head>
+<body>
+<script>
+    // 全局变量不安全 尽量少用
+    let counter = 0
+
+    function call() {
+        counter++
+        console.log(counter)
+    }
+
+    call()
+    call()
+</script>
+</body>
+</html>

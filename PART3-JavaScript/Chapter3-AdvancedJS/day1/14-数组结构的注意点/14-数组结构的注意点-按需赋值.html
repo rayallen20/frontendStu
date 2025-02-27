@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-数组结构的注意点-值多变量少</title>
+</head>
+<body>
+<script>
+    const pc = ['联想', 'IBM', '苹果', '小米']
+    const [, a, b] = pc
+    console.log(a, b) // IBM 苹果
+    
+    const [c, ,d] = pc
+    console.log(c, d) // 联想 苹果
+</script>
+</body>
+</html>
