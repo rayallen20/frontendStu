@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-实例成员和静态成员-静态成员</title>
+</head>
+<body>
+<script>
+    function Person(username, age) {
+        this.username = username
+        this.age = age
+        this.say = function () {
+            console.log('我是' + this.username + '，今年' + this.age + '岁')
+        }
+    }
+    
+    // 静态的成员属性
+    Person.counter = 0
+    
+    // 静态的成员方法
+    Person.count = function () {
+        // 静态方法中的this指向的是构造函数本身
+        this.counter++
+        // name是构造函数的一个内置属性,表示构造函数的名称
+        console.log('当前共有' + this.counter + '个' + this.name + '对象')
+    }
+    
+    let p1 = new Person('张三', 18)
+    Person.count()
+    
+    let p2 = new Person('李四', 20)
+    Person.count()
+</script>
+</body>
+</html>

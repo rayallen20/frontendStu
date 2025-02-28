@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-Object构造器的常用静态方法-获取键值</title>
+</head>
+<body>
+<script>
+    let obj = {
+        name: 'Tom',
+        age: 18,
+        say: function () {
+            console.log(this.name + ' is ' + this.age + ' years old.')
+        }
+    }
+    
+    const values = Object.values(obj)
+    console.log(values) // ["Tom", 18, ƒ]
+</script>
+</body>
+</html>

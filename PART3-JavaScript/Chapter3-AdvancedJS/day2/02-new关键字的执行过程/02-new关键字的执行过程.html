@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-new关键字的执行过程</title>
+</head>
+<body>
+<script>
+    function Person(username, age) {
+        console.log(this)
+        console.log(typeof this)
+        
+        this.username = username
+        this.age = age
+        this.say = function () {
+            console.log('我是' + this.username + '，今年' + this.age + '岁')
+        }
+    }
+    
+    let p1 = new Person('why', 18)
+</script>
+</body>
+</html>

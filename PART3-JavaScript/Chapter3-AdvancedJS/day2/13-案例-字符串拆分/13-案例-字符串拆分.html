@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13-案例-字符串拆分</title>
+    <style>
+        .tag {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<p class="name"></p>
+<script>
+    const gift = '50g茶叶,清洗球'
+    const p = document.querySelector('.name')
+    gift.split(',').forEach(item => p.append(createSpan(item)))
+    
+    function createSpan(text) {
+        const spanEle = document.createElement('span')
+        spanEle.classList.add('tag')
+        spanEle.textContent = '[赠品]' + text
+        return spanEle
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/inputnumber.css" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <title>18-作业-全选与反选</title>
+</head>
+
+<body>
+  <div class="app-container" id="app">
+    <!-- 顶部banner -->
+    <div class="banner-box"><img src="./img/fruit.jpg" alt="" /></div>
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+      <span>🏠</span>
+      /
+      <span>购物车</span>
+    </div>
+    <!-- 购物车主体 -->
+    <div class="main">
+      <div class="table">
+        <!-- 头部 -->
+        <div class="thead">
+          <div class="tr">
+            <div class="th">选中</div>
+            <div class="th th-pic">图片</div>
+            <div class="th">单价</div>
+            <div class="th num-th">个数</div>
+            <div class="th">小计</div>
+            <div class="th">操作</div>
+          </div>
+        </div>
+        <!-- 身体 -->
+        <div class="tbody">
+
+          <!-- 渲染需要的行 -->
+            <!--
+            <div class="tr">
+            <div class="td"><input type="checkbox" checked /></div>
+            <div class="td"><img src="./img/1.png" alt="" /></div>
+            <div class="td">6</div>
+            <div class="td">
+              <div class="my-input-number">
+                <button class="decrease"> - </button>
+                <span class="my-input__inner">2</span>
+                <button class="increase"> + </button>
+              </div>
+            </div>
+            <div class="td">12</div>
+            <div class="td"><button class="del">删除</button></div>
+          </div>
+          -->
+
+        </div>
+      </div>
+      <!-- 底部 -->
+      <div class="bottom">
+        <!-- 全选 -->
+        <label class="check-all">
+          <input type="checkbox" />
+          全选
+        </label>
+        <div class="right-box">
+          <!-- 所有商品总价 -->
+          <span class="price-box">总价&nbsp;&nbsp;:&nbsp;&nbsp;¥&nbsp;<span class="price">24</span></span>
+          <!-- 结算按钮 -->
+          <button class="pay">结算( 6 )</button>
+        </div>
+      </div>
+    </div>
+    <!-- 空车 -->
+    <div class="empty">🛒空空如也</div>
+  </div>
+  <script>
+      class Fruit {
+          constructor(id, icon, isChecked, num, price) {
+              this.id = id
+              this.icon = icon
+              this.isChecked = isChecked
+              this.num = num
+              this.price = price
+          }
+          
+            // 计算小计
+          calcTotal() {
+              return this.price * this.num
+          }
+      }
+      
+      let fruits = []
+      
+      window.addEventListener('load', function () {
+          init()
+          render()
+      })
+      function init() {
+          let dataJsonStr = localStorage.getItem('data')
+          let data = []
+          if (dataJsonStr === null || dataJsonStr.length === 0) {
+              return
+          }
+          
+          data = JSON.parse(dataJsonStr)
+          data.forEach(function (ele) {
+              const fruit = new Fruit(ele.id, ele.icon, ele.isChecked, ele.num, ele.price)
+              fruits.push(fruit)
+          })
+      }
+      
+      // console.log(fruits)
+      
+      /*
+          <div class="tr">
+            <div class="td"><input type="checkbox" checked /></div>
+            <div class="td"><img src="./img/1.png" alt="" /></div>
+            <div class="td">6</div>
+            <div class="td">
+              <div class="my-input-number">
+                <button class="decrease"> - </button>
+                <span class="my-input__inner">2</span>
+                <button class="increase"> + </button>
+              </div>
+            </div>
+            <div class="td">12</div>
+            <div class="td"><button class="del">删除</button></div>
+          </div>
+      * */
+      
+      const tbodyEle = document.querySelector('.tbody')
+      const priceEle = document.querySelector('.price')
+      const payEle = document.querySelector('.pay')
+      const checkAllEle = document.querySelector('.check-all input')
+      
+      function render() {
+          renderFruits()
+          renderTotalPrice()
+          renderPay()
+          renderCheckAll()
+      }
+      
+      function renderCheckAll() {
+          checkAllEle.checked = fruits.every(fruit => fruit.isChecked)
+      }
+      
+      checkAllEle.addEventListener('click', checkAllClickHandle)
+      function checkAllClickHandle() {
+          fruits.forEach(fruit => fruit.isChecked = checkAllEle.checked)
+          reRender()
+      }
+      
+      tbodyEle.addEventListener('click', checkboxClickHandle)
+      function checkboxClickHandle(event) {
+          if (event.target.tagName === 'INPUT') {
+              const targetEle = event.target
+              
+              // step1. 获取当前tr
+              const trEle = targetEle.parentElement.parentElement
+              
+              // step2. 判断当前tr是第几个
+              const targetIndex = Array.from(tbodyEle.children).indexOf(trEle)
+              
+              // step3. 修改数据
+              fruits[targetIndex].isChecked = targetEle.checked
+              
+              reRender()
+          }
+      }
+      
+      tbodyEle.addEventListener('click', increaseClickHandle)
+      function increaseClickHandle(event) {
+          const targetEle = event.target
+          
+          if (targetEle.tagName !== 'BUTTON') {
+              return
+          }
+          
+          if (!targetEle.classList.contains('increase')) {
+              return
+          }
+          
+          const trEle = targetEle.parentElement.parentElement.parentElement
+          const targetIndex = Array.from(tbodyEle.children).indexOf(trEle)
+          
+          fruits[targetIndex].num += 1
+          
+          reRender()
+      }
+      
+      tbodyEle.addEventListener('click', decreaseClickHandle)
+      function decreaseClickHandle(event) {
+          const targetEle = event.target
+          
+          if (targetEle.tagName !== 'BUTTON') {
+              return
+          }
+          
+          if (!targetEle.classList.contains('decrease')) {
+              return
+          }
+          
+          const trEle = targetEle.parentElement.parentElement.parentElement
+          const targetIndex = Array.from(tbodyEle.children).indexOf(trEle)
+          
+          if (fruits[targetIndex].num === 0) {
+              return
+          }
+          
+          fruits[targetIndex].num -= 1
+          
+          reRender()
+      }
+      
+      tbodyEle.addEventListener('click', delClickHandle)
+      function delClickHandle(event) {
+          const targetEle = event.target
+          
+          if (targetEle.tagName !== 'BUTTON') {
+              return
+          }
+          
+          if (!targetEle.classList.contains('del')) {
+              return
+          }
+          
+          const trEle = targetEle.parentElement.parentElement
+          const targetIndex = Array.from(tbodyEle.children).indexOf(trEle)
+          
+          fruits.splice(targetIndex, 1)
+          
+          reRender()
+      }
+      function reRender() {
+          reStore()
+          render()
+      }
+      
+      function reStore() {
+          localStorage.setItem('data', JSON.stringify(fruits))
+      }
+      
+      function renderFruits() {
+          tbodyEle.innerHTML = ''
+          fruits.forEach(function (fruit) {
+              const rowEle = createRow(fruit)
+              tbodyEle.appendChild(rowEle)
+          })
+      }
+      
+      function createRow(fruit) {
+          const rowEle = document.createElement('div')
+          rowEle.classList.add('tr')
+          
+          const inputTd = createInputTd(fruit.isChecked)
+          rowEle.appendChild(inputTd)
+          
+          const imgTd = createImgTd(fruit.icon)
+          rowEle.appendChild(imgTd)
+          
+          const priceTd = createPriceTd(fruit.price)
+          rowEle.appendChild(priceTd)
+          
+          const counterTd = createCounterTd(fruit.num)
+          rowEle.appendChild(counterTd)
+          
+          const totalTd = createTotalTd(fruit.calcTotal())
+          rowEle.appendChild(totalTd)
+          
+          const delTd = createDelTd()
+          rowEle.appendChild(delTd)
+          
+          return rowEle
+      }
+      
+      // <div class="td"><input type="checkbox" checked /></div>
+      function createInputTd(isChecked) {
+            const tdEle = document.createElement('div')
+            tdEle.classList.add('td')
+            
+            const inputEle = document.createElement('input')
+            inputEle.type = 'checkbox'
+            inputEle.checked = isChecked
+            
+            tdEle.appendChild(inputEle)
+            
+            return tdEle
+      }
+      
+      // <div class="td"><img src="./img/1.png" alt="" /></div>
+      function createImgTd(icon) {
+          const tdEle = document.createElement('div')
+          tdEle.classList.add('td')
+        
+          const imgEle = document.createElement('img')
+          imgEle.src = icon
+          imgEle.alt = ''
+      
+          tdEle.appendChild(imgEle)
+          
+          return tdEle
+      }
+      
+      // <div class="td">6</div>
+      function createPriceTd(price) {
+          const tdEle = document.createElement('div')
+          tdEle.classList.add('td')
+          
+          tdEle.textContent = price
+          
+          return tdEle
+      }
+      
+      /*
+             <div class="td">
+              <div class="my-input-number">
+                <button class="decrease"> - </button>
+                <span class="my-input__inner">2</span>
+                <button class="increase"> + </button>
+              </div>
+            </div>
+      * */
+      function createCounterTd(num) {
+          const tdEle = document.createElement('div')
+          tdEle.classList.add('td')
+          
+          const inputNumberDiv = createInputNumberDiv(num)
+          tdEle.appendChild(inputNumberDiv)
+          
+          return tdEle
+      }
+      
+      /*
+              <div class="my-input-number">
+                <button class="decrease"> - </button>
+                <span class="my-input__inner">2</span>
+                <button class="increase"> + </button>
+              </div>
+      * */
+      function createInputNumberDiv(num) {
+            const divEle = document.createElement('div')
+            divEle.classList.add('my-input-number')
+            
+            const decreaseBtn = createDecreaseBtn()
+            divEle.appendChild(decreaseBtn)
+            
+            const innerSpan = createInputInner(num)
+            divEle.appendChild(innerSpan)
+            
+            const increaseBtn = createIncreaseBtn()
+            divEle.appendChild(increaseBtn)
+            
+            return divEle
+      }
+      
+      // <button class="decrease"> - </button>
+      function createDecreaseBtn() {
+          const decreaseBtn = document.createElement('button')
+          decreaseBtn.classList.add('decrease')
+          decreaseBtn.textContent = ' - '
+          
+          return decreaseBtn
+      }
+      
+      // <span class="my-input__inner">2</span>
+      function createInputInner(num) {
+          const innerSpan = document.createElement('span')
+          innerSpan.classList.add('my-input__inner')
+          innerSpan.textContent = num
+          
+          return innerSpan
+      }
+      
+      // <button class="increase"> + </button>
+      function createIncreaseBtn() {
+          const increaseBtn = document.createElement('button')
+          increaseBtn.classList.add('increase')
+          increaseBtn.textContent = ' + '
+        
+          return increaseBtn
+      }
+      
+      // <div class="td">12</div>
+      function createTotalTd(total) {
+          const tdEle = document.createElement('div')
+          tdEle.classList.add('td')
+          
+          tdEle.textContent = total
+          
+          return tdEle
+      }
+      
+      // <div class="td"><button class="del">删除</button></div>
+      function createDelTd() {
+          const tdEle = document.createElement('div')
+          tdEle.classList.add('td')
+            
+          const delBtn = createDelBtn()
+            
+          tdEle.appendChild(delBtn)
+            
+          return tdEle
+        }
+        
+      function createDelBtn() {
+          const delBtn = document.createElement('button')
+          delBtn.classList.add('del')
+          delBtn.textContent = '删除'
+            
+          return delBtn
+        }
+      
+      function renderTotalPrice() {
+          priceEle.textContent = calcTotalPrice()
+      }
+      
+      function calcTotalPrice() {
+          let totalPrice = 0
+          fruits.forEach(function (fruit) {
+              if (fruit.isChecked) {
+                  totalPrice += fruit.calcTotal()
+              }
+          })
+          
+          return totalPrice
+      }
+      
+      function renderPay() {
+          payEle.textContent = `结算( ${calcCategoryNum()} )`
+      }
+      
+      function calcCategoryNum() {
+          let categoryNum = 0
+          fruits.forEach(function (fruit) {
+              if (fruit.isChecked) {
+                  categoryNum += 1
+              }
+          })
+          
+          return categoryNum
+      }
+  </script>
+</body>
+
+</html>

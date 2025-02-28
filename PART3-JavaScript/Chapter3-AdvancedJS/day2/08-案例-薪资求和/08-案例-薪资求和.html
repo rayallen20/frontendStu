@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-案例-薪资求和</title>
+</head>
+<body>
+<script>
+    const arr = [
+        {name: '张三', salary: 3000},
+        {name: '李四', salary: 4000},
+        {name: '王五', salary: 5000},
+        {name: '赵六', salary: 6000},
+    ]
+    
+    let sum = arr.reduce((accumulate, item) => accumulate + item.salary, 0)
+    console.log(sum)
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-创建对象的3种方式-使用构造函数创建对象</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+        this.say = function () {
+            console.log('我是' + this.name + '，今年' + this.age + '岁了')
+        }
+    }
+    
+    let tom = new Person('Tom', 18)
+    let jerry = new Person('Jerry', 20)
+    
+    console.log(tom)
+    console.log(jerry)
+</script>
+</body>
+</html>

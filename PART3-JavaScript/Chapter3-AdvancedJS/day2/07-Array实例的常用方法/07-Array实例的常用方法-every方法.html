@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-Array实例的常用方法-every方法</title>
+</head>
+<body>
+<script>
+    const arr1 = [1, 2, 3, 4, 5]
+    
+    let isAllCompliant = arr1.every(item => item > 3)
+    console.log(isAllCompliant) // false
+    
+    const arr2 = [4, 5, 6, 7, 8]
+    isAllCompliant = arr2.every(item => item > 3)
+    console.log(isAllCompliant) // true
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-案例-拼接对象的值</title>
+</head>
+<body>
+<div class="spec"></div>
+<script>
+    const spec = { size: '40cm*40cm', color: '黑色', address: '北京' }
+    
+    const specEle = document.querySelector('.spec')
+    
+    let contents = Object.values(spec)
+    let content = contents.join('/')
+    specEle.innerHTML = content
+</script>
+</body>
+</html>
