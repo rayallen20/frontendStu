@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-通过constructor属性判断对象的类型</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    let person = new Person('Tom', 18)
+    // 使用typeof关键字只能判断基本数据类型,无法判断对象的具体类型
+    console.log(typeof person) // object
+    
+    // constructor属性可以判断对象的具体类型
+    console.log(person.constructor === Person) // true
+</script>
+</body>
+</html>

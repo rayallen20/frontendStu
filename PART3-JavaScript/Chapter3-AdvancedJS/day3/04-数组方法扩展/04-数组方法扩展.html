@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-数组方法扩展</title>
+</head>
+<body>
+<script>
+    Array.prototype.max = function () {
+        return Math.max(...this)
+    }
+    
+    Array.prototype.sum = function () {
+        return this.reduce((accumulate, item) => accumulate + item, 0)
+    }
+    
+    let arr = [1, 2, 3, 4, 5]
+    console.log(arr.max())
+    console.log(arr.sum())
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-原型链-3</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    console.log(Person.prototype.__proto__ === Object.prototype) // true
+    
+    // 由于Person.prototype.__proto__ 直接指向了Object.prototype
+    // 所以这里我就直接把say方法定义在Object.prototype上
+    Object.prototype.say = function () {
+        console.log('定义在Object.prototype上的方法')
+    }
+    
+    let person = new Person('why', 18)
+    person.say()
+</script>
+</body>
+</html>

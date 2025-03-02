@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-使用原型对象实现继承的解决方案</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    Person.prototype.eat = function () {
+        console.log('eat sth')
+    }
+    
+    function Male(name, age) {}
+    Male.prototype = new Person()
+    Male.prototype.drinkAlcohol = function () {
+        console.log('drink alcohol')
+    }
+    
+    function Female(name, age) {}
+    Female.prototype = new Person()
+    
+    let male1 = new Male('kobe', 41)
+    male1.drinkAlcohol()
+    
+    let female1 = new Female('lucy', 18)
+    console.log(female1.drinkAlcohol === undefined) // true
+</script>
+</body>
+</html>

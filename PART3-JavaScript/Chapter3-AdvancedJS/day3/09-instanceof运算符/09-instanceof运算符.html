@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-instanceof运算符</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    let p = new Person('Tom', 18)
+    console.log(p instanceof Person) // true
+    
+    let arr = [1, 2, 3]
+    console.log(arr instanceof Array) // true
+    // JS中数组也是对象,所以也是true
+    console.log(arr instanceof Object) // true
+    
+    // 这是因为Array.prototype是Object.prototype的子集
+    console.log(Array instanceof Object) // true
+    
+    console.log('====================')
+    // 通过原型链的方式来判断: Array的原型对象的__proto__属性指向Object的原型对象
+    console.log(Array.prototype.__proto__ === Object.prototype)
+</script>
+</body>
+</html>

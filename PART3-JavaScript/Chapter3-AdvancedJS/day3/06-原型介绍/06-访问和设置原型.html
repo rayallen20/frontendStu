@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-访问和设置原型</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    Person.prototype.say = function () {
+        console.log('我是' + this.name + '，今年' + this.age + '岁')
+    }
+    
+    let p1 = Object.create({})
+    console.log(Object.getPrototypeOf(p1)) // Object实例的__proto__属性
+    
+    Object.setPrototypeOf(p1, Person.prototype)
+    console.log(Object.getPrototypeOf(p1)) // Person构造函数的prototype对象
+    
+    p1.name = '张三'
+    p1.age = 18
+    p1.say()
+</script>
+</body>
+</html>

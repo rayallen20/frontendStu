@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-构造函数</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+        this.say = function () {
+            console.log('我是' + this.name + '，今年' + this.age + '岁')
+        }
+    }
+    
+    const p1 = new Person('张三', 18)
+    const p2 = new Person('李四', 20)
+</script>
+</body>
+</html>

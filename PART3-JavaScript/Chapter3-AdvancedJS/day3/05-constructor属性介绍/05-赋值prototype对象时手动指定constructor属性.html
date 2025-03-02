@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-赋值prototype对象时手动指定constructor属性</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    Person.prototype = {
+        // 手动指定constructor属性
+        constructor: Person,
+        say: function () {
+            console.log('我是' + this.name + '，今年' + this.age + '岁')
+        },
+        sing: function () {
+            console.log('我是' + this.name + ', 我会唱歌')
+        }
+    }
+</script>
+</body>
+</html>

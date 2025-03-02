@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-题外话-将原型对象修改为构造函数</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    Person.prototype.eat = function () {
+        console.log('eat sth')
+    }
+    
+    function Male(name, age) {}
+    Male.prototype = Person
+    
+    function Female(name, age) {}
+    Female.prototype = Person
+    
+    let man1 = new Male('kobe', 41)
+    // instanceof 运算符用于检测构造函数的prototype对象 是否存在于该对象的的原型链上
+    console.log(man1 instanceof Male)       // true
+    console.log(man1 instanceof Person)     // false
+    
+    console.log(typeof Person.__proto__)    // function
+    console.log(Object.getPrototypeOf(Person) === Function.prototype)   // true
+    
+    man1.eat()  // Uncaught TypeError: man1.eat is not a function
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-原型介绍</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    Person.prototype.say = function () {
+        console.log('我是' + this.name + '，今年' + this.age + '岁')
+    }
+    
+    let p1 = new Person('张三', 18)
+    console.log(p1.__proto__)
+    console.log(p1.__proto__ === Person.prototype) // true
+    console.log(p1.[[Prototype]])
+</script>
+</body>
+</html>

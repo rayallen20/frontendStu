@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-原型链-2</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    Person.prototype.say = function () {
+        console.log('定义在Person.prototype上的say()方法')
+    }
+    
+    let p1 = new Person('Tom', 18)
+    
+    p1.say()
+</script>
+</body>
+</html>

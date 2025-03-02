@@ -12,6 +12,8 @@
         this.say = function () {
             console.log('我是' + this.username + '，今年' + this.age + '岁')
         }
+        
+        Person.count()
     }
     
     // 静态的成员属性
@@ -26,10 +28,8 @@
     }
     
     let p1 = new Person('张三', 18)
-    Person.count()
     
     let p2 = new Person('李四', 20)
-    Person.count()
 </script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-prototype对象</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    
+    Person.prototype.say = function () {
+        // 这里的this指向调用say方法的对象 也就是Person实例
+        console.log(this.name + ' ' + this.age)
+    }
+
+    let p1 = new Person('Tom', 18)
+    let p2 = new Person('Jerry', 20)
+    console.log(p1.say === p2.say) // true
+    
+    console.log(Person.prototype)
+</script>
+</body>
+</html>

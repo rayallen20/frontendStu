@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12-作业-英雄列表添加数据</title>
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
+  <style>
+    .panel {
+      width: 900px;
+      margin: 10px auto;
+    }
+
+    .table img {
+      width: 40px;
+      height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+      <div class="panel-heading">英雄列表管理</div>
+      <div class="panel-body">
+        <!-- 存放的搜索区域 -->
+        <form action="" autocomplete="off">
+          <div class="row">
+            <div class="col-lg-3">
+              <input type="text" class="form-control" placeholder="输入英雄名称" name="name" />
+            </div>
+            <div class="col-lg-3">
+              <select class="form-control" name="gender">
+                <option value="">--选择性别--</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
+              </select>
+            </div>
+            <div class="col-lg-3">
+              <input name="age" type="text" class="form-control" placeholder="输入年龄" />
+            </div>
+            <div class="col-lg-3">
+              <button type="button" class="btn btn-success" id="search">
+                搜索
+              </button>
+              <button type="button" class="btn btn-warning" id="reset">
+                重置
+              </button>
+              <!-- 添加按钮 -->
+              <button type="button" class="btn btn-primary" id="add">
+                添加
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>英雄名称</th>
+            <th>英雄性别</th>
+            <th>年龄</th>
+            <th>操作区</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr>
+            <td>1</td>
+            <td>大乔</td>
+            <td>女</td>
+            <td>18</td>
+            <td>
+              <button type="button" class="btn btn-danger">删除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 模态框开始 -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">添加英雄</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" autocomplete="off">
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">英雄名称</label>
+              <div class="col-sm-10">
+                <input type="text" name="heroName" class="form-control" placeholder="输入英雄名称" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">性别</label>
+              <div class="col-sm-10">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="heroGender" value="男" checked />
+                    男
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="heroGender" value="女" />
+                    女
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">年龄</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" placeholder="输入英雄年龄" name="heroAge" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="addFormCancel">
+            取消
+          </button>
+          <button id="submit" type="button" class="btn btn-primary">
+            确认
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 模态框结束 -->
+  <script src="./jquery/jquery.min.js"></script>
+  <script src="./bootstrap/js/bootstrap.js"></script>
+  <script>
+      // 数据可以自己添加
+      const list = [
+          { id: 1, name: "大乔", gender: "男", age: 18 },
+          { id: 2, name: "小乔", gender: "女", age: 20 },
+          { id: 3, name: "鲁班", gender: "男", age: 48 },
+          { id: 4, name: "后羿", gender: "女", age: 28 },
+      ]
+      
+      
+      /*
+        <tr>
+          <td>1</td>
+          <td>大乔</td>
+          <td>女</td>
+          <td>18</td>
+          <td>
+            <button type="button" class="btn btn-danger">删除</button>
+          </td>
+        </tr>
+      *
+      * */
+      
+      const tbodyEle = document.querySelector('#tbody')
+      render(list)
+      
+      function render(list) {
+          tbodyEle.innerHTML = ''
+          
+          list.forEach(item => {
+              const trEle = createRow(item)
+              tbodyEle.append(trEle)
+          })
+      }
+      
+      function createRow({id, name, gender, age}) {
+          const trEle = document.createElement('tr')
+          
+          const idColumn = createIdColumn(id)
+          trEle.append(idColumn)
+          
+          const nameColumn = createNameColumn(name)
+          trEle.append(nameColumn)
+          
+          const genderColumn = createGenderColumn(gender)
+          trEle.append(genderColumn)
+          
+          const ageColumn = createAgeColumn(age)
+          trEle.append(ageColumn)
+          
+          const delColumn = createDeleteColumn(id)
+          trEle.append(delColumn)
+          
+          return trEle
+      }
+      
+      function createIdColumn(id) {
+          const tdEle = document.createElement('td')
+          tdEle.textContent = id + ''
+          return tdEle
+      }
+      
+      function createNameColumn(name) {
+          const tdEle = document.createElement('td')
+          tdEle.textContent = name
+          return tdEle
+      }
+      
+      function createGenderColumn(gender) {
+          const tdEle = document.createElement('td')
+          tdEle.textContent = gender
+          return tdEle
+      }
+      
+      function createAgeColumn(age) {
+          const tdEle = document.createElement('td')
+          tdEle.textContent = age + ''
+          return tdEle
+      }
+      
+      function createDeleteColumn(id) {
+          const tdEle = document.createElement('td')
+          
+          const btnEle = document.createElement('button')
+          btnEle.classList.add('btn', 'btn-danger')
+          btnEle.innerText = '删除'
+          btnEle.dataset.id = id + ''
+          btnEle.addEventListener('click', deleteClickHandle)
+          
+          tdEle.append(btnEle)
+          return tdEle
+      }
+      
+      function deleteClickHandle() {
+          let targetId = this.dataset.id
+          let targetIndex = list.indexOf(list.find(item => item.id === Number(targetId)))
+          list.splice(targetIndex, 1)
+          render(list)
+      }
+      
+      const searchBtn = document.querySelector('#search')
+      const nameInput = document.querySelector('input[name="name"]')
+      const genderSelect = document.querySelector('select[name="gender"]')
+      const ageInput = document.querySelector('input[name="age"]')
+      
+      let nameCondition = ''
+      let genderCondition = ''
+      let ageCondition = ''
+      
+      searchBtn.addEventListener('click', searchClickHandle)
+      function searchClickHandle() {
+          nameCondition = nameInput.value
+          genderCondition = genderSelect.value
+          ageCondition = ageInput.value
+          
+          render(filterList(list))
+      }
+      
+      function filterList(list) {
+          return list.filter(item => {
+              let flag = true
+              if (nameCondition !== '') {
+                  flag = item.name === nameCondition
+                  if (!flag) {
+                      return false
+                  }
+              }
+              
+              if (genderCondition !== '') {
+                  flag = item.gender === genderCondition
+                  if (!flag) {
+                      return false
+                  }
+              }
+              
+              if (ageCondition !== '') {
+                  flag = item.age === Number(ageCondition)
+                  if (!flag) {
+                      return false
+                  }
+              }
+              
+              return flag
+          })
+      }
+      
+      const resetBtn = document.querySelector('#reset')
+      resetBtn.addEventListener('click', resetClickHandle)
+      
+      function resetClickHandle() {
+          nameInput.value = ''
+          genderSelect.selectedIndex = 0
+          ageInput.value = ''
+          
+          render(list)
+      }
+      
+      const addBtn = document.querySelector('#add')
+      const modal = document.querySelector('#myModal')
+      addBtn.addEventListener('click', addClickHandle)
+      function addClickHandle() {
+          $("#myModal").modal("show")
+      }
+      
+      const confirmBtn = document.querySelector('#submit')
+      const addNameInput = document.querySelector('#myModal input[name="heroName"]')
+      const addGenderInputCollection = document.querySelectorAll('#myModal input[name="heroGender"]')
+      const addAgeInput = document.querySelector('#myModal input[name="heroAge"]')
+      
+      confirmBtn.addEventListener('click', confirmClickHandle)
+      function confirmClickHandle() {
+          if (addNameInput.value === '' || addAgeInput.value === '') {
+              alert('请填写完整信息')
+              return
+          }
+          
+          let inputName = addNameInput.value
+          let inputGender = ''
+          let inputAge = addAgeInput.value
+          
+          addGenderInputCollection.forEach(item => {
+              if (item.checked) {
+                  inputGender = item.value
+              }
+          })
+          
+          let id = getMaxId(list) + 1
+          const newHero = {
+              id,
+              name: inputName,
+              gender: inputGender,
+              age: Number(inputAge)
+          }
+          list.push(newHero)
+          
+          $("#myModal").modal("hide")
+          render(list)
+      }
+      
+      function getMaxId(list) {
+          return list.reduce((prev, current) => {
+              return prev.id > current.id ? prev : current
+          }).id
+      }
+  </script>
+</body>
+
+</html>
