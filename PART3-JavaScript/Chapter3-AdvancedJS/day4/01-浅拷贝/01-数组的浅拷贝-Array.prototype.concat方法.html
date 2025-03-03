@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-数组的浅拷贝-Array.prototype.concat方法</title>
+</head>
+<body>
+<script>
+    const arr1 = [1, 2, 3, 4, 5]
+    // 两种写法等价
+    // const arr2 = arr1.concat([])
+    const arr2 = arr1.concat()
+    console.log(arr2) // [1, 2, 3, 4, 5]
+    arr2[0] = 100
+    console.log(arr1) // [1, 2, 3, 4, 5]
+</script>
+</body>
+</html>

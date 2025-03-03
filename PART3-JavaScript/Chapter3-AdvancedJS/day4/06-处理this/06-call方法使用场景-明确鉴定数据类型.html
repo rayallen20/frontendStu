@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-call方法使用场景-明确鉴定数据类型</title>
+</head>
+<body>
+<script>
+    const arr = [1, 2, 3]
+    console.log(typeof arr) // object
+    
+    // 注意: 这里的typeOfArr是一个字符串
+    let typeOfArr = Object.prototype.toString.call(arr)
+    console.log(typeOfArr) // [object Array]
+    console.log(typeOfArr === '[object Array]') // true
+    console.log(typeOfArr.includes('Array')) // true
+    
+    // 注意: 通过原型链找到Object的toString方法并调用 此时的`toString()`方法中的this指向的是arr.__proto__.__proto__
+    // 也就是Object.prototype 所以返回的是[object Object] 因此,只能通过`Object.prototype.toString.call(arr)`来明确鉴定数据类型
+    let typeOfArrByInstance = arr.__proto__.__proto__.toString()
+    console.log(typeOfArrByInstance) // [object Object]
+</script>
+</body>
+</html>

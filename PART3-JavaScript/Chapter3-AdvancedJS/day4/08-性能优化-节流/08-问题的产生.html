@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-问题的产生</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: #ccc;
+            color: #fff;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    const box = document.querySelector('.box')
+    let counter = 0
+    box.innerHTML = counter + ''
+    box.addEventListener('mousemove', mousemoveHandle)
+    
+    function mousemoveHandle() {
+        counter++
+        box.innerHTML = counter + ''
+    }
+</script>
+</body>
+</html>

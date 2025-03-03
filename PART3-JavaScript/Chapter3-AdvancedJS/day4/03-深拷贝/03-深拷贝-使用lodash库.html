@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-深拷贝-使用lodash库</title>
+</head>
+<body>
+<script src="./js/lodash.min.js"></script>
+<script>
+    const obj1 = {
+        name: '张三',
+        age: 18,
+        address: {
+            city: '北京'
+        },
+        lover: undefined,
+        say: function () {
+            console.log(this.name)
+        }
+    }
+    
+    // _: lodash库中的对象
+    // cloneDeep: 深拷贝的方法
+    const obj2 = _.cloneDeep(obj1)
+    console.log(obj2)
+    console.log(obj1 === obj2) // false
+</script>
+</body>
+</html>

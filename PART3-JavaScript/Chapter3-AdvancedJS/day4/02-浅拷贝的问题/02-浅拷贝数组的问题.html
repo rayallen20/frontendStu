@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-浅拷贝数组的问题</title>
+</head>
+<body>
+<script>
+    const arr1 = [{name: '张三'}, {name: '李四'}, {name: '王五'}]
+    const arr2 = arr1.concat()
+    arr2[0].name = '赵六'
+    console.log(arr1) // [{name: '赵六'}, {name: '李四'}, {name: '王五'}]
+    
+    const arr3 = [...arr1]
+    arr3[1].name = '孙七'
+    console.log(arr1) // [{name: '赵六'}, {name: '孙七'}, {name: '王五'}]
+    console.log(arr2) // [{name: '赵六'}, {name: '孙七'}, {name: '王五'}]
+</script>
+</body>
+</html>

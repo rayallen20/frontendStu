@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-call方法</title>
+</head>
+<body>
+<script>
+    function printThis(content) {
+        console.log(this + content)
+    }
+    
+    printThis('some content') // [object Window] some content
+    
+    const obj = {
+        name: 'why'
+    }
+    
+    printThis.call(obj, 'other content') // [object Object] other content
+    
+    printThis.call(null, 'other content') // [object Window] other content
+</script>
+</body>
+</html>

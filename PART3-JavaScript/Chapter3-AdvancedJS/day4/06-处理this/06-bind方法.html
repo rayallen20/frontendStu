@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-bind方法</title>
+</head>
+<body>
+<script>
+    function printThis(content) {
+        console.log(this)
+        console.log(content)
+    }
+    
+    const obj = {
+        name: 'obj'
+    }
+    
+    const afterBind = printThis.bind(obj)
+    afterBind('123')    // {name: "obj"} 123
+    
+    // 二者等效
+    const afterBind2 = printThis.bind(obj, '123')
+    afterBind2()    // {name: "obj"} 123
+</script>
+</body>
+</html>

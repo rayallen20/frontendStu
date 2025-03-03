@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-apply方法</title>
+</head>
+<body>
+<script>
+    function printThis(x, y) {
+        console.log(this)
+        console.log(x + y)
+    }
+    
+    printThis(1, 2) // window 3
+    printThis.apply({name: 'frank'}, [1, 2]) // {name: 'frank'} 3
+</script>
+</body>
+</html>

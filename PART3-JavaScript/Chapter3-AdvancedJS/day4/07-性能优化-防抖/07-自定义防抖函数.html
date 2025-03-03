@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-自定义防抖函数</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: #ccc;
+            color: #fff;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    const box = document.querySelector('.box')
+    let counter = 0
+    box.innerHTML = counter + ''
+    box.addEventListener('mousemove', debounce(mousemoveHandle, 100))
+    
+    function debounce(fn, delay) {
+        let timerId
+        
+        return function () {
+            if (timerId !== undefined) {
+                clearTimeout(timerId)
+            }
+            timerId = setTimeout(fn, delay)
+        }
+    }
+    
+    function mousemoveHandle() {
+        counter++
+        box.innerHTML = counter + ''
+    }
+</script>
+</body>
+</html>

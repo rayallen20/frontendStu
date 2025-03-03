@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-抛出异常</title>
+</head>
+<body>
+<script>
+    function add(a, b) {
+        if (typeof a !== 'number' || typeof b !== 'number') {
+            throw new Error('参数必须是数字')
+        }
+        return a + b
+    }
+</script>
+</body>
+</html>

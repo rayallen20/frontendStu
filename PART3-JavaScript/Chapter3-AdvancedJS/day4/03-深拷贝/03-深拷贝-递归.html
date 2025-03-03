@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-深拷贝-递归</title>
+</head>
+<body>
+<script>
+    function deepClone(obj) {
+        if (typeof obj !== 'object' || obj === null) {
+            return obj
+        }
+        
+        let result
+        if (Array.isArray(obj)) {
+            result = []
+        } else {
+            result = {}
+        }
+        
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                result[key] = deepClone(obj[key])
+            }
+        }
+        
+        return result
+    }
+    
+    const obj1 = {
+        age: 20,
+        name: 'xxx',
+        address: {
+            city: 'beijing'
+        },
+        say: function () {
+            console.log(this.name)
+        },
+        lover: undefined
+    }
+    
+    const obj2 = deepClone(obj1)
+    console.log(obj2)
+    
+    // JS中 ===两侧都是object类型时 比较的是两个对象的引用是否相同
+    console.log(obj2 === obj1) // false
+</script>
+</body>
+</html>

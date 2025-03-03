@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-案例-使用递归和setTimeout模拟setInterval</title>
+</head>
+<body>
+<div class="time"></div>
+<script>
+    const time = document.querySelector('.time')
+    
+    function setTime() {
+        time.innerHTML = new Date().toLocaleString()
+        setTimeout(setTime, 1000)
+    }
+    
+    setTime()
+</script>
+</body>
+</html>

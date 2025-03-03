@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="never" />
+  <title>10-综合案例-项目库页面效果</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+        scroll-behavior: smooth;
+    }
+    
+    .container {
+      width: 1200px;
+      margin: 0 auto;
+    }
+
+    .video video {
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .elevator {
+      position: fixed;
+      top: 280px;
+      right: 20px;
+      z-index: 999;
+      background: #fff;
+      border: 1px solid #e4e4e4;
+      width: 60px;
+    }
+
+    .elevator a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      text-align: center;
+      color: #999;
+    }
+
+    .elevator a.active {
+      color: #1286ff;
+    }
+
+    .outline {
+      padding-bottom: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="http://pip.itcast.cn">
+        <img src="https://pip.itcast.cn/img/logo_v3.29b9ba72.png" alt="" />
+      </a>
+    </div>
+    <div class="video big">
+      <video src="https://v.itheima.net/LapADhV6.mp4" controls></video>
+    </div>
+    <div class="intro big">
+      <img src="./images/intro.png" alt="" />
+    </div>
+    <div class="outline big">
+      <img src="./images/outline.png" alt="" />
+    </div>
+    <div class="elevator">
+      <a href="javascript:;">视频介绍</a>
+      <a href="javascript:;">项目课程</a>
+      <a href="javascript:;">课程大纲</a>
+    </div>
+  </div>
+  <script src="./js/lodash.min.js"></script>
+  <script>
+      const videoEle = document.querySelector('video')
+      videoEle.addEventListener('timeupdate', _.throttle(recordCurrentTime, 1000))
+      function recordCurrentTime () {
+          let currentTime = videoEle.currentTime
+          let currentTimeStorage = Math.floor(currentTime) + ''
+          localStorage.setItem('currentTime', currentTimeStorage)
+      }
+      
+      window.addEventListener('load', loadCurrentTime)
+      function loadCurrentTime() {
+          let currentTimeStorage = localStorage.getItem('currentTime')
+          if (currentTimeStorage !== null) {
+              videoEle.currentTime = Number(currentTimeStorage)
+          }
+      }
+      
+      const introEle = document.querySelector('.intro')
+      const outlineEle = document.querySelector('.outline')
+      const targetEleCollection = [videoEle, introEle, outlineEle]
+      const elevatorLinkCollection = document.querySelectorAll('.elevator a')
+      const htmlDoc = document.documentElement
+      
+      window.addEventListener('scroll', _.throttle(activeElevatorLink, 200))
+      
+      function activeElevatorLink() {
+          let scrollDistance = htmlDoc.scrollTop
+          targetEleCollection.forEach((item, key) => {
+              let targetOffsetTop = item.offsetTop
+              let targetOffsetBottom = item.offsetTop + item.offsetHeight
+              if (targetOffsetTop <= scrollDistance && scrollDistance < targetOffsetBottom) {
+                  onlyActiveByKey(key)
+              }
+          })
+      }
+      
+      function onlyActiveByKey(key) {
+          elevatorLinkCollection.forEach((item) => {
+              item.classList.remove('active')
+          })
+          elevatorLinkCollection[key].classList.add('active')
+      }
+      
+      elevatorLinkCollection.forEach((item, key) => {
+          item.addEventListener('click', scrollPage(key))
+      })
+      
+      function scrollPage(key) {
+          return function () {
+              htmlDoc.scrollBehavior = 'smooth'
+              htmlDoc.scrollTop = targetEleCollection[key].offsetTop
+              onlyActiveByKey(key)
+          }
+      }
+  </script>
+</body>
+
+</html>

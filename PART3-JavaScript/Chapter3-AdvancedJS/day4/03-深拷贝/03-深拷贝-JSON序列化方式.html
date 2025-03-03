@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-深拷贝-JSON序列化方式</title>
+</head>
+<body>
+<script>
+    const obj = {
+        name: '张三',
+        age: 18,
+        family: {
+            father: '张二',
+            mother: '李四'
+        },
+        say: function () {
+            console.log(this.name)
+        }
+    }
+    
+    let objJsonStr = JSON.stringify(obj)
+    let objCopy = JSON.parse(objJsonStr)
+    console.log(objCopy) // { name: '张三', age: 18, family: { father: '张二', mother: '李四' } } 没有say方法
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-捕获异常</title>
+</head>
+<body>
+<script>
+    function add(a, b) {
+        if (typeof a !== 'number' || typeof b !== 'number') {
+            throw new Error('参数必须是数字')
+        }
+        return a + b
+    }
+    
+    try {
+        let result = add('a', 2)
+        console.log(result)
+        
+        // 不会执行
+        result = add(1, 2)
+        console.log(result)
+    } catch (e) {
+        console.log(e.message)
+    } finally {
+        console.log('无论是否抛出异常,都会执行')
+    }
+</script>
+</body>
+</html>

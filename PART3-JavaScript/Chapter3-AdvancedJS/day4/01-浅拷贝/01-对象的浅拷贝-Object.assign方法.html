@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-对象的浅拷贝-Object.assign方法</title>
+</head>
+<body>
+<script>
+    const obj1 = {
+        name: '张三',
+        age: 18
+    }
+    
+    const obj2 = Object.assign({}, obj1)
+    console.log(obj2) // { name: '张三', age: 18 }
+    obj2.age = 29
+    console.log(obj1) // { name: '张三', age: 18 }
+</script>
+</body>
+</html>

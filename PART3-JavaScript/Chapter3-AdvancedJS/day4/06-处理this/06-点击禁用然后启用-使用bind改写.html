@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-点击禁用然后启用-使用bind改写</title>
+</head>
+<body>
+<button>按钮</button>
+<script>
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', clickHandle)
+    
+    let counter = 3
+    let timer = 0
+    let isCounting = false
+    
+    function clickHandle() {
+        if (isCounting) {
+            return
+        }
+        
+        isCounting = true
+        this.disabled = true
+        this.innerHTML = `${counter}秒后启用`
+        
+        let changeThis = enabledBtnInterval.bind(this)
+        timer = setInterval(changeThis, 1000)
+        
+        isCounting = false
+    }
+    
+    function enabledBtnInterval () {
+        counter--
+        if (counter === 0) {
+            btn.disabled = false
+            btn.innerHTML = '按钮'
+            counter = 3
+            clearInterval(timer)
+            return
+        }
+        
+        btn.innerHTML = `${counter}秒后启用`
+    }
+</script>
+</body>
+</html>
