@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-使用URL查询参数</title>
+</head>
+<body>
+<script src="./js/axios.min.js"></script>
+<script>
+    const params = {
+        pname: '河北省'
+    }
+    
+    axios({
+        url: 'https://hmajax.itheima.net/api/city',
+        params
+    }).then(response => {
+        const data = response.data
+        const cityCollection = data.list
+        cityCollection.forEach((city) => {
+            const p = document.createElement('p')
+            p.textContent = city
+            document.body.append(p)
+        })
+    })
+</script>
+</body>
+</html>

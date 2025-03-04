@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-axios基本使用</title>
+</head>
+<body>
+<script src="./js/axios.min.js"></script>
+<script>
+    axios({
+        url: 'https://hmajax.itheima.net/api/province'
+    }).then(response => {
+        const data = response.data
+        data.list.forEach((item) => {
+            const p = document.createElement('p')
+            p.innerHTML = item
+            document.body.append(p)
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-form-serialize插件的使用</title>
+</head>
+<body>
+<form action="javascript:;" class="example-form">
+    <input type="text" name="username">
+    <br>
+    <input type="text" name="password">
+    <br>
+    <input type="button" class="btn" value="提交">
+</form>
+<script src="./js/form-serialize.js"></script>
+<script>
+    const formEle = document.querySelector('.example-form')
+    const btnEle = document.querySelector('.btn')
+    
+    btnEle.addEventListener('click', useFormSerialize)
+    function useFormSerialize() {
+        // 1. form-serialize插件要求表单内的input元素必须有name属性
+        const fromData = serialize(formEle)
+        console.log(fromData)   // 字符串格式的 username=xxx&password=xxx
+        
+        // 2. 将字符串格式的数据转换为对象格式
+        const objData = serialize(formEle, {hash: true})
+        console.log(objData)    // 对象格式的 {username: "xxx", password: "xxx"}
+        
+        // 3. 是否用空字符串替换空值
+        const nonNullData = serialize(formEle, {hash: true, empty: true})
+        console.log(nonNullData) // 当字段值为空时 {username: "", password: ""}
+    }
+</script>
+</body>
+</html>

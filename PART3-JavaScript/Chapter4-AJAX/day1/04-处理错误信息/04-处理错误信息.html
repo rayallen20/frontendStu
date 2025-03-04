@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-处理错误信息</title>
+</head>
+<body>
+<script src="./js/axios.min.js"></script>
+<script>
+    const data = {
+        username: 'testUserName3',
+        password: 'testPassword'
+    }
+    const url = 'http://hmajax.itheima.net/api/register'
+    
+    const requestConfig = {
+        url,
+        method: 'POST',
+        data,
+    }
+    
+    axios(requestConfig).then(response => {
+        const data = response.data.data
+        const divEle = document.createElement('div')
+        
+        const accountEle = document.createElement('p')
+        accountEle.innerHTML = data.account
+        divEle.append(accountEle)
+        
+        const idEle = document.createElement('p')
+        idEle.innerHTML = data.id + ''
+        divEle.append(idEle)
+        
+        document.body.append(divEle)
+        
+    }).catch(error => {
+        const message = error.response.data.message
+        alert(message)
+    })
+</script>
+</body>
+</html>
