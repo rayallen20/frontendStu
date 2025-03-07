@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-文件上传</title>
+</head>
+<body>
+<input type="file" class="upload">
+<script src="./js/axios.min.js"></script>
+<script>
+    let upload = document.querySelector('.upload')
+    upload.addEventListener('change', uploadFile)
+    
+    function uploadFile(event) {
+        const file = event.target.files[0]
+        
+        // file.size 单位是字节
+        let size = file.size / 1024 / 1024
+        if (size > 2) {
+            alert('文件大小不得大于2MB')
+            return
+        }
+        
+        if (!isImage(file.type)) {
+            alert('只能上传图片')
+            return
+        }
+        
+        const formData = new FormData()
+        formData.append('img', file)
+        
+        // 遍历FormData对象
+        // const entries = formData.entries()
+        // for (const [key, value] of entries) {
+        //     console.log(key)
+        //     console.log(value)
+        // }
+        
+        const requestConfig = {
+            url: 'https://hmajax.itheima.net/api/uploadimg',
+            method: 'POST',
+            data: formData,
+            header: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+        
+        axios(requestConfig).then(response => {
+            renderImg(response.data.data.url)
+        }).catch(error => console.log(error))
+    }
+    
+    function isImage(type) {
+        return type.startsWith('image')
+    }
+    
+    function renderImg(src) {
+        const img = document.createElement('img')
+        img.src = src
+        document.body.append(img)
+    }
+</script>
+</body>
+</html>

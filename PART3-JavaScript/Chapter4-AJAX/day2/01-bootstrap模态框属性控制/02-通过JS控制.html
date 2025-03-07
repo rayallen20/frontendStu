@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-通过JS控制</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+</head>
+<body>
+<button type="button" class="btn btn-primary edit-btn">
+    编辑姓名
+</button>
+
+<div class="modal name-box" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">请输入姓名</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <span>姓名：</span>
+                    <input type="text" class="username">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary save-btn">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./bootstrap.min.js"></script>
+<script>
+    const nameBoxEle = document.querySelector('.name-box')
+    const nameBoxModal = new bootstrap.Modal(nameBoxEle)
+    
+    const editBtn = document.querySelector('.edit-btn')
+    editBtn.addEventListener('click', () => nameBoxModal.show())    // 显示模态框之前可以做一些操作
+    
+    const saveBtn = document.querySelector('.save-btn')
+    saveBtn.addEventListener('click', () => nameBoxModal.hide())    // 关闭模态框之前做表单提交操作
+</script>
+</body>
+</html>
