@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-案例-地区查询</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <style>
+        :root {
+            font-size: 15px;
+        }
+        
+        body {
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form id="editForm" class="row">
+        <!-- 输入省份名字 -->
+        <div class="mb-3 col">
+            <label class="form-label">省份名字</label>
+            <input type="text" value="北京" name="province" class="form-control province" placeholder="请输入省份名称" />
+        </div>
+        <!-- 输入城市名字 -->
+        <div class="mb-3 col">
+            <label class="form-label">城市名字</label>
+            <input type="text" value="北京市" name="city" class="form-control city" placeholder="请输入城市名称" />
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary sel-btn">查询</button>
+    <br><br>
+    <p>地区列表: </p>
+    <ul class="list-group">
+        <!-- 示例地区 -->
+        <li class="list-group-item">东城区</li>
+    </ul>
+</div>
+<script>
+    const selBtn = document.querySelector('.sel-btn')
+    const provinceInput = document.querySelector('.province')
+    const cityInput = document.querySelector('.city')
+    const listGroup = document.querySelector('.list-group')
+    const xhr = new XMLHttpRequest()
+    
+    selBtn.addEventListener('click', getArea)
+    
+    function getArea() {
+        if (provinceInput.value === '' || cityInput.value === '') {
+            alert('请输入省份和城市')
+            return
+        }
+        
+        sendRequest()
+    }
+    
+    function sendRequest() {
+        const province = provinceInput.value
+        const city = cityInput.value
+        
+        const paramObj = new URLSearchParams({
+            pname: province,
+            cname: city
+        })
+        const queryString = paramObj.toString()
+        console.log(queryString)    // pname=北京&cname=北京市(url编码后的字符串)
+        
+        const baseUrl = `https://hmajax.itheima.net/api/area?`
+        const url = baseUrl + queryString
+        
+        xhr.open('GET', url)
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.addEventListener('loadend', handleResponse)
+        xhr.send()
+    }
+    
+    function handleResponse() {
+        if (xhr.status !== 200) {
+            console.log(xhr.status)
+            return
+        }
+        
+        const data = JSON.parse(xhr.response)
+        renderResponse(data)
+    }
+    
+    function renderResponse(data) {
+        listGroup.innerHTML = ''
+        data.list.forEach((area) => {
+            const li = document.createElement('li')
+            li.classList.add('list-group-item')
+            li.textContent = area
+            listGroup.appendChild(li)
+        })
+    }
+</script>
+</body>
+</html>

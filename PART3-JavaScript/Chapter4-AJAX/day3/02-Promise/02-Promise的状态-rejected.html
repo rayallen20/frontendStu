@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-Promise的状态-rejected</title>
+</head>
+<body>
+<script>
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // 调用reject函数 就会将Promise的状态修改为rejected
+            reject('模拟AJAX请求-响应失败')
+            console.log(promise)    // // Promise {<rejected> "模拟AJAX请求-响应失败"}
+        }, 2000)
+    })
+    
+    console.log(promise)    // Promise {<pending>}
+    
+    promise.
+    then(resolve => console.log(resolve)).
+    catch(reject => console.log(reject))
+</script>
+</body>
+</html>

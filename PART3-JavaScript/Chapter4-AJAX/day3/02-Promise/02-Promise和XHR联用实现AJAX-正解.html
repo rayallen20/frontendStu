@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-Promise和XHR联用实现AJAX-正解</title>
+</head>
+<body>
+<script>
+    const xhr = new XMLHttpRequest()
+    const url = 'https://hmajax.itheima.net/api/province'
+    xhr.open('GET', url)
+    
+    function renderResponse(responseObj) {
+        const provinces = responseObj.list
+        const ul = document.createElement('ul')
+        provinces.forEach(province => {
+            const li = document.createElement('li')
+            li.textContent = province
+            ul.appendChild(li)
+        })
+        document.body.appendChild(ul)
+    }
+    
+    function handleError(error) {
+        console.log(error.message)
+    }
+    
+    const promise = new Promise((resolve, reject) => {
+        xhr.addEventListener('load', () => {
+            try {
+                const responseObj = JSON.parse(xhr.response)
+                resolve(responseObj)
+            } catch (error) {
+                const responseErr = new Error(`请求失败，状态码为${xhr.status}, 错误信息为${xhr.responseText}`)
+                reject(responseErr)
+            }
+        })
+        
+        xhr.addEventListener('error', () => {
+            const responseErr = new Error(`请求失败，状态码为${xhr.status}, 错误信息为${xhr.responseText}`)
+            reject(responseErr)
+        })
+        
+        xhr.send()
+    })
+    
+    promise.
+    then(responseObj => renderResponse(responseObj)).
+    catch(error => handleError(error))
+    
+    console.log(promise)
+</script>
+</body>
+</html>

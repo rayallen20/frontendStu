@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-Promise的基本使用</title>
+</head>
+<body>
+<script>
+    // Promise对象的构造函数接收一个函数作为参数 当Promise对象的状态发生变化时 会调用这个函数
+    const promise = new Promise((resolve, reject) => {
+        // 执行异步任务
+        // ...(异步任务代码)
+        // 当异步任务执行成功时 调用resolve方法 将异步任务的结果传递给外部
+        resolve('success')
+    })
+    
+    // then()方法中的回调函数会在promise对象的状态变为resolved时被调用
+    // catch()方法中的回调函数会在promise对象的状态变为rejected时被调用
+    // 换言之
+    // then()方法中的回调函数即为 上一行代码中的resolve
+    // catch()方法中的回调函数即为 上一行代码中的reject
+    promise.
+    then((result) => console.log(result)).
+    catch((error) => console.log(error))
+</script>
+</body>
+</html>

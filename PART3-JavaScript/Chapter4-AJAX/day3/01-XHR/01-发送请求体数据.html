@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-发送请求体数据</title>
+</head>
+<body>
+<button class="reg-btn">注册</button>
+<script>
+    const btn = document.querySelector('.reg-btn')
+    const url = 'https://hmajax.itheima.net/api/register'
+    const xhr = new XMLHttpRequest()
+    
+    btn.addEventListener('click', register)
+    
+    function register() {
+        const dataObj = {
+            username: 'testUserName8902',
+            password: '123456',
+        }
+        const dataStr = JSON.stringify(dataObj)
+        
+        xhr.open('POST', url)
+        xhr.withCredentials = true
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.addEventListener('loadend', handleResponse)
+        xhr.send(dataStr)
+    }
+    
+    function handleResponse() {
+        if (xhr.status !== 200) {
+            console.log(xhr.status)
+            console.log(xhr.responseText)
+            return
+        }
+        
+        const responseObj = JSON.parse(xhr.responseText)
+        
+        console.log(responseObj.data)
+    }
+</script>
+</body>
+</html>

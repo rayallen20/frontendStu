@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-Promise的状态-状态凝固</title>
+</head>
+<body>
+<script>
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('模拟AJAX请求-响应失败')
+            // Promise对象的状态一旦修改,就不会再改变
+            // 且一旦状态被修改 就不会执行另一个状态的回调函数
+            resolve('模拟AJAX请求-响应成功')
+            
+            // 因此此处的状态仍然为rejected 且Promise.PromiseResult的值为 "模拟AJAX请求-响应失败"
+            console.log(promise)    // Promise {<rejected>: "模拟AJAX请求-响应失败"}
+        }, 2000)
+    })
+    
+    console.log(promise)    // Promise {<pending>}
+    
+    promise.
+    then(resolve => console.log(resolve)).
+    catch(reject => console.log(reject))
+</script>
+</body>
+</html>

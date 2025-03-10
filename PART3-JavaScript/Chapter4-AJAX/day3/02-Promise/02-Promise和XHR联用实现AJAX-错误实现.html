@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-Promise和XHR联用实现AJAX-错误实现</title>
+</head>
+<body>
+<script>
+    const xhr = new XMLHttpRequest()
+    const url = 'https://hmajax.itheima.net/api/province'
+    xhr.open('GET', url)
+    xhr.addEventListener('loadend', handleResponse)
+    
+    function handleResponse() {
+        const responseObj = JSON.parse(xhr.response)
+        renderResponse(responseObj)
+    }
+    
+    function renderResponse(responseObj) {
+        const provinces = responseObj.list
+        const ul = document.createElement('ul')
+        provinces.forEach(province => {
+            const li = document.createElement('li')
+            li.textContent = province
+            ul.appendChild(li)
+        })
+        document.body.appendChild(ul)
+    }
+    
+    xhr.addEventListener('error', handleError)
+    
+    function handleError() {
+        console.log(xhr.status)
+        console.log(xhr.responseText)
+    }
+    
+    const promise = new Promise((resolve, reject) => {
+        xhr.send()
+        if (xhr.status === 200) {
+            resolve()
+        }
+        
+        reject()
+    })
+    
+    promise.
+    then(handleResponse).
+    catch(handleError)
+    
+    console.log(promise)    // Promise {<rejected>: undefined}
+</script>
+</body>
+</html>

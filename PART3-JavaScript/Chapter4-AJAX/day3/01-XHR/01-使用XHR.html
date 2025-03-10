@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-使用XHR</title>
+</head>
+<body>
+<script>
+    const url = 'https://hmajax.itheima.net/api/province'
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', url)
+    xhr.addEventListener('loadend', handleResponse)
+    
+    function handleResponse() {
+        // xhr.response 是一个字符串
+        console.log(xhr.response)
+        
+        const responseObj = JSON.parse(xhr.response)
+        console.log(responseObj)
+        
+        renderResponse(responseObj)
+    }
+    
+    function renderResponse(responseObj) {
+        const provinces = responseObj.list
+        const ul = document.createElement('ul')
+        provinces.forEach(province => {
+            const li = document.createElement('li')
+            li.textContent = province
+            ul.appendChild(li)
+        })
+        document.body.appendChild(ul)
+    }
+    
+    // 发送请求
+    xhr.send()
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-Promise的状态-fulfilled</title>
+</head>
+<body>
+<script>
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // 调用resolve函数 就会将Promise状态修改为fulfilled
+            // 传递给resolve函数或reject函数的实参值 即为Promise.PromiseResult属性值
+            resolve('模拟AJAX请求-响应成功')
+            console.log(promise)    // Promise {<fulfilled>: "模拟AJAX请求-响应成功"}
+        }, 2000)
+    })
+    
+    console.log(promise)    // Promise {<pending>}
+    
+    promise.
+    then(resolve => console.log(resolve)).
+    catch(reject => console.log(reject))
+</script>
+</body>
+</html>

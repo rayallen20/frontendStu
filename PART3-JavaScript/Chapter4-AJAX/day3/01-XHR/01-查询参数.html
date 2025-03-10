@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-查询参数</title>
+</head>
+<body>
+<script>
+    const baseUrl = 'https://hmajax.itheima.net/api/city?pname='
+    const province = '河北省'
+    const url = baseUrl + province
+    
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', url)
+    xhr.setRequestHeader('Content-Type', 'application/json')
+    xhr.addEventListener('loadend', handleResponse)
+    
+    function handleResponse() {
+        if (xhr.status !== 200) {
+            console.log(xhr.statusText)
+            return
+        }
+        
+        const responseObj = JSON.parse(xhr.response)
+        
+        renderResponse(responseObj)
+    }
+    
+    function renderResponse(responseObj) {
+        const cities = responseObj.list
+        const ul = document.createElement('ul')
+        document.body.appendChild(ul)
+        
+        cities.forEach(city => {
+            const li = document.createElement('li')
+            li.textContent = city
+            ul.appendChild(li)
+        })
+    }
+    
+    xhr.send()
+</script>
+</body>
+</html>

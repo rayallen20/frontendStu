@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-文件上传</title>
+</head>
+<body>
+<input type="file" class="upload">
+<script>
+    const fileInput = document.querySelector('.upload')
+    fileInput.addEventListener('change', uploadFile)
+    
+    function uploadFile(event) {
+        const file = event.target.files[0]
+        
+        let size = file.size / 1024 / 1024
+        if (size > 2) {
+            alert('文件大小不得大于2MB')
+            return
+        }
+        
+        if (!isImage(file.type)) {
+            alert('只能上传图片')
+            return
+        }
+        
+        const formData = new FormData()
+        formData.append('img', file)
+        
+        upload(formData)
+    }
+    
+    function isImage(type) {
+        return type.startsWith('image')
+    }
+    
+    function upload(formData) {
+        const xhr = new XMLHttpRequest()
+        const url = 'https://hmajax.itheima.net/api/uploadimg'
+        
+        // 监听上传进度
+        xhr.upload.addEventListener('progress', uploadProgress)
+        
+        // 监听请求完成
+        xhr.addEventListener('loadend', (event) => {
+            uploadComplete(xhr, event)
+        })
+        
+        // 监听请求错误
+        xhr.addEventListener('error', (event) => {
+            console.log(xhr.status)
+            console.log(xhr.responseText)
+        })
+        
+        xhr.open('POST', url)
+        xhr.setRequestHeader('Content-Type', 'multipart/form-data')
+        
+        xhr.send(formData)
+    }
+    
+    function uploadProgress(event) {
+        // 一个布尔值 表示传输的总大小是否已知
+        if (event.lengthComputable) {
+            // event.loaded 表示已经完成的工作量 单位:字节
+            // event.total 表示要完成的总工作量 单位:字节
+            let percent = (event.loaded / event.total) * 100
+            console.log(percent)
+        }
+    }
+    
+    function uploadComplete(xhr, event) {
+        if (xhr.status !== 200) {
+            console.log(xhr.status)
+            console.log(xhr.responseText)
+            return
+        }
+        
+        console.log(xhr.responseText)
+    }
+</script>
+</body>
+</html>
