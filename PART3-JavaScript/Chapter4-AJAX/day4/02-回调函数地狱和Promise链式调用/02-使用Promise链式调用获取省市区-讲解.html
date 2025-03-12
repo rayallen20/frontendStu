@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-使用Promise链式调用获取省市区-讲解</title>
+</head>
+<body>
+<form>
+    <span>省份：</span>
+    <select>
+        <option class="province"></option>
+    </select>
+    <span>城市：</span>
+    <select>
+        <option class="city"></option>
+    </select>
+    <span>地区：</span>
+    <select>
+        <option class="area"></option>
+    </select>
+</form>
+<script src="./js/axios.min.js"></script>
+<script>
+    sendProvinceRequest().
+    then(response => {
+        const pname = renderProvince(response)
+        return sendCityRequest(pname)
+    }).
+    catch(error => console.log('请求省份错误: ' + error)).
+    then(response => {
+        const cname = renderCity(response)
+        return sendAreaRequest(cname)
+    }).
+    catch(error => console.log('请求城市错误: ' + error)).
+    then(response => renderArea(response)).
+    catch(error => console.log('请求地区错误: ' + error))
+    
+    function sendProvinceRequest() {
+        const url = 'https://hmajax.itheima.net/api/province'
+        const requestConfig = {
+            url,
+        }
+        return axios(requestConfig)
+    }
+    
+    function renderProvince(response) {
+        const pname = response.data.list[0]
+        document.querySelector('.province').innerText = pname
+        return pname
+    }
+    
+    function sendCityRequest(pname) {
+        const url = 'https://hmajax.itheima.net/api/city'
+        const requestConfig = {
+            url,
+            params: {
+                pname,
+            }
+        }
+        
+        return axios(requestConfig)
+    }
+    
+    function renderCity(response) {
+        const cname = response.data.list[0]
+        document.querySelector('.city').innerText = cname
+        return cname
+    }
+    
+    function sendAreaRequest(cname) {
+        const pname = document.querySelector('.province').innerText
+        
+        const url = 'https://hmajax.itheima.net/api/area'
+        const requestConfig = {
+            url,
+            params: {
+                pname,
+                cname,
+            }
+        }
+        
+        return axios(requestConfig)
+    }
+    
+    function renderArea(response) {
+        const aname = response.data.list[0]
+        document.querySelector('.area').innerText = aname
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-使用Promise链式调用获取省市区-自己的实现</title>
+</head>
+<body>
+<form>
+    <span>省份：</span>
+    <select>
+        <option class="province"></option>
+    </select>
+    <span>城市：</span>
+    <select>
+        <option class="city"></option>
+    </select>
+    <span>地区：</span>
+    <select>
+        <option class="area"></option>
+    </select>
+</form>
+<script src="./js/axios.min.js"></script>
+<script>
+    const provincePromise = new Promise((resolve, reject) => {
+        const url = 'https://hmajax.itheima.net/api/province'
+        const requestConfig = {
+            url,
+        }
+        axios(requestConfig).
+        then(response => resolve(response)).
+        catch(error => reject(error))
+    })
+    
+    provincePromise.
+    then(response => {
+        const pname = response.data.list[0]
+        document.querySelector('.province').innerText = pname
+        
+        return new Promise((resolve, reject) => {
+            const url = 'https://hmajax.itheima.net/api/city'
+            const requestConfig = {
+                url,
+                params: {
+                    pname,
+                }
+            }
+            axios(requestConfig).
+            then(response => resolve(response)).
+            catch(error => reject(error))
+        })
+    }).
+    catch(error => console.log('请求省份错误: ' + error)).
+    then(response => {
+        const cname = response.data.list[0]
+        document.querySelector('.city').innerText = cname
+        
+        const pname = document.querySelector('.province').innerText
+        
+        return new Promise((resolve, reject) => {
+            const url = 'https://hmajax.itheima.net/api/area'
+            const requestConfig = {
+                url,
+                params: {
+                    pname,
+                    cname,
+                }
+            }
+            axios(requestConfig).
+            then(response => resolve(response)).
+            catch(error => reject(error))
+        })
+    }).
+    catch(error => console.log('请求城市错误: ' + error)).
+    then(response => {
+        const aname = response.data.list[0]
+        document.querySelector('.area').innerText = aname
+    }).
+    catch(error => console.log('请求地区错误: ' + error))
+</script>
+</body>
+</html>

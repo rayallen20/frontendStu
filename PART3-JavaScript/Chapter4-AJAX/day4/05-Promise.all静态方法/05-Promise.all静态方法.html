@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-Promise.all静态方法</title>
+</head>
+<body>
+<script src="./js/axios.min.js"></script>
+<script>
+    const url = 'http://hmajax.itheima.net/api/weather'
+    
+    const bjRequestConfig = {
+        url,
+        method: 'GET',
+        params: {
+            city: '110100',
+        },
+    }
+    const bjPromise = axios(bjRequestConfig)
+    
+    const shRequestConfig = {
+        url,
+        method: 'GET',
+        params: {
+            city: '310100',
+        },
+    }
+    const shPromise = axios(shRequestConfig)
+    
+    const gzRequestConfig = {
+        url,
+        method: 'GET',
+        params: {
+            city: '440100',
+        },
+    }
+    const gzPromise = axios(gzRequestConfig)
+    
+    const szRequestConfig = {
+        url,
+        method: 'GET',
+        params: {
+            city: '440300',
+        },
+    }
+    const szPromise = axios(szRequestConfig)
+    
+    Promise.all([bjPromise, shPromise, gzPromise, szPromise]).
+    then((responses) => {
+        console.log(responses)    // 注意这里拿到的是一个数组 数组中的每一项都是一个响应对象 也就是每个Promise对象fulfilled的结果
+        responses.forEach(response => {
+            const li = document.createElement('li')
+            li.textContent = response.data.data.area + '---' + response.data.data.weather
+            document.body.appendChild(li)
+        })
+    }).
+    catch((err) => console.log(err))
+</script>
+</body>
+</html>

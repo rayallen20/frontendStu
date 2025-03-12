@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-async函数和await</title>
+</head>
+<body>
+<form>
+    <span>省份：</span>
+    <select>
+        <option class="province"></option>
+    </select>
+    <span>城市：</span>
+    <select>
+        <option class="city"></option>
+    </select>
+    <span>地区：</span>
+    <select>
+        <option class="area"></option>
+    </select>
+</form>
+<script src="./js/axios.min.js"></script>
+<script>
+    async function requestAndRender() {
+        let pname = ''
+        let cname = ''
+        
+        try {
+            const provinceResponse = await requestProvince()
+            pname = provinceResponse.data.list[0]
+            renderProvince(pname)
+        } catch (error) {
+            console.log('请求省份错误')
+            throw error
+        }
+        
+        try {
+            const cityResponse = await requestCity(pname)
+            cname = cityResponse.data.list[0]
+            renderCity(cname)
+        } catch (error) {
+            console.log('请求城市错误')
+            throw error
+        }
+        
+        try {
+            const areaResponse = await requestArea(pname, cname)
+            const aname = areaResponse.data.list[0]
+            renderArea(aname)
+        } catch (error) {
+            console.log('请求地区错误')
+            throw error
+        }
+    }
+    
+    async function requestProvince() {
+        const url = 'https://hmajax.itheima.net/api/province'
+        const requestConfig = {
+            url,
+        }
+        
+        // 注意: async函数只能返回Promise对象
+        // 即使显式地返回一个值 这个值也会被包装成一个状态为fulfilled的Promise对象
+        // 如果出现异常 则会被包装成一个状态为rejected的Promise对象
+        return await axios(requestConfig)
+    }
+    
+    function renderProvince(pname) {
+        const provinceOption = document.querySelector('.province')
+        provinceOption.innerText = pname
+    }
+    
+    async function requestCity(pname) {
+        const url = 'https://hmajax.itheima.net/api/city'
+        const requestConfig = {
+            url,
+            params: {
+                pname,
+            }
+        }
+        
+        return await axios(requestConfig)
+    }
+    
+    function renderCity(cname) {
+        const cityOption = document.querySelector('.city')
+        cityOption.innerText = cname
+    }
+    
+    async function requestArea(pname, cname) {
+        const url = 'https://hmajax.itheima.net/api/area'
+        const requestConfig = {
+            url,
+            params: {
+                pname,
+                cname,
+            }
+        }
+        
+        return await axios(requestConfig)
+    }
+    
+    function renderArea(aname) {
+        const areaOption = document.querySelector('.area')
+        areaOption.innerText = aname
+    }
+    
+    try {
+        requestAndRender()
+    } catch (error) {
+        console.log(error)
+    }
+</script>
+</body>
+</html>
