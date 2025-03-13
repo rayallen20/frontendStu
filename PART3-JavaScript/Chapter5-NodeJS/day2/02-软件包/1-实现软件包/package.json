@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "myutils": "file:myUtils"
+  }
+}

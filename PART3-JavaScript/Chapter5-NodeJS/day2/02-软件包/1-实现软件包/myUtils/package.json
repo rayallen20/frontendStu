@@ -1,0 +1,9 @@
+{
+  "name": "myutils",
+  "version": "1.0.0",
+  "description": "本包用于数组求和以及判断用户名密码长度",
+  "main": "index.js",
+  "author": "roach",
+  "license": "MIT",
+  "type": "module"
+}

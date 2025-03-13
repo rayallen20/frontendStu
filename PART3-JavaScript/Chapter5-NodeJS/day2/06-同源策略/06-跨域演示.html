@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-跨域演示</title>
+</head>
+<body>
+<script src="./js/axios.min.js"></script>
+<script>
+    const url = 'http://localhost:4060/api/province'
+    const option = {
+        url,
+        method: 'GET',
+    }
+    
+    axios(option).
+    then(response => console.log(response)).
+    catch(error => console.log(error))
+</script>
+</body>
+</html>
