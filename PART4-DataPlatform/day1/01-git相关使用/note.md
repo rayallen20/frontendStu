@@ -17,3 +17,4 @@
   - `git log --oneline`
 - 切换历史版本
   - `git reset --hard 版本号`
+  - 如果需要让远端也回退到这个版本，需要使用强制推送 `git push -f`
