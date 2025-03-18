@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-在dataset中设置数据</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .chart {
+            width: 800px;
+            height: 400px;
+            /*background: skyblue;*/
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="chart" id="chart">
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+<script>
+    const chartEle = document.querySelector('.chart')
+    const myChart = echarts.init(chartEle)
+    
+    option = {
+        legend: {},
+        // 鼠标悬停时显示提示框
+        tooltip: {},
+        dataset: {
+            // 提供数据
+            source: [
+                // 数据集中第1行第1列的元素表示数据的类别名称 用于标识每一列的数据类型
+                // 在渲染出的图表中没有看到这个数据 是因为它仅作为数据的标签 不会在图表中直接显示
+                // 图表会根据这些标签来对应数据列 但不会将标签本身作为数据展示
+                // 说白了这个元素就是一个标签
+                // 可以认为第一行是excel中的表头 从第2个元素开始定义了这个表格有几列
+                ['product', '2015', '2016', '2017'],
+                ['抹茶拿铁', 43.3, 85.8, 93.7],
+                ['奶茶', 83.1, 73.4, 55.1],
+                ['奶酪可可', 86.4, 65.2, 82.5],
+                ['核桃布朗尼蛋糕', 72.4, 53.9, 39.1],
+                ['纯牛奶', 10, 20, 30]
+            ]
+        },
+        // 声明一个X轴 类目轴(category)
+        // 默认情况下 类目轴对应到 dataset.source 第一列
+        xAxis: { type: 'category' },
+        // 声明一个Y轴 数值轴
+        yAxis: {},
+        // 声明多个bar series
+        // 默认情况下 每个series会自动对应到 dataset 的每一列
+        // 也就是说 dataset.source[0] 有N个元素 这里就应该有 (N-1) 个series
+        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+    };
+    
+    myChart.setOption(option)
+</script>
+</body>
+</html>

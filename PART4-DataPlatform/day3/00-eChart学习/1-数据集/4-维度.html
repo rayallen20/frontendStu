@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-维度</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .chart {
+            width: 1200px;
+            height: 400px;
+            /*background: skyblue;*/
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="chart" id="chart">
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+<script>
+    const chartEle = document.querySelector('.chart')
+    const myChart = echarts.init(chartEle)
+    
+    option = {
+        legend: {},
+        tooltip: {},
+        dataset: {
+            sourceHeader: false,
+            // 将数据映射到行时 会将数据的第一行作为维度
+            // 换言之 这里就是把维度集中定义了
+            // 说人话就是 表示每一行的数据是什么
+            dimensions: [
+                'product',
+                '抹茶拿铁',
+                '奶茶',
+                '奶酪可可'
+            ],
+            source: [
+                // 此时 source的第1行定义的是条目的名称
+                // 说人话就是 表示每一列的数据是什么
+                ['2012', '2013', '2014'],
+                [86.5, 92.1, 85.7],
+                [24.1, 67.2, 79.5],
+                [10, 20, 30],
+            ]
+        },
+        xAxis: {
+            type: 'category',
+        },
+        yAxis: {},
+        series: [
+            {
+                type: 'bar',
+                seriesLayoutBy: 'row'
+            },
+            {
+                type: 'bar',
+                seriesLayoutBy: 'row'
+            },
+            {
+                type: 'bar',
+                seriesLayoutBy: 'row'
+            },
+        ],
+    }
+    
+    myChart.setOption(option)
+</script>
+</body>
+</html>

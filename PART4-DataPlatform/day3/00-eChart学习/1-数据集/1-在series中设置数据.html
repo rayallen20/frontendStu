@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-在series中设置数据</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .chart {
+            width: 600px;
+            height: 400px;
+            /*background: skyblue;*/
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="chart" id="chart">
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+<script>
+    const chartEle = document.querySelector('.chart')
+    const myChart = echarts.init(chartEle)
+    
+    option = {
+        xAxis: {
+            // X轴类型
+            type: 'category',
+            
+            // X轴数据 每个元素表示一组柱子的名称
+            data: ['抹茶拿铁', '奶茶', '奶酪可可', '核桃布朗尼蛋糕', '纯牛奶']
+        },
+        yAxis: {},
+        
+        tooltip: {
+        },
+        
+        // 数据集
+        series: [
+            // 数据集中的每一个对象表示柱状图中的一类柱子(也可以认为是一种颜色的柱子)
+            {
+                // 图表类型
+                // bar: 柱状图
+                type: 'bar',
+                // 一组柱子的名称
+                name: '2015',
+                // 一组柱子的数据
+                // 89.3: 2015年抹茶拿铁的销量
+                // 92.1: 2015年奶茶的销量
+                // 94.4: 2015年奶酪可可的销量
+                // 85.4: 2015年核桃布朗尼蛋糕的销量
+                // 20: 2015年纯牛奶的销量
+                data: [89.3, 92.1, 94.4, 85.4, 20]
+            },
+            {
+                type: 'bar',
+                name: '2016',
+                data: [95.8, 89.4, 91.2, 76.9, 30]
+            },
+            {
+                type: 'bar',
+                name: '2017',
+                data: [97.7, 83.1, 92.5, 78.1, 40]
+            },
+        ],
+        // 显示图例
+        legend:{},
+        // 设置滚动条
+        dataZoom: [
+            {
+                type: 'slider', // 滑动条
+                xAxisIndex: 0,  // 控制X轴
+                start: 0,       // 初始范围起点(0%)
+                end: 50         // 初始范围终点(50%)
+            },
+            {
+                type: 'inside', // 内置滚动 鼠标滚轮可控制图表的放大缩小
+                xAxisIndex: 0,
+                start: 0,
+                end: 50
+            }
+        ]
+    }
+    
+    myChart.setOption(option)
+</script>
+</body>
+</html>

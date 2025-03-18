@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-把dataset的行或列映射为series</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .chart {
+            width: 1000px;
+            height: 1000px;
+            /*background: skyblue;*/
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="chart" id="chart">
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+<script>
+    const chartEle = document.querySelector('.chart')
+    const myChart = echarts.init(chartEle)
+    
+    option = {
+        legend: {},
+        tooltip: {},
+        dataset: {
+            source: [
+                ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+                ['抹茶拿铁', 41.1, 30.4, 65.1, 53.3, 60, 70],
+                ['奶茶', 86.5, 92.1, 85.7, 83.1, 50, 30],
+                ['奶酪可可', 24.1, 67.2, 79.5, 86.4, 20, 40],
+                ['核桃布朗尼蛋糕', 55.2, 67.1, 69.2, 72.4, 10, 80],
+                ['纯牛奶', 10, 20, 30, 40, 70, 90]
+            ]
+        },
+        xAxis: [
+            // 定义一个X轴
+            {
+                type: 'category',
+                // gridIndex: 定义该X轴所属的网格
+                gridIndex: 0
+            },
+            
+            // 定义第二个X轴
+            {
+                type: 'category',
+                gridIndex: 1
+            }
+        ],
+        yAxis: [{ gridIndex: 0 }, { gridIndex: 1 }],
+        
+        // 定义网格布局 里边有几个元素就是定义了几个网格
+        // bottom: '55%' 表示这个网格的底部距离容器底部55% 类似margin-bottom: 55%
+        // top: '55%' 表示这个网格的顶部距离容器顶部55% 类似margin-top: 55%
+        // 这两个网格将图表区域分成上下两部分 用于展示不同的系列数据
+        grid: [{ bottom: '55%' }, { top: '55%' }],
+        series: [
+            // 这几个series会出现在第一个直角坐标系中
+            // 每个系列对应到dataset的每一行
+            // dataset有5行(不算表头) 所以需要5个seriesLayoutBy=row的series
+            {
+                type: 'bar',
+                seriesLayoutBy: 'row',
+                // xAxisIndex表示该系列数据所使用的X轴的索引
+                // 在ECharts中可以定义多个X轴
+                // 通过索引来指定某个系列数据使用哪个X轴
+                // 索引从0开始
+                
+                // 简单理解: 表示这个series是用第0个X坐标轴
+                xAxisIndex: 0,
+                yAxisIndex: 0
+            },
+            { type: 'bar', seriesLayoutBy: 'row', xAxisIndex: 0, yAxisIndex: 0 },
+            { type: 'bar', seriesLayoutBy: 'row', xAxisIndex: 0, yAxisIndex: 0 },
+            { type: 'bar', seriesLayoutBy: 'row', xAxisIndex: 0, yAxisIndex: 0 },
+            { type: 'bar', seriesLayoutBy: 'row', xAxisIndex: 0, yAxisIndex: 0 },
+            // 这几个系列会出现在第二个直角坐标系中
+            // 每个系列对应到dataset的每一列
+            // dataset有6列(不算第一列) 所以需要6个seriesLayoutBy=column的series
+            { type: 'bar', seriesLayoutBy: 'column', xAxisIndex: 1, yAxisIndex: 1 },
+            { type: 'bar', seriesLayoutBy: 'column', xAxisIndex: 1, yAxisIndex: 1 },
+            { type: 'bar', seriesLayoutBy: 'column', xAxisIndex: 1, yAxisIndex: 1 },
+            { type: 'bar', seriesLayoutBy: 'column', xAxisIndex: 1, yAxisIndex: 1 },
+            { type: 'bar', seriesLayoutBy: 'column', xAxisIndex: 1, yAxisIndex: 1 },
+            { type: 'bar', seriesLayoutBy: 'column', xAxisIndex: 1, yAxisIndex: 1 },
+        ]
+    }
+    
+    myChart.setOption(option)
+</script>
+</body>
+</html>

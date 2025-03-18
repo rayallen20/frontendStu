@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-提示框</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .my-echarts {
+            width: 600px;
+            height: 400px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="my-echarts"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+<script>
+    let myChartEle = document.querySelector('.my-echarts')
+    let myChart = echarts.init(myChartEle)
+    
+    const foodArr = [
+        { name: '西兰花', price: 150 },
+        { name: '西瓜', price: 230 },
+        { name: '西葫芦', price: 224 },
+        { name: '大葱', price: 34 },
+        { name: '西红柿', price: 135 },
+        { name: '西芹', price: 147 },
+        { name: '西洋菜', price: 260 },
+    ]
+    
+    let option = {
+        title: {
+            text: '食物售价'
+        },
+        tooltip: {
+            trigger: 'axis',
+            // formatter: '{b0} <br /> {c0}元'
+        },
+        legend: {
+            data: [
+                {
+                    name: '价格',
+                    // icon: 'image://data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7',
+                }
+            ],
+            right: 30
+        },
+        grid: {
+            left: '20%',
+        },
+        xAxis: {
+            data: foodArr.map(item => item.name)
+        },
+        yAxis: {
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    type: 'dashed',
+                    width: 1,
+                }
+            },
+            splitLine: {
+                show: true,
+                lineStyle: {
+                    type: 'dashed',
+                    width: 1,
+                }
+            }
+        },
+        series: [
+            {
+                name: '价格',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }
+        ]
+    }
+    
+    myChart.setOption(option)
+</script>
+</body>
+</html>
