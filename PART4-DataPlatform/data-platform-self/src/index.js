@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import '@/css/common.css'
 import '@/css/index.css'
 import common from '@/common.js'
 import * as echarts from 'echarts'
@@ -20,9 +23,7 @@ function checkUser() {
     const usernameEle = document.querySelector('.username')
     common.renderUser(usernameEle)
 
-    requestAndRender(user.token).
-    then().
-    catch(err => console.log('渲染页面失败:' + err))
+    requestAndRender(user.token)
 }
 
 function redirectToLogin() {
@@ -37,13 +38,14 @@ async function requestAndRender() {
         const payload = await common.axiosInstance.get('/dashboard')
 
         // Tips: 解构的代码会常用 需要记一下语法
-        const {overview, year, salaryData, groupData} = payload
+        const {overview, year, salaryData, groupData, provinceData} = payload
 
         renderDashboard(overview)
         renderSalaryLine(year)
         renderSalaryPie(salaryData)
         renderGroup(groupData)
         renderGenderSalaryPies(salaryData)
+        renderMap(provinceData)
     } catch (error) {
         console.log(error)
         common.showToast(error.response.data.message)
@@ -538,6 +540,147 @@ function genFemaleData(salaries) {
             name: salary.label,
         }
     })
+}
+
+function renderMap(provinceData) {
+    fetch('/map/china.json')
+        .then(res => res.json())
+        .then(chinaJson => {
+            echarts.registerMap('china', chinaJson)
+            console.log('China map loaded')
+
+            const mapEle = document.querySelector('#map')
+            const mapChart = echarts.init(mapEle)
+
+            const data = formatData(provinceData)
+            console.log(getMaxProvince(data))
+
+            const option = {
+                title: {
+                    text: '籍贯分布',
+                    top: 10,
+                    left: 10,
+                    textStyle: {
+                        fontSize: 16,
+                    },
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{b}: {c} 位学员',
+                    borderColor: 'transparent',
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    textStyle: {
+                        color: '#fff',
+                    },
+                },
+                visualMap: {
+                    min: 0,
+                    max: getMaxProvince(data),
+                    bottom: '20',
+                    text: [String(getMaxProvince(data)), '0'],
+                    inRange: {
+                        color: ['#ffffff', '#0075F0'],
+                    },
+                    show: true,
+                    left: 40,
+                },
+                geo: {
+                    map: 'china',
+                    roam: false,
+                    zoom: 1.0,
+                    label: {
+                        normal: {
+                            show: true,
+                            fontSize: '10',
+                            color: 'rgba(0,0,0,0.7)',
+                        },
+                    },
+                    itemStyle: {
+                        normal: {
+                            borderColor: 'rgba(0, 0, 0, 0.2)',
+                            color: '#e0ffff',
+                        },
+                        emphasis: {
+                            areaColor: '#34D39A',
+                            shadowOffsetX: 0,
+                            shadowOffsetY: 0,
+                            shadowBlur: 20,
+                            borderWidth: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)',
+                        },
+                    },
+                },
+                series: [
+                    {
+                        type: 'map',
+                        name: '籍贯分布',
+                        geoIndex: 0,
+                        data
+                    }
+                ]
+            }
+
+            mapChart.setOption(option)
+
+        })
+        .catch(error => console.error('Failed to load map:', error))
+}
+
+function formatData(provinces) {
+    const originData = getOriginData()
+    originData.forEach((item) => {
+        const provinceObj = provinces.find(province => item.name === province.name || item.name.includes(province.name))
+
+        if (provinceObj !== undefined) {
+            item.value = provinceObj.value
+        }
+    })
+
+    return originData
+}
+
+function getOriginData() {
+    return [
+        { name: '南海诸岛', value: 0 },
+        { name: '北京市', value: 0 },
+        { name: '天津市', value: 0 },
+        { name: '上海市', value: 0 },
+        { name: '重庆市', value: 0 },
+        { name: '河北省', value: 0 },
+        { name: '河南省', value: 0 },
+        { name: '云南省', value: 0 },
+        { name: '辽宁省', value: 0 },
+        { name: '黑龙江省', value: 0 },
+        { name: '湖南省', value: 0 },
+        { name: '安徽省', value: 0 },
+        { name: '山东省', value: 0 },
+        { name: '新疆维吾尔自治区', value: 0 },
+        { name: '江苏省', value: 0 },
+        { name: '浙江省', value: 0 },
+        { name: '江西省', value: 0 },
+        { name: '湖北省', value: 0 },
+        { name: '广西壮族自治区', value: 0 },
+        { name: '甘肃省', value: 0 },
+        { name: '山西省', value: 0 },
+        { name: '内蒙古自治区', value: 0 },
+        { name: '陕西省', value: 0 },
+        { name: '吉林省', value: 0 },
+        { name: '福建省', value: 0 },
+        { name: '贵州省', value: 0 },
+        { name: '广东省', value: 0 },
+        { name: '青海省', value: 0 },
+        { name: '西藏自治区', value: 0 },
+        { name: '四川省', value: 0 },
+        { name: '宁夏省', value: 0 },
+        { name: '海南省', value: 0 },
+        { name: '台湾特别行政区', value: 0 },
+        { name: '香港特别行政区', value: 0 },
+        { name: '澳门特别行政区', value: 0 },
+    ]
+}
+
+function getMaxProvince(provinces) {
+    return Math.max.apply(null, provinces.map(province => province.value))
 }
 
 const logoutBtn = document.querySelector('#logout')

@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -47,6 +48,14 @@ module.exports = {
                 'student',
             ],
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'public/map'), // 源文件目录
+                    to: path.resolve(__dirname, 'dist/map') // 目标目录
+                }
+            ]
+        })
     ],
     module: {
         rules: [

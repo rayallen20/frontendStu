@@ -47,7 +47,11 @@ axiosInstance.interceptors.response.use(response => {
 })
 
 function extractPayload(response) {
-    return response.data.data
+    if (response.data.data !== undefined) {
+        return response.data.data
+    }
+
+    return response.data
 }
 
 function handleUnAuthorizedError() {
