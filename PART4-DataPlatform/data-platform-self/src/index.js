@@ -43,6 +43,7 @@ async function requestAndRender() {
         renderSalaryLine(year)
         renderSalaryPie(salaryData)
         renderGroup(groupData)
+        renderGenderSalaryPies(salaryData)
     } catch (error) {
         console.log(error)
         common.showToast(error.response.data.message)
@@ -271,7 +272,7 @@ function renderSalaryPie(salary) {
             '#3ABCFA',
             '#34D39A'
         ],
-    };
+    }
 
     salaryChart.setOption(option)
 }
@@ -430,6 +431,113 @@ function genSalaryBarColor() {
             }
         ]
     }
+}
+
+function renderGenderSalaryPies(salary) {
+    const genderEle = document.querySelector('#gender')
+    const genderChart = echarts.init(genderEle)
+
+    const option = {
+        title: [
+            {
+                text: '男女薪资分布',
+                left: 10,
+                top: 10,
+                textStyle: {
+                    fontSize: 16,
+                },
+            },
+            {
+                text: '男生',
+                left: '50%',
+                top: '45%',
+                textAlign: 'center',
+                textStyle: {
+                    fontSize: 12,
+                },
+            },
+            {
+                text: '女生',
+                left: '50%',
+                top: '85%',
+                textAlign: 'center',
+                textStyle: {
+                    fontSize: 12,
+                },
+            },
+        ],
+        tooltip: {
+            trigger: 'item',
+        },
+        series: [
+            {
+                type: 'pie',
+                radius: [
+                    '20%',
+                    '30%',
+                ],
+                center: [
+                    '50%',
+                    '30%'
+                ],
+                avoidLabelOverlap: true,
+                label: {
+                    show: true,
+                    position: 'outside',
+                },
+                labelLine: {
+                    show: true,
+                },
+                data: genMaleData(salary),
+            },
+            {
+                type: 'pie',
+                radius: [
+                    '20%',
+                    '30%',
+                ],
+                center: [
+                    '50%',
+                    '70%'
+                ],
+                avoidLabelOverlap: true,
+                label: {
+                    show: true,
+                    position: 'outside',
+                },
+                labelLine: {
+                    show: true,
+                },
+                data: genFemaleData(salary),
+            },
+        ],
+        color: [
+            '#FDA224',
+            '#5097FF',
+            '#3ABCFA',
+            '#34D39A'
+        ],
+    }
+
+    genderChart.setOption(option)
+}
+
+function genMaleData(salaries) {
+    return salaries.map(salary => {
+        return {
+            value: salary.b_count,
+            name: salary.label,
+        }
+    })
+}
+
+function genFemaleData(salaries) {
+    return salaries.map(salary => {
+        return {
+            value: salary.g_count,
+            name: salary.label,
+        }
+    })
 }
 
 const logoutBtn = document.querySelector('#logout')
