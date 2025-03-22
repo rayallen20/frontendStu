@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-数组的更新检测-重置响应式变量的值为新数组</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h4>电影列表(遍历数组和索引)</h4>
+    <ul>
+        <li v-for="(movie, index) in movies">{{index + 1}}. {{movie}}</li>
+    </ul>
+    <button @click="showTopThreeMovies">仅显示排行前3的电影</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                newMovie: "",
+                movies: [
+                    '星际穿越',
+                    '盗梦空间',
+                    '致命魔术',
+                    '教父',
+                    '东京热',
+                ],
+            }
+        },
+        methods: {
+            showTopThreeMovies() {
+                this.movies = this.movies.filter((movie, index) => index < 3)
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

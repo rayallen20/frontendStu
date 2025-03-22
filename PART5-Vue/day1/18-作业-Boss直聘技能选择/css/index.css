@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+h2 {
+    text-align: center;
+}
+
+h2 .logo-head {
+    display: inline-block;
+    width: 100px;
+    height: 32px;
+    background-image: url(../images/logo.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    margin-top: 6px;
+}
+
+.skill-tip {
+    padding: 16px 24px;
+    background-color: #12ada9;
+    color: #fff;
+}
+
+.skill-tip p {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.skill-wrap {
+    padding: 12px 24px;
+    overflow: hidden;
+}
+
+.skill-wrap .title {
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+
+.skill-wrap li {
+    position: relative;
+    font-size: 14px;
+    margin-right: 12px;
+    margin-bottom: 4px;
+    padding: 4px 12px ;
+    float: left;
+    list-style: none;
+    border-radius: 28px;
+    border: 1px solid #2bbbb4;
+    color: #2bbbb4;
+    height: 28px;
+    box-sizing: border-box;
+}
+
+.select li {
+    background-color: #37c2bb66;
+    color: #2bbbb4;
+    border: none;
+    padding-right: 24px;
+}
+.select li span {
+    position: absolute;
+    right: 6px;
+    top: 0px;
+    font-size: 12px;
+    padding: 4px;
+}
+
+.add-wrap {
+    display: flex;
+    width: 100%;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+.add-wrap .tip {
+    border: 1px solid #37c2bb;
+    border-radius: 24px 0 0 24px;
+    padding: 8px 16px;
+    width: 100%;
+    outline: none;
+}
+.add-wrap .tip::placeholder{
+    color:#37c2bb;
+}
+.add-wrap .add-btn {
+    background-color: #37c2bb;
+    width: 80px;
+    color: #fff;
+    border: none;
+    border-radius: 0 24px 24px 0;
+    padding: 8px 16px;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.add-wrap .add-btn:active {
+    box-shadow: none;
+}

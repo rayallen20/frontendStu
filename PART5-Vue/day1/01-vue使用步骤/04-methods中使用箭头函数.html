@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-methods中使用箭头函数</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script type="x-template" id="why">
+    <div>
+        <h2>{{ message }}</h2>
+        <h2>{{ counter }}</h2>
+        <button @click="increment">+1</button>
+        <button @click="decrement">-1</button>
+    </div>
+</script>
+<script>
+    const app = Vue.createApp({
+        // 定义视图
+        template: '#why',
+        // 定义数据
+        data: function () {
+            return {
+                message: "使用<script>标签优化模板",
+                counter: 100
+            }
+        },
+        // 定义方法
+        methods: {
+            increment: () => {
+                // 箭头函数的this指针指向外层的this
+                // 而非data返回的对象
+                this.counter++
+                console.log('increment ', this)
+            },
+            decrement: () => {
+                this.counter--
+                console.log('decrement ', this)
+            }
+        }
+    })
+
+    app.mount('#app')
+</script>
+</body>
+</html>

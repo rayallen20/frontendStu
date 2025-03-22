@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-绑定事件</title>
+    <style>
+        .area {
+            width: 100px;
+            height: 100px;
+            background: #ddd;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <button v-on:click="btnClick">监听按钮单击</button>
+    <div class="area" v-on:mousemove="mouseMove">监听鼠标移动</div>
+    <button @click="btnClick">监听按钮单击(语法糖)</button>
+    <button @click="counter++">{{counter}} (绑定表达式)</button>
+    <div class="area" v-on="{click: btnClick, mousemove: mouseMove}">绑定对象</div>
+    <div class="area" @="{click: btnClick, mousemove: mouseMove}">绑定对象(语法糖)</div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                message: 'Hello',
+                counter: 100,
+            }
+        },
+        methods: {
+            btnClick() {
+                console.log('click btn')
+            },
+            mouseMove() {
+                console.log('mouse move')
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

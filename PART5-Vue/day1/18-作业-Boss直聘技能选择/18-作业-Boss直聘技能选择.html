@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Boss直聘技能选择</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div id="app">
+    </div>
+
+    <template id="my-app">
+        <h2>
+            <span class="logo-head"></span>
+        </h2>
+        <div class="skill-tip">
+            <h3>拥有技能</h3>
+            <p>请选择技能标签，被选中的标签将突出展示给BOSS</p>
+        </div>
+        <div class="skill-wrap">
+            <div class="title">自定义标签</div>
+            <div class="add-wrap">
+                <input type="text" class="tip" placeholder="请输入关键词" v-model="newSkill"/>
+                <button class="add-btn" @click="addSkill()">添加</button>
+            </div>
+        </div>
+        <ul class="skill-wrap select">
+            <div class="title">已选</div>
+            <li v-for="skill in getSelectedSkillList()" :key="skill.id" @click="toggleSkill(skill.id)">{{skill.skillName}} <span>x</span></li>
+        </ul>
+        <ul class="skill-wrap">
+            <div class="title">可选</div>
+            <li v-for="skill in getUnselectedSkillList()" :key="skill.id" @click="toggleSkill(skill.id)">{{skill.skillName}}</li>
+        </ul>
+    </template>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        // TODO：阅读代码，根据提供的数据，实现目标效果
+        // DATA字段说明
+        /**
+         *  skillList 技能列表
+         *  skillName 技能名称
+         *  select 已选择
+        */
+        const args = {
+            template: '#my-app',
+            data() {
+                return {
+                    skillList: [
+                        {
+                            id: 1,
+                            skillName: 'html5',
+                            select: true
+                        },
+                        {
+                            id: 2,
+                            skillName: 'css3',
+                            select: true
+                        },
+                        {
+                            id: 3,
+                            skillName: 'javascript',
+                            select: true
+                        },
+                        {
+                            id: 4,
+                            skillName: 'webapi',
+                            select: true
+                        },
+                        {
+                            id: 5,
+                            skillName: 'ajax',
+                            select: true
+                        },
+                        {
+                            id: 6,
+                            skillName: 'git',
+                            select: true
+                        },
+                        {
+                            id: 7,
+                            skillName: 'echarts',
+                            select: true
+                        },
+                        {
+                            id: 8,
+                            skillName: 'node',
+                            select: true
+                        },
+                        {
+                            id: 9,
+                            skillName: 'vue',
+                            select: true
+                        },
+                        {
+                            id: 10,
+                            skillName: '微信小程序',
+                            select: false
+                        },
+                        {
+                            id: 11,
+                            skillName: 'uni-app',
+                            select: false
+                        },
+                        {
+                            id: 12,
+                            skillName: 'react',
+                            select: false
+                        }
+                    ],
+                    newSkill: ''
+                }
+            },
+            methods: {
+                getSelectedSkillList: function () {
+                    return this.skillList.filter(item => item.select)
+                },
+                getUnselectedSkillList: function () {
+                    return this.skillList.filter(item => !item.select)
+                },
+                toggleSkill: function (id) {
+                    const skill = this.skillList.find(item => item.id === id)
+
+                    if (skill === undefined) {
+                        alert('id被篡改')
+                    }
+
+                    skill.select = !skill.select
+                },
+                addSkill: function() {
+                    if (this.newSkill === '') {
+                        alert('请输入技能名称')
+                        return
+                    }
+
+                    const skill = {
+                        id: this.getMaxSkillId() + 1,
+                        skillName: this.newSkill,
+                        select: true
+                    }
+
+                    this.skillList.push(skill)
+                    this.newSkill = ''
+                },
+                getMaxSkillId() {
+                    if (this.skillList.length === 0) {
+                        return 0
+                    }
+
+                    if (this.skillList.length === 1) {
+                        return this.skillList[0].id
+                    }
+
+                    const IdCollection = this.skillList.map(item => item.id)
+                    return Math.max(...IdCollection)
+                }
+            }
+        }
+
+        const app = Vue.createApp(args)
+        app.mount('#app')
+    </script>
+</body>
+
+</html>

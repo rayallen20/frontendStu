@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-绑定style属性-数组语法</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div :style="[{color: 'red'}, {fontSize: styleObj.fontSize}]">数组中是多个对象</div>
+    <div :style="[styleObj, styleObj2]">数组中是多个对象-相同属性后边的覆盖前面的</div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                message: 'Hello',
+                styleObj: {
+                    color: 'red',
+                    fontSize: '16px'
+                },
+                styleObj2: {
+                    color: 'blue',
+                    textDecoration: 'underline',
+                }
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

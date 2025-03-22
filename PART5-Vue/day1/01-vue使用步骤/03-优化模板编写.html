@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-优化模板编写</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script type="x-template" id="why">
+    <div>
+        <h2>{{ message }}</h2>
+        <h2>{{ counter }}</h2>
+        <button @click="increment">+1</button>
+        <button @click="decrement">-1</button>
+    </div>
+</script>
+<script>
+    const app = Vue.createApp({
+        // 定义视图
+        template: '#why',
+        // 定义数据
+        data: function () {
+            return {
+                message: "使用<script>标签优化模板",
+                counter: 100
+            }
+        },
+        // 定义方法
+        methods: {
+            increment() {
+                this.counter++
+            },
+            decrement() {
+                this.counter--
+            }
+        }
+    })
+
+    app.mount('#app')
+</script>
+</body>
+</html>

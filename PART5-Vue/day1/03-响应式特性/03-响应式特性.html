@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-响应式特性</title>
+</head>
+<body>
+<div id="app">
+    <p>姓名: {{ uname.toUpperCase() }}</p>
+    <p>年龄: {{ age }}</p>
+    <p>阶段: {{ age >= 18 ? '老登' : '小登' }}</p>
+    <p>朋友姓名: {{ friend[0].name }}</p>
+    <p>朋友年龄: {{ friend[0].age }}</p>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const {createApp, ref, reactive} = Vue
+
+    const uname = ref('ZhangSan')
+    const age = ref(18)
+    const friend = reactive([
+        {
+            name: 'LiSi',
+            age: 20
+        }
+    ])
+
+    createApp({
+        setup() {
+            return {
+                uname,
+                age,
+                friend
+            }
+        }
+    }).mount('#app')
+
+    setTimeout(() => {
+        // 当值修改时 Vue会自动更新视图
+        age.value = 15
+    }, 3000)
+</script>
+</body>
+</html>

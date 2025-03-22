@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+
+    background: linear-gradient(to bottom, rgb(79, 155, 251), rgb(79, 155, 251) 10%, rgb(236, 236, 238) 25%, #fff 100%);
+    padding: 12px;
+    box-sizing: border-box;
+}
+h1 {
+    width: 100%;
+    line-height: 40px;
+    text-align: center;
+    font-weight: 400;
+    color: #fff;
+    font-size: 16px;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 16px 0 0;
+    border-radius: 8px;
+    font-size: 12px;
+    background-color: #fff;
+}
+
+.ticket-info {
+    padding: 0 24px;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-info .time {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.train-info {
+    text-align: center;
+}
+
+.ticket-info .end {
+    text-align: right;
+}
+
+.station-type {
+    font-size: 10px;
+    color: rgb(92, 168, 244);
+}
+
+.train-duration,
+.expiration-date,
+.start .origin span,
+.end .destination span,
+.train-number span,
+.btn-wrap span {
+    color: #c0b5b5;
+}
+
+.origin,
+.destination {
+    text-indent: 2px;
+}
+
+.train-date {
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.start-date {
+    color: rgb(135, 135, 135);
+}
+
+.btn-wrap {
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    background-color: #fff;
+    margin-top: 8px;
+    box-shadow: 0 -8px 8px 1px rgb(244, 244, 244);
+}
+
+.btn-wrap button {
+    text-align: center;
+    flex-grow: 1;
+    border: none;
+    background: #fff;
+}
+
+.passenger-list {
+    box-shadow: 0 -8px 8px 1px rgb(244, 244, 244);
+    padding: 0 24px;
+    margin-top: 8px;
+}
+
+.passenger-info {
+    border-bottom: 1px solid #eee;
+    padding-top: 16px;
+}
+
+.passenger-name {
+    font-size: 16px;
+}
+
+.seat-price,
+.status {
+    font-size: 14px;
+}
+
+.passenger-type,
+.seat-type {
+    font-size: 12px;
+    color: rgb(92, 168, 244);
+    border-radius: 2px;
+    padding: 0px 6px;
+    text-align: center;
+    border: 1px solid rgb(92, 168, 244);
+    margin-left: 6px;
+}
+
+.seat-type {
+    color: rgb(135, 135, 135, .7);
+    border-color: rgb(135, 135, 135, .3);
+    padding: 0;
+    line-height: 10px;
+}
+
+.passenger,
+.seat-price,
+.status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.seat-price .price {
+    color: rgb(231, 137, 78);
+}
+
+.passenger-passport {
+    color: rgb(135, 135, 135, .7);
+}
+
+.status .illustrate {
+    color: rgb(92, 168, 244);
+    text-decoration: underline;
+}
+
+.status {
+    margin-bottom: 24px;
+}
+
+.tip {
+    margin-top: 16px;
+    font-size: 12px;
+    text-align: center;
+    color: rgb(135, 135, 135, .7);
+}

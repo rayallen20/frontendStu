@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13-案例-学习之旅</title>
+    <style>
+        #app {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn {
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div class="btn">
+        <button v-show="showPrev()" @click="prev">上一页</button>
+    </div>
+    <div>
+        <img :src="path + currentUrl" :alt="currentUrl" :title="currentUrl">
+    </div>
+    <div class="btn">
+        <button v-show="showNext()" @click="next">下一页</button>
+    </div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                path: "./img/",
+                urls: [
+                        '11-00.gif',
+                        '11-01.gif',
+                        '11-02.gif',
+                        '11-03.gif',
+                        '11-04.png',
+                        '11-05.png',
+                ],
+                currentUrl: '11-00.gif',
+                currentIndex: 0,
+            }
+        },
+        methods: {
+            showPrev() {
+                return this.currentIndex !== 0
+            },
+
+            showNext() {
+                return this.currentIndex !== this.urls.length - 1
+            },
+
+            next() {
+                if (this.currentIndex === this.urls.length - 1) {
+                    alert('已经是最后一张了')
+                    return
+                }
+
+                this.currentIndex++
+                this.currentUrl = this.urls[this.currentIndex]
+            },
+            prev() {
+                if (this.currentIndex === 0) {
+                    alert('已经是第一张了')
+                    return
+                }
+
+                this.currentIndex--
+                this.currentUrl = this.urls[this.currentIndex]
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

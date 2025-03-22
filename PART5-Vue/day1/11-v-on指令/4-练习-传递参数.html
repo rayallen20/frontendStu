@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-练习-传递参数</title>
+    <style>
+        .box {
+            border: 3px solid #000000;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            width: 210px;
+        }
+
+        h3 {
+            margin: 10px 0 20px 0;
+        }
+
+        p {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div class="box">
+        <h3>小黑自动售货机</h3>
+        <button @click="buy(cola)">可乐{{cola}}元</button>
+        <button @click="buy(coffee)">咖啡{{coffee}}元</button>
+        <button @click="buy(milk)">牛奶{{milk}}元</button>
+    </div>
+    <p>银行卡余额：{{balance}}元</p>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                balance: 100,
+                cola: 5,
+                coffee: 10,
+                milk: 8,
+            }
+        },
+        methods: {
+            buy(price) {
+                if (this.balance < price) {
+                    alert('余额不足')
+                    return
+                }
+
+                this.balance -= price
+                alert('购买成功')
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

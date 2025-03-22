@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7-绑定对象</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div :="info">绑定对象</div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                info: {
+                    name: 'why',
+                    age: 18,
+                    height: 180,
+                    friend: [
+                        'zhangSan',
+                        'liSi',
+                    ],
+                    score: {
+                        math: 100,
+                        chinese: 90,
+                        english: 80,
+                    }
+                }
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

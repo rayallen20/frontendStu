@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16-作业-哔哩哔哩移动端首页</title>
+  <!-- 引入favicon图标 -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <!-- 引入css文件 -->
+  <link rel="stylesheet" href="./css/index.css">
+  <!-- 引入字体图标文件 -->
+  <link rel="stylesheet" href="./fonts/iconfont.css">
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+
+  <template id="my-app">
+      <!-- 头部模块 -->
+      <header class="suspension">
+          <div class="m-navbar">
+              <!-- logo -->
+              <a href="#" class="logo">
+                  <i class="iconfont Navbar_logo"></i>
+              </a>
+              <!-- 右侧 -->
+              <div class="right">
+                  <a href="#" class="search">
+                      <i class="iconfont ic_search_tab"></i>
+                  </a>
+                  <a href="#" class="face">
+                      <img src="./images/login.png" alt="">
+                  </a>
+                  <div class="app-btn">
+                      <img src="./images/download.png" alt="">
+                  </div>
+              </div>
+          </div>
+          <div class="channel-menu">
+              <div class="tabs">
+                  <!-- 很宽的盒子 -->
+                  <div class="tabs-list">
+                      <a href="#">首页</a>
+                      <a href="#">动画</a>
+                      <a href="#">番剧</a>
+                      <a href="#">果蔬</a>
+                      <a href="#">音乐</a>
+                      <a href="#">舞蹈</a>
+                      <a href="#">鬼畜</a>
+                      <a href="#">吹鬼</a>
+                      <!-- 红色线 -->
+                      <div class="line"></div>
+                  </div>
+              </div>
+              <!-- 下拉箭头 -->
+              <div class="after" >
+                  <i class="iconfont general_pulldown_s" @click="toggleTabsDropdown"></i>
+              </div>
+          </div>
+      </header>
+      <!-- 频道下拉模块 -->
+      <div class="tabs-dropdown" v-show="tabsDropdownShow">
+          <div class="tabs-wrap">
+              <span v-for="(channel, index) in channelList" :key="index">{{channel}}</span>
+              <!-- ''''''' -->
+          </div>
+          <div class="close-wrap" @click="toggleTabsDropdown">
+              <span >收起︿</span>
+          </div>
+      </div>
+      <!-- 主体部分 -->
+      <div class="m-home">
+          <div class="video-list">
+              <!-- 视频卡片模板 -->
+              <a href="#" class="video-item" v-for="(video, index) in videoList" :key="index">
+                  <div class="card">
+                      <img :src="video.img">
+                      <!-- 播放量 -->
+                      <div class="count">
+                          <span>
+                              <i class="iconfont icon_shipin_bofangshu"></i>
+                              {{video.views}}
+                          </span>
+
+                          <span>
+                              <i class="iconfont icon_shipin_danmushu"></i>
+                              {{video.commonet}}
+                          </span>
+                      </div>
+                  </div>
+
+                  <p class="title ellipsis-2">
+                      {{video.title}}
+                  </p>
+              </a>
+          </div>
+      </div>
+
+      <!-- 底部模块 -->
+      <footer class="app">
+          <div class="btn-app">
+              <i class="iconfont Navbar_logo"></i>
+              打开App，看你感兴趣的视频
+          </div>
+      </footer>
+  </template>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    // TODO：阅读代码，根据提供的数据，实现目标效果
+    // DATA字段说明
+    /**
+     *  channelList 频道列表
+     *  videoList 视频列表
+     *  title 视频标题
+     *  views 播放量
+     *  commonet 评论量
+     *  img 封面图片
+    */
+    const args = {
+      template: '#my-app',
+      data() {
+          return {
+              channelList: ['首页', '动画', '番剧', '国创', '音乐', '舞蹈', '游戏', '科技', '运动', '汽车', '生活', '美食', '知识', '动物圈', '鬼畜', '时尚娱乐影视', '纪录片', '电影', '电视剧', '直播', '相簿', '课堂'],
+              videoList: [
+                  {
+                      title: '黑马程序员前端React入门到实战视频教程，从react18+hooks核心基础到企业级项目开发实战（B站评论、极客园项目等）及大厂面试全通关',
+                      views: '110.6W',
+                      commonet: '2.3万',
+                      img: 'https://i0.hdslb.com/bfs/archive/4ba435e67fa208ce7a5343c0fc2cd454d8cc50fc.jpg@480w_270h_1c'
+                  },
+                  {
+                      title: '黑马程序员前端JavaScript入门到精通全套视频教程，javascript核心进阶ES6语法、API、js高级等基础知识和实战教程',
+                      views: '238.4W',
+                      commonet: '8.9万',
+                      img: 'https://i1.hdslb.com/bfs/archive/7cbcf700e3950f40dab97b5e57c8581733fdad22.jpg@480w_270h_1c'
+                  },
+                  {
+                      title: 'Java八股文面试题视频教程，Java面试八股文宝典（含阿里、腾迅大厂java面试真题，java数据结构，java并发，jvm等最新java面试真题）',
+                      views: '87.5W',
+                      commonet: '1.4万',
+                      img: 'https://i1.hdslb.com/bfs/archive/3c0dbdf9863a9e21d8ea5c50892b01db1268a268.jpg@480w_270h_1c'
+                  },
+                  {
+                      title: '黑马程序员2023新版JavaWeb开发教程，实现javaweb企业开发全流程（涵盖Spring+MyBatis+SpringMVC+SpringBoot等）',
+                      views: '231.6W',
+                      commonet: '8.2万',
+                      img: 'https://i1.hdslb.com/bfs/archive/81c2b09fea6a978a169eeb3fde028066751e06e5.jpg@480w_270h_1c'
+                  },
+                  {
+                      title: '黑马程序员Node.js全套入门教程，nodejs新教程含es6模块化+npm+express+webpack+promise等_Nodejs实战案例详解',
+                      views: '209.6W',
+                      commonet: '5.5万',
+                      img: 'https://i2.hdslb.com/bfs/archive/a35e28d321c55c783526b2382431409935ddfb9f.jpg@480w_270h_1c'
+                  },
+                  {
+                      title: '2023新版数据结构与算法Java视频教程（上篇），java高级程序员必学的数据结构与算法',
+                      views: '54.6W',
+                      commonet: '1万',
+                      img: 'https://i1.hdslb.com/bfs/archive/8dae32b310561144385867468a39b3f7cab1ba24.jpg@480w_270h_1c'
+                  },
+                  {
+                      title: '黑马程序员人工智能教程_10小时学会图像处理OpenCV入门教程',
+                      views: '71W',
+                      commonet: '1.8万',
+                      img: 'https://i0.hdslb.com/bfs/archive/c6f5409bb52de12370b0cd73d98d0f1dd2019f9e.jpg@480w_270h_1c'
+                  },
+                  {
+                      title: '黑马程序员全套Python教程_Python基础入门视频教程，零基础小白自学Python入门教程',
+                      views: '157W',
+                      commonet: '4.8万',
+                      img: 'https://i0.hdslb.com/bfs/archive/213b14bfbdbf54248a3f5fa742cb9f9c8f684274.png@480w_270h_1c'
+                  },
+              ],
+              tabsDropdownShow: true,
+          }
+      },
+        methods: {
+            toggleTabsDropdown() {
+                this.tabsDropdownShow = !this.tabsDropdownShow
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+  </script>
+</body>
+
+</html>

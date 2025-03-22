@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-vue使用步骤</title>
+</head>
+<body>
+<div id="app">
+    <!-- step4. 使用数据 -->
+    <p>姓名: {{ uname }}</p>
+    <p>年龄: {{ age }}</p>
+    <p>朋友姓名: {{ friend.name }}</p>
+    <p>朋友年龄: {{ friend.age }}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    // step1. 创建Vue实例
+    const vueInstance = new Vue({
+        // step2. 指定挂载点
+        // el: element
+        el: '#app',
+        // step3. 提供数据
+        data: {
+            uname: '张三',
+            age: 18,
+            friend: {
+                name: '李四',
+                age: 20
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

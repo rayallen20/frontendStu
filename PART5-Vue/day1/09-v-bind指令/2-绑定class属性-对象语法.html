@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-绑定class属性-对象语法</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div :class="className">绑定字符串</div>
+    <div :class="{active: isActive, title: isTitle}">绑定对象</div>
+    <div class="abc" :class="{active: isActive, title: isTitle}">绑定对象(不影响默认的class)</div>
+    <div :class="classObj">绑定对象-直接从data的返回值中取属性</div>
+    <div :class="getClassObj()">绑定对象-调用方法</div>
+    <button @click="toggle">切换Active</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                className: 'coderWhy',
+                isActive: true,
+                isTitle: false,
+                classObj: {
+                    isActive: true,
+                    isTitle: true,
+                }
+            }
+        },
+        methods: {
+            toggle: function() {
+                this.isActive = !this.isActive
+            },
+            getClassObj: function() {
+                return {
+                    isActive: false,
+                    isTitle: true,
+                }
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

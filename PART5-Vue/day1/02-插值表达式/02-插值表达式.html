@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-插值表达式</title>
+</head>
+<body>
+<div id="app">
+    <p>姓名: {{ uname.toUpperCase() }}</p>
+    <p>年龄: {{ age }}</p>
+    <p>阶段: {{ age >= 18 ? '老登' : '小登' }}</p>
+    <p>朋友姓名: {{ friend[0].name }}</p>
+    <p>朋友年龄: {{ friend[0].age }}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    const vueInstance = new Vue({
+        el: '#app',
+        data: {
+            uname: 'ZhangSan',
+            age: 18,
+            friend: [
+                {
+                    name: 'LiSi',
+                    age: 20
+                }
+            ]
+        }
+    })
+
+</script>
+</body>
+</html>

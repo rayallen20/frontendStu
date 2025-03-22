@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-使用vue3</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        // 定义视图
+        template: `
+        <div>
+            <h2>{{ counter }}</h2>
+            <button @click="increment">+1</button>
+            <button @click="decrement">-1</button>
+        </div>
+        `,
+        // 定义数据
+        data: function () {
+            return {
+                counter: 100
+            }
+        },
+        // 定义方法
+        methods: {
+            increment() {
+                this.counter++
+            },
+            decrement() {
+                this.counter--
+            }
+        }
+    })
+
+    app.mount('#app')
+</script>
+</body>
+</html>
