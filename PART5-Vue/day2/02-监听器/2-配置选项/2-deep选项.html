@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-deep选项</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h2>{{info.name}}</h2>
+    <h2>{{info.book.name}}</h2>
+    <button @click="changeInfo()">改变info</button>
+    <button @click="changeInfoName()">改变info.name</button>
+    <button @click="changeInfoBookName()">改变info.book.name</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                info: {
+                    name: 'coderWhy',
+                    age: 18,
+                    book: {
+                        name: '金瓶梅',
+                    }
+                }
+            }
+        },
+        watch: {
+            info: {
+                handler(newInfo, oldInfo) {
+                    console.log("newValue: ", newInfo)
+                    console.log("oldValue: ", oldInfo)
+                },
+                deep: true,
+            }
+        },
+        methods: {
+            changeInfo() {
+                this.info = {
+                    name: 'kobe',
+                    age: 41,
+                    book: {
+                        name: '金瓶梅',
+                    }
+                }
+            },
+            changeInfoName() {
+                this.info.name = 'rose'
+            },
+            changeInfoBookName() {
+                this.info.book.name = '青楼梦'
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

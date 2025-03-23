@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-监听数组内部属性的变化</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h2 v-for="(friend, index) in friends" :key="index">{{friend.name}}</h2>
+    <button @click="addFriend()">新增朋友</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                friends: [
+                    {
+                        name: 'why',
+                    },
+                    {
+                        name: 'kobe',
+                    }
+                ]
+            }
+        },
+        watch: {
+            friends: {
+                handler(newFriends, oldFriends) {
+                    console.log("newFriends: ", newFriends)
+                    console.log("oldFriends: ", oldFriends)
+                    // 和监听对象一样 只要没有改变引用地址 则新值和旧值指向相同的引用
+                    console.log(newFriends === oldFriends)
+                },
+                deep: true,
+            }
+        },
+        methods: {
+            addFriend() {
+                const friend = {
+                    name: 'rose'
+                }
+
+                this.friends.push(friend)
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

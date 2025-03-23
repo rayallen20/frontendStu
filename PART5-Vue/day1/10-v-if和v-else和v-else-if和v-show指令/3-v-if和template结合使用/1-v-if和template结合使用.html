@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-v-if和template结合使用</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <template v-if="isShow">
+        <h3>v-if控制多个h3的显隐</h3>
+        <h3>v-if控制多个h3的显隐</h3>
+        <h3>v-if控制多个h3的显隐</h3>
+    </template>
+
+    <template v-else>
+        <h4>v-if控制多个h4的显隐</h4>
+        <h4>v-if控制多个h4的显隐</h4>
+        <h4>v-if控制多个h4的显隐</h4>
+    </template>
+
+    <button @click="toggle">切换template</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                isShow: true
+            }
+        },
+        methods: {
+            toggle() {
+                this.isShow = !this.isShow
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

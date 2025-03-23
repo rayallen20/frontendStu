@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用-模板语法实现</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h4>{{firstName + lastName}}</h4>
+    <h4>{{score >= 60 ? '及格' : '不及格'}}</h4>
+    <h4>{{message.split(' ').reverse().join(' ')}}</h4>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                firstName: 'Kobe',
+                lastName: 'Bryant',
+                score: 80,
+                message: 'Hello World'
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

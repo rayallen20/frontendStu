@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-监听函数的新值和旧值</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h2>{{info.name}}</h2>
+    <h2>{{info.book.name}}</h2>
+    <button @click="changeInfo()">改变info</button>
+    <button @click="changeInfoName()">改变info.name</button>
+    <button @click="changeInfoBookName()">改变info.book.name</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                info: {
+                    name: 'coderWhy',
+                    age: 18,
+                    book: {
+                        name: '金瓶梅',
+                    }
+                }
+            }
+        },
+        watch: {
+            info: {
+                handler(newInfo, oldInfo) {
+                    console.log("newValue: ", newInfo)
+                    console.log("oldValue: ", oldInfo)
+                    // 配置深度监听时 新值和旧值指向的是同一个引用(除非新值指向了一个新的引用)
+                    console.log(newInfo === oldInfo)
+                },
+                deep: true,
+            }
+        },
+        methods: {
+            changeInfo() {
+                this.info = {
+                    name: 'kobe',
+                    age: 41,
+                    book: {
+                        name: '金瓶梅',
+                    }
+                }
+            },
+            changeInfoName() {
+                this.info.name = 'rose'
+            },
+            changeInfoBookName() {
+                this.info.book.name = '青楼梦'
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

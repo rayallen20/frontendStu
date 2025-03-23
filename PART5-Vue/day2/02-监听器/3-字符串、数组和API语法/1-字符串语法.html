@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-字符串语法</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h2>{{b}}</h2>
+    <button @click="changeB()">改变b</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                b: 2,
+            }
+        },
+        watch: {
+            // 字符串的值为methods中定义的方法名
+            b: 'someMethod',
+        },
+        methods: {
+            someMethod() {
+                console.log('b changed')
+            },
+            changeB() {
+                this.b = 3
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

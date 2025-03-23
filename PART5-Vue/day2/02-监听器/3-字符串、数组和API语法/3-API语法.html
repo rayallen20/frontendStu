@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-API语法</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h2>{{f}}</h2>
+    <button @click="changeF()">改变f</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                f: 5,
+            }
+        },
+        created() {
+            const key = 'f'
+
+            const handler = function (newVal, oldVal) {
+                console.log('newVal:', newVal)
+                console.log('oldVal:', oldVal)
+            }
+
+            const option = {
+                deep: true,
+                immediate: true,
+            }
+
+            // $watch API语法
+            this.$watch(key, handler, option)
+        },
+        methods: {
+            handle1() {
+                console.log('handle 1 changed')
+            },
+            changeF() {
+                this.f = 10
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-调用数组变更的方法</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h4>电影列表(遍历数组和索引)</h4>
+    <ul>
+        <li v-for="(movie, index) in movies">{{index + 1}}. {{movie}}</li>
+    </ul>
+    <input type="text" v-model="newMovie">
+    <br>
+    <button @click="addMovie">添加新电影</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                newMovie: "",
+                movies: [
+                    '星际穿越',
+                    '盗梦空间',
+                    '致命魔术'
+                ],
+            }
+        },
+        methods: {
+            addMovie() {
+                if (this.newMovie === "") {
+                    alert('请输入电影名称')
+                    return
+                }
+
+                this.movies.push(this.newMovie)
+                this.newMovie = ''
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

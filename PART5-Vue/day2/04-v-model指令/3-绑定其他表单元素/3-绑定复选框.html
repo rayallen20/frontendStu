@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-绑定复选框</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <span>爱好: &nbsp;</span>
+
+    <label for="basketball">
+        <input id="basketball" type="checkbox" v-model="hobbies" value="basketball"> 篮球
+    </label>
+
+    <label for="football">
+        <input id="football" type="checkbox" v-model="hobbies" value="football"> 足球
+    </label>
+
+    <label for="tennis">
+        <input id="tennis" type="checkbox" v-model="hobbies" value="tennis"> 网球
+    </label>
+
+    <p>复选框的值: {{hobbies}}</p>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                hobbies: [
+                    'basketball',
+                ]
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

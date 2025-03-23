@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-事件对象</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h2>需求：输入框输入内容，将内容显示在p标签中</h2>
+    <input type="text" @input="showInput($event)">
+    <p>{{result}}</p>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                result: ''
+            }
+        },
+        methods: {
+            showInput(event) {
+                const value = event.target.value
+                this.result = value
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

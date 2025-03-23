@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    请输入问题: <input type="text" v-model="question">
+    <div>{{answer}}</div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                question: '',
+                answer: ''
+            }
+        },
+        watch: {
+            // key: 需要观察的表达式
+            // 每当key的值发生变化时,都会回调watch中key对应的函数
+            // 该函数的第1个参数是变化后的值
+            // 第2个参数是变化前的值
+            question: function (newValue, oldValue) {
+                console.log("新 question 值: ", newValue, " 旧 question 值: ", oldValue)
+                this.queryAnswer()
+            },
+        },
+        methods: {
+            queryAnswer() {
+                this.answer = `你的问题是: ${this.question}? 答案: 哈哈哈哈`
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

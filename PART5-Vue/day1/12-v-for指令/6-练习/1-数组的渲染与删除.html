@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-数组的渲染与删除</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h3>小黑的书架</h3>
+    <ul>
+        <li v-for="book in booksList" :key="book.id">
+            <span>{{book.name}}</span>
+            <span>{{book.author}}</span>
+            <button @click="deleteBook(book.id)">删除</button>
+        </li>
+    </ul>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                booksList: [
+                    { id: 1, name: '《红楼梦》', author: '曹雪芹' },
+                    { id: 2, name: '《西游记》', author: '吴承恩' },
+                    { id: 3, name: '《水浒传》', author: '施耐庵' },
+                    { id: 4, name: '《三国演义》', author: '罗贯中' }
+                ]
+            }
+        },
+        methods: {
+            deleteBook(id) {
+                // filter方法会返回一个新数组 因此需要修改data中的booksList的指向
+                this.booksList = this.booksList.filter(book => book.id !== id)
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

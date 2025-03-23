@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-绑定文本域</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <textarea cols="30" rows="3" v-model="intro"></textarea>
+    <p>文本框输入的值: {{intro}}</p>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                intro: 'Hello'
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

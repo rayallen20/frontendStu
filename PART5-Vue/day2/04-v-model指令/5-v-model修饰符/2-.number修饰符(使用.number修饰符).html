@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-.number修饰符(使用.number修饰符)</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <label for="score">
+        <input id="score" type="number" v-model.number="score">
+    </label>
+    <p>文本框的值: {{score}} -> 类型: {{typeof this.score}}</p>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                score: 90,
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

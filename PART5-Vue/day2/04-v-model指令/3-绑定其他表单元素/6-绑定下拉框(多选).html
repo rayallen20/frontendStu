@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6-绑定下拉框(多选)</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <span>喜欢的水果:&nbsp;</span>
+
+    <select v-model="fruits" multiple size="2">
+        <option value="apple">苹果</option>
+        <option value="orange">橘子</option>
+        <option value="banana">香蕉</option>
+    </select>
+
+    <p>单选按钮的值: {{fruits}}</p>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                fruits: [
+                    'apple',
+                ],
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

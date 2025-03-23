@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-immediate选项</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h2>{{info.name}}</h2>
+    <h2>{{info.book.name}}</h2>
+    <button @click="changeInfo()">改变info</button>
+    <button @click="changeInfoName()">改变info.name</button>
+    <button @click="changeInfoBookName()">改变info.book.name</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                info: {
+                    name: 'coderWhy',
+                    age: 18,
+                    book: {
+                        name: '金瓶梅',
+                    }
+                }
+            }
+        },
+        watch: {
+            info: {
+                // 配置 immediate: true
+                // 会在组件挂载时立即执行一次handler
+                // 此时 newInfo 的值是 data 中定义的 info 的值
+                // oldInfo 的值是 undefined
+                handler(newInfo, oldInfo) {
+                    console.log("newValue: ", newInfo)
+                    console.log("oldValue: ", oldInfo)
+                },
+                deep: true,
+                immediate: true
+            }
+        },
+        methods: {
+            changeInfo() {
+                this.info = {
+                    name: 'kobe',
+                    age: 41,
+                    book: {
+                        name: '金瓶梅',
+                    }
+                }
+            },
+            changeInfoName() {
+                this.info.name = 'rose'
+            },
+            changeInfoBookName() {
+                this.info.book.name = '青楼梦'
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

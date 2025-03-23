@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-.trim修饰符</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <label for="msg">
+        <input id="msg" type="text" v-model.trim="message">
+    </label>
+    <p>文本框的值: {{message}}</p>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                message: 'Hello',
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

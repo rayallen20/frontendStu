@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-绑定单选框</title>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <label for="agree">
+        <input id="agree" type="checkbox" v-model="isAgree"> 同意协议
+    </label>
+    <p>单选框的值: {{isAgree}}</p>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                isAgree: false,
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>
