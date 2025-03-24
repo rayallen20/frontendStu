@@ -16,8 +16,8 @@
 
 <template id="my-app">
     <div :class="{area: isArea}" @click="divClick" @click.right="divRightClick">
-        <button @click.stop="btnClick">阻止事件传播的按钮</button>
-        <button @click.right.stop="btnRightClick">阻止事件传播的按钮(单击右键事件)</button>
+        <button @click.stop="btnClick">阻止事件冒泡的按钮</button>
+        <button @click.right.stop="btnRightClick">阻止事件冒泡的按钮(单击右键事件)</button>
     </div>
     <input type="text" @keyup.enter="enterKeyUp">
 </template>

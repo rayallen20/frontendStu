@@ -4,6 +4,10 @@
 
 - 标签中的对象,其属性名会被当做样式名,属性值会被当做样式值
     - `v-bind:style="{样式名1: 样式值1, 样式名2: 样式值2, ...}"`
+- 注意: 对象的键名是不能有`-`的,所以像`background-color`这样的属性名:
+  - 使用驼峰命名法:`backgroundColor`
+  - 使用字符串形式:`'background-color'`
+  - 以上两种方式都可以
 
 ```html
 <template id="my-app">
@@ -25,3 +29,7 @@
     <div :style="[styleObj, styleObj2]">数组中是多个对象-相同属性后边的覆盖前面的</div>
 </template>
 ```
+
+## 3.3 使用场景
+
+- `:style`: 常用于控制单个样式

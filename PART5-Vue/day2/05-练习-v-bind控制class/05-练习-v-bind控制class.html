@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-练习-v-bind控制class</title>
+</head>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        border: 3px solid #000;
+        font-size: 30px;
+        margin-top: 10px;
+    }
+
+    .pink {
+        background-color: pink;
+    }
+
+    .big {
+        width: 300px;
+        height: 300px;
+    }
+</style>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div class="box" :class="boxClasses">黑马程序员</div>
+    <div class="box" :class="boxClasses">黑马程序员</div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                boxClasses: {
+                    pink: true,
+                    big: true,
+                }
+            }
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

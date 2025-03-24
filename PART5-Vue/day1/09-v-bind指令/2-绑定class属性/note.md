@@ -15,21 +15,79 @@
 
 ```html
 <template id="my-app">
-    <div :class="className">绑定字符串</div>
-    <div :class="{active: isActive, title: isTitle}">绑定对象</div>
-    <div class="abc" :class="{active: isActive, title: isTitle}">绑定对象(不影响默认的class)</div>
-    <div :class="classObj">绑定对象-直接从data的返回值中取属性</div>
-    <div :class="getClassObj()">绑定对象-调用方法</div>
-    <button @click="toggle">切换Active</button>
+  <div :class="className">绑定字符串</div>
+  <div :class="{active: isActive, title: isTitle}">绑定对象</div>
+  <div class="abc" :class="{active: isActive, title: isTitle}">绑定对象(不影响默认的class)</div>
+  <div :class="classObj">绑定对象-直接从data的返回值中取属性</div>
+  <div :class="getClassObj()">绑定对象-调用方法</div>
+  <button @click="toggle">切换Active</button>
 </template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const args = {
+    template: '#my-app',
+    data() {
+      return {
+        className: 'coderWhy',
+        isActive: true,
+        isTitle: false,
+        classObj: {
+          isActive: true,
+          isTitle: true,
+        }
+      }
+    },
+    methods: {
+      toggle: function() {
+        this.isActive = !this.isActive
+      },
+      getClassObj: function() {
+        return {
+          isActive: false,
+          isTitle: true,
+        }
+      }
+    }
+  }
+
+  const app = Vue.createApp(args)
+  app.mount('#app')
+</script>
 ```
 
 ## 2.2 数组语法
 
+- 有时候我们需要动态的给元素绑定多个class,此时可以使用数组语法
+    - `v-bind:class="[类名1, 类名2, ...]"`
+    - 数组中的每一项都会被添加到元素上
+
 ```html
 <template id="my-app">
-    <div :class="['abc', title]">使用数组语法绑定class</div>
-    <div :class="['abc', title, isActive ? 'active' : '']">使用数组语法绑定class-使用三元运算符</div>
-    <div :class="['abc', title, {active: isActive}]">使用数组语法绑定class</div>
+  <div :class="['abc', title]">使用数组语法绑定class</div>
+  <div :class="['abc', title, isActive ? 'active' : '']">使用数组语法绑定class-使用三元运算符</div>
+  <div :class="['abc', title, {active: isActive}]">使用数组语法绑定class</div>
 </template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const args = {
+    template: '#my-app',
+    data() {
+      return {
+        message: 'Hello',
+        title: 'someClass',
+        isActive: true,
+      }
+    },
+  }
+
+  const app = Vue.createApp(args)
+  app.mount('#app')
+</script>
 ```
+
+## 2.3 使用场景
+
+- 批量添加或删除类时使用
+- 使用对象语法用的多一些

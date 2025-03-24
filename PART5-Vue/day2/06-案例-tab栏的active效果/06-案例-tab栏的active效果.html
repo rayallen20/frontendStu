@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-案例-tab栏的active效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            display: flex;
+            border-bottom: 2px solid #e01222;
+            padding: 0 10px;
+        }
+
+        li {
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            list-style: none;
+            text-align: center;
+        }
+
+        li a {
+            display: block;
+            text-decoration: none;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        li a.active {
+            background-color: #e01222;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <ul>
+        <li v-for="(item, index) in list" :key="item.id" @click="setActive(index)">
+            <a href="#" :class="{active: index === activeIndex}">{{item.name}}</a>
+        </li>
+    </ul>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                list: [
+                    { id: 1, name: '京东秒杀' },
+                    { id: 2, name: '每日特价' },
+                    { id: 3, name: '品类秒杀' }
+                ],
+                activeIndex: 0,
+            }
+        },
+        methods: {
+            setActive(index) {
+                this.activeIndex = index
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

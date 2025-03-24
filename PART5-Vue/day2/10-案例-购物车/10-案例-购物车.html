@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-案例-购物车</title>
+    <link rel="stylesheet" href="./css/inputnumber.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+<body>
+<div id="app" class="app-container"></div>
+
+<template id="my-app">
+    <!-- 顶部banner -->
+    <div class="banner-box"><img src="./img/fruit.jpg" alt="" /></div>
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+        <span>🏠</span>
+        /
+        <span>购物车</span>
+    </div>
+    <!-- 购物车主体 -->
+    <div class="main" v-if="fruitList.length > 0">
+        <div class="table">
+            <!-- 头部 -->
+            <div class="thead">
+                <div class="tr">
+                    <div class="th">选中</div>
+                    <div class="th th-pic">图片</div>
+                    <div class="th">单价</div>
+                    <div class="th num-th">个数</div>
+                    <div class="th">小计</div>
+                    <div class="th">操作</div>
+                </div>
+            </div>
+            <!-- 身体 -->
+            <div class="tbody">
+                <div class="tr" v-for="(fruit, index) in fruitList" :key="fruit.id" :class="{active: index % 2 === 0}">
+                    <div class="td">
+                        <input type="checkbox" v-model="fruit.isChecked" />
+                    </div>
+
+                    <div class="td">
+                        <img :src="fruit.icon" alt="" />
+                    </div>
+
+                    <div class="td">
+                        {{fruit.price}}
+                    </div>
+
+                    <div class="td">
+                        <div class="my-input-number">
+                            <button class="decrease" @click="decrease(fruit.id)" :disabled="fruit.num === 1"> - </button>
+                            <span class="my-input__inner">{{fruit.num}}</span>
+                            <button class="increase" @click="increase(fruit.id)"> + </button>
+                        </div>
+                    </div>
+
+                    <div class="td">
+                        {{fruit.num * fruit.price}}
+                    </div>
+
+                    <div class="td">
+                        <button @click="deleteFruit(fruit.id)">删除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 底部 -->
+        <div class="bottom">
+            <!-- 全选 -->
+            <label class="check-all">
+                <input type="checkbox" :checked="isCheckedAll()" @click="toggleCheckedAll($event)"/>
+                全选
+            </label>
+            <div class="right-box">
+                <!-- 所有商品总价 -->
+                <span class="price-box">
+                    总价&nbsp;&nbsp;:&nbsp;&nbsp;¥&nbsp;
+                    <span class="price">{{totalPrice}}</span>
+                </span>
+                <!-- 结算按钮 -->
+                <button class="pay">结算( 6 )</button>
+            </div>
+        </div>
+    </div>
+    <!-- 空车 -->
+    <div class="empty" v-else>🛒空空如也</div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            const storageFruitList = localStorage.getItem('cart')
+            let obj = {}
+
+            if (storageFruitList !== null) {
+                obj = JSON.parse(storageFruitList)
+            }
+
+            if (Object.keys(obj).length === 0 || obj.fruitList.length === 0) {
+                obj.fruitList = [
+                    {
+                        id: 1,
+                        icon: './img/火龙果.png',
+                        isChecked: true,
+                        num: 2,
+                        price: 6,
+                    },
+                    {
+                        id: 2,
+                        icon: './img/荔枝.png',
+                        isChecked: false,
+                        num: 7,
+                        price: 20,
+                    },
+                    {
+                        id: 3,
+                        icon: './img/榴莲.png',
+                        isChecked: false,
+                        num: 3,
+                        price: 40,
+                    },
+                    {
+                        id: 4,
+                        icon: './img/鸭梨.png',
+                        isChecked: true,
+                        num: 10,
+                        price: 3,
+                    },
+                    {
+                        id: 5,
+                        icon: './img/樱桃.png',
+                        isChecked: false,
+                        num: 20,
+                        price: 34,
+                    },
+                ]
+            }
+
+            return obj
+        },
+        methods: {
+            decrease(id) {
+                const fruit = this.fruitList.find(fruit => fruit.id === id)
+                if (fruit.num > 1) {
+                    fruit.num--
+                }
+            },
+            increase(id) {
+                const fruit = this.fruitList.find(fruit => fruit.id === id)
+                fruit.num++
+            },
+            isCheckedAll() {
+                let checkedAll = true
+
+                this.fruitList.forEach(fruit => {
+                    if (checkedAll) {
+                        checkedAll = fruit.isChecked
+                    }
+                })
+
+                return checkedAll
+            },
+            toggleCheckedAll(event) {
+                this.fruitList.forEach(fruit => fruit.isChecked = event.target.checked)
+            },
+            deleteFruit(id) {
+                this.fruitList = this.fruitList.filter(fruit => fruit.id !== id)
+            },
+        },
+        computed: {
+            totalPrice: {
+                get() {
+                    let total = 0
+
+                    this.fruitList.forEach(fruit => {
+                        if (fruit.isChecked) {
+                            total += fruit.num * fruit.price
+                        }
+                    })
+
+                    return total
+                },
+            }
+        },
+        watch: {
+            fruitList: {
+                handler(changedFruitList) {
+                    this.checkAll = changedFruitList.every(fruit => fruit.isChecked)
+                    localStorage.setItem('cart', JSON.stringify(this.$data))
+                },
+                deep: true,
+                immediate: true,
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

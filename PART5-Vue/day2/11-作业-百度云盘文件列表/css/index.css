@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body,#app{
+    width: 100%;
+    height: 100%;
+}
+.head{
+    height: 48px;
+    display: flex;
+    padding: 0 24px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: -7px 3px 10px 0 rgba(0,0,0,.06);
+}
+.head .logo{
+    width: 160px;
+}
+.head .avtar{
+    line-height: 32px;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    position: relative;
+    background: url(../images/avtar.jpg) no-repeat center/cover;
+}
+.head .avtar img{
+    background-color: #fff;
+    width: 100%;
+    line-height: 24px;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    object-fit: scale-down;
+}
+.container{
+    width: 100%;
+    height: calc(100% - 48px);
+    display: flex;
+}
+.container .nav{
+    width: 80px;
+    height: 100%;
+    box-shadow:inset -1px 0 3px 3px rgba(0,0,0,.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.container .nav .nav-item{
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color:#a1a2a3
+}
+.container .nav .active{
+    color:#15c0ff;
+}
+.container .nav .nav-item img{
+    width: 28px;
+}
+.content{
+    flex: 1;
+}
+.file-card{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+.file-head {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    font-size: 14px;
+
+}
+.file-head>div{
+    flex: 1;
+    border-bottom: 1px solid #e7eaef;
+    color: rgba(0,0,0,.4);
+    padding: 14px;
+    height: auto;
+    text-align-last: left;
+    color: #818999;
+    font-size: 12px;
+    font-weight: 700;
+} 
+.file-head div:first-of-type{
+    flex-grow: 0;
+}
+.file-list-wrap{
+    flex: 1;
+    overflow: auto;
+    background-color: #fff;
+}
+.file-list {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    width: 100%;
+    position: relative;
+   
+}
+
+.file-list tr {
+    font-size: 14px;
+}
+
+.file-list tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+
+.file-list tr {
+    outline: 0 none;
+}
+.file-list tr:hover{
+    background-color: #f7f9fc;
+}
+td,
+th {
+    border-bottom: 1px solid #e7eaef;
+    color: rgba(0, 0, 0, .9);
+    padding: 14px;
+    height: auto;
+    text-align-last: left;
+}
+
+.file-list td {
+    vertical-align: middle;
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    font-size: 12px;
+}
+.file-list td:first-of-type{
+    width: 12px;
+}
+.file-list td .file-icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 12px;
+}
+.file-list td .folder{
+    background: url('../images/folder.png') no-repeat center/cover;
+}
+.file-list td .file{
+    background: url('../images/file.png') no-repeat center/cover;
+}
+.file-list tbody td button {
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    color: #006eff;
+    min-width: 24px;
+    margin-right: 12px;
+    float: left;
+    margin-top: 2px;
+}
+.btn-wrap{
+    height: 48px;
+    line-height: 48px;
+    padding:  12px 0 0;
+}
+.btn-wrap .btn{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #495366;
+    height: 32px;
+    background: #f1f3f8;
+    padding: 0 24px;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 16px;
+    margin-top: 12px;
+    margin-left: 16px;
+    border: none;
+}
+.btn-wrap .primary{
+    color:#fff;
+    background-color: #06a7ff;
+}
+.btn-wrap .light{
+    color: #06a7ff;
+    background-color: #f0faff;
+}
+.btn-wrap .danger{
+    color: #06a7ff;
+    background-color: #f0faff;
+}
+.file-title{
+    padding:  12px 16px 24px;
+    font-size: 12px;
+    color: #03081a;
+    font-weight: 700;
+}
+.file-card input{
+    border: 1px solid #dcdfe6;
+}
