@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-注册根组件</title>
+    <style>
+        .comps-a,.comps-b {
+            border: 1px solid #999999;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div class="comps-b">
+        <input type="text" v-model="message">
+        <h4>{{message}}</h4>
+    </div>
+
+    <div class="comps-a">
+        <h4>{{title}}</h4>
+        <p>{{desc}}</p>
+        <button @click="btnClick()">按钮单击</button>
+    </div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                message: 'Hello',
+                title: '我是标题',
+                desc: '内容显示区域......'
+            }
+        },
+        methods: {
+            btnClick() {
+                console.log('按钮发生单击')
+            },
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-注册局部组件</title>
+    <style>
+        p {
+            border: 1px solid #999999;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <h4>{{message}}</h4>
+    <component-a></component-a>
+</template>
+
+<template id="component-a">
+    <p>{{content}}</p>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const componentA = {
+        template: '#component-a',
+        data() {
+            return {
+                content: `
+                我是在根组件App中局部注册的ComponentA组件
+                (ComponentA组件只能在当前根组件的template中使用)
+                `,
+            }
+        },
+    }
+
+    const rootComponent = {
+        template: '#my-app',
+        data() {
+            return {
+                message: '我是根组件APP',
+            }
+        },
+        components: {
+            ComponentA: componentA,
+        },
+    }
+
+    const app = Vue.createApp(rootComponent)
+    app.mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-Vue3开发模式</title>
+</head>
+<body>
+<template>
+    <h4>{{title}}</h4>
+    <p>{{desc}}</p>
+    <button @click="btnClick()">按钮单击</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+export default {
+        data() {
+            return {
+                title: '我是标题',
+                desc: '内容显示区域......'
+            }
+        },
+        methods: {
+            btnClick() {
+                console.log('按钮发生单击')
+            },
+        },
+    }
+</script>
+
+<style scoped>
+
+
+</style>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-注册全局组件</title>
+    <style>
+        .comps-a,.comps-b {
+            border: 1px solid #999999;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div class="comps-b">
+        <input type="text" v-model="message">
+        <h4>{{message}}</h4>
+    </div>
+
+    <!-- step3. 使用组件 -->
+    <!-- 此处的标签名是 调用app.component()时注册的组件名 -->
+    <component-a></component-a>
+</template>
+
+<!-- step1. 编写组件模板 -->
+<template id="component-a">
+    <div class="comps-a">
+        <h4>{{title}}</h4>
+        <p>{{desc}}</p>
+        <button @click="btnClick()">按钮单击</button>
+    </div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const rootArgs = {
+        template: '#my-app',
+        data() {
+            return {
+                message: 'Hello',
+            }
+        },
+    }
+
+    const app = Vue.createApp(rootArgs)
+
+    // step2. 注册全局组件
+    const componentAArgs = {
+        template: '#component-a',
+        data() {
+            return {
+                title: '我是标题',
+                desc: '内容显示区域......',
+            }
+        },
+        methods: {
+            btnClick() {
+                console.log('按钮发生单击')
+            },
+        },
+    }
+
+    app.component('component-a', componentAArgs)
+
+    // step4. 挂载
+    app.mount('#app')
+</script>
+</body>
+</html>

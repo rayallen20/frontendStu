@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-注册多个全局组件</title>
+    <style>
+        .comps-a,.comps-b {
+            border: 1px solid #999999;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <component-b></component-b>
+    <component-a></component-a>
+</template>
+
+<template id="component-b">
+    <div class="comps-b">
+        <input type="text" v-model="message">
+        <h4>{{message}}</h4>
+    </div>
+</template>
+
+<template id="component-a">
+    <div class="comps-a">
+        <h4>{{title}}</h4>
+        <p>{{desc}}</p>
+        <button @click="btnClick()">按钮单击</button>
+    </div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const rootArgs = {
+        template: '#my-app',
+    }
+    const app = Vue.createApp(rootArgs)
+
+    const componentBArgs = {
+        template: '#component-b',
+        data() {
+            return {
+                message: 'Hello',
+            }
+        },
+    }
+    app.component('component-b', componentBArgs)
+
+    const componentAArgs = {
+        template: '#component-a',
+        data() {
+            return {
+                title: '我是标题',
+                desc: '内容显示区域......',
+            }
+        },
+        methods: {
+            btnClick() {
+                console.log('按钮发生单击')
+            },
+        },
+    }
+    app.component('component-a', componentAArgs)
+
+    app.mount('#app')
+</script>
+</body>
+</html>
