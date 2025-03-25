@@ -63,15 +63,15 @@
                 <!-- 新增按钮 和 搜索框 -->
                 <div class="equip-btn-wrap">
                     <div class="btn-item fl">
-                        <button class="add-btn" @click="showDialog=true">新建</button>
+                        <button class="add-btn" @click="openDialog()">新建</button>
                     </div>
                     <div class="btn-item fl">
-                        <input type="checkbox">
+                        <input type="checkbox" :checked="isCheckedAll" @click="isCheckedAll = !isCheckedAll">
                         <span>全部启用</span>
                     </div>
                     <div class="btn-item fr">
-                        <input type="text" class="search-input" placeholder="请输入设备名称">
-                        <div class="clear-btn"></div>
+                        <input type="text" class="search-input" placeholder="请输入设备名称" v-model="searchName">
+                        <div class="clear-btn" @click="cleanSearch()"></div>
                     </div>
                 </div>
                 <!-- 设备列表 -->
@@ -83,57 +83,67 @@
                         <div>操作</div>
                     </div>
                     <div class="equip-list-wrap">
-                        <table class="equip-list" v-if="true">
+                        <!--数据表格-->
+                        <table class="equip-list" v-if="!isSearch && equipList.length > 0">
                             <tbody>
-                            <!-- 测试设备1 -->
-                            <tr>
+                            <tr v-for="equip in equipList" :key="equip.id">
                                 <td>
-                                    测试设备1
-                                    <span class="equip-id">（ID: 1697420179351）</span>
+                                    {{equip.name}}
+                                    <span class="equip-id">（ID: {{equip.id}}）</span>
                                 </td>
-                                <td>这是一个启用的设备</td>
-                                <td>127.0.0.1</td>
+                                <td>{{equip.remark}}</td>
+                                <td>{{equip.ip}}</td>
                                 <td>
-                                    <button>删除</button>
-                                    <div class="switch active">
-                                        <span class="switch-btn"></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- 测试设备2 -->
-                            <tr>
-                                <td>
-                                    测试设备2
-                                    <span class="equip-id">（ID: 1697420179352）</span>
-                                </td>
-                                <td>这是一个停用的设备</td>
-                                <td>127.0.0.2</td>
-                                <td>
-                                    <button>删除</button>
-                                    <div class="switch">
+                                    <button @click="deleteEquip(equip.id)">删除</button>
+                                    <div class="switch" :class="[equip.enable === true ? 'active' : '']" @click="toggleEnable(equip.id)">
                                         <span class="switch-btn"></span>
                                     </div>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                        <div class="no-data" v-else>暂无设备</div>
+
+                        <!--搜索表格-->
+                        <table class="equip-list" v-if="isSearch && searchList.length > 0">
+                            <tbody>
+                            <tr v-for="search in searchList" :key="search.id">
+                                <td>
+                                    {{search.name}}
+                                    <span class="equip-id">（ID: {{search.id}}）</span>
+                                </td>
+                                <td>{{search.remark}}</td>
+                                <td>{{search.ip}}</td>
+                                <td>
+                                    <button @click="deleteEquip(search.id)">删除</button>
+                                    <div class="switch" :class="[search.enable === true ? 'active' : '']" @click="toggleEnable(search.id)">
+                                        <span class="switch-btn"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="no-data" v-if="(!isSearch && equipList.length === 0) || (isSearch && searchList.length === 0)">暂无设备</div>
                     </div>
                     <!-- 设备数量 -->
-                    <div class="equip-num">
-                        共 2 台设备
+                    <div class="equip-num" v-if="!isSearch">
+                        共 {{equipList.length}} 台设备
+                    </div>
+
+                    <div class="equip-num" v-else>
+                        共 {{searchList.length}} 台设备
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- 新增弹层 -->
-    <div class="dialog-bg" v-if="showDialog">
+    <div class="dialog-bg" v-if="showDialog === true">
         <div class="dialog-content">
             <div class="dialog-title">
                 新增设备
                 <button class="dialog-close">
-                    <i></i>
+                    <i @click="closeDialog()"></i>
                 </button>
             </div>
             <form action="/">
@@ -142,7 +152,7 @@
                         <label>设备名称</label>
                     </div>
                     <div class="form-control">
-                        <input type="text" placeholder="请输入设备名称">
+                        <input type="text" placeholder="请输入设备名称" v-model="newEquip.name">
                     </div>
                 </div>
                 <div class="form-item">
@@ -150,7 +160,7 @@
                         <label>设备IP</label>
                     </div>
                     <div class="form-control">
-                        <input type="text" placeholder="请输入设备IP">
+                        <input type="text" placeholder="请输入设备IP" v-model="newEquip.ip">
                     </div>
                 </div>
                 <div class="form-item">
@@ -158,12 +168,12 @@
                         <label>设备说明</label>
                     </div>
                     <div class="form-control">
-                        <textarea class="" name="info" placeholder="请输入设备说明"></textarea>
+                        <textarea class="" name="info" placeholder="请输入设备说明" v-model="newEquip.remark"></textarea>
                     </div>
                 </div>
                 <div class="btn-wrap">
-                    <button class="btn primary">确定</button>
-                    <button class="btn ">取消</button>
+                    <button class="btn primary" @click="addEquip()">确定</button>
+                    <button class="btn" @click="closeDialog()">取消</button>
                 </div>
             </form>
         </div>
