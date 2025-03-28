@@ -79,7 +79,7 @@
                     <span class="price">{{totalPrice}}</span>
                 </span>
                 <!-- 结算按钮 -->
-                <button class="pay">结算( 6 )</button>
+                <button class="pay">结算( {{totalChecked}} )</button>
             </div>
         </div>
     </div>
@@ -183,6 +183,19 @@
 
                     return total
                 },
+            },
+            totalChecked: {
+                get() {
+                    let checked = 0
+
+                    this.fruitList.forEach(fruit => {
+                        if (fruit.isChecked) {
+                            checked += 1
+                        }
+                    })
+
+                    return checked
+                }
             }
         },
         watch: {
