@@ -19,6 +19,10 @@ Vue CLI v5.0.8
 
 这里选择`Manually select features`即可
 
+- 注:`vue create xxx -m npm`
+  - `-m`表示使用npm作为包管理器,而不是默认的yarn
+  - `npm`和`yarn`都是包管理器,用来安装和管理项目依赖的工具
+
 ## step2. 选择所需功能
 
 ```
