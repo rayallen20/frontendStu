@@ -17,9 +17,7 @@ import mitt from "mitt"
 
 const emitter = mitt()
 
-export default {
-    emitter
-}
+export default emitter
 ```
 
 ## 1.2 mitt的常用API

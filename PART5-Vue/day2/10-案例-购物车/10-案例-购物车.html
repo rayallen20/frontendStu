@@ -69,7 +69,7 @@
         <div class="bottom">
             <!-- 全选 -->
             <label class="check-all">
-                <input type="checkbox" :checked="isCheckedAll()" @click="toggleCheckedAll($event)"/>
+                <input type="checkbox" :checked="isCheckedAll" @click="isCheckedAll = !isCheckedAll" />
                 全选
             </label>
             <div class="right-box">
@@ -152,20 +152,6 @@
                 const fruit = this.fruitList.find(fruit => fruit.id === id)
                 fruit.num++
             },
-            isCheckedAll() {
-                let checkedAll = true
-
-                this.fruitList.forEach(fruit => {
-                    if (checkedAll) {
-                        checkedAll = fruit.isChecked
-                    }
-                })
-
-                return checkedAll
-            },
-            toggleCheckedAll(event) {
-                this.fruitList.forEach(fruit => fruit.isChecked = event.target.checked)
-            },
             deleteFruit(id) {
                 this.fruitList = this.fruitList.filter(fruit => fruit.id !== id)
             },
@@ -190,18 +176,25 @@
 
                     this.fruitList.forEach(fruit => {
                         if (fruit.isChecked) {
-                            checked += 1
+                            checked += fruit.num
                         }
                     })
 
                     return checked
                 }
-            }
+            },
+            isCheckedAll: {
+                get() {
+                    return this.fruitList.every(fruit => fruit.isChecked)
+                },
+                set(checked) {
+                    this.fruitList.forEach(fruit => fruit.isChecked = checked)
+                },
+            },
         },
         watch: {
             fruitList: {
                 handler(changedFruitList) {
-                    this.checkAll = changedFruitList.every(fruit => fruit.isChecked)
                     localStorage.setItem('cart', JSON.stringify(this.$data))
                 },
                 deep: true,
