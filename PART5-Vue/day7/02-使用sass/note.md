@@ -1,0 +1,33 @@
+# 02-使用sass
+
+- 安装: `npm install sass sass-loader`
+- 使用:
+
+```vue
+<template>
+    <div class="box">
+        <p>一段文本</p>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'App',
+}
+</script>
+
+<style lang="sass" scoped>
+.box {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+
+    p {
+        color: #333;
+        font-size: 16px;
+        margin: 0;
+    }
+}
+</style>
+```

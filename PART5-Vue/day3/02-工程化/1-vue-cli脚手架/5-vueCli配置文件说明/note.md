@@ -93,6 +93,12 @@ export default {
 如果想把`'./components/HelloWorld.vue'`改成`@/components/HelloWorld.vue`,可以在`vue.config.js`中配置`alias`:
 
 ```javascript
+const path = require('path')
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
 module.exports = defineConfig({
   chainWebpack: (config) => {
     config.resolve.alias.set('@', resolve('src'))

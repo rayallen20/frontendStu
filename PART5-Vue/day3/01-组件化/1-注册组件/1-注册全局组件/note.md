@@ -170,3 +170,83 @@ Vue3中,有2种组件:
     app.mount('#app')
 </script>
 ```
+
+## 1.4 在Vue工程中注册全局组件
+
+- step1. 定义组件
+
+```vue
+<template>
+    <button>按钮</button>
+</template>
+
+<script>
+export default {
+    name: 'ButtonGlobal',
+}
+</script>
+
+<style lang="less" scoped>
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+</style>
+```
+
+- step2. 注册组件
+
+`main.js`:
+
+```javascript
+import { createApp } from 'vue'
+import App from './App.vue'
+import ButtonGlobal from "./components/ButtonGlobal.vue"
+
+createApp(App).
+component(ButtonGlobal.name, ButtonGlobal).     // 注册全局组件 第1个参数是组件名,第二个参数是组件对象
+mount('#app')
+```
+
+- step3. 在组件中使用全局组件
+
+`App.vue`:
+
+```vue
+<template>
+    <div class="box">
+        <p>一段文本</p>
+    </div>
+    <!-- 在组件中的任何位置都可以访问全局组件 -->
+    <ButtonGlobal></ButtonGlobal>
+</template>
+
+<script>
+export default {
+    name: 'App',
+}
+</script>
+
+<style lang="less" scoped>
+.box {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+
+    p {
+        color: #333;
+        font-size: 16px;
+        margin: 0;
+    }
+}
+</style>
+```

@@ -91,6 +91,7 @@ export default {
 中的`<h4>Hello World in Child Component</h4>`
 
 - 子组件的根节点: 指`<template>`标签内的最外层的**1个**HTML元素
+- 注意: 即使在根元素同级写了注释,组件也会被认为是`fragment`组件,即没有根节点
 
 ## 注: 子组件的根节点样式与父组件的样式冲突
 
