@@ -93,3 +93,5 @@ Run `npm audit` for details.
  $ cd 01_vuecli_demo
  $ npm run serve
 ```
+
+- 注: 在`.vue`文件中,使用`vbase-3`命令可以直接生成一套模板

@@ -41,3 +41,7 @@ export default {
 }
 </style>
 ```
+
+- 样式如果要使用less:
+  - step1. `<style lang="less">`
+  - step2. `npm install less less-loader -D`
