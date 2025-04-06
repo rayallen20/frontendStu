@@ -6,6 +6,7 @@
             可以简写为 #player="slotProps"
              -->
             <template #player="slotProps">
+                <!-- 这里定义的是每个插槽的内容 因此不需要在父组件中使用v-for指令 -->
                 <span>{{'子组件中的数据: ' + slotProps.index}} - {{'子组件中的数据: ' + slotProps.player}}</span>
             </template>
         </ShowNames>

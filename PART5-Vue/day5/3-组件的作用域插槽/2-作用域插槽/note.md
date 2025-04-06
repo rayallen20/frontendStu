@@ -12,7 +12,10 @@
 ```vue
 <template>
     <div class="show-names">
-        <!-- 定义在slot上的props 称为slot prop -->
+        <!--
+        定义在slot上的props 称为slot prop
+        注意: 此处使用v-for指令创建了多个插槽
+        -->
         <slot name="player" v-for="(player, index) in players" :player="player" :index="index"></slot>
     </div>
 </template>
@@ -40,6 +43,7 @@ export default {
 ```
 
 - 定义在插槽上的属性,通常称为`slot prop`,可以在父组件中使用`v-slot`指令来接收
+- 这里是子组件通过`v-for`创建了多个名为`player`的插槽,并将`player`和`index`作为每个插槽的属性(slot prop)传递给父组件
 
 - `App.vue`:
 
@@ -52,6 +56,7 @@ export default {
             可以简写为 #player="slotProps"
              -->
             <template #player="slotProps">
+                <!-- 这里定义的是每个插槽的内容 因此不需要在父组件中使用v-for指令 -->
                 <span>{{'子组件中的数据: ' + slotProps.index}} - {{'子组件中的数据: ' + slotProps.player}}</span>
             </template>
         </ShowNames>
@@ -59,7 +64,7 @@ export default {
 </template>
 
 <script>
-import ShowNames from "./components/ShowNames.vue";
+import ShowNames from "./components/ShowNames.vue"
 
 export default {
     name: "App",
@@ -79,6 +84,7 @@ span{
 ```
 
 - `v-slot:插槽名=插槽属性集合`,可以在父组件中访问到插槽的属性集合
+- 父组件中只是定义了每个插槽中的内容
 
 - 总结:
   - 如同父组件通过`props`向子组件传递数据一样,子组件也可以通过`slot prop`向父组件传递数据
