@@ -97,6 +97,8 @@ app.use(router)
 app.mount('#app')
 ```
 
+- `import router from "@/router"`:若导入的是某个文件夹中的`index.js`文件,可以省略`index.js`后缀
+
 ## step5. 通过`<RouterLink>`组件实现路由跳转,通过`<RouterView>`组件渲染路由组件
 
 ```vue
