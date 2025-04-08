@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-案例-翻译文本</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 18px;
+        }
+
+        #app {
+            padding: 10px 20px;
+        }
+
+        .query {
+            margin: 10px 0;
+        }
+
+        .box {
+            display: flex;
+        }
+
+        textarea {
+            width: 300px;
+            height: 160px;
+            font-size: 18px;
+            border: 1px solid #dedede;
+            outline: none;
+            resize: none;
+            padding: 10px;
+        }
+
+        textarea:hover {
+            border: 1px solid #1589f5;
+        }
+
+        .transbox {
+            width: 300px;
+            height: 160px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: none;
+        }
+
+        .tip-box {
+            width: 300px;
+            height: 25px;
+            line-height: 25px;
+            display: flex;
+        }
+
+        .tip-box span {
+            flex: 1;
+            text-align: center;
+        }
+
+        .query span {
+            font-size: 18px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap span {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            font-size: 12px;
+        }
+
+        .input-wrap i {
+            font-size: 20px;
+            font-style: normal;
+        }
+
+        .query {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        select {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <!-- 条件选择框 -->
+    <div class="query">
+        <span>源语言：</span>
+        <select v-model="lang.source">
+            <option value="en">英语</option>
+            <option value="zh">简体中文</option>
+            <option value="jp">日语</option>
+            <option value="fra">法语</option>
+        </select>
+    </div>
+    <div class="query">
+        <span>目标语言：</span>
+        <select v-model="lang.target">
+            <option value="zh">简体中文</option>
+            <option value="en">英语</option>
+            <option value="jp">日语</option>
+            <option value="fra">法语</option>
+        </select>
+    </div>
+
+    <!-- 翻译框 -->
+    <div class="box">
+        <div class="input-wrap">
+            <textarea v-model="word.source"></textarea>
+            <span><i>⌨️</i>文档翻译</span>
+        </div>
+        <div class="output-wrap">
+            <div class="transbox">{{word.trans}}</div>
+        </div>
+    </div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="axios.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                lang: {
+                    source: 'en',
+                    target: 'zh',
+                },
+                word: {
+                    source: '',
+                    trans: '',
+                },
+                timerId: undefined,
+            }
+        },
+        methods: {
+            debounce(func, wait, immediate) {
+                if (immediate) {
+                    func()
+                    return
+                }
+
+                if (this.timerId !== undefined) {
+                    clearTimeout(this.timerId)
+                }
+                this.timerId = setTimeout(func, wait)
+            },
+
+            async translate() {
+                const url = 'https://applet-base-api-t.itheima.net/api/translate'
+                const params = {
+                    words: this.word.source,
+                    lang: this.lang.target,
+                }
+
+                try {
+                    const resp = await axios.get(url, params)
+                    this.word.trans = resp.data.data
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        },
+        watch: {
+            'word.source': {
+                handler: async function (newSource) {
+                    if (newSource.length === 0) {
+                        this.word.trans = ''
+                        return
+                    }
+
+                    this.debounce(this.translate, 500, false)
+                },
+            },
+            lang: {
+                handler: async function (newLang) {
+                    if (this.word.source.length === 0) {
+                        this.word.trans = ''
+                        return
+                    }
+
+                    this.debounce(this.translate, 500, false)
+                },
+                deep: true,
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

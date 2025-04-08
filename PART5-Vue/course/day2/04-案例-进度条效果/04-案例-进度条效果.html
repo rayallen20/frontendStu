@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-案例-进度条效果</title>
+    <style>
+        .progress {
+            height: 25px;
+            width: 400px;
+            border-radius: 15px;
+            background-color: #272425;
+            border: 3px solid #272425;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        .inner {
+            width: 50%;
+            height: 20px;
+            border-radius: 10px;
+            text-align: right;
+            position: relative;
+            background-color: #409eff;
+            background-size: 20px 20px;
+            box-sizing: border-box;
+            transition: all 1s;
+        }
+        .inner span {
+            position: absolute;
+            right: -20px;
+            bottom: -25px;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div class="progress">
+        <div class="inner" :style="{width: percent + '%'}">
+            <span>{{percent}}%</span>
+        </div>
+    </div>
+    <button @click="setPercent(25)">设置25%</button>
+    <button @click="setPercent(50)">设置50%</button>
+    <button @click="setPercent(75)">设置75%</button>
+    <button @click="setPercent(100)">设置100%</button>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                percent: 50
+            }
+        },
+        methods: {
+            setPercent(percent) {
+                this.percent = percent
+            }
+        }
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

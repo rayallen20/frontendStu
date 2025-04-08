@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-作业-设备管理</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <!-- 左侧导航 -->
+    <div class="nav">
+        <div class="menu-item logo-head">
+            <img class="logo" src="images/tencent-cloud.svg" alt="">
+        </div>
+        <div class="menu-item">
+            首页
+        </div>
+        <div class="menu-item">
+            账号信息
+        </div>
+        <div class="menu-item">
+            实名认证
+        </div>
+        <div class="menu-item">
+            安全设置
+        </div>
+        <div class="menu-item active-route">
+            设备管理
+        </div>
+        <div class="menu-item">
+            应用服务授权
+        </div>
+        <div class="menu-item">
+            访问管理
+        </div>
+        <div class="menu-item">
+            系统信息
+        </div>
+    </div>
+    <!-- 右侧内容 -->
+    <div class="container">
+        <!-- 头部 -->
+        <div class="head-wrap">
+            <div class="avtar">管</div>
+            <div>订单</div>
+            <div>备案</div>
+            <div>工具</div>
+            <div>费用</div>
+        </div>
+        <!-- 主体 -->
+        <div class="content">
+            <div class="title-wrap">
+                设备管理
+            </div>
+            <div class="equip-info">
+                <!-- 提示信息 -->
+                <div class="tip">
+                    <span class="warning"></span>
+                    说明：设备管理用于按管理云资源，可以对云资源进行管理和启用
+                </div>
+                <!-- 新增按钮 和 搜索框 -->
+                <div class="equip-btn-wrap">
+                    <div class="btn-item fl">
+                        <button class="add-btn" @click="openDialog()">新建</button>
+                    </div>
+                    <div class="btn-item fl">
+                        <input type="checkbox" :checked="isCheckedAll" @click="isCheckedAll = !isCheckedAll">
+                        <span>全部启用</span>
+                    </div>
+                    <div class="btn-item fr">
+                        <input type="text" class="search-input" placeholder="请输入设备名称" v-model="searchName">
+                        <div class="clear-btn" @click="cleanSearch()"></div>
+                    </div>
+                </div>
+                <!-- 设备列表 -->
+                <div class="equip-card">
+                    <div class="equip-head">
+                        <div>设备名称</div>
+                        <div>设备IP</div>
+                        <div>设备说明</div>
+                        <div>操作</div>
+                    </div>
+                    <div class="equip-list-wrap">
+                        <!--数据表格-->
+                        <table class="equip-list" v-if="!isSearch && equipList.length > 0">
+                            <tbody>
+                            <tr v-for="equip in equipList" :key="equip.id">
+                                <td>
+                                    {{equip.name}}
+                                    <span class="equip-id">（ID: {{equip.id}}）</span>
+                                </td>
+                                <td>{{equip.remark}}</td>
+                                <td>{{equip.ip}}</td>
+                                <td>
+                                    <button @click="deleteEquip(equip.id)">删除</button>
+                                    <div class="switch" :class="[equip.enable === true ? 'active' : '']" @click="toggleEnable(equip.id)">
+                                        <span class="switch-btn"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <!--搜索表格-->
+                        <table class="equip-list" v-if="isSearch && searchList.length > 0">
+                            <tbody>
+                            <tr v-for="search in searchList" :key="search.id">
+                                <td>
+                                    {{search.name}}
+                                    <span class="equip-id">（ID: {{search.id}}）</span>
+                                </td>
+                                <td>{{search.remark}}</td>
+                                <td>{{search.ip}}</td>
+                                <td>
+                                    <button @click="deleteEquip(search.id)">删除</button>
+                                    <div class="switch" :class="[search.enable === true ? 'active' : '']" @click="toggleEnable(search.id)">
+                                        <span class="switch-btn"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="no-data" v-if="(!isSearch && equipList.length === 0) || (isSearch && searchList.length === 0)">暂无设备</div>
+                    </div>
+                    <!-- 设备数量 -->
+                    <div class="equip-num" v-if="!isSearch">
+                        共 {{equipList.length}} 台设备
+                    </div>
+
+                    <div class="equip-num" v-else>
+                        共 {{searchList.length}} 台设备
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 新增弹层 -->
+    <div class="dialog-bg" v-if="showDialog === true">
+        <div class="dialog-content">
+            <div class="dialog-title">
+                新增设备
+                <button class="dialog-close">
+                    <i @click="closeDialog()"></i>
+                </button>
+            </div>
+            <form action="/">
+                <div class="form-item">
+                    <div class="form-label">
+                        <label>设备名称</label>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" placeholder="请输入设备名称" v-model="newEquip.name">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="form-label">
+                        <label>设备IP</label>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" placeholder="请输入设备IP" v-model="newEquip.ip">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="form-label">
+                        <label>设备说明</label>
+                    </div>
+                    <div class="form-control">
+                        <textarea class="" name="info" placeholder="请输入设备说明" v-model="newEquip.remark"></textarea>
+                    </div>
+                </div>
+                <div class="btn-wrap">
+                    <button class="btn primary" @click="addEquip()">确定</button>
+                    <button class="btn" @click="closeDialog()">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

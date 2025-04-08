@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-作业-百度云盘文件列表</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="app"></div>
+
+<template id="my-app">
+    <div class="head">
+        <div class="logo">
+            <img width="100%" src="images/logo.png" alt="">
+        </div>
+        <div class="avtar">
+            <img src="images/svip.png" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="nav-item active">
+                <img src="images/icon1.png" alt="">
+                首页
+            </div>
+            <div class="nav-item">
+                <img src="images/icon2.png" alt="">
+                收发
+            </div>
+            <div class="nav-item">
+                <img src="images/icon3.png" alt="">
+                同步
+            </div>
+            <div class="nav-item">
+                <img src="images/icon4.png" alt="">
+                消息
+            </div>
+            <div class="nav-item">
+                <img src="images/icon5.png" alt="">
+                相册
+            </div>
+            <div class="nav-item">
+                <img src="images/icon6.png" alt="">
+                笔记
+            </div>
+            <div class="nav-item">
+                <img src="images/icon7.png" alt="">
+                工具
+            </div>
+        </div>
+        <div class="content">
+            <div class="btn-wrap">
+                <button class="btn primary">上传文件</button>
+                <button class="btn light">新建文件夹</button>
+                <button class="btn danger">批量删除</button>
+            </div>
+            <div class="file-title">
+                全部文件
+            </div>
+            <div class="file-card">
+                <div class="file-head">
+                    <!-- 全选 -->
+                    <div>
+                        <input type="checkbox" @click="checkedAll($event)" :checked="isCheckedAll()">
+                    </div>
+                    <div>文件名</div>
+                    <div>修改时间</div>
+                    <div>大小</div>
+                    <div>操作</div>
+                </div>
+                <div class="file-list-wrap">
+                    <table class="file-list">
+                        <tbody>
+                        <!-- 文件夹结构示例 -->
+                        <tr v-for="file in fileList" :key="file.id">
+                            <td>
+                                <input type="checkbox" v-model="file.select">
+                            </td>
+                            <td>
+                                <span class="file-icon" :class="[file.isFile ? 'file' : 'folder']"></span>
+                                {{file.name}}
+                            </td>
+                            <td>{{file.updateTime}}</td>
+                            <td>{{file.size}}</td>
+                            <td>
+                                <button @click="deleteFile(file.id)">删除</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const args = {
+        template: '#my-app',
+        data() {
+            return {
+                fileList: [
+                    {
+                        name: '01-PPT',
+                        updateTime: '2023-11-11 11:11',
+                        size: '-',
+                        id: 1697420179352,
+                        isFile: false,
+                        select:false
+                    },
+                    {
+                        name: '02-CODE',
+                        updateTime: '2023-11-11 11:11',
+                        size: '-',
+                        id: 1697420179353,
+                        isFile: false,
+                        select:false
+                    },
+                    {
+                        name: '03-笔记',
+                        updateTime: '2023-11-11 11:11',
+                        size: '-',
+                        id: 1697420179354,
+                        isFile: false,
+                        select:false
+                    },
+                    {
+                        name: '04-作业',
+                        updateTime: '2023-11-11 11:11',
+                        size: '-',
+                        id: 1697420179355,
+                        isFile: false,
+                        select:false
+                    },
+                    {
+                        name: 'README.md',
+                        updateTime: '2023-11-11 11:11',
+                        size: '147.2KB',
+                        id: 1697420179356,
+                        isFile: true,
+                        select:false
+                    },
+                    {
+                        name: 'day01.xmind',
+                        updateTime: '2023-11-11 11:11',
+                        size: '155.3KB',
+                        id: 1697420179357,
+                        isFile: true,
+                        select:false
+                    }
+                ],
+            }
+        },
+        methods: {
+            checkedAll(event) {
+                this.fileList.forEach(file => file.select = event.target.checked)
+            },
+            isCheckedAll() {
+                if (this.fileList.length === 0) {
+                    return false
+                }
+
+                const unSelectedFile = this.fileList.find(file => file.select === false)
+                return unSelectedFile === undefined
+            },
+            deleteFile(id) {
+                this.fileList = this.fileList.filter(file => file.id !== id)
+            },
+        },
+    }
+
+    const app = Vue.createApp(args)
+    app.mount('#app')
+</script>
+</body>
+</html>

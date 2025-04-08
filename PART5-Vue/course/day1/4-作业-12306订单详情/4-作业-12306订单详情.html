@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>4-作业-12306订单详情</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div id="app" style="display: block;"></div>
+
+    <template id="my-app">
+        <h1>订单详情</h1>
+        <div  class="container" >
+            <!-- 车次信息 -->
+            <div class="ticket-info">
+                <div class="start">
+                    <div class="time">{{orderInfo.startTime}}</div>
+                    <div class="origin">{{orderInfo.origin}}<span>&gt;</span></div>
+                </div>
+                <div class="train-info">
+                    <div class="train-number">{{orderInfo.trainNumber}}<span>&gt;</span></div>
+                    <div class="station-type" v-if="orderInfo.stationType === 2">经停站</div>
+                    <div class="station-type" v-else-if="orderInfo.stationType === 1">始发站</div>
+                    <div class="train-duration">历时{{orderInfo.duration}}</div>
+                </div>
+                <div class="end">
+                    <div class="time">{{orderInfo.endTime}}</div>
+                    <div class="destination">{{orderInfo.destination}}<span>&gt;</span></div>
+                </div>
+            </div>
+            <!-- 发车时间 -->
+            <div class="train-date">
+                <span class="start-date">发车时间：{{orderInfo.trainDate}}</span>
+                <span class="expiration-date">车票当日当次有效</span>
+            </div>
+            <!-- 改签退票 -->
+            <div class="btn-wrap">
+                <button :disabled="!orderInfo.rebook" @click="rebook()">改签</button>
+                <span>|</span>
+                <button :disabled="!orderInfo.cancellation" @click="cancel()">退票</button>
+            </div>
+            <!-- 乘车人列表 -->
+            <div class="passenger-list">
+                <div class="passenger-info" v-for="passenger in orderInfo.passengers" :key="passenger.pid">
+                    <h3 class="passenger">
+                        <div class="passenger-name">
+                            {{passenger.pname}}
+                            <span class="passenger-type" v-if="passenger.isAdult">成人票</span>
+                            <span class="passenger-type" v-else>儿童票</span>
+                        </div>
+
+                        <div class="seat-info">
+                            <span class="seat-type" v-if="passenger.seatType === 1">靠窗</span>
+                            <span class="seat-type" v-else-if="passenger.seatType === 3">过道</span>
+                            {{passenger.seat}}
+                        </div>
+                    </h3>
+
+                    <div class="seat-price">
+                        <div class="passenger-passport">
+                            中国居民身份证
+                        </div>
+                        <div class="price">￥{{passenger.price}}</div>
+                    </div>
+                    <div class="status">
+                        <div class="ticket-status">
+                            已出站
+                        </div>
+                        <div class="illustrate">退改说明</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="tip">
+            🔔 订单信息查询有效期限为30日
+        </div>
+    </template>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        // TODO:阅读代码，根据提供的订单信息数据，通过学习的Vue指令将页面渲染成目标效果
+        // DATA:数据字段说明
+        /**
+         *  startTime： 发车时间
+         *  endTime： 到站时间
+         *  origin： 发车站
+         *  destination：目的地
+         *  trainNumber：车次
+         *  trainDate：发车日期
+         *  stationType：车站类型(1为始发站,2为经停站)
+         *  duration：历时
+         *  rebook：能否改签
+         *  cancellation:能否退票
+         *  passengers:乘车人列表
+         *  pid：乘车人ID
+         *  pname：乘车人姓名
+         *  isAdult：是否成年
+         *  seat：座位
+         *  price：票价
+         *  seatType:作为类型(1是靠窗，2是中间，3是过道)
+        */
+        const args = {
+            template: '#my-app',
+            data() {
+                return {
+                    orderInfo: {
+                        startTime: '14:12',
+                        endTime: '17:41',
+                        origin: '西安北',
+                        destination: '成都东',
+                        trainNumber: 'D1937',
+                        trainDate: '2023.09.30 星期六',
+                        stationType: 2,
+                        duration: '3时30分',
+                        rebook: false,
+                        cancellation: true,
+                        passengers: [
+                            {
+                                pid: '0001',
+                                pname: '王大锤',
+                                isAdult: true,
+                                seat: '二等座 04车 11A号',
+                                price: 261,
+                                seatType: 1,
+                            },
+                            {
+                                pid: '0002',
+                                pname: '李二狗',
+                                isAdult: false,
+                                seat: '二等座 04车 11B号',
+                                price: 262,
+                                seatType: 2,
+                            },
+                            {
+                                pid: '0003',
+                                pname: '张三疯',
+                                isAdult: true,
+                                seat: '二等座 04车 13C号',
+                                price: 264,
+                                seatType: 3,
+                            }
+                        ]
+                    }
+                }
+            },
+            methods: {
+                rebook() {
+                    alert('改签成功')
+                },
+                cancel() {
+                    alert('退票成功')
+                }
+            }
+        }
+
+        const app = Vue.createApp(args)
+        app.mount('#app')
+    </script>
+</body>
+
+</html>
