@@ -167,3 +167,5 @@ export default {
 }
 </script>
 ```
+
+- `v-slot`指令可以简写为`#`

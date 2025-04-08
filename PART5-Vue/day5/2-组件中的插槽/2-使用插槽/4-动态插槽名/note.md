@@ -108,4 +108,4 @@ export default {
 </script>
 ```
 
-- `#[leftSlotName]`:这一个动态插槽名,它的值是变量`leftSlotName`的值,`#[]`是`v-slot`指令的简写形式,所以在父组件中定义的插槽名就是`leftSlot`,而不是`left`
+- `#[leftSlotName]`:这一个动态插槽名,它的值是变量`leftSlotName`的值,其中`#`是`v-slot`的简写,`[]`表示动态插槽名
