@@ -3,6 +3,7 @@ import Vant, { setToastDefaultOptions } from 'vant'
 import App from './App.vue'
 import router from "@/router"
 import 'vant/lib/index.css'
+import '@/assets/vant-variables.css'
 
 const app = createApp(App)
 

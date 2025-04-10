@@ -1,14 +1,16 @@
-import {createRouter, createWebHistory} from "vue-router";
+import {createRouter, createWebHistory} from "vue-router"
+import {showFailToast} from "vant"
 
 const routes = [
     {
         path: '/',
+        name: 'index',
         redirect: {
             name: 'articleHome'
         },
     },
     {
-        path: '/detail',
+        path: '/detail/:id',
         name: 'detail',
         component: () => import('@/views/DetailPage.vue'),
     },
@@ -62,5 +64,19 @@ const options = {
 }
 
 const router = createRouter(options)
+
+router.beforeEach((to) => {
+    if (to.name === 'login' || to.name === 'register') {
+        return true
+    }
+
+    const token = localStorage.getItem('token')
+    if (token === null) {
+        showFailToast('请先登录')
+        return {name: 'login'}
+    }
+
+    return true
+})
 
 export default router

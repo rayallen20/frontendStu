@@ -1,8 +1,20 @@
 <template>
     <div class="article-page">
         <nav class="my-nav van-hairline--bottom">
-            <a href="javascript:">推荐</a>
-            <a href="javascript:">最新</a>
+            <a
+                href="javascript:"
+               :class="{active: sorter === 'weight_desc'}"
+                @click="toggleSorter"
+            >
+                推荐
+            </a>
+            <a
+                href="javascript:"
+                :class="{active: sorter === null}"
+                @click="toggleSorter"
+            >
+                最新
+            </a>
             <div class="logo"><img src="@/assets/logo.png" alt=""></div>
         </nav>
 
@@ -14,12 +26,12 @@
             :finished="finished"
             finished-text="没有更多了"
             :immediate-check="true"
-            @load="getRecommendList"
+            @load="getArticleList"
         >
             <ArticleItem
-                v-for="recommend in recommendList"
-                :key="recommend.id"
-                :article="recommend"
+                v-for="article in articleList"
+                :key="article.id"
+                :article="article"
             ></ArticleItem>
         </van-list>
 
@@ -38,33 +50,38 @@ export default {
             currentPage: 1,
             pageSize: 10,
             sorter: 'weight_desc',
-            recommendList: [],
+            articleList: [],
             finished: false,
             loading: false,
+            lastScrollDistance: 0,
+            currentScrollDistance: 0,
         }
     },
     components: {
         ArticleItem,
     },
     methods: {
-        async getRecommendList() {
+        async getArticleList() {
             this.loading = true
             try {
                 const params = {
                     current: this.currentPage,
                     pageSize: this.pageSize,
-                    sorter: this.sorter
+                }
+
+                if (this.sorter !== null) {
+                    params.sorter = this.sorter
                 }
 
                 const payload = await articleAPI.recommendReq(params)
-                this.recommendList.push(...payload.rows)
+                this.articleList.push(...payload.rows)
                 this.currentPage += 1
                 if(this.currentPage > payload.pageTotal) {
                     this.finished = true
                 }
             } catch (error) {
                 if (error.response.data !== undefined) {
-                    showFailToast(error.response.data.message)
+                    showFailToast(error.response.data.data)
                 } else {
                     showFailToast('获取推荐列表失败')
                 }
@@ -72,6 +89,35 @@ export default {
                 this.loading = false
             }
         },
+        async toggleSorter() {
+            if (this.sorter === 'weight_desc') {
+                this.sorter = null
+                return
+            }
+
+            this.sorter = 'weight_desc'
+        }
+    },
+    watch: {
+        sorter: {
+            handler() {
+                this.currentPage = 1
+                this.articleList = []
+                this.finished = false
+                this.getArticleList()
+            },
+            immediate: false,
+        }
+    },
+    activated () {
+        window.addEventListener('scroll', () => {
+            this.lastScrollDistance = document.documentElement.scrollTop
+        })
+
+        document.documentElement.scrollTop = this.currentScrollDistance
+    },
+    deactivated () {
+        this.currentScrollDistance = this.lastScrollDistance
     }
 }
 </script>

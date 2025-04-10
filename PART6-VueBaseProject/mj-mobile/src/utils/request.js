@@ -33,8 +33,9 @@ function getToken() {
 axiosInstance.interceptors.response.use(response => {
     return extractPayload(response)
 }, error => {
-    if (error.response.status === 401) {
-        showFailToast('登录已失效, 请重新登录')
+    if (error.response !== undefined && error.response.status === 401) {
+        showFailToast(error.response.data.data)
+        localStorage.removeItem('token')
         setTimeout(() => redirectToLogin(),3000)
     }
 

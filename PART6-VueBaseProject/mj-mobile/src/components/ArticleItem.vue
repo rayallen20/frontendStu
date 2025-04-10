@@ -1,5 +1,5 @@
 <template>
-    <div class="article-item">
+    <div class="article-item" @click="getId(article.id)">
         <van-cell class="article-item" >
             <template #title>
                 <div class="head">
@@ -12,7 +12,7 @@
             </template>
             <template #label>
                 <div class="body van-multi-ellipsis--l2">
-                    {{article.content}}
+                    {{delHtmlTag(article.content)}}
                 </div>
                 <div class="foot">点赞 {{article.likeCount}} | 浏览 {{article.views}}</div>
             </template>
@@ -27,6 +27,21 @@ export default {
         article: {
             type: Object,
             required: true,
+        }
+    },
+    methods: {
+        delHtmlTag(content) {
+            return content.replace(/<[^>]+>/g, '')
+        },
+        getId(id) {
+            const targetRoute = {
+                name: 'detail',
+                params: {
+                    id: id,
+                }
+            }
+
+            this.$router.push(targetRoute)
         }
     }
 }
