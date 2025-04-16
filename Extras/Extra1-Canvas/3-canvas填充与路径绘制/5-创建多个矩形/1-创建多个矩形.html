@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-创建多个矩形</title>
+</head>
+<body>
+<canvas id="myCanvas" width="900" height="400" style="width: 700px; height: 400px">
+
+</canvas>
+
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+
+    if (canvasEle.getContext === undefined) {
+        alert('当前浏览器不支持canvas')
+    }
+
+    const ctx = canvasEle.getContext('2d')
+
+    // 创建新的路径 绘制一个路径矩形
+    ctx.beginPath()
+    ctx.strokeStyle = 'skyblue'
+    ctx.rect(50, 50, 400, 200)
+    ctx.stroke()
+    // 路径结束
+    ctx.closePath()
+
+    // 创建新的路径 绘制一个填充矩形
+    ctx.beginPath()
+    ctx.fillStyle = 'orange'
+    ctx.rect(250, 150, 400, 200)
+    ctx.fill()
+    // 路径结束
+    ctx.closePath()
+</script>
+</body>
+</html>

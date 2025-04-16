@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-先创建路径再绘制</title>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="400" style="width: 600px; height: 400px">
+
+</canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+
+    if (canvasEle.getContext === undefined) {
+        alert('当前浏览器不支持canvas')
+    }
+
+    const ctx = canvasEle.getContext('2d')
+
+    ctx.strokeStyle = 'skyblue'
+
+    // 创建路径
+    ctx.rect(50, 50, 400, 200)
+
+    // 绘制路径
+    ctx.stroke()
+</script>
+</body>
+</html>
