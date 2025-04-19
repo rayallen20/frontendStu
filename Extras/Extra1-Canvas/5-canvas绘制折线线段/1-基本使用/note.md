@@ -1,0 +1,43 @@
+# 1-基本使用
+
+- `moveTo()`: 移动到指定坐标,在绘制线段的场景中,相当于设置线段的起点
+- `lineTo()`: 画线到指定坐标,在绘制线段的场景中,相当于设置线段的终点
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+</head>
+<body>
+<canvas id="myCanvas"  width="600" height="400"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+
+    if (canvasEle.getContext === undefined) {
+        alert('当前浏览器不支持canvas')
+    }
+
+    const ctx = canvasEle.getContext('2d')
+
+    ctx.beginPath()
+
+    // 设置线段的起点坐标
+    ctx.moveTo(25, 25)
+
+    // 设置线段终点坐标
+    ctx.lineTo(105, 25)
+
+    // 设置线段的颜色
+    ctx.strokeStyle = 'green'
+
+    // 绘制
+    ctx.stroke()
+
+    ctx.closePath()
+
+</script>
+</body>
+</html>
+```

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"  width="600" height="450"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+
+    if (canvasEle.getContext === undefined) {
+        alert('当前浏览器不支持canvas')
+    }
+
+    const ctx = canvasEle.getContext('2d')
+
+    // 设置虚线样式
+    // [实线长度 空白长度]
+    ctx.setLineDash([5, 3])
+
+    ctx.beginPath()
+    ctx.moveTo(20, 20)
+    ctx.lineTo(200, 20)
+    console.log(ctx.strokeStyle)
+    console.log(ctx.lineWidth)
+    ctx.strokeStyle = 'red'
+    ctx.lineWidth = 2
+    ctx.stroke()
+    ctx.closePath()
+</script>
+</body>
+</html>
