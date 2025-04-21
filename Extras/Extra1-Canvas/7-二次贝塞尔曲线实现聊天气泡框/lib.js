@@ -13,73 +13,25 @@ ctx.font = '14px san-serif'
  * @property {Object} p1 - 控制点1坐标 其他类似
  * */
 function drawBubble(points) {
-    drawLeftBottom(points.start, points.p1, points.p2)
-    drawLeftTop(points.p2, points.p3, points.p4)
+    // 绘制气泡框左下部分
+    drawBezierCurve(points.start, points.p1, points.p2)
+
+    // 绘制气泡框左上部分
+    drawBezierCurve(points.p2, points.p3, points.p4)
+    
     drawLine(points.p4, points.p5)
-    drawRightTop(points.p5, points.p6, points.p7)
-    drawRightBottom(points.p7, points.p8, points.p9)
-    drawLeftArc(points.p9, points.p10, points.p11)
-    drawRightArc(points.p11, points.p12, points.start)
-}
 
-/**
- * 本方法用于绘制气泡框左下部分
- * @param {Object} start 起始点
- * @param {Object} p1 控制点1
- * @param {Object} p2 控制点2
- * */
-function drawLeftBottom(start, p1, p2) {
-    drawBezierCurve(start, p1, p2)
-}
+    // 绘制气泡框右上部分
+    drawBezierCurve(points.p5, points.p6, points.p7)
 
-/**
- * 本方法用于绘制气泡框左上部分
- * @param {Object} start 起始点
- * @param {Object} p1 控制点1
- * @param {Object} p2 控制点2
- * */
-function drawLeftTop(start, p1, p2) {
-    drawBezierCurve(start, p1, p2)
-}
+    // 绘制气泡框右下部分
+    drawBezierCurve(points.p7, points.p8, points.p9)
 
-/**
- * 本方法用于绘制气泡框右上部分
- * @param {Object} start 起始点
- * @param {Object} p1 控制点1
- * @param {Object} p2 控制点2
- * */
-function drawRightTop(start, p1, p2) {
-    drawBezierCurve(start, p1, p2)
-}
+    // 绘制气泡框下侧 右边的弧线
+    drawBezierCurve(points.p9, points.p10, points.p11)
 
-/**
- * 本方法用于绘制气泡框右下部分
- * @param {Object} start 起始点
- * @param {Object} p1 控制点1
- * @param {Object} p2 控制点2
- * */
-function drawRightBottom(start, p1, p2) {
-    drawBezierCurve(start, p1, p2)
-}
-
-/**
- * 本方法用于绘制气泡框下侧,右边的弧线
- * @param {Object} start 起始点
- * @param {Object} p1 控制点1
- * @param {Object} p2 控制点2
- * */
-function drawRightArc(start, p1, p2) {
-    drawBezierCurve(start, p1, p2)
-}
-
-/**
- * 本方法用于绘制气泡框下侧,左边的弧线
- * @param {Object} start 起始点
- * @param {Object} p1 控制点1
- * @param {Object} p2 控制点2
- * */
-function drawLeftArc(start, p1, p2) {
-    drawBezierCurve(start, p1, p2)
+    // 绘制气泡框下侧 左边的弧线
+    drawBezierCurve(points.p11, points.p12, points.start)
 }
 
 /**
