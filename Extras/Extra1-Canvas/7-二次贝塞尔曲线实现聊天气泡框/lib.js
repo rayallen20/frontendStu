@@ -18,7 +18,7 @@ function drawBubble(points) {
 
     // 绘制气泡框左上部分
     drawBezierCurve(points.p2, points.p3, points.p4)
-    
+
     drawLine(points.p4, points.p5)
 
     // 绘制气泡框右上部分
