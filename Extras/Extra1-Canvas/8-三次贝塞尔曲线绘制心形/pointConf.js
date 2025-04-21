@@ -1,4 +1,4 @@
-const startPoint = {
+const start = {
     x: 300,
     y: 400,
     offsetOnX: -30,
@@ -44,4 +44,13 @@ const p5 = {
     offsetOnX: 0,
     offsetOnY: 20,
     name: 'P5',
+}
+
+const points = {
+    start,
+    p1,
+    p2,
+    p3,
+    p4,
+    p5
 }

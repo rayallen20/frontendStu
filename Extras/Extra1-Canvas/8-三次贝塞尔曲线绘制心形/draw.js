@@ -15,16 +15,16 @@ function reDrawHeart() {
     ctx.clearRect(0, 0, 600, 500)
 
     if (showSubline) {
-        drawHeartSubline(startPoint, p1, p2, p3, p4, p5)
+        drawHeartSubline(points)
     }
 
     if (showPosition) {
-        drawHeartLabelPoint(startPoint, p1, p2, p3, p4, p5)
+        drawHeartLabelPoint(points)
     }
 
-    drawHeart(startPoint, p1, p2, p3, p4, p5)
+    drawHeart(points)
 }
 
-drawHeart(startPoint, p1, p2, p3, p4, p5)
-drawHeartSubline(startPoint, p1, p2, p3, p4, p5)
-drawHeartLabelPoint(startPoint, p1, p2, p3, p4, p5)
+drawHeart(points)
+drawHeartSubline(points)
+drawHeartLabelPoint(points)

@@ -5,22 +5,17 @@ if (canvasEle.getContext === undefined) {
 
 const ctx = canvasEle.getContext('2d')
 ctx.font = '14px san-serif'
+ctx.fillStyle = 'red'
 
 /**
  * 本方法用于绘制心形
- * @param {Object} start - 起点
- * @param {Object} p1 - 控制点1
- * @param {Object} p2 - 控制点2
- * @param {Object} p3 - 控制点3
- * @param {Object} p4 - 控制点4
- * @param {Object} p5 - 控制点5
+ * @param {Object} points 绘制心形时的起点及控制点集合
+ * @property {Object} start - 起点
+ * @property {Object} p1 - 控制点1 其他控制点类似
  * */
-function drawHeart(start, p1, p2, p3, p4, p5) {
-    drawBezierCurve(startPoint, p1, p2, p3)
-    ctx.fillStyle = 'red'
-    ctx.fill()
-    drawBezierCurve(p3, p4, p5, startPoint)
-    ctx.fill()
+function drawHeart(points) {
+    drawBezierCurve(points.start, points.p1, points.p2, points.p3)
+    drawBezierCurve(points.p3, points.p4, points.p5, points.start)
 }
 
 /**
@@ -31,29 +26,31 @@ function drawHeart(start, p1, p2, p3, p4, p5) {
  * @param {Object} p3 - 控制点3
  * */
 function drawBezierCurve(start, p1, p2, p3) {
+    if (ctx.fillStyle !== 'red') {
+        ctx.fillStyle = 'red'
+    }
+
     ctx.beginPath()
     ctx.moveTo(start.x, start.y)
     ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y)
     ctx.stroke()
+    ctx.fill()
     ctx.closePath()
 }
 
 /**
  * 本方法用于绘制在绘制心形时使用的辅助线
- * @param {Object} start - 起点
- * @param {Object} p1 - 控制点1
- * @param {Object} p2 - 控制点2
- * @param {Object} p3 - 控制点3
- * @param {Object} p4 - 控制点4
- * @param {Object} p5 - 控制点5
+ * @param {Object} points 绘制心形时的起点及控制点集合
+ * @property {Object} start - 起点
+ * @property {Object} p1 - 控制点1 其他控制点类似
  * */
-function drawHeartSubline(start, p1, p2, p3, p4, p5) {
-    drawSubline(startPoint, p1)
-    drawSubline(p1, p2)
-    drawSubline(p2, p3)
-    drawSubline(p3, p4)
-    drawSubline(p4, p5)
-    drawSubline(p5, startPoint)
+function drawHeartSubline(points) {
+    drawSubline(points.start, points.p1)
+    drawSubline(points.p1, points.p2)
+    drawSubline(points.p2, points.p3)
+    drawSubline(points.p3, points.p4)
+    drawSubline(points.p4, points.p5)
+    drawSubline(points.p5, points.start)
 }
 
 /**
@@ -82,20 +79,17 @@ function drawSubline(start, end) {
 
 /**
  * 本方法用于在绘制心形时使用的起点和控制点坐标
- * @param {Object} start - 起点
- * @param {Object} p1 - 控制点1
- * @param {Object} p2 - 控制点2
- * @param {Object} p3 - 控制点3
- * @param {Object} p4 - 控制点4
- * @param {Object} p5 - 控制点5
+ * @param {Object} points 绘制心形时的起点及控制点集合
+ * @property {Object} start - 起点
+ * @property {Object} p1 - 控制点1 其他控制点类似
  * */
-function drawHeartLabelPoint(start, p1, p2, p3, p4, p5) {
-    labelPoint(startPoint)
-    labelPoint(p1)
-    labelPoint(p2)
-    labelPoint(p3)
-    labelPoint(p4)
-    labelPoint(p5)
+function drawHeartLabelPoint(points) {
+    labelPoint(points.start)
+    labelPoint(points.p1)
+    labelPoint(points.p2)
+    labelPoint(points.p3)
+    labelPoint(points.p4)
+    labelPoint(points.p5)
 }
 
 /**
