@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="400"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+
+    const ctx = canvasEle.getContext('2d')
+
+    const conicalGradient = ctx.createConicGradient(Math.PI, 250, 150)
+    conicalGradient.addColorStop(0, "red")
+    conicalGradient.addColorStop(0.5, "yellow")
+    conicalGradient.addColorStop(1, "blue")
+    ctx.fillStyle = conicalGradient
+
+    ctx.fillRect(50, 50, 400, 200)
+</script>
+</body>
+</html>

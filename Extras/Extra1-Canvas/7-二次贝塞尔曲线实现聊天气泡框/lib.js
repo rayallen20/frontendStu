@@ -9,8 +9,8 @@ ctx.font = '14px san-serif'
 /**
  * 本方法用于绘制气泡框
  * @param {Object} points - 气泡框的各个点坐标
- * @property {Object} start - 起始点坐标
- * @property {Object} p1 - 控制点1坐标 其他类似
+ * @property {Object} point.start - 起始点坐标
+ * @property {Object} point.p1 - 控制点1坐标 其他类似
  * */
 function drawBubble(points) {
     // 绘制气泡框左下部分
@@ -66,8 +66,8 @@ function drawLine(start, end) {
 /**
  * 本方法用于在绘制气泡框时绘制辅助线
  * @param {Object} points - 气泡框的各个点坐标
- * @property {Object} start - 起始点坐标
- * @property {Object} p1 - 控制点1坐标 其他类似
+ * @property {Object} point.start - 起始点坐标
+ * @property {Object} point.p1 - 控制点1坐标 其他类似
  * */
 function drawBubbleSubline(points) {
     drawSubline(points.start, points.p1)
@@ -110,8 +110,8 @@ function drawSubline(start, end) {
 /**
  * 本方法用于在绘制气泡框时绘制控制点坐标
  * @param {Object} points - 气泡框的各个点坐标
- * @property {Object} start - 起始点坐标
- * @property {Object} p1 - 控制点1坐标 其他类似
+ * @property {Object} point.start - 起始点坐标
+ * @property {Object} point.p1 - 控制点1坐标 其他类似
  * */
 function drawBubblePoint(points) {
     labelPoint(points.start)

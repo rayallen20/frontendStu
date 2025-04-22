@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    const linerGradient = ctx.createLinearGradient(50, 50, 450, 250)
+    linerGradient.addColorStop(0, "red")
+    linerGradient.addColorStop(0.5, "pink")
+    linerGradient.addColorStop(1, "blue")
+
+    ctx.fillStyle = linerGradient
+    ctx.fillRect(50, 50, 400, 200)
+</script>
+</body>
+</html>

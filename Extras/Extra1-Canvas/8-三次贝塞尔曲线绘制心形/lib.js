@@ -10,8 +10,8 @@ ctx.fillStyle = 'red'
 /**
  * 本方法用于绘制心形
  * @param {Object} points 绘制心形时的起点及控制点集合
- * @property {Object} start - 起点
- * @property {Object} p1 - 控制点1 其他控制点类似
+ * @property {Object} point.start - 起点
+ * @property {Object} point.p1 - 控制点1 其他控制点类似
  * */
 function drawHeart(points) {
     drawBezierCurve(points.start, points.p1, points.p2, points.p3)
@@ -41,8 +41,8 @@ function drawBezierCurve(start, p1, p2, p3) {
 /**
  * 本方法用于绘制在绘制心形时使用的辅助线
  * @param {Object} points 绘制心形时的起点及控制点集合
- * @property {Object} start - 起点
- * @property {Object} p1 - 控制点1 其他控制点类似
+ * @property {Object} point.start - 起点
+ * @property {Object} point.p1 - 控制点1 其他控制点类似
  * */
 function drawHeartSubline(points) {
     drawSubline(points.start, points.p1)
@@ -80,8 +80,8 @@ function drawSubline(start, end) {
 /**
  * 本方法用于在绘制心形时使用的起点和控制点坐标
  * @param {Object} points 绘制心形时的起点及控制点集合
- * @property {Object} start - 起点
- * @property {Object} p1 - 控制点1 其他控制点类似
+ * @property {Object} point.start - 起点
+ * @property {Object} point.p1 - 控制点1 其他控制点类似
  * */
 function drawHeartLabelPoint(points) {
     labelPoint(points.start)
@@ -93,8 +93,10 @@ function drawHeartLabelPoint(points) {
 }
 
 /**
- * 本方法用于绘制点的坐标 格式:(x,y)
+ * 本方法用于绘制点的坐标
  * @param {Object} point - 点的坐标
+ * @property {number} point.x - 点的x坐标
+ * @property {number} point.y - 点的y坐标
  * @return {void}
  * */
 function labelPoint(point) {

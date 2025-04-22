@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-使用path2D</title>
+    <style>
+        #canvasFoo {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+
+        #canvasBar {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvasFoo"  width="1200" height="800"></canvas>
+<canvas id="canvasBar"  width="1200" height="800"></canvas>
+<script src="./heart/point.js"></script>
+<script src="./heart/lib.js"></script>
+<script src="./bubble/point.js"></script>
+<script src="./bubble/lib.js"></script>
+<script>
+    const canvasFooEle = document.querySelector('#canvasFoo')
+    if (canvasFooEle.getContext === undefined) {
+        alert('当前浏览器不支持canvas')
+    }
+
+    const heartPath = drawHeart(heartPoints)
+    const bubblePath = drawBubble(bubblePoints)
+
+    const fooCtx = canvasFooEle.getContext('2d')
+    fooCtx.fillStyle = 'red'
+    fooCtx.fill(heartPath)
+
+    fooCtx.strokeStyle = 'blue'
+    fooCtx.stroke(bubblePath)
+
+    const canvasBarEle = document.querySelector('#canvasBar')
+    const barCtx = canvasBarEle.getContext('2d')
+    barCtx.fillStyle = 'blue'
+    barCtx.fill(heartPath)
+
+    barCtx.strokeStyle = 'skyblue'
+    barCtx.stroke(bubblePath)
+</script>
+</body>
+</html>

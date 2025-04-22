@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    const radialGradient = ctx.createRadialGradient(250, 250, 0, 250, 250, 250)
+    radialGradient.addColorStop(0, "red")
+    radialGradient.addColorStop(0.5, "pink")
+    radialGradient.addColorStop(1, "blue")
+
+    ctx.fillStyle = radialGradient
+    ctx.fillRect(50, 50, 400, 400)
+</script>
+</body>
+</html>

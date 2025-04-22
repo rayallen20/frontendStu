@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-结合动画使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    const linerGradient = ctx.createLinearGradient(50, 50, 450, 250)
+    ctx.fillStyle = linerGradient
+
+    ctx.fillRect(50, 50, 400, 200)
+
+    let middle = 0.01
+    function setLinerGradient() {
+        ctx.clearRect(0, 0, 600, 500)
+
+        if (middle > 1) {
+            middle = 0.01
+        }
+
+        const linerGradient = ctx.createLinearGradient(50, 50, 450, 250)
+        linerGradient.addColorStop(0, "red")
+        linerGradient.addColorStop(middle, "pink")
+        linerGradient.addColorStop(1, "blue")
+
+        ctx.fillStyle = linerGradient
+        ctx.fillRect(50, 50, 400, 200)
+
+        middle += 0.01
+        requestAnimationFrame(setLinerGradient)
+    }
+
+    window.requestAnimationFrame(setLinerGradient)
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-模拟3D球体</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    let center = {
+        x: 100,
+        y: 50
+    }
+
+    const radius = 200
+    function setRadialGradient() {
+        ctx.clearRect(0, 0, 600, 500)
+        ctx.beginPath()
+
+        if (center.x > 460) {
+            center.x = 100
+            center.y = 50
+        }
+
+        if (center.y > 420) {
+            center.y = 50
+        }
+
+        const radialGradient = ctx.createRadialGradient(center.x, center.y, 10, center.x, center.y, radius)
+        radialGradient.addColorStop(0, "#ffcccc")
+        radialGradient.addColorStop(1, "red")
+
+        ctx.fillStyle = radialGradient
+        // Tips: 由于这里绘制了一整个圆 所以路径本身就是闭合的 不需要调用closePath()方法了
+        ctx.arc(300, 250, 200, 0, 2*Math.PI)
+        ctx.fill()
+
+        center.x += 3.6
+        center.y += 3.7
+    }
+
+    setInterval(setRadialGradient, 10)
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-配合透明度实现叠加效果</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"  width="600" height="500"></canvas>
+<script src="./heart/point.js"></script>
+<script src="./heart/lib.js"></script>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    if (canvasEle.getContext === undefined) {
+        alert('当前浏览器不支持canvas')
+    }
+
+    const heartPath = drawHeart(heartPoints)
+
+    const ctx = canvasEle.getContext('2d')
+
+    ctx.fillStyle = 'rgba(255, 200, 200, 0.3)'
+    ctx.fill(heartPath)
+
+    ctx.strokeStyle = 'red'
+    ctx.stroke(heartPath)
+</script>
+</body>
+</html>
