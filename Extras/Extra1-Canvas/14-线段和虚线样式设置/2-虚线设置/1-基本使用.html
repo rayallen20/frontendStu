@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    ctx.setLineDash([4, 2])
+    ctx.strokeStyle = 'red'
+
+    let offset = 1
+    function showOffset() {
+        offset += 1
+        if (offset > 50) {
+            offset = 1
+        }
+
+        ctx.clearRect(0, 0, 600, 500)
+        ctx.beginPath()
+        ctx.moveTo(0, 200)
+        ctx.lineTo(300, 200)
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.beginPath()
+        ctx.lineDashOffset = offset
+        ctx.moveTo(0, 250)
+        ctx.lineTo(300, 250)
+        ctx.stroke()
+        ctx.closePath()
+
+        setTimeout(showOffset, 20)
+    }
+
+    showOffset()
+</script>
+</body>
+</html>

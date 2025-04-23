@@ -51,6 +51,5 @@ function drawQuadratic(path, start, p1, p2) {
  * @return {void}
  * */
 function drawLine(path, start, end) {
-    // ctx.moveTo(start.x, start.y)
     path.lineTo(end.x, end.y)
 }

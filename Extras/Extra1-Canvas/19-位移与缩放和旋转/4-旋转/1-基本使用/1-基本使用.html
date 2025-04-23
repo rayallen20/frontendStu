@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #canvasFoo {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+
+        #canvasBar {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvasFoo" width="600" height="500"></canvas>
+<canvas id="canvasBar" width="600" height="500"></canvas>
+<script>
+    const canvasFoo = document.querySelector('#canvasFoo')
+    const ctxFoo = canvasFoo.getContext('2d')
+
+    // 绘制旋转圆心点
+    ctxFoo.arc(0, 0, 5, 0, Math.PI * 2)
+    ctxFoo.fillStyle = 'blue'
+    ctxFoo.fill()
+
+    ctxFoo.fillStyle = 'red'
+    ctxFoo.fillRect(150, 50, 150, 250)
+
+    const canvasBar = document.querySelector('#canvasBar')
+    const ctxBar = canvasBar.getContext('2d')
+
+    // 绘制旋转圆心点
+    ctxBar.arc(0, 0, 5, 0, Math.PI * 2)
+    ctxBar.fillStyle = 'blue'
+    ctxBar.fill()
+
+    // 旋转画布
+    ctxBar.rotate(20 * Math.PI / 180)
+
+    ctxBar.fillStyle = 'red'
+    ctxBar.fillRect(150, 50, 150, 250)
+</script>
+</body>
+</html>

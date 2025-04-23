@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-裁剪源图像</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    // 创建图片对象
+    const img = new Image()
+    img.src = '../img/rhino.jpg'
+
+    // 图片加载完成后绘制
+    img.addEventListener('load', () => {
+        ctx.drawImage(img, 33, 71, 104, 124, 50, 150, 87, 104)
+    })
+</script>
+</body>
+</html>

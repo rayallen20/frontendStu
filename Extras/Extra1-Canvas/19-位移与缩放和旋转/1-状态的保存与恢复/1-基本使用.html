@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    ctx.fillRect(225, 175, 150, 150)
+    ctx.save()
+
+    ctx.fillStyle = '#0099FF'
+    ctx.fillRect(240, 190, 120, 120)
+    ctx.save()
+
+    ctx.fillStyle = '#FFFFFF'
+    ctx.globalAlpha = 0.5
+    ctx.fillRect(255, 205, 90, 90)
+
+    // 这次恢复是恢复到 ctx.fillStyle = '#0099FF' 的状态
+    // 可以类比为在IDE中写了一些内容(ctx.fillStyle = '#FFFFFF'),
+    // 然后按了一次撤销,则撤销到上一次保存时(ctx.fillStyle = '#0099FF')的状态
+    ctx.restore()
+    ctx.fillRect(270, 220, 60, 60)
+
+    // 此时 再撤销一次 就回到了第一次save()时的状态
+    ctx.restore()
+    ctx.fillRect(285, 235, 30, 30)
+</script>
+</body>
+</html>

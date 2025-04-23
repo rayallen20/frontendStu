@@ -1,0 +1,22 @@
+# 2-文本样式
+
+- `font`: 指定绘制文字所使用的当前字体样式,语法和CSS的`font`属性是一样的
+- `textAlign`: 指定绘制文本时文本的对齐方式
+  - `left`: 文本左对齐
+  - `right`: 文本右对齐
+  - `center`: 文本居中对齐
+  - `start`: 文本对齐界线开始的地方(左对齐指本地从左向右,右对齐指本地从右向左, 默认值)
+  - `end`: 文本对齐界线结束的地方(左对齐指本地从左向右,右对齐指本地从右向左)
+- `textBaseline`: 指定绘制文本时文本的基线对齐方式
+  - `top`: 文本基线在文本块的顶部
+  - `hanging`: 文本基线是悬挂基线(用于藏文和其他印度文字)
+  - `middle`: 文本基线在文本块的中间
+  - `alphabetic`: 文本基线是标准的字母基线(默认值)
+  - `ideographic`: 文字基线是表意字基线.如果字符本身超出了`alphabetic`基线，那么`ideograhpic`基线位置在字符本身的底部(用于中文/日文和韩文)
+  - `bottom`: 文本基线在文本块的底部.与`ideographic`基线的区别在于`ideographic`基线不需要考虑下行字母
+- `direction`: 指定文本的书写方向
+  - `ltr`: 文字方向为从左到右
+  - `rtl`: 文字方向为从右到左
+  - `inherit`: 继承父元素的书写方向
+- `letterSpacing`: 指定文本的字母间距
+- `measureText`: 返回一个包含被测量文本相关信息的[`TextMetrics`](https://developer.mozilla.org/zh-CN/docs/Web/API/TextMetrics)对象

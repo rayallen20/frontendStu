@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-添加水印</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<button class="play">播放/暂停</button>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    // 创建视频对象
+    const videoEle = document.createElement('video')
+    videoEle.src = '../video/island.mp4'
+
+    // 创建图片对象
+    const img = new Image()
+    img.src = '../img/pattern.png'
+
+    const playEle = document.querySelector('.play')
+    playEle.addEventListener('click', () => {
+        if (videoEle.paused) {
+            videoEle.play()
+            draw()
+            return
+        }
+
+        videoEle.pause()
+    })
+
+    function draw() {
+        ctx.clearRect(0, 0, canvasEle.width, canvasEle.height)
+        ctx.drawImage(videoEle, 0, 0, canvasEle.width, canvasEle.height)
+
+        if (img.complete) {
+            ctx.drawImage(img, 0, 0)
+        }
+
+        requestAnimationFrame(draw)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    ctx.moveTo(290, 150)
+    ctx.lineTo(300, 200)
+    ctx.lineTo(310, 150)
+
+    ctx.lineWidth = 40
+    ctx.lineCap = 'round'
+    ctx.lineJoin = 'miter'
+    ctx.miterLimit = 5
+
+    ctx.stroke()
+</script>
+</body>
+</html>

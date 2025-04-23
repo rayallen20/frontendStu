@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #canvasFoo {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+
+        #canvasBar {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvasFoo" width="600" height="500"></canvas>
+<canvas id="canvasBar" width="600" height="500"></canvas>
+<script>
+    // 没有缩放的情况
+    const canvasFoo = document.querySelector('#canvasFoo')
+    const ctxFoo = canvasFoo.getContext('2d')
+    ctxFoo.fillRect(0, 0, 50, 50)
+
+    // 有缩放的情况
+    const canvasBar = document.querySelector('#canvasBar')
+    const ctxBar = canvasBar.getContext('2d')
+
+    // 设置缩放比例
+    ctxBar.scale(4, 8)
+    ctxBar.fillRect(0, 0, 50, 50)
+    ctxBar.font = '16px Arial'
+    ctxBar.fillText('缩放比例为4,8', 50, 20)
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script src="./heart/point.js"></script>
+<script src="./heart/lib.js"></script>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+
+    const ctx = canvasEle.getContext('2d')
+    ctx.fillStyle = 'red'
+
+    ctx.shadowOffsetX = 25
+    ctx.shadowOffsetY = 25
+    ctx.shadowBlur = 10
+    ctx.shadowColor = '#ffcccc'
+
+    const heartPath = drawHeart(heartPoints)
+    ctx.fill(heartPath)
+</script>
+</body>
+</html>

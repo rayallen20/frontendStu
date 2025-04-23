@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-案例</title>
+    <style>
+        #canvasFoo {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+
+        #canvasBar {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvasFoo" width="600" height="500"></canvas>
+<canvas id="canvasBar" width="600" height="500"></canvas>
+<script>
+    const canvasFoo = document.querySelector('#canvasFoo')
+    const fooCtx = canvasFoo.getContext('2d')
+    fooCtx.fillRect(225, 175, 150, 150)
+
+    const canvasBar = document.querySelector('#canvasBar')
+    const barCtx = canvasBar.getContext('2d')
+    barCtx.translate(300, 250)
+    barCtx.rotate(135 / 180 * Math.PI)
+    barCtx.fillRect(-75, -75, 150, 150)
+</script>
+</body>
+</html>
