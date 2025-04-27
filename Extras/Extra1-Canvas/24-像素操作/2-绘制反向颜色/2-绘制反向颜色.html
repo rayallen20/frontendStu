@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-绘制反向颜色</title>
+    <style>
+        #origin {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+
+        #reverse {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="origin" width="300" height="227"></canvas>
+<canvas id="reverse" width="300" height="227"></canvas>
+<script>
+    const originEle = document.querySelector('#origin')
+    const originCtx = originEle.getContext('2d')
+
+    // 创建图片对象
+    const img = new Image()
+    img.src = '../img/rhino.jpg'
+
+    // 图片加载完成后绘制
+    const originPromise = new Promise(resolve => {
+        img.addEventListener('load', () => {
+            originCtx.drawImage(img, 0, 0, 300, 227)
+            resolve()
+        })
+    })
+
+    const reverseEle = document.querySelector('#reverse')
+    const reverseCtx = reverseEle.getContext('2d')
+    originPromise.then(() => {
+        const originImage = originCtx.getImageData(0, 0, originEle.width, originEle.height)
+        const originData = originImage.data
+
+        const reverseData = new Uint8ClampedArray(originData.length)
+        for (let i = 0; i < originData.length; i += 4) {
+            reverseData[i] = 255 - originData[i] // R
+            reverseData[i + 1] = 255 - originData[i + 1] // G
+            reverseData[i + 2] = 255 - originData[i + 2] // B
+            reverseData[i + 3] = originData[i + 3] // A保持不变
+        }
+
+        const reverseImage = new ImageData(reverseData, originImage.width, originImage.height)
+
+        reverseCtx.putImageData(reverseImage, 0, 0)
+    })
+</script>
+</body>
+</html>

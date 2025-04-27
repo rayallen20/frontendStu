@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-心形变色</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"  width="600" height="500"></canvas>
+<script src="./point.js"></script>
+<script src="./lib.js"></script>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    const heartPath = drawHeart(heartPoints)
+    ctx.fillStyle = 'red'
+    ctx.fill(heartPath)
+
+    canvasEle.addEventListener('mousemove', (event) => {
+        ctx.clearRect(0, 0, canvasEle.width, canvasEle.height)
+
+        const { offsetX, offsetY } = event
+        const isInHeart = ctx.isPointInPath(heartPath, offsetX, offsetY)
+        ctx.fillStyle = 'red'
+        if (isInHeart) {
+            ctx.fillStyle = 'blue'
+        }
+
+        ctx.fill(heartPath)
+    })
+</script>
+</body>
+</html>

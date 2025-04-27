@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin-top: 100px;
+            border: 1px solid darkseagreen;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #hovered-color {
+            margin-top: 100px;
+            width: 300px;
+            height: 227px;
+            text-align: center;
+            line-height: 227px;
+            font-size: 30px;
+            color: #FFFFFF;
+        }
+
+        #selected-color {
+            margin-top: 100px;
+            width: 300px;
+            height: 227px;
+            text-align: center;
+            line-height: 227px;
+            font-size: 30px;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <canvas id="myCanvas" width="300" height="227"></canvas>
+    <div id="hovered-color"></div>
+    <div id="selected-color"></div>
+</div>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    // 创建图片对象
+    const img = new Image()
+    img.src = '../img/rhino.jpg'
+
+    // 图片加载完成后绘制
+    img.addEventListener('load', () => {
+        ctx.drawImage(img, 0, 0, 300, 227)
+    })
+
+    const imageData = ctx.getImageData(0, 0, canvasEle.width, canvasEle.height)
+    console.log(imageData.width)
+    console.log(imageData.height)
+    // data中存储的是RGBA格式的像素数据 即每个像素的4个通道 所以这里data的长度为:
+    // 300 * 227 * 4 = 272400
+    console.log(imageData.data.length)
+    console.log(imageData.data[0])
+
+    function pickColor(event, element) {
+        const x = event.offsetX
+        const y = event.offsetY
+        const color = getColor(x, y)
+        element.style.backgroundColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`
+        element.innerText = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`
+    }
+
+    function getColor(x, y) {
+        const imageData = ctx.getImageData(x, y, 1, 1)
+        const data = imageData.data
+        return [
+            data[0], // red
+            data[1], // green
+            data[2], // blue
+            data[3]  // alpha
+        ]
+    }
+
+    const hoveredEle = document.querySelector('#hovered-color')
+    canvasEle.addEventListener('mousemove', (event) => {
+        pickColor(event, hoveredEle)
+    })
+
+    const selectedEle = document.querySelector('#selected-color')
+    canvasEle.addEventListener('click', (event) => {
+        pickColor(event, selectedEle)
+    })
+</script>
+</body>
+</html>

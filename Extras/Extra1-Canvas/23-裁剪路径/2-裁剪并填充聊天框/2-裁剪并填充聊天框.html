@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-裁剪并填充聊天框</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"  width="600" height="400"></canvas>
+<script src="./bubble/point.js"></script>
+<script src="./bubble/lib.js"></script>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+    const bubblePath = drawBubble(points)
+
+    // 裁剪并设定填充规则
+    ctx.clip(bubblePath, 'nonzero')
+
+    // 填充被裁剪的区域
+    ctx.fillStyle = "skyblue"
+    ctx.fillRect(0, 0, canvasEle.width, canvasEle.height)
+</script>
+</body>
+</html>

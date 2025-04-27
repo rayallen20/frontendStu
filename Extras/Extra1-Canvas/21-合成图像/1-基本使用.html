@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-基本使用</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="400"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    // xor: 形状在重叠处变为透明 在其他地方正常绘制
+    ctx.globalCompositeOperation = 'xor'
+
+    ctx.fillStyle = 'red'
+    ctx.fillRect(0, 0, 200, 200)
+
+    ctx.fillStyle = 'blue'
+    ctx.fillRect(50, 50, 200, 200)
+</script>
+</body>
+</html>

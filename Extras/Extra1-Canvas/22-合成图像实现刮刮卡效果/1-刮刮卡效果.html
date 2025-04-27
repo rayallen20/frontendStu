@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-刮刮卡效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #result {
+            border: 1px solid darkseagreen;
+        }
+
+        #cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="result" width="600" height="400"></canvas>
+<canvas id="cover" width="600" height="400"></canvas>
+<script>
+    const resultCanvas = document.querySelector('#result')
+    const resultCtx = resultCanvas.getContext('2d')
+
+    // 中奖结果层
+    resultCtx.save()
+    resultCtx.fillStyle = 'darkseagreen'
+    resultCtx.fillRect(0, 0, resultCanvas.width, resultCanvas.height)
+    resultCtx.restore()
+
+    resultCtx.save()
+    resultCtx.fillStyle = '#ffcccc'
+    resultCtx.font = '40px Microsoft YaHei'
+
+    const result = '老板,来张中不了的彩票'
+    const textProp = resultCtx.measureText(result)
+    resultCtx.fillText(result, (resultCanvas.width - textProp.width) / 2, 200)
+    resultCtx.restore()
+
+    // 遮罩层
+    const coverCanvas = document.querySelector('#cover')
+    const coverCtx = coverCanvas.getContext('2d')
+
+    coverCtx.fillStyle = 'lightgray'
+    coverCtx.fillRect(0, 0, coverCanvas.width, coverCanvas.height)
+    coverCtx.restore()
+
+    let isMouseDown = false
+    let lastX = undefined
+    let lastY = undefined
+
+    coverCanvas.addEventListener('mousedown', (event) => {
+        isMouseDown = true
+        lastX = event.offsetX
+        lastY = event.offsetY
+    })
+
+    coverCanvas.addEventListener('mouseup', () => {
+        isMouseDown = false
+        lastX = undefined
+        lastY = undefined
+    })
+
+    coverCanvas.addEventListener('mousemove', (event) => {
+        if (!isMouseDown) {
+            return
+        }
+
+        const currentX = event.offsetX
+        const currentY = event.offsetY
+
+        coverCtx.save()
+        // 在鼠标移动的地方绘制一个圆形作为刮奖区域
+        // destination-out: 现有内容保持在新图形不重叠的地方
+        coverCtx.globalCompositeOperation = 'destination-out'
+        coverCtx.beginPath()
+        coverCtx.arc(currentX, currentY, 15, 0, Math.PI * 2)
+        coverCtx.fill()
+        coverCtx.restore()
+
+        // 补充绘制鼠标从上一个位置到当前鼠标位置的线段 防止出现拖拽轨迹断裂的情况
+        if (lastX !== undefined && lastY !== undefined) {
+            coverCtx.save()
+            coverCtx.globalCompositeOperation = 'destination-out'
+            coverCtx.beginPath()
+            coverCtx.moveTo(lastX, lastY)
+            coverCtx.lineTo(currentX, currentY)
+            // 线宽是半径的2倍
+            coverCtx.lineWidth = 30
+            coverCtx.stroke()
+            coverCtx.restore()
+        }
+    })
+</script>
+</body>
+</html>
