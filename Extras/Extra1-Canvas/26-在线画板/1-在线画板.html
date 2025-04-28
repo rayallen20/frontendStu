@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-在线画板</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto 10px;
+            border: 1px solid darkseagreen;
+        }
+
+        #btnContainer {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            width: 600px;
+        }
+
+        .checked {
+            background: lightseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<div id="btnContainer">
+    <button id="thickLine">粗线条</button>
+    <button id="thinLine" class="checked">细线条</button>
+    <button id="saveSign">
+        <a>保存签名</a>
+    </button>
+    <input type="color" id="color">
+    <button id="eraser">橡皮擦</button>
+    <button id="clearCanvas">清除画布</button>
+</div>
+<script>
+    const thickBtn = document.querySelector('#thickLine')
+    const thinBtn = document.querySelector('#thinLine')
+    const eraserBtn = document.querySelector('#eraser')
+
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+
+    thickBtn.addEventListener('click', chooseBtn)
+    thinBtn.addEventListener('click', chooseBtn)
+    eraserBtn.addEventListener('click', chooseBtn)
+
+    function chooseBtn(event) {
+        const {target} = event
+        const {id} = target
+
+        excludeClass(target)
+        setMode(id)
+    }
+
+    function excludeClass(target) {
+        thickBtn.classList.remove('checked')
+        thinBtn.classList.remove('checked')
+        eraserBtn.classList.remove('checked')
+
+        target.classList.add('checked')
+    }
+
+    function setMode(id) {
+        if (id === 'thickLine') {
+            ctx.globalCompositeOperation = 'source-over'
+            ctx.lineWidth = 5
+            ctx.lineJoin = 'round'
+            return
+        }
+
+        if (id === 'thinLine') {
+            ctx.globalCompositeOperation = 'source-over'
+            ctx.lineWidth = 1
+            ctx.lineJoin = 'round'
+            return
+        }
+
+        if (id === 'eraser') {
+            ctx.globalCompositeOperation = 'destination-out'
+            ctx.lineWidth = 20
+            return
+        }
+
+        console.warn('无对应模式: ', id)
+    }
+
+    const colorInput = document.querySelector('#color')
+    colorInput.addEventListener('change', event => {
+        const {target} = event
+        const {value} = target
+
+        ctx.strokeStyle = value
+    })
+
+    let isDrawing = false
+
+    canvasEle.addEventListener('mousedown', event => {
+        const { offsetX, offsetY } = event
+        ctx.beginPath()
+        isDrawing = true
+        ctx.moveTo(offsetX, offsetY)
+    })
+
+    canvasEle.addEventListener('mousemove', (event) => {
+        if (!isDrawing) {
+            return
+        }
+
+        const { offsetX, offsetY } = event
+        ctx.lineTo(offsetX, offsetY)
+        ctx.stroke()
+    })
+
+    canvasEle.addEventListener('mouseup', () => {
+        isDrawing = false
+        ctx.closePath()
+        // ctx.restore()
+    })
+
+    const clearBtn = document.querySelector('#clearCanvas')
+    clearBtn.addEventListener('click', () => {
+        ctx.clearRect(0, 0, canvasEle.width, canvasEle.height)
+        thinBtn.click()
+    })
+
+    const saveBtn = document.querySelector('#saveSign')
+    const linkEle = saveBtn.querySelector('a')
+
+    saveBtn.addEventListener('click', () => {
+        const dataUrl = canvasEle.toDataURL('image/png')
+        linkEle.download = 'canvas.png'
+        linkEle.href = dataUrl
+        linkEle.click()
+    })
+</script>
+</body>
+</html>

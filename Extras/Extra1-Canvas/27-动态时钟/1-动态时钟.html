@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-动态时钟</title>
+    <style>
+        #myCanvas {
+            display: block;
+            margin: 100px auto 10px;
+            border: 1px solid darkseagreen;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="500"></canvas>
+<script>
+    const canvasEle = document.querySelector('#myCanvas')
+    const ctx = canvasEle.getContext('2d')
+    let now = new Date()
+
+    function drawPanel() {
+        for (let i = 0; i < 360; i += 6) {
+            ctx.save()
+            // 将旋转中心移动到中心点
+            ctx.translate(canvasEle.width / 2, canvasEle.height / 2)
+            ctx.rotate(i * Math.PI / 180)
+
+            ctx.beginPath()
+            ctx.moveTo(0, canvasEle.height / 2)
+            ctx.strokeStyle = 'gray'
+
+            if (i % 30 === 0) {
+                ctx.lineTo(0, 210)
+                ctx.lineWidth = 8
+            } else {
+                ctx.lineTo(0, 230)
+                ctx.lineWidth = 2
+            }
+
+            ctx.stroke()
+            ctx.closePath()
+
+            // 将旋转中心移回原来的位置
+            ctx.restore()
+        }
+    }
+
+    function drawHour() {
+        const currentHour = now.getHours()
+        const drawHour = currentHour % 12
+
+        // 时针的旋转角度受分针影响 这样看起来更自然
+        const rotateAngle = (drawHour + now.getMinutes() / 60) * 30
+
+        ctx.save()
+
+        ctx.translate(canvasEle.width / 2, canvasEle.height / 2)
+        ctx.rotate(rotateAngle * Math.PI / 180)
+
+        ctx.beginPath()
+        ctx.moveTo(0, 0)
+        ctx.lineTo(0, -120)
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 8
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.restore()
+    }
+
+    function drawMinute() {
+        const currentMinute = now.getMinutes()
+        const rotateAngle = (currentMinute + now.getSeconds() / 60) * 6
+
+        ctx.save()
+
+        ctx.translate(canvasEle.width / 2, canvasEle.height / 2)
+        ctx.rotate(rotateAngle * Math.PI / 180)
+
+        ctx.beginPath()
+        ctx.moveTo(0, 0)
+        ctx.lineTo(0, -150)
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 4
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.restore()
+    }
+
+    function drawSeconds() {
+        const currentSeconds = now.getSeconds()
+        const rotateAngle = currentSeconds * 6
+
+        ctx.save()
+
+        ctx.translate(canvasEle.width / 2, canvasEle.height / 2)
+        ctx.rotate(rotateAngle * Math.PI / 180)
+
+        ctx.beginPath()
+        ctx.moveTo(0, 0)
+        ctx.lineTo(0, -170)
+        ctx.strokeStyle = 'red'
+        ctx.lineWidth = 2
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.restore()
+    }
+
+    setInterval(() => {
+        now = new Date()
+        ctx.clearRect(0, 0, canvasEle.width, canvasEle.height)
+        drawPanel()
+        drawHour()
+        drawMinute()
+        drawSeconds()
+    }, 1000)
+
+</script>
+</body>
+</html>
