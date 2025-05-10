@@ -125,3 +125,6 @@ export default {
 }
 </script>
 ```
+
+- 注意: `store`中的`state`是响应式的.当`store`中的`state`发生变化,那么依赖于这个`state`组件也会更新
+- 注意: `store`中的`state`是只读的,不能直接修改,只能通过`mutations`中的方法来修改

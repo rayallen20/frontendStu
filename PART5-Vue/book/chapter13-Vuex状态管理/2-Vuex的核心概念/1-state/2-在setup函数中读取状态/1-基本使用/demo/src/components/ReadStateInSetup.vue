@@ -8,7 +8,7 @@
 
 <script setup>
 import {useStore} from "vuex"
-import {computed} from "vue";
+import {computed} from "vue"
 
 // eslint-disable-next-line
 defineOptions({
