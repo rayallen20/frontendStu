@@ -1,23 +1,26 @@
-import axios from 'axios'
-import {showFailToast} from "vant";
+import axios from "axios";
 import router from "@/router";
 
 const baseURL = 'http://interview-api-t.itheima.net'
+
 const timeout = 5000
+
 const options = {
     baseURL,
     timeout,
 }
+
 const axiosInstance = axios.create(options)
 
-// 请求拦截器
 axiosInstance.interceptors.request.use((config) => {
     const token = getToken()
     if (token !== '') {
-        config.headers['Authorization'] = 'Bearer ' + token
+        config.headers.Authorization = 'Bearer ' + token
     }
 
     return config
+}, (error) => {
+    return Promise.reject(error)
 })
 
 function getToken() {
@@ -25,7 +28,6 @@ function getToken() {
     if (token !== null) {
         return token
     }
-
     return ''
 }
 
@@ -34,9 +36,7 @@ axiosInstance.interceptors.response.use(response => {
     return extractPayload(response)
 }, error => {
     if (error.response !== undefined && error.response.status === 401) {
-        showFailToast(error.response.data.data)
-        localStorage.removeItem('token')
-        setTimeout(() => redirectToLogin(),3000)
+        deleteToken()
     }
 
     return Promise.reject(error)
@@ -46,8 +46,12 @@ function extractPayload(response) {
     if (response.data.data !== undefined) {
         return response.data.data
     }
-
     return response.data
+}
+
+function deleteToken() {
+    localStorage.removeItem('token')
+    setTimeout(() => redirectToLogin(), 3000)
 }
 
 function redirectToLogin() {
