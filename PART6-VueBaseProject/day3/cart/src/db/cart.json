@@ -1,0 +1,32 @@
+{
+  "list": [
+    {
+      "id": "1",
+      "name": "班俏BANQIAO超火ins潮卫衣女士2020秋季新款",
+      "img": "http://www.itcbc.com:3006/uploads/1.png",
+      "price": 108,
+      "count": 6
+    },
+    {
+      "id": "2",
+      "name": "嘉叶希连帽卫衣女春秋薄款2020新款宽松bf韩版字母印花",
+      "img": "http://www.itcbc.com:3006/uploads/2.png",
+      "price": 129,
+      "count": 1
+    },
+    {
+      "id": "3",
+      "name": "思蜜怡2020休闲运动套装女春秋季新款时尚大码",
+      "img": "http://www.itcbc.com:3006/uploads/3.png",
+      "price": 198,
+      "count": 1
+    },
+    {
+      "id": "4",
+      "name": "思蜜怡卫衣女加绒加厚2020秋冬装新款韩版宽松上衣",
+      "img": "http://www.itcbc.com:3006/uploads/4.png",
+      "price": 99,
+      "count": 3
+    }
+  ]
+}
