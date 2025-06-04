@@ -1,14 +1,13 @@
 <template>
-  <div class="app">
-    <!-- 一级路由出口 -->
-    <RouterView></RouterView>
+  <div class="article-list-page">
+    二级文章列表页
   </div>
 </template>
 
 <script setup>
 // eslint-disable-next-line
 defineOptions({
-  name: 'App'
+  name: 'ArticleListPage'
 })
 </script>
 

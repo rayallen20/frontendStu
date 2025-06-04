@@ -1,3 +1,8 @@
+# 02-路由配置
+
+- `src/router/index.js`:
+
+```javascript
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -37,3 +42,48 @@ const router = createRouter({
 })
 
 export default router
+```
+
+- 一级路由出口: `App.vue`:
+
+```vue
+<template>
+  <div class="app">
+    <!-- 一级路由出口 -->
+    <RouterView></RouterView>
+  </div>
+</template>
+
+<script setup>
+// eslint-disable-next-line
+defineOptions({
+  name: 'App'
+})
+</script>
+
+<style lang="scss" scoped>
+</style>
+```
+
+- 二级路由出口: `views/layout/LayoutPage.vue`:
+
+```vue
+<template>
+  <div class="layout-page">
+    一级首页布局页
+    <!-- 二级路由出口 -->
+    <RouterView></RouterView>
+  </div>
+</template>
+
+<script setup>
+// eslint-disable-next-line
+defineOptions({
+  name: 'DashBoardPage'
+})
+</script>
+
+<style scoped>
+
+</style>
+```
