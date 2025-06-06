@@ -22,8 +22,20 @@ function deleteArticle (id) {
   return axiosInstance.delete(uri, data)
 }
 
+function detailArticle (id) {
+  const uri = '/admin/interview/show'
+  return axiosInstance.get(uri, { params: { id } })
+}
+
+function updateArticle (article) {
+  const uri = '/admin/interview/update'
+  return axiosInstance.put(uri, article)
+}
+
 export default {
   getArticleList,
   addArticle,
-  deleteArticle
+  deleteArticle,
+  detailArticle,
+  updateArticle
 }

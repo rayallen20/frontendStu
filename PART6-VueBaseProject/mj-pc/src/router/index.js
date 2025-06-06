@@ -1,4 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import store from '@/store'
+import { ElMessage } from 'element-plus'
 
 const routes = [
   {
@@ -32,8 +34,24 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
+})
+
+router.beforeEach((to) => {
+  if (to.name === 'login') {
+    // 如果是登录页 直接放行
+    return true
+  }
+
+  const token = store.state.user.token
+  if (token === '') {
+    ElMessage.error('请先登录!')
+    // 如果没有token 重定向到登录页
+    return { name: 'login' }
+  }
+
+  return true
 })
 
 export default router

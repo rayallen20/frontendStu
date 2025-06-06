@@ -14,7 +14,7 @@
             size="small"
             type="primary"
             round
-            @click="openDrawer('add')"
+            @click="openDrawer('add', null)"
           >
             <el-icon>
               <Plus></Plus>
@@ -44,8 +44,8 @@
         <el-table-column label="操作" align="center" width="120">
           <template #default="scope">
             <div class="actions">
-              <el-icon><View @click="openDrawer('preview')" /></el-icon>
-              <el-icon><Edit @click="openDrawer('edit')" /></el-icon>
+              <el-icon><View @click="openDrawer('preview', scope.row.id)" /></el-icon>
+              <el-icon><Edit @click="openDrawer('edit', scope.row.id)" /></el-icon>
               <el-icon><Delete @click="deleteArticle(scope.row)" /></el-icon>
             </div>
           </template>
@@ -76,9 +76,16 @@
       direction="rtl"
       size="50%"
     >
-      <el-form label-width="80px" :model="newArticle" :rules="createArticleRules" ref="newArticleForm">
+      <!-- 添加/修改的表单 -->
+      <el-form
+        label-width="80px"
+        :model="article"
+        :rules="createArticleRules"
+        ref="newArticleForm"
+        v-if="operationType !== 'preview'"
+      >
         <el-form-item label="面经标题" prop="stem">
-          <el-input type="text" v-model="newArticle.stem" autocomplete="off"></el-input>
+          <el-input type="text" v-model="article.stem" autocomplete="off"></el-input>
         </el-form-item>
 
         <el-form-item label="面经内容" prop="content" class="editor-container">
@@ -91,7 +98,7 @@
             />
             <Editor
               style="height: 500px; overflow-y: hidden;"
-              v-model="newArticle.content"
+              v-model="article.content"
               :defaultConfig="editorConfig"
               :mode="mode"
               @onCreated="handleCreated"
@@ -103,9 +110,15 @@
 
         <el-form-item class="form-actions">
           <el-button type="primary" @click="handleSubmit">确认</el-button>
-          <el-button>取消</el-button>
+          <el-button @click="drawerShow = false">取消</el-button>
         </el-form-item>
       </el-form>
+
+      <!-- 预览内容 -->
+      <div v-else class="article-preview">
+        <h5>{{article.stem}}</h5>
+        <div v-html="article.content"></div>
+      </div>
     </el-drawer>
   </div>
 </template>
@@ -196,8 +209,26 @@ const drawerTitle = computed(() => {
 })
 
 // 打开抽屉
-const openDrawer = (operation) => {
+const openDrawer = async (operation, id) => {
   operationType.value = operation
+
+  // 预览和编辑操作需要先获取文章数据
+  if (operation === 'preview' || operation === 'edit') {
+    try {
+      const payload = await articleAPI.detailArticle(id)
+      article.value.id = payload.id
+      article.value.stem = payload.stem
+      article.value.content = payload.content
+    } catch (error) {
+      if (error.response.data.message !== undefined) {
+        ElMessage.error(error.response.data.message)
+      } else {
+        ElMessage.error('获取面经数据失败, 请稍后再试')
+      }
+      return
+    }
+  }
+
   drawerShow.value = true
 }
 
@@ -205,14 +236,28 @@ const openDrawer = (operation) => {
 const confirmCloseDrawer = (done) => {
   ElMessageBox.confirm('确认关闭吗?').then(() => {
     done()
+
+    // ?: ?前的变量不为null或undefined时执行?后的代码
+    newArticleForm.value?.resetFields()
+
+    // 手动清空id 因为表单里没用到id字段
+    // 所以resetFields()不会操作id字段
+    article.value.id = undefined
+
+    if (operationType.value === 'preview') {
+      // 预览操作则需要手动清空内容
+      article.value.stem = ''
+      article.value.content = '<p>hello</p>'
+    }
   }).catch((error) => {
     // 用户取消操作
     console.log('用户取消操作', error)
   })
 }
 
-// 新建的面经数据
-const newArticle = ref({
+// 当前面经数据
+const article = ref({
+  id: undefined,
   stem: '',
   content: '<p>hello</p>'
 })
@@ -298,30 +343,66 @@ const handleSubmit = async () => {
       return
     }
 
-    try {
-      const article = {
-        stem: newArticle.value.stem,
-        content: newArticle.value.content
+    if (operationType.value === 'add') {
+      try {
+        const reqArticle = {
+          stem: article.value.stem,
+          content: article.value.content
+        }
+
+        const payload = await articleAPI.addArticle(reqArticle)
+        console.log(payload)
+
+        // 关闭抽屉
+        drawerShow.value = false
+
+        // 清空表单数据
+        newArticleForm.value.resetFields()
+        article.value.id = undefined
+
+        // 重新渲染页面
+        await getArticleList()
+
+        // 弹出提示消息
+        ElMessage.success('添加面经成功')
+      } catch (error) {
+        if (error.response.data.message !== undefined) {
+          ElMessage.error(error.response.data.message)
+        } else {
+          ElMessage.error('创建面经失败, 请稍后再试')
+        }
       }
+    }
 
-      const payload = await articleAPI.addArticle(article)
-      console.log(payload)
+    if (operationType.value === 'edit') {
+      try {
+        const reqArticle = {
+          id: article.value.id,
+          stem: article.value.stem,
+          content: article.value.content
+        }
 
-      // 关闭抽屉
-      drawerShow.value = false
+        const payload = await articleAPI.updateArticle(reqArticle)
+        console.log(payload)
 
-      // 清空表单数据
-      newArticleForm.value.resetFields()
+        // 关闭抽屉
+        drawerShow.value = false
 
-      // 重新渲染页面
-      await getArticleList()
+        // 清空表单数据
+        newArticleForm.value.resetFields()
+        article.value.id = undefined
 
-      ElMessage.success('添加面经成功')
-    } catch (error) {
-      if (error.response.data.message !== undefined) {
-        ElMessage.error(error.response.data.message)
-      } else {
-        ElMessage.error('创建面经失败, 请稍后再试')
+        // 重新渲染页面
+        await getArticleList()
+
+        // 弹出提示消息
+        ElMessage.success('修改面经成功')
+      } catch (error) {
+        if (error.response.data.message !== undefined) {
+          ElMessage.error(error.response.data.message)
+        } else {
+          ElMessage.error('编辑面经失败, 请稍后再试')
+        }
       }
     }
   })

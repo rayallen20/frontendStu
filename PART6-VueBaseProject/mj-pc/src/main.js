@@ -3,7 +3,6 @@ import App from '@/App.vue'
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import 'element-plus/theme-chalk/src/index.scss'
-import '@/styles/quill-custom.scss'
 import router from '@/router'
 import store from '@/store'
 
