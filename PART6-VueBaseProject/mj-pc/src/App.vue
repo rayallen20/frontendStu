@@ -10,6 +10,10 @@
 defineOptions({
   name: 'App'
 })
+
+// 读取环境变量
+const domain = process.env.VUE_APP_API_BASE_URL
+console.log(domain)
 </script>
 
 <style lang="scss" scoped>

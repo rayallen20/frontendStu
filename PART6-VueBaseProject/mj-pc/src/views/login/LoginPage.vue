@@ -37,6 +37,7 @@ import { reactive, ref } from 'vue'
 import userAPI from '@/api/user'
 import router from '@/router'
 import { ElMessage } from 'element-plus'
+import { useStore } from 'vuex'
 
 // eslint-disable-next-line
 defineOptions({
@@ -95,6 +96,8 @@ const rules = {
 
 const accountRef = ref()
 
+const store = useStore()
+
 const onSubmit = async () => {
   await accountRef.value.validate(async (valid) => {
     if (!valid) {
@@ -105,7 +108,8 @@ const onSubmit = async () => {
 
     try {
       const payload = await userAPI.login(account)
-      localStorage.setItem('mj-pc-token', payload.token)
+      // localStorage.setItem('mj-pc-token', payload.token)
+      store.commit('user/updateToken', payload.token)
       ElMessage.success('登录成功')
       setTimeout(() => {
         router.push({ name: 'dashboard' })
@@ -116,6 +120,8 @@ const onSubmit = async () => {
       } else {
         ElMessage.error('登录失败, 请稍后再试')
       }
+      // ElMessage.error('登录失败, 请稍后再试')
+      // console.log(error)
     }
   })
 }

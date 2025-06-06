@@ -1,5 +1,6 @@
 import axios from 'axios'
 import router from '@/router'
+import store from '@/store'
 
 const baseURL = 'http://interview-api-t.itheima.net'
 
@@ -25,7 +26,8 @@ axiosInstance.interceptors.request.use(config => {
 })
 
 function getToken () {
-  const token = localStorage.getItem('mj-pc-token')
+  // const token = localStorage.getItem('mj-pc-token')
+  const token = store.state.user.token
   if (token !== null) {
     return token
   }
@@ -38,7 +40,8 @@ axiosInstance.interceptors.response.use(response => {
 }, async error => {
   if (error.response !== undefined && error.response.status === 401) {
     // 如果响应状态码是401 则表示未授权 应清除token
-    localStorage.removeItem('mj-pc-token')
+    // localStorage.removeItem('mj-pc-token')
+    store.commit('user/updateToken', '')
     await router.push({ name: 'login' })
   }
   return Promise.reject(error)

@@ -67,6 +67,7 @@ import userAPI from '@/api/user'
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 import router from '@/router'
+import { useStore } from 'vuex'
 
 // eslint-disable-next-line
 defineOptions({
@@ -91,8 +92,11 @@ const getUser = async () => {
   }
 }
 
+const store = useStore()
+
 const logout = async () => {
-  localStorage.removeItem('mj-pc-token')
+  // localStorage.removeItem('mj-pc-token')
+  store.commit('user/updateToken', '')
   await router.push({ name: 'login' })
 }
 

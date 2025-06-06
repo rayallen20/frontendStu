@@ -10,7 +10,13 @@ function getUser () {
   return axiosInstance.get(uri)
 }
 
+function getLine () {
+  const uri = '/analysis/DailyVisitTrend'
+  return axiosInstance.get(uri)
+}
+
 export default {
   login,
-  getUser
+  getUser,
+  getLine
 }

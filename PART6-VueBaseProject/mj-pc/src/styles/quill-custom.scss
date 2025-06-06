@@ -1,0 +1,23 @@
+.ql-toolbar.ql-snow {
+  width: 100% !important;
+}
+
+.quill-editor .ql-container {
+  min-height: 220px !important;
+  max-height: 320px !important;
+  overflow-y: auto !important;
+  border-radius: 4px;
+}
+
+.quill-editor .ql-editor {
+  min-height: 180px !important;
+  max-height: 280px !important;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-y: auto !important;
+  padding-bottom: 30px;
+}
+
+.quill-editor {
+  width: 100% !important;
+}
