@@ -12,5 +12,5 @@ console.log(typeof foo === typeof message)
 // 但是,使用 instanceof 时判断string类型和String类型时,会有区别
 // message是基本类型 无法使用instanceof判断
 // foo时是String对象 可以使用instanceof判断
-console.log(message instanceof String)      // error TS2358: The left-hand side of an 'instanceof' expression must be of type 'any', an object type or a type parameter.
+// console.log(message instanceof String)      // error TS2358: The left-hand side of an 'instanceof' expression must be of type 'any', an object type or a type parameter.
 console.log(foo instanceof String)
