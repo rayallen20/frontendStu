@@ -22,7 +22,7 @@
 - `.middle`: 只有鼠标中键点击时才会触发事件处理函数(只能在`@click`后边使用)
 - `.passive`: 使用`{passive: true}`模式添加监听器
 
-- `@keyup`/`@keydown`/`@keypress`灯键盘事件可以使用的修饰符:
+- `@keyup`/`@keydown`/`@keypress`等键盘事件可以使用的修饰符:
   - `keyAlias`: 键盘按键别名
     - `.enter`
     - `.tab`
