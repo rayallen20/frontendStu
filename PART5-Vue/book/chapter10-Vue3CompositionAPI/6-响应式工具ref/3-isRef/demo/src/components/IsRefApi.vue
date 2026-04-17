@@ -14,7 +14,7 @@ export default {
         const info = reactive({name: 'why', age: 18})
         console.log(isRef(info))        // false
 
-        let age = toRef(info.age)
+        let age = toRef(info, 'age')
         console.log(isRef(age))         // true
 
         let name = toRef(info, 'name')

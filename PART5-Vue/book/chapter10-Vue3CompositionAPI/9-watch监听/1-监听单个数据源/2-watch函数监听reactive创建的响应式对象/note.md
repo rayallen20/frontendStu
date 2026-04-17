@@ -39,6 +39,8 @@ export default {
 </script>
 ```
 
+注意: 此时`newValue`和`oldValue`打印的是相同的值,且都是变化后的值.建议侦听器侦听具体的属性,而非整个`reactive()`对象
+
 - 如果希望`newValue`和`oldValue`是普通对象,可以按照如下写法:
 
 ```vue

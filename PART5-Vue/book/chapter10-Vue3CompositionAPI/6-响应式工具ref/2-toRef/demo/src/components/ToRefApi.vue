@@ -12,7 +12,7 @@ export default {
     name: "ToRefApi",
     setup() {
         const info = reactive({name: 'why', age: 18})
-        let age = toRef(info.age)
+        let age = toRef(info, 'age')
         let name = toRef(info, 'name')
 
         const changeAge = () => {
