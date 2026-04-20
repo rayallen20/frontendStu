@@ -69,7 +69,7 @@ actions: {
         <h4>home state: {{$store.state.home.homeCounter}}</h4>
         <!-- 访问store的user模块的state -->
         <h4>user state: {{$store.state.user.userCounter}}</h4>
-        <!-- 访问store的home模块的getter -->
+        <!-- 在模板中,$store.getters可以获取所有模块的getters对象 -->
         <h4>user getter: doubleUserCounter: {{$store.getters['doubleUserCounter']}}</h4>
         <h4>user getter: doubleUserCounterAddRootCounter: {{$store.getters['doubleUserCounterAddRootCounter']}}</h4>
         <!-- 触发action -->

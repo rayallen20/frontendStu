@@ -55,22 +55,26 @@ export function useGetters(mapFn, mapper) {
 ```javascript
 import {useStore} from "vuex";
 
-export function useMutations(mapFn, mapper, moduleName = null) {
+export function useMutations(mapFn, mapper, moduleName = null){
     const store = useStore()
 
-    const actions = mapFn(mapper)
+    const mutations = mapFn(mapper)
 
-    const storeActions = {}
+    const normalizedMapper = Array.isArray(mapper)
+        ? Object.fromEntries(mapper.map(key => [key, key]))
+        : mapper
 
-    Object.keys(actions).forEach(key => {
+    const storeMutations = {}
+
+    Object.keys(mutations).forEach(key => {
         if (moduleName === null) {
-            storeActions[key] = (payload) => store.commit(key, payload)
+            storeMutations[key] = (payload) => store.commit(normalizedMapper[key], payload)
         } else {
-            storeActions[key] = (payload) => store.commit(`${moduleName}/${key}`, payload)
+            storeMutations[key] = (payload) => store.commit(`${moduleName}/${normalizedMapper[key]}`, payload)
         }
     })
 
-    return storeActions
+    return storeMutations
 }
 ```
 
@@ -79,19 +83,22 @@ export function useMutations(mapFn, mapper, moduleName = null) {
 ```javascript
 import {useStore} from "vuex";
 
-// moduleName: null表示根模块 非空表示子模块
 export function useActions(mapFn, mapper, moduleName = null) {
     const store = useStore()
 
     const actions = mapFn(mapper)
 
+    const normalizedMapper = Array.isArray(mapper)
+        ? Object.fromEntries(mapper.map(key => [key, key]))
+        : mapper
+
     const storeActions = {}
 
     Object.keys(actions).forEach(key => {
         if (moduleName === null) {
-            storeActions[key] = (payload) => store.dispatch(key, payload)
+            storeActions[key] = (payload) => store.dispatch(normalizedMapper[key], payload)
         } else {
-            storeActions[key] = (payload) => store.dispatch(`${moduleName}/${key}`, payload)
+            storeActions[key] = (payload) => store.dispatch(`${moduleName}/${normalizedMapper[key]}`, payload)
         }
     })
 

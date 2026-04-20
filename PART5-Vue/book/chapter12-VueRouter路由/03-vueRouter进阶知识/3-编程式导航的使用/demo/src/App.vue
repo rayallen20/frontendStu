@@ -1,9 +1,11 @@
 <template>
-    <div class="nav">
-        <RouterLink class="tab" to="/user/why/id/001">用户</RouterLink>
-        <button @click="jumpToAbout">关于</button>
+    <div class="app">
+        <div class="nav">
+            <RouterLink class="tab" to="/user/why/id/001">用户</RouterLink>
+            <button @click="jumpToAbout">关于</button>
+        </div>
+        <RouterView></RouterView>
     </div>
-    <RouterView></RouterView>
 </template>
 
 <script>

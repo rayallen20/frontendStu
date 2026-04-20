@@ -1,19 +1,23 @@
 import {useStore} from "vuex";
 
-export function useMutations(mapFn, mapper, moduleName = null) {
+export function useMutations(mapFn, mapper, moduleName = null){
     const store = useStore()
 
-    const actions = mapFn(mapper)
+    const mutations = mapFn(mapper)
 
-    const storeActions = {}
+    const normalizedMapper = Array.isArray(mapper)
+        ? Object.fromEntries(mapper.map(key => [key, key]))
+        : mapper
 
-    Object.keys(actions).forEach(key => {
+    const storeMutations = {}
+
+    Object.keys(mutations).forEach(key => {
         if (moduleName === null) {
-            storeActions[key] = (payload) => store.commit(key, payload)
+            storeMutations[key] = (payload) => store.commit(normalizedMapper[key], payload)
         } else {
-            storeActions[key] = (payload) => store.commit(`${moduleName}/${key}`, payload)
+            storeMutations[key] = (payload) => store.commit(`${moduleName}/${normalizedMapper[key]}`, payload)
         }
     })
 
-    return storeActions
+    return storeMutations
 }

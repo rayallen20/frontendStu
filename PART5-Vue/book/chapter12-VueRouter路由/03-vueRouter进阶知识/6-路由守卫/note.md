@@ -147,7 +147,7 @@ router.addRoute('home', commentRoute)
 router.beforeEach((to, from) => {
     if (to.path !== '/login') {
         const token = sessionStorage.getItem('token')
-        if (token === undefined || token === '') {
+        if (token === null || token === '') {
             return '/login'
         }
     }
